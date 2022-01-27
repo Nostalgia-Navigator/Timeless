@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Camera.gd" type="Script" id=4]
+[ext_resource path="res://BleriotXIMonoplaneCyan.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 0, 0, 1, 0, 1, 0.25098, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 0.5, 0.2, 1 )
+direction = Vector3( 0, 0, 1 )
+spread = 5.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+linear_accel = -4.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="Environment" id=5]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0 )
+far = 180.0
+script = ExtResource( 4 )
+player = NodePath("../Player")
+
+[node name="BleriotXIMonoplaneCyan" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.65118, 40, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
+
+[node name="Exhaust" type="Particles" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.62494 )
+amount = 60
+lifetime = 3.0
+visibility_aabb = AABB( -3, -2, -3, 6, 4, 4 )
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.612372, 0.707107, 0.353553, -0.5, -3.04046e-08, 0.866025, 0.612372, -0.707107, 0.353553, 23.1023, 21.0676, 0 )
+light_energy = 3.0
+light_specular = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="Spatial" parent="World" instance=ExtResource( 2 )]
+
+[node name="Spatial3" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 0 )
+
+[node name="Spatial2" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, 0 )
+
+[node name="Spatial4" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96 )
+
+[node name="Spatial5" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 96 )
+
+[node name="Spatial6" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, 96 )
+
+[node name="Spatial7" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -96 )
+
+[node name="Spatial8" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, -96 )
+
+[node name="Spatial9" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, -96 )
