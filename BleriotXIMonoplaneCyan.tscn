@@ -1,7 +1,57 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://BleriotXIMonoplaneCyan.dae" type="PackedScene" id=1]
 [ext_resource path="res://EnemyPlane.gd" type="Script" id=2]
+[ext_resource path="res://fire_02.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.172474, 0.397213, 0.731707, 1 )
+colors = PoolColorArray( 1, 0.796078, 0, 1, 1, 0.501961, 0, 1, 1, 0, 0, 1, 0.466667, 0, 0.337255, 1, 0.184314, 0.184314, 0.184314, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 0.5, 0.2, 1 )
+direction = Vector3( 0, 0, 1 )
+spread = 5.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+linear_accel = -8.0
+scale = 4.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=5]
+material = SubResource( 4 )
 
 [node name="BleriotXIMonoplaneCyan" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="." index="5"]
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0 )
+depth = 1.5
+polygon = PoolVector2Array( 0.632587, -2.30965, 0.625951, -2.00104, 3.33282, -2.00054, 2.96334, -0.845708, 0.205344, -0.857658, 0.207967, 1.93048, 1.00611, 1.92311, 0.993628, 2.32902, -0.993578, 2.32334, -0.969565, 1.90665, -0.201351, 1.92138, -0.259107, -0.830057, -2.90081, -0.830996, -3.30216, -2.00146, -0.579019, -2.00481, -0.58804, -2.29836 )
+
+[node name="Smoke" type="Particles" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621676, -1.4118 )
+emitting = false
+amount = 90
+lifetime = 3.0
+visibility_aabb = AABB( -9, -9, -11, 18, 18, 20 )
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )
