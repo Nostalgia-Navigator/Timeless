@@ -43,8 +43,8 @@ material = SubResource( 4 )
 [node name="Main" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 100, 50 )
-far = 180.0
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 125, 0 )
+far = 250.0
 script = ExtResource( 4 )
 player = NodePath("../Player")
 
@@ -84,30 +84,30 @@ light_specular = 0.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
 
-[node name="World" type="Spatial" parent="."]
+[node name="Floor" type="Spatial" parent="."]
 
-[node name="Spatial" parent="World" instance=ExtResource( 2 )]
+[node name="Spatial" parent="Floor" instance=ExtResource( 2 )]
 
-[node name="Spatial3" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 0 )
+[node name="Spatial2" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 0 )
 
-[node name="Spatial2" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, 0 )
+[node name="Spatial3" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, 0 )
 
-[node name="Spatial4" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96 )
+[node name="Spatial4" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 288 )
 
-[node name="Spatial5" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, 96 )
+[node name="Spatial5" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 288 )
 
-[node name="Spatial6" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, 96 )
+[node name="Spatial6" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, 288 )
 
-[node name="Spatial7" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -96 )
+[node name="Spatial7" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -288 )
 
-[node name="Spatial8" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, -96 )
+[node name="Spatial8" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, -288 )
 
-[node name="Spatial9" parent="World" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, -96 )
+[node name="Spatial9" parent="Floor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, -288 )

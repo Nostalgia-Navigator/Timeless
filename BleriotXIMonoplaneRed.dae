@@ -5,13 +5,13 @@
 		<author>Anonymous</author>
 		<authoring_tool>Collada Exporter for Blender 2.6+, by Juan Linietsky (juan@codenix.com)</authoring_tool>
 	</contributor>
-	<created>2022-01-26T22:29:33Z</created>
-	<modified>2022-01-26T22:29:33Z</modified>
+	<created>2022-01-27T23:53:56Z</created>
+	<modified>2022-01-27T23:53:56Z</modified>
 	<unit meter="1.0" name="meter"/>
 	<up_axis>Z_UP</up_axis>
 </asset>
 <library_effects>
-	<effect id="id-fx-2" name="Material-fx">
+	<effect id="id-fx-2" name="Red-fx">
 		<profile_COMMON>
 			<technique sid="common">
 				<blinn>
@@ -49,7 +49,7 @@
 	</effect>
 </library_effects>
 <library_materials>
-	<material id="id-material-3" name="Material">
+	<material id="id-material-3" name="Red">
 		<instance_effect url="#id-fx-2"/>
 	</material>
 </library_materials>

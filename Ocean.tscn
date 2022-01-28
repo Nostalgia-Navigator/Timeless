@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Material_001.material" type="Material" id=1]
 [ext_resource path="res://Ocean.gd" type="Script" id=2]
+[ext_resource path="res://Wrap.gd" type="Script" id=3]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.001"
@@ -20,12 +21,13 @@ surfaces/0 = {
 }
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 16, 1, 16 )
+extents = Vector3( 48, 1, 48 )
 
 [node name="Ocean" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="Cube" type="MeshInstance" parent="."]
-transform = Transform( 16, 0, 0, 0, 1, 0, 0, 0, 16, 0, 0, 0 )
+transform = Transform( 48, 0, 0, 0, 1, 0, 0, 0, 48, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 

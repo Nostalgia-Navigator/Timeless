@@ -11,5 +11,7 @@ func _process(delta):
 
 func _on_area_entered(area):
 	var p = area.get_parent()
-	p.on_damage(damage)
+	if p.is_in_group("Plane"):
+		
+		p.on_damage(damage)
 	self.queue_free()

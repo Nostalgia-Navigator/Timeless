@@ -7,15 +7,34 @@ var timer = preload("res://ParticleTimer.tscn")
 var explosion = preload("res://Explosion.tscn")
 var debris = preload("res://Debris.tscn")
 
+var wraparound = 128
+var player
 
 var d=0
 func _ready():
 	smoke = $Smoke
+	player = get_tree().get_root().get_child(0).get_node("Player")
 func _process(delta):
 	self.translate(Vector3(0, 0, -speed))
 	d += delta
 	
+	
+	
 	if d > 0.5:
+		var dx = transform.origin.x - player.transform.origin.x
+		if dx < -wraparound:
+			transform.origin.x += 2 * wraparound
+		elif dx > wraparound:
+			transform.origin.x -= 2 * wraparound
+			
+		var dz = transform.origin.z - player.transform.origin.z
+		if dz < -wraparound:
+			transform.origin.z += 2 * wraparound
+		elif dz > wraparound:
+			transform.origin.z -= 2 * wraparound
+		
+		
+		d = 0
 		pass
 	
 	
