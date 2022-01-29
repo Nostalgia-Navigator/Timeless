@@ -4,9 +4,12 @@
 [ext_resource path="res://Bullet.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=4]
+resource_local_to_scene = true
 albedo_color = Color( 1, 0.854902, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=5]
+resource_local_to_scene = true
+flags_transparent = true
 albedo_color = Color( 1, 0.854902, 0, 1 )
 
 [sub_resource type="Animation" id=6]
@@ -23,7 +26,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0.854902, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 1, 0.854902, 0, 1 ) ]
+"values": [ Color( 1, 0.854902, 0, 0.501961 ), Color( 1, 0.4, 0, 0.501961 ), Color( 1, 0.854902, 0, 0.501961 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sphere:material/0:albedo_color")

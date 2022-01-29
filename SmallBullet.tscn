@@ -7,6 +7,7 @@ radius = 1.5
 height = 3.0
 
 [sub_resource type="SpatialMaterial" id=4]
+resource_local_to_scene = true
 albedo_color = Color( 1, 0.854902, 0, 1 )
 
 [sub_resource type="Animation" id=6]
