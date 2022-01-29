@@ -3,23 +3,59 @@ extends Spatial
 export(int) var hp = 15
 export(float) var speed = 0.4
 var smoke
-var timer = preload("res://ParticleTimer.tscn")
-var explosion = preload("res://Explosion.tscn")
-var debris = preload("res://Debris.tscn")
+const timer = preload("res://ParticleTimer.tscn")
+const explosion = preload("res://Explosion.tscn")
+const debris = preload("res://Debris.tscn")
+const bullet = preload("res://SmallBullet.tscn")
 
-var wraparound = 128
+const wraparound = 128
 var player
 
 var d=0
+const fireCooldown = 5
+var cooldownLeft = fireCooldown
 func _ready():
 	smoke = $Smoke
 	player = get_tree().get_root().get_child(0).get_node("Player")
+	$Area.connect("area_entered", self, "on_area_entered")
+func on_area_entered(other):
+	var p = other.get_parent()
+	if p.is_in_group("Player"):
+		p.on_damage(10)
 func _process(delta):
+	# use global coordinates, not local to node
+	var firing = false
+	if cooldownLeft <= delta and player.is_inside_tree():
+		var offset = player.transform.origin - transform.origin
+		var distance = offset.length()
+		var vel = -get_global_transform().basis.z * speed
+		var playerVel = -player.get_global_transform().basis.z * player.speed
+		var velDiff = playerVel - vel
+		var bulletSpeed = 1.5
+		
+		
+		
+		#var future_offset = offset + velDiff * distance / (bulletSpeed * 60)
+		if distance < 80:
+			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, [$Area], 2147483647, false, true)
+			var c = result["collider"]
+			var clear = c != null and c.get_parent() == player
+			
+			if clear:
+				var b = bullet.instance()
+				b.transform.origin = get_global_transform().origin
+				b.vel = 1.2 * offset.normalized() + vel
+				
+				get_parent().add_child(b)
+				cooldownLeft = fireCooldown
+				firing = true
+		if !firing:
+			cooldownLeft = 0.5
+	else:
+		cooldownLeft -= delta
+		
 	self.translate(Vector3(0, 0, -speed))
 	d += delta
-	
-	
-	
 	if d > 0.5:
 		var dx = transform.origin.x - player.transform.origin.x
 		if dx < -wraparound:
@@ -32,12 +68,7 @@ func _process(delta):
 			transform.origin.z += 2 * wraparound
 		elif dz > wraparound:
 			transform.origin.z -= 2 * wraparound
-		
-		
 		d = 0
-		pass
-	
-	
 func on_damage(damage):
 	hp -= damage
 	if(hp <= 0):
@@ -55,11 +86,11 @@ func on_damage(damage):
 		var e = explosion.instance()
 		e.transform.origin = get_global_transform().origin
 		e.emitting = true
-		e.process_material.set("initial_velocity", -speed * 60)
+		e.process_material.set("initial_velocity", -speed * 60 * 1.25)
 		get_parent().add_child(e)
 		
 		var vel = -get_global_transform().basis.z * speed * 60
-		for i in range(20):
+		for i in range(10):
 			var d = debris.instance()
 			d.transform.origin = get_global_transform().origin
 			var angle = rand_range(0, PI*2)

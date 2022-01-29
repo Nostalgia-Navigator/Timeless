@@ -3,5 +3,12 @@
 [ext_resource path="res://Player.dae" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
-[node name="Player" instance=ExtResource( 1 )]
+[node name="Player" groups=["Player"] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="." index="9"]
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0 )
+depth = 2.0
+polygon = PoolVector2Array( 0.967251, 0.124681, 2.11925, 2.06542, -2.13245, 2.13808, -0.969893, 0.143059, -0.583085, -2.19928, -0.203139, -1.87492, -0.184257, -2.98415, 0.178592, -2.99287, 0.196034, -1.88359, 0.571126, -2.27965 )

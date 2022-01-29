@@ -1,5 +1,5 @@
 extends Spatial
-var wraparound = 288
+const wraparound = 288
 var player
 
 var d=0

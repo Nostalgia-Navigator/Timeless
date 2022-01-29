@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Ocean.tscn" type="PackedScene" id=1]
 
-[node name="Spatial" type="Spatial"]
+[node name="Tile" type="Spatial"]
 
 [node name="Ocean" parent="." instance=ExtResource( 1 )]
 

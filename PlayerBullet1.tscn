@@ -1,14 +1,69 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://PlayerBullet1.dae" type="PackedScene" id=1]
 [ext_resource path="res://Bullet.gd" type="Script" id=2]
 
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 1, 0.690196, 0, 1 )
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 1, 0.854902, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=2]
-flags_transparent = true
-albedo_color = Color( 1, 0.596078, 0, 0.501961 )
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0.854902, 0, 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Color"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sphere001:material/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.854902, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 1, 0.854902, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sphere:material/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.854902, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 1, 0.854902, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sphere001:material/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.854902, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sphere:material/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.854902, 0, 1 ) ]
+}
 
 [sub_resource type="SphereShape" id=3]
 margin = 0.05
@@ -18,10 +73,15 @@ radius = 0.5
 script = ExtResource( 2 )
 
 [node name="Sphere" parent="." index="0"]
-material/0 = SubResource( 1 )
+material/0 = SubResource( 4 )
 
 [node name="Sphere001" parent="." index="1"]
-material/0 = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "Color"
+anims/Color = SubResource( 6 )
+anims/RESET = SubResource( 7 )
 
 [node name="Area" type="Area" parent="." index="3"]
 gravity_vec = Vector3( 0, 0, 0 )
@@ -30,7 +90,6 @@ linear_damp = 0.0
 angular_damp = 0.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_entered"]
