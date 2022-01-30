@@ -4,7 +4,7 @@ var player
 
 var d=0
 func _ready():
-	player = get_tree().get_root().get_child(0).get_node("Player")
+	player = get_tree().get_root().get_node("Main/Player")
 func _process(delta):
 	d += delta
 	

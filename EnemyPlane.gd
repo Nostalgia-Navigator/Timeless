@@ -16,7 +16,8 @@ const fireCooldown = 5
 var cooldownLeft = fireCooldown
 func _ready():
 	smoke = $Smoke
-	player = get_tree().get_root().get_child(0).get_node("Player")
+	var root = get_tree().get_root().get_node("Main")
+	player = root.get_node("Player")
 	$Area.connect("area_entered", self, "on_area_entered")
 func on_area_entered(other):
 	var p = other.get_parent()
@@ -73,7 +74,8 @@ func on_damage(damage):
 	hp -= damage
 	if(hp <= 0):
 		smoke.emitting = false
-		smoke.get_parent().remove_child(smoke)
+		var p = smoke.get_parent()
+		p.remove_child(smoke)
 		
 		var t = timer.instance()
 		t.time = 5

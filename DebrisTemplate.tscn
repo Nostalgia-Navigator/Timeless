@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="{name}Shard{number}" type="RigidBody"]
+gravity_scale = 2.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]

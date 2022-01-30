@@ -48,6 +48,17 @@ config/name="Wingnuts: Temporal Navigator Remake"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/destruction/plugin.cfg" )
+
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
