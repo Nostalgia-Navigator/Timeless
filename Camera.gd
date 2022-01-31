@@ -12,4 +12,5 @@ func _ready():
 func shake():
 	add_child(shake.instance())
 func _process(delta):
-	self.transform.origin = player.transform.origin + offset
+	var p = player.transform.origin + offset
+	self.transform.origin = Vector3(p.x, transform.origin.y, p.z)

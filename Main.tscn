@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Carrier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Camera.gd" type="Script" id=4]
 [ext_resource path="res://Takeoff.gd" type="Script" id=5]
+[ext_resource path="res://BleriotXIMonoplaneRed.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies.gd" type="Script" id=7]
 
 [sub_resource type="Environment" id=6]
 
@@ -94,7 +96,7 @@ tracks/0/keys = {
 [node name="Main" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 125, 0 )
 far = 250.0
 script = ExtResource( 4 )
 player = NodePath("../Player")
@@ -153,6 +155,60 @@ anims/CarrierLeave = SubResource( 9 )
 anims/RESET = SubResource( 7 )
 anims/Takeoff = SubResource( 8 )
 script = ExtResource( 5 )
+
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="Node" type="Node" parent="Enemies"]
+
+[node name="BleriotXIMonoplaneRed" parent="Enemies/Node" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52.9373, 40, -76.7667 )
+
+[node name="BleriotXIMonoplaneRed2" parent="Enemies/Node" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.4163, 40, -84.8937 )
+
+[node name="BleriotXIMonoplaneRed3" parent="Enemies/Node" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -64.2329, 40, -75.3018 )
+
+[node name="BleriotXIMonoplaneRed4" parent="Enemies/Node" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.2924, 40, -77.4777 )
+
+[node name="BleriotXIMonoplaneRed5" parent="Enemies/Node" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8291, 40, -84.8247 )
+
+[node name="Node2" type="Node" parent="Enemies"]
+
+[node name="BleriotXIMonoplaneRed" parent="Enemies/Node2" instance=ExtResource( 6 )]
+transform = Transform( 0.810175, 0, -0.586189, 0, 1, 0, 0.586189, 0, 0.810175, -95.9898, 40, -47.8753 )
+
+[node name="BleriotXIMonoplaneRed2" parent="Enemies/Node2" instance=ExtResource( 6 )]
+transform = Transform( 0.810175, 0, -0.586189, 0, 1, 0, 0.586189, 0, 0.810175, -98.0953, 40, -59.43 )
+
+[node name="BleriotXIMonoplaneRed3" parent="Enemies/Node2" instance=ExtResource( 6 )]
+transform = Transform( 0.810175, 0, -0.586189, 0, 1, 0, 0.586189, 0, 0.810175, -106, 40, -53.3099 )
+
+[node name="BleriotXIMonoplaneRed4" parent="Enemies/Node2" instance=ExtResource( 6 )]
+transform = Transform( 0.810175, 0, -0.586189, 0, 1, 0, 0.586189, 0, 0.810175, -86.1386, 40, -41.6253 )
+
+[node name="BleriotXIMonoplaneRed5" parent="Enemies/Node2" instance=ExtResource( 6 )]
+transform = Transform( 0.810175, 0, -0.586189, 0, 1, 0, 0.586189, 0, 0.810175, -86.3176, 40, -50.8232 )
+
+[node name="Node3" type="Node" parent="Enemies"]
+
+[node name="BleriotXIMonoplaneRed" parent="Enemies/Node3" instance=ExtResource( 6 )]
+transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 54.2233, 40, -50.0541 )
+
+[node name="BleriotXIMonoplaneRed2" parent="Enemies/Node3" instance=ExtResource( 6 )]
+transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 42.4834, 40, -50.3963 )
+
+[node name="BleriotXIMonoplaneRed3" parent="Enemies/Node3" instance=ExtResource( 6 )]
+transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 46.8268, 40, -41.3922 )
+
+[node name="BleriotXIMonoplaneRed4" parent="Enemies/Node3" instance=ExtResource( 6 )]
+transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 62.3845, 40, -58.391 )
+
+[node name="BleriotXIMonoplaneRed5" parent="Enemies/Node3" instance=ExtResource( 6 )]
+transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 53.3503, 40, -60.1278 )
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
 [connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]

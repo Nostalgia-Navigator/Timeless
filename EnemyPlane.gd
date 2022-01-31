@@ -11,6 +11,8 @@ const bullet = preload("res://SmallBullet.tscn")
 const wraparound = 128
 var player
 
+signal on_destroyed
+
 var d=0
 const fireCooldown = 5
 var cooldownLeft = fireCooldown
@@ -91,23 +93,16 @@ func on_damage(damage):
 		e.process_material.set("initial_velocity", -speed * 60 * 1.25)
 		get_parent().add_child(e)
 		
-		var vel = -get_global_transform().basis.z * speed * 60
-		for i in range(10):
-			var d = debris.instance()
-			d.transform.origin = get_global_transform().origin
+		var vel = -get_global_transform().basis.z * speed * 60 * 0
+		var shards = $Destruction.destroy()
+		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
-			var speed = rand_range(1, 20)
-			d.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))
-			
-			var m = 10
-			d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
-			
-			var body = d.get_node("Body")
-			var material = body.get_surface_material(0)
-			material.albedo_color = get_child(0).mesh.surface_get_material(0).albedo_color
-			body.set_surface_material(0, material)
-			
-			get_parent().add_child(d)
+			var speed = rand_range(1, 5)
+			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
+			var m = 90
+			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+		
+		emit_signal("on_destroyed")
 	elif hp <= 10:
 		smoke.emitting = true
 		smoke.process_material.set("initial_velocity", -speed * 60)

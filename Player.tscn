@@ -292,6 +292,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ 0.0, 1.0, 1.0, 0.0 ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:vulnerable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=17]
 length = 0.001
@@ -379,6 +391,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:vulnerable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=18]
 length = 0.001
@@ -397,6 +421,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=19]
 resource_name = "Spin"
+length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -405,14 +430,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 90, 0, 0 ), Vector3( 90, -45, 0 ) ]
+"values": [ Vector3( 90, 0, 0 ), Vector3( 90, -90, 0 ) ]
 }
 
 [node name="Player" type="Spatial" groups=["Player"]]
 script = ExtResource( 2 )
+vulnerable = true
 
 [node name="Body" type="Spatial" parent="."]
 

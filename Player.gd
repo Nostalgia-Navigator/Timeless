@@ -23,8 +23,6 @@ func intro_done(a):
 		playing = true
 		speed = standardSpeed
 		$AnimationPlayer.play("Invulnerable")
-	elif(a == "Invulnerable"):
-		vulnerable = true
 signal on_damaged
 func _ready():
 	exhaust = $Exhaust
@@ -41,6 +39,14 @@ func on_damage(dmg):
 		get_parent().add_child(e)
 		
 		var vel = -get_global_transform().basis.z * speed * 60 * 0
+		var shards = $Destruction.destroy()
+		for s in shards.get_children():
+			var angle = rand_range(0, PI*2)
+			var speed = rand_range(1, 5)
+			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
+			var m = 90
+			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+		
 		
 		exhaust.emitting = false
 		remove_child(exhaust)
@@ -65,13 +71,6 @@ func on_damage(dmg):
 		#	body.set_surface_material(0, material)
 		#	get_parent().add_child(d)
 		
-		var shards = $Destruction.destroy()
-		for s in shards.get_children():
-			var angle = rand_range(0, PI*2)
-			var speed = rand_range(1, 5)
-			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
-			var m = 90
-			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 		var t = Timer.new()
 		t.wait_time = 4
 		t.one_shot = true
@@ -90,6 +89,8 @@ func respawn():
 	p.remove_child(exhaust)
 	add_child(exhaust)
 	p.queue_free()
+	
+	$AnimationPlayer.play("Invulnerable")
 	
 func _process(delta):
 	
@@ -146,7 +147,7 @@ func _process(delta):
 	
 	self.translate(Vector3(0, 0, -speed))
 	
-	if(Input.is_key_pressed(KEY_SPACE)) and cooldownLeft <= 0:
+	if(Input.is_key_pressed(KEY_X)) and cooldownLeft <= 0:
 		var b = bullet.instance()
 		get_parent().add_child(b)
 		b.transform.origin = $Gun.get_global_transform().origin
