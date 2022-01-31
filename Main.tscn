@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Takeoff.gd" type="Script" id=5]
 [ext_resource path="res://BleriotXIMonoplaneRed.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies.gd" type="Script" id=7]
+[ext_resource path="res://ParachuteStar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ParachuteFuel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=6]
 
@@ -50,7 +52,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 20, 0 ) ]
+"values": [ Vector3( 0, 25, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:translation")
@@ -143,7 +145,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, -288 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0 )
 
 [node name="Gun" type="Spatial" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
@@ -155,6 +157,12 @@ anims/CarrierLeave = SubResource( 9 )
 anims/RESET = SubResource( 7 )
 anims/Takeoff = SubResource( 8 )
 script = ExtResource( 5 )
+
+[node name="ParachuteFuel" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8809, 40, -70.5438 )
+
+[node name="ParachuteStar" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5253, 40, -58.4955 )
 
 [node name="Enemies" type="Node" parent="."]
 script = ExtResource( 7 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://SplashRing.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/SplashRing.dae" type="PackedScene" id=1]
 [ext_resource path="res://SplashRing.tres" type="Material" id=2]
 [ext_resource path="res://SplashRing.gd" type="Script" id=3]
 

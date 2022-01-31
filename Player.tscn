@@ -1,14 +1,14 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://Crosshair.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/Crosshair.dae" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=3]
 [ext_resource path="res://PlayerDebris.tscn" type="PackedScene" id=4]
 [ext_resource path="res://DebrisTemplate.tscn" type="PackedScene" id=5]
 [ext_resource path="res://fire_02.png" type="Texture" id=6]
-[ext_resource path="res://Engine.material" type="Material" id=7]
-[ext_resource path="res://Window.material" type="Material" id=8]
-[ext_resource path="res://Hull.material" type="Material" id=9]
+[ext_resource path="res://Blender/Engine.material" type="Material" id=7]
+[ext_resource path="res://Blender/Window.material" type="Material" id=8]
+[ext_resource path="res://Blender/Hull.material" type="Material" id=9]
 [ext_resource path="res://GreenBarrier.png" type="Texture" id=10]
 
 [sub_resource type="ArrayMesh" id=1]
