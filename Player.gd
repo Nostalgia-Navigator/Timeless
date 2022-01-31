@@ -1,7 +1,7 @@
 extends Spatial
 
-var speed = 0
-const standardSpeed = 0.9
+export(float) var speed = 0
+const standardSpeed = 0.6
 const brakeSpeed = 0.5
 const thrustSpeed = 2.4
 var exhaust
@@ -15,12 +15,23 @@ const fullHP = 30
 var hp = fullHP
 var parent
 
+export(bool) var playing = false
+export(bool) var vulnerable = false
+
+func intro_done(a):
+	if(a == "Takeoff"):
+		playing = true
+		speed = standardSpeed
+		$AnimationPlayer.play("Invulnerable")
+	elif(a == "Invulnerable"):
+		vulnerable = true
 signal on_damaged
 func _ready():
 	exhaust = $Exhaust
 	parent = get_parent()
 func on_damage(dmg):
-	
+	if(!vulnerable):
+		return
 	emit_signal("on_damaged")
 	if hp <= dmg:
 		var e = explosion.instance()
@@ -30,6 +41,14 @@ func on_damage(dmg):
 		get_parent().add_child(e)
 		
 		var vel = -get_global_transform().basis.z * speed * 60 * 0
+		
+		exhaust.emitting = false
+		remove_child(exhaust)
+		
+		var n = Spatial.new()
+		n.transform.origin = get_global_transform().origin
+		n.add_child(exhaust)
+		get_parent().add_child(n)
 		
 		#for i in range(10):
 		#	var d = debris.instance()
@@ -66,6 +85,12 @@ func on_damage(dmg):
 func respawn():
 	parent.add_child(self)
 	hp = fullHP
+	
+	var p = exhaust.get_parent()
+	p.remove_child(exhaust)
+	add_child(exhaust)
+	p.queue_free()
+	
 func _process(delta):
 	
 	#var ray_length = 1000
@@ -74,7 +99,8 @@ func _process(delta):
 	#var from = camera.project_ray_origin(mouse_pos)
 	#var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	
-	
+	if(!playing):
+		return
 	
 	cooldownLeft -= delta
 	var thrusting = false
@@ -83,6 +109,8 @@ func _process(delta):
 	var turning = false
 	var turn = PI/75
 	var turnAngle = PI * 6 / 16
+	
+	
 	if(Input.is_key_pressed(KEY_DOWN)):
 		braking = true
 		if(speed > brakeSpeed):

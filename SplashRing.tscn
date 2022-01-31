@@ -8,9 +8,11 @@
 script = ExtResource( 3 )
 
 [node name="Torus000" parent="." index="0"]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 material/0 = ExtResource( 2 )
 
 [node name="Torus001" parent="." index="1"]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 material/0 = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="." index="3"]

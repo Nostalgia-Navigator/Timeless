@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Crosshair.dae" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Engine.material" type="Material" id=7]
 [ext_resource path="res://Window.material" type="Material" id=8]
 [ext_resource path="res://Hull.material" type="Material" id=9]
+[ext_resource path="res://GreenBarrier.png" type="Texture" id=10]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -182,10 +183,10 @@ curve = SubResource( 12 )
 emission_shape = 2
 emission_box_extents = Vector3( 0.5, 0.2, 1 )
 direction = Vector3( 0, 0, 1 )
-spread = 5.0
+spread = 2.0
 flatness = 1.0
 gravity = Vector3( 0, 0, 0 )
-linear_accel = -8.0
+linear_accel = -24.0
 scale = 2.0
 scale_curve = SubResource( 9 )
 color_ramp = SubResource( 11 )
@@ -203,6 +204,212 @@ albedo_texture = ExtResource( 6 )
 
 [sub_resource type="QuadMesh" id=15]
 material = SubResource( 14 )
+
+[sub_resource type="Animation" id=16]
+resource_name = "Invulnerable"
+length = 4.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Cube:mesh:surface_1/material:flags_transparent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Cube:mesh:surface_1/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.603922, 0.513726, 0.0470588, 0.2 ), Color( 0.603922, 0.513726, 0.0470588, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Cube004:mesh:surface_1/material:flags_transparent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Cube004:mesh:surface_1/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.0588235, 0.0588235, 0.121569, 0.2 ), Color( 0.0588235, 0.0588235, 0.121569, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Cube005:mesh:surface_3/material:flags_transparent")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Cube005:mesh:surface_3/material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.972549, 1, 0.521569, 0.2 ), Color( 0.972549, 1, 0.521569, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Barrier:opacity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.8, 4, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Cube:mesh:surface_1/material:flags_transparent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Cube:mesh:surface_1/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.603922, 0.513726, 0.0470588, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Cube004:mesh:surface_1/material:flags_transparent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Cube004:mesh:surface_1/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0588235, 0.0588235, 0.121569, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Cube005:mesh:surface_3/material:flags_transparent")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Cube005:mesh:surface_3/material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.972549, 1, 0.521569, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Barrier:opacity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "Spin"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 90, -45, 0 ) ]
+}
 
 [node name="Player" type="Spatial" groups=["Player"]]
 script = ExtResource( 2 )
@@ -274,7 +481,7 @@ polygon = PoolVector2Array( 0.233111, 2.15302, -0.189858, 2.15926, -0.184257, -2
 [node name="Exhaust" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5882 )
 emitting = false
-amount = 120
+amount = 180
 lifetime = 3.0
 visibility_aabb = AABB( -3, -2, -3, 6, 4, 4 )
 local_coords = false
@@ -288,3 +495,18 @@ shard_scene = ExtResource( 4 )
 
 [node name="Crosshair" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Invulnerable = SubResource( 16 )
+anims/RESET = SubResource( 17 )
+
+[node name="Barrier" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+opacity = 0.0
+pixel_size = 0.02
+texture = ExtResource( 10 )
+
+[node name="Spin" type="AnimationPlayer" parent="Barrier"]
+autoplay = "Spin"
+anims/RESET = SubResource( 18 )
+anims/Spin = SubResource( 19 )
