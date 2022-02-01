@@ -536,3 +536,5 @@ texture = ExtResource( 10 )
 autoplay = "Spin"
 anims/RESET = SubResource( 18 )
 anims/Spin = SubResource( 19 )
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_entered"]

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+<asset>
+	<contributor>
+		<author>Anonymous</author>
+		<authoring_tool>Collada Exporter for Blender 2.6+, by Juan Linietsky (juan@codenix.com)</authoring_tool>
+	</contributor>
+	<created>2022-02-01T01:52:27Z</created>
+	<modified>2022-02-01T01:52:27Z</modified>
+	<unit meter="1.0" name="meter"/>
+	<up_axis>Z_UP</up_axis>
+</asset>
+<library_effects>
+	<effect id="id-fx-2" name="Star.001-fx">
+		<profile_COMMON>
+			<technique sid="common">
+				<blinn>
+					<emission>
+						<color>  0.0 0.0 0.0 1.0 </color>
+					</emission>
+					<ambient>
+						<color>  0.0 0.0 0.0 1.0 </color>
+					</ambient>
+					<diffuse>
+						<color>  1.0 1.0 0.0 1.0 </color>
+					</diffuse>
+					<specular>
+						<color>  0.5 0.5 0.5 1.0 </color>
+					</specular>
+					<shininess>
+						<float>50</float>
+					</shininess>
+					<reflective>
+						<color>  1.0 1.0 1.0 1.0 </color>
+					</reflective>
+					<index_of_refraction>
+						<float>4.0</float>
+					</index_of_refraction>
+				</blinn>
+				<extra>
+					<technique profile="FCOLLADA">
+					</technique>
+					<technique profile="GOOGLEEARTH">
+						<double_sided>0</double_sided>
+					</technique>
+				</extra>
+			</technique>
+		</profile_COMMON>
+	</effect>
+</library_effects>
+<library_materials>
+	<material id="id-material-3" name="Star.001">
+		<instance_effect url="#id-fx-2"/>
+	</material>
+</library_materials>
+<library_geometries>
+	<geometry id="id-mesh-4" name="Cube.000">
+		<mesh>
+			<source id="id-mesh-4-positions">
+				<float_array id="id-mesh-4-positions-array" count="48"> -1.0 -1.4142135381698608 -0.5 -1.0142135620117188 0.0 0.5 -2.4142136573791504 0.0 -0.5 -2.4142136573791504 0.0 -0.5 -1.0142135620117188 0.0 0.5 -1.0 1.4142135381698608 -0.5 -2.4142136573791504 0.0 -0.5 -1.0 1.4142135381698608 -0.5 2.4142136573791504 0.0 -0.5 -1.0 -1.4142135381698608 -0.5 -1.0 1.4142135381698608 -0.5 -1.0142135620117188 0.0 0.5 2.4142136573791504 0.0 -0.5 2.4142136573791504 0.0 -0.5 -1.0142135620117188 0.0 0.5 -1.0 -1.4142135381698608 -0.5</float_array>
+				<technique_common>
+				<accessor source="#id-mesh-4-positions-array" count="16" stride="3">
+					<param name="X" type="float"/>
+					<param name="Y" type="float"/>
+					<param name="Z" type="float"/>
+				</accessor>
+				</technique_common>
+			</source>
+			<source id="id-mesh-4-normals">
+				<float_array id="id-mesh-4-normals-array" count="48"> -0.502518892288208 -0.5025189518928528 0.7035264372825623 -0.502518892288208 -0.5025189518928528 0.7035264372825623 -0.502518892288208 -0.5025189518928528 0.7035264372825623 -0.502518892288208 0.5025189518928528 0.7035264372825623 -0.502518892288208 0.5025189518928528 0.7035264372825623 -0.502518892288208 0.5025189518928528 0.7035264372825623 0.0 0.0 -0.9999999403953552 0.0 0.0 -0.9999999403953552 0.0 0.0 -0.9999999403953552 0.0 0.0 -0.9999999403953552 0.23197834193706512 0.5600452423095703 0.7953208684921265 0.23197834193706512 0.5600452423095703 0.7953208684921265 0.23197834193706512 0.5600452423095703 0.7953208684921265 0.23197834193706512 -0.5600452423095703 0.7953208684921265 0.23197834193706512 -0.5600452423095703 0.7953208684921265 0.23197834193706512 -0.5600452423095703 0.7953208684921265</float_array>
+				<technique_common>
+				<accessor source="#id-mesh-4-normals-array" count="16" stride="3">
+					<param name="X" type="float"/>
+					<param name="Y" type="float"/>
+					<param name="Z" type="float"/>
+				</accessor>
+				</technique_common>
+			</source>
+			<vertices id="id-mesh-4-vertices">
+				<input semantic="POSITION" source="#id-mesh-4-positions"/>
+			</vertices>
+			<polygons count="5" material="id-trimat-5">
+				<input semantic="VERTEX" source="#id-mesh-4-vertices" offset="0"/>
+				<input semantic="NORMAL" source="#id-mesh-4-normals" offset="0"/>
+				<p> 0 1 2 </p>
+				<p> 3 4 5 </p>
+				<p> 6 7 8 9 </p>
+				<p> 10 11 12 </p>
+				<p> 13 14 15 </p>
+			</polygons>
+		</mesh>
+	</geometry>
+</library_geometries>
+<library_visual_scenes>
+	<visual_scene id="id-scene-1" name="scene">
+		<node id="Cube.008" name="Cube.008" type="NODE">
+			<matrix sid="transform"> 1.7484554248881068e-08 0.3999999761581421 1.3033654511218629e-07 4.7683716530855236e-08 -0.3999999761581421 1.7484628855868323e-08 -2.257039710684694e-07 -0.36180341243743896 -2.257039710684694e-07 -1.3033654511218629e-07 0.3999999761581421 0.19999998807907104 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.009" name="Cube.009" type="NODE">
+			<matrix sid="transform"> 0.3804226815700531 0.12360679358243942 -5.976523453909977e-08 0.3804227113723755 -0.12360682338476181 0.38042259216308594 -8.55753745643284e-10 -0.08541029691696167 5.657568991068729e-08 1.9282344609905522e-08 0.3999999463558197 0.2000001072883606 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.010" name="Cube.010" type="NODE">
+			<matrix sid="transform"> 0.23511405289173126 -0.3236068785190582 -1.1789050091692843e-07 0.23511415719985962 0.3236068785190582 0.23511405289173126 2.0820380086661316e-08 0.3618035316467285 5.245023970701368e-08 -1.0761336710629621e-07 0.3999999761581421 0.2000001072883606 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.011" name="Cube.011" type="NODE">
+			<matrix sid="transform"> -0.2351142317056656 -0.3236066997051239 4.79522768159768e-08 -0.23511409759521484 0.3236066997051239 -0.2351142317056656 2.0820419166511783e-08 0.3618035316467285 1.134158988946865e-08 5.103213851498367e-08 0.3999999761581421 0.20000004768371582 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.012" name="Cube.012" type="NODE">
+			<matrix sid="transform"> -0.380422443151474 0.12360723316669464 -3.964324335470337e-08 -0.3804224729537964 -0.12360723316669464 -0.380422443151474 8.98440006835699e-08 -0.08541062474250793 -9.939528311520007e-09 9.76971747945754e-08 0.3999999463558197 0.20000004768371582 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.013" name="Cube.013" type="NODE">
+			<matrix sid="transform"> -0.3804225027561188 0.12360705435276031 3.240210730837134e-07 -0.38042259216308594 -0.12360705435276031 -0.3804225027561188 4.177452339604315e-08 -0.0854102373123169 -3.210713828138978e-07 6.03983139058073e-08 -0.3999999463558197 -0.2000001072883606 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.014" name="Cube.014" type="NODE">
+			<matrix sid="transform"> -0.2351142317056656 -0.3236066997051239 2.180995437583988e-07 -0.23511409759521484 0.3236066997051239 -0.2351142317056656 8.38022842231112e-08 0.3618035316467285 -6.03983139058073e-08 -2.257039710684694e-07 -0.3999999761581421 -0.19999998807907104 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.015" name="Cube.015" type="NODE">
+			<matrix sid="transform"> 0.23511411249637604 -0.32360681891441345 1.25473150092148e-07 0.23511415719985962 0.32360681891441345 0.23511411249637604 6.994323342723874e-08 0.3618035316467285 1.30336559323041e-07 -6.039832811666201e-08 -0.3999999761581421 -0.19999992847442627 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.016" name="Cube.016" type="NODE">
+			<matrix sid="transform"> 0.3804226517677307 0.12360683083534241 -3.2402110150542285e-07 0.3804227113723755 -0.1236068606376648 0.38042256236076355 4.1774331549504495e-08 -0.08541029691696167 -3.210714680790261e-07 -6.03983139058073e-08 -0.3999999463558197 -0.20000004768371582 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Cube.017" name="Cube.017" type="NODE">
+			<matrix sid="transform"> -1.7484554248881068e-08 0.3999999761581421 2.257039710684694e-07 2.3841863594498136e-08 -0.3999999761581421 -1.748452227445796e-08 -6.039832101123466e-08 -0.36180341243743896 6.03983139058073e-08 2.257039710684694e-07 -0.3999999761581421 -0.19999980926513672 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-4">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+	</visual_scene>
+</library_visual_scenes>
+<scene>
+	<instance_visual_scene url="#id-scene-1" />
+</scene>
+</COLLADA>

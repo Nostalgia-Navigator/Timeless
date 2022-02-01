@@ -4,7 +4,6 @@
 [ext_resource path="res://Ocean.gd" type="Script" id=2]
 [ext_resource path="res://Wrap.gd" type="Script" id=3]
 
-
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.001"
 surfaces/0 = {
@@ -38,4 +37,5 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 2 )
 
+[connection signal="area_entered" from="Area" to="Area" method="_on_area_entered"]
 [connection signal="body_entered" from="Area" to="Area" method="_on_body_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Blender/Bomb.dae" type="PackedScene" id=1]
 [ext_resource path="res://Blender/Shell.material" type="Material" id=2]
 [ext_resource path="res://Blender/Wing.material" type="Material" id=3]
 [ext_resource path="res://Blender/Window_001.material" type="Material" id=4]
+[ext_resource path="res://TestArea.gd" type="Script" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.008"
@@ -54,6 +55,9 @@ surfaces/1 = {
 radius = 0.6
 height = 1.75
 
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
 [node name="Bomb" instance=ExtResource( 1 )]
 
 [node name="Spatial" type="Spatial" parent="." index="1"]
@@ -72,6 +76,13 @@ material/0 = null
 material/1 = null
 
 [node name="Area" type="Area" parent="." index="2"]
+script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 shape = SubResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Area" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="Area" to="Area" method="on_area_entered"]

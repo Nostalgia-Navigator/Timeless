@@ -25,3 +25,8 @@ func _on_area_entered(area):
 	if p.is_in_group(hit):
 		p.on_damage(damage)
 		self.queue_free()
+		return
+	if hit == "Plane":
+		if area.is_in_group("Goodie"):
+			p = area.get_parent().get_parent().get_parent().get_parent()
+			p.get_node("Warning").play("Warn")

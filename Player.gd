@@ -10,8 +10,12 @@ const explosion = preload("res://Explosion.tscn")
 const debris = preload("res://Debris.tscn")
 const shake = preload("res://Shake.tscn")
 const bombdrop = preload("res://BombDrop.tscn")
-const cooldown = 0.1
-var cooldownLeft = 0
+const fireCooldown = 0.1
+var fireCooldownLeft = 0
+
+const bombCooldown = 0.8
+var bombCooldownLeft = 0
+
 const fullHP = 30
 var hp = fullHP
 var parent
@@ -102,7 +106,9 @@ func _process(delta):
 	if(!playing):
 		return
 	
-	cooldownLeft -= delta
+	fireCooldownLeft -= delta
+	bombCooldownLeft -= delta
+	
 	var thrusting = false
 	var braking = false
 	var accel = 0.25/30
@@ -146,17 +152,38 @@ func _process(delta):
 	
 	self.translate(Vector3(0, 0, -speed))
 	
-	if(Input.is_key_pressed(KEY_X)) and cooldownLeft <= 0:
+	if(Input.is_key_pressed(KEY_X)) and fireCooldownLeft <= 0:
 		var b = bullet.instance()
 		get_parent().add_child(b)
 		b.transform.origin = $Gun.get_global_transform().origin
 		b.rotation.y = self.rotation.y
 		b.vel = -get_global_transform().basis.z * (speed + 2)
-		cooldownLeft = cooldown
-	if(Input.is_key_pressed(KEY_Z)) and cooldownLeft <= 0:
+		fireCooldownLeft = fireCooldown
+	if(Input.is_key_pressed(KEY_Z)) and bombCooldownLeft <= 0:
 		var b = bombdrop.instance()
 		b.transform.origin = $Crosshair.get_global_transform().origin
 		b.rotation_degrees.y = rotation_degrees.y
 		get_parent().add_child(b)
+		bombCooldownLeft = bombCooldown
 		
 
+
+var star = preload("res://Blender/StarParticle.tscn")
+func _on_area_entered(area):
+	if area.is_in_group("Goodie"):
+		var p = area.get_parent().get_parent().get_parent().get_parent()
+		p.queue_free()
+		
+		for i in range(0, 16):
+			var s = star.instance()
+			var m = [p.color1, p.color2][i%2]
+			for c in s.get_children():
+				if c is MeshInstance:
+					c.set_surface_material(0, m)
+			s.transform.origin = p.get_global_transform().origin
+			var speed = rand_range(16, 24)
+			var angle = randf() * PI * 2
+			s.angular_velocity = Vector3(0, randf() * PI*2 + PI*2, 0)
+			s.linear_velocity = Vector3(speed*cos(angle),0,speed*sin(angle))
+			get_parent().add_child(s)
+		

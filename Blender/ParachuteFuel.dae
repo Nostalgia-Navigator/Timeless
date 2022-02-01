@@ -5,8 +5,8 @@
 		<author>Anonymous</author>
 		<authoring_tool>Collada Exporter for Blender 2.6+, by Juan Linietsky (juan@codenix.com)</authoring_tool>
 	</contributor>
-	<created>2022-01-31T02:46:08Z</created>
-	<modified>2022-01-31T02:46:08Z</modified>
+	<created>2022-01-31T18:18:34Z</created>
+	<modified>2022-01-31T18:18:34Z</modified>
 	<unit meter="1.0" name="meter"/>
 	<up_axis>Z_UP</up_axis>
 </asset>
@@ -22,10 +22,10 @@
 						<color>  0.0 0.0 0.0 1.0 </color>
 					</ambient>
 					<diffuse>
-						<color>  0.03691911697387695 0.0 0.8000000715255737 1.0 </color>
+						<color>  0.0446011982858181 0.0 1.0 1.0 </color>
 					</diffuse>
 					<specular>
-						<color>  0.0 0.0 0.0 1.0 </color>
+						<color>  1.0 1.0 1.0 1.0 </color>
 					</specular>
 					<shininess>
 						<float>50</float>
@@ -94,10 +94,10 @@
 						<color>  0.0 0.0 0.0 1.0 </color>
 					</ambient>
 					<diffuse>
-						<color>  0.8000000715255737 0.0 0.3476320207118988 1.0 </color>
+						<color>  1.0 0.0 0.4322105944156647 1.0 </color>
 					</diffuse>
 					<specular>
-						<color>  0.0 0.0 0.0 1.0 </color>
+						<color>  1.0 1.0 1.0 1.0 </color>
 					</specular>
 					<shininess>
 						<float>50</float>
@@ -133,7 +133,7 @@
 						<color>  0.0 1.0 0.061246056109666824 1.0 </color>
 					</diffuse>
 					<specular>
-						<color>  0.0 0.0 0.0 1.0 </color>
+						<color>  1.0 1.0 1.0 1.0 </color>
 					</specular>
 					<shininess>
 						<float>50</float>
@@ -166,10 +166,10 @@
 						<color>  0.0 0.0 0.0 1.0 </color>
 					</ambient>
 					<diffuse>
-						<color>  0.0 0.2619364559650421 0.01973639242351055 1.0 </color>
+						<color>  0.0 0.33432525396347046 0.024011868983507156 1.0 </color>
 					</diffuse>
 					<specular>
-						<color>  0.0 0.0 0.0 1.0 </color>
+						<color>  1.0 1.0 1.0 1.0 </color>
 					</specular>
 					<shininess>
 						<float>50</float>
