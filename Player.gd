@@ -9,15 +9,14 @@ const bullet = preload("res://PlayerBullet1.tscn")
 const explosion = preload("res://Explosion.tscn")
 const debris = preload("res://Debris.tscn")
 const shake = preload("res://Shake.tscn")
+const bombdrop = preload("res://BombDrop.tscn")
 const cooldown = 0.1
 var cooldownLeft = 0
 const fullHP = 30
 var hp = fullHP
 var parent
-
 export(bool) var playing = false
 export(bool) var vulnerable = false
-
 func intro_done(a):
 	if(a == "Takeoff"):
 		playing = true
@@ -38,7 +37,7 @@ func on_damage(dmg):
 		e.process_material.set("initial_velocity", -speed * 15 )
 		get_parent().add_child(e)
 		
-		var vel = -get_global_transform().basis.z * speed * 60 * 0
+		var vel = -get_global_transform().basis.z * speed * 15
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
@@ -154,4 +153,10 @@ func _process(delta):
 		b.rotation.y = self.rotation.y
 		b.vel = -get_global_transform().basis.z * (speed + 2)
 		cooldownLeft = cooldown
+	if(Input.is_key_pressed(KEY_Z)) and cooldownLeft <= 0:
+		var b = bombdrop.instance()
+		b.transform.origin = $Crosshair.get_global_transform().origin
+		b.rotation_degrees.y = rotation_degrees.y
+		get_parent().add_child(b)
+		
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://Blender/Crosshair.dae" type="PackedScene" id=1]
+[ext_resource path="res://Crosshair.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=3]
 [ext_resource path="res://PlayerDebris.tscn" type="PackedScene" id=4]
@@ -520,7 +520,7 @@ shard_template = ExtResource( 5 )
 shard_scene = ExtResource( 4 )
 
 [node name="Crosshair" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -32 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -40 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Invulnerable = SubResource( 16 )

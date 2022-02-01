@@ -93,7 +93,7 @@ func on_damage(damage):
 		e.process_material.set("initial_velocity", -speed * 60 * 1.25)
 		get_parent().add_child(e)
 		
-		var vel = -get_global_transform().basis.z * speed * 60 * 0
+		var vel = -get_global_transform().basis.z * speed * 15
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)

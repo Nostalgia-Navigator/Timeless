@@ -11,6 +11,9 @@
 [ext_resource path="res://ParachuteFuel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=6]
+background_energy = 4.0
+ambient_light_energy = 0.0
+ambient_light_sky_contribution = 0.0
 
 [sub_resource type="Animation" id=9]
 resource_name = "CarrierLeave"
@@ -104,7 +107,7 @@ script = ExtResource( 4 )
 player = NodePath("../Player")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.808504, -0.5, -0.310356, -0.358368, -1.56648e-08, 0.93358, -0.46679, 0.866026, -0.179184, 23.1023, 21.0676, 0 )
+transform = Transform( -0.808504, -0.5, -0.310356, -0.358368, -1.11787e-07, 0.93358, -0.46679, 0.866025, -0.179184, 23.1023, 73.1903, 0 )
 light_energy = 3.0
 light_specular = 0.0
 shadow_enabled = true
