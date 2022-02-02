@@ -139,7 +139,6 @@ func _process(delta):
 		self.rotation.y += turn
 		turning = true
 	if(Input.is_key_pressed(KEY_RIGHT)):
-		
 		body_rotation.z += (-turnAngle - body_rotation.z) / 20
 		
 		self.rotation.y -= turn
