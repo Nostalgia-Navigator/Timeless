@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Blender/ParachuteFuel.dae" type="PackedScene" id=1]
-[ext_resource path="res://Blender/ParachuteLightGreen.material" type="Material" id=3]
-[ext_resource path="res://Blender/ParachuteDarkGreen.material" type="Material" id=4]
+[ext_resource path="res://Blender/ParachuteTime.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/ParachuteRed.material" type="Material" id=2]
+[ext_resource path="res://Blender/ParachuteLightRed.material" type="Material" id=3]
 [ext_resource path="res://Goodie.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=3]
@@ -167,10 +167,10 @@ surfaces/0 = {
 "vertex_count": 1146
 }
 
-[node name="ParachuteFuel" type="Spatial"]
+[node name="ParachuteTime" type="Spatial"]
 script = ExtResource( 5 )
-goodie = 3
-color1 = ExtResource( 4 )
+goodie = 1
+color1 = ExtResource( 2 )
 color2 = ExtResource( 3 )
 
 [node name="Sideturn" type="Spatial" parent="."]
@@ -179,14 +179,14 @@ color2 = ExtResource( 3 )
 
 [node name="Spin" type="Spatial" parent="Sideturn/Turn"]
 
-[node name="ParachuteFuel" parent="Sideturn/Turn/Spin" instance=ExtResource( 1 )]
-transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
-
 [node name="Area" type="Area" parent="Sideturn/Turn/Spin" groups=["Goodie"]]
 
 [node name="CollisionShape" type="CollisionShape" parent="Sideturn/Turn/Spin/Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2, 0 )
 shape = SubResource( 3 )
+
+[node name="ParachuteTime" parent="Sideturn/Turn/Spin" instance=ExtResource( 1 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
 
 [node name="Spinner" type="AnimationPlayer" parent="."]
 autoplay = "Spin"

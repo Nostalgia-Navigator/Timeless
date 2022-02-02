@@ -1,6 +1,6 @@
 extends Spatial
 export(Vector3) var vel
-export(int) var damage = 10
+export(int) var damage = 4
 export(String, "Plane", "Player") var hit = "Plane"
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +23,7 @@ func _process(delta):
 func _on_area_entered(area):
 	var p = area.get_parent()
 	if p.is_in_group(hit):
-		p.on_damage(damage)
+		p.on_damage(self)
 		self.queue_free()
 		return
 	if hit == "Plane":

@@ -30,7 +30,11 @@ signal on_damaged
 func _ready():
 	exhaust = $Exhaust
 	parent = get_parent()
-func on_damage(dmg):
+func on_damage(projectile):
+	
+	var dmg = projectile
+	if projectile is Node:
+		dmg = projectile.damage
 	if(!vulnerable):
 		return
 	emit_signal("on_damaged")

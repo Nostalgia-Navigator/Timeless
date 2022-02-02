@@ -3,7 +3,6 @@
 [ext_resource path="res://Blender/PlayerBullet1.dae" type="PackedScene" id=1]
 [ext_resource path="res://Bullet.gd" type="Script" id=2]
 
-
 [sub_resource type="SpatialMaterial" id=4]
 resource_local_to_scene = true
 albedo_color = Color( 1, 0.854902, 0, 1 )

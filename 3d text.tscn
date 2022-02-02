@@ -32,16 +32,15 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
-text = "This is a test text.
-It's multiline too."
-text_size = 1.761
+text = "Text"
+text_size = 1.0
 font = null
-align = 2
-color = Color( 0.603922, 0.603922, 0.603922, 1 )
+align = 0
+color = Color( 0.6, 0.6, 0.6, 1 )
 metallic = 0.0
 roughness = 0.5
 emission_color = Color( 1, 1, 1, 1 )
 emission_strength = 0.0
-extrude = 0.1
+extrude = 0.0
 max_steps = 256
 step_size = 1.0

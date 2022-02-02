@@ -2,6 +2,7 @@ extends Spatial
 
 export(int) var hp = 15
 export(float) var speed = 0.4
+export(Material) var material
 var smoke
 const timer = preload("res://ParticleTimer.tscn")
 const explosion = preload("res://Explosion.tscn")
@@ -72,7 +73,8 @@ func _process(delta):
 		elif dz > wraparound:
 			transform.origin.z -= 2 * wraparound
 		d = 0
-func on_damage(damage):
+func on_damage(projectile):
+	var damage = projectile.damage
 	hp -= damage
 	if(hp <= 0):
 		smoke.emitting = false
@@ -101,9 +103,19 @@ func on_damage(damage):
 			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
 			var m = 90
 			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
-		
+			
 		emit_signal("on_destroyed")
-	elif hp <= 10:
-		smoke.emitting = true
-		smoke.process_material.set("initial_velocity", -speed * 60)
+	else:
+		var vel = -get_global_transform().basis.z * speed * 15
+		var d = debris.instance()
+		d.get_node("Body").set_surface_material(0, material)
+		d.transform.origin = projectile.get_global_transform().origin
+		var angle = randf() * PI * 2
+		d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
+		var m = 90
+		d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+		get_parent().add_child(d)
+		if hp <= 10:
+			smoke.emitting = true
+			smoke.process_material.set("initial_velocity", -speed * 60)
 		pass
