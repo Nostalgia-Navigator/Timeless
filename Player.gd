@@ -134,12 +134,15 @@ func _process(delta):
 		if(speed < thrustSpeed):
 			speed += accel
 	if(Input.is_key_pressed(KEY_LEFT)):
-		self.rotation.y += turn
 		body_rotation.z += (turnAngle - body_rotation.z) / 20
+		
+		self.rotation.y += turn
 		turning = true
 	if(Input.is_key_pressed(KEY_RIGHT)):
-		self.rotation.y -= turn
+		
 		body_rotation.z += (-turnAngle - body_rotation.z) / 20
+		
+		self.rotation.y -= turn
 		turning = true
 	if(!thrusting):
 		exhaust.emitting = false
