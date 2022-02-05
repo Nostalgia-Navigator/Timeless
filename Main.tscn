@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://ParachuteCrewmate.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ParachutePlayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Cloud_1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Cloud_2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Cloud_3.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Landing.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Environment" id=6]
 ambient_light_energy = 0.0
@@ -150,6 +153,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, -288 )
 [node name="Spatial9" parent="Floor" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, -288 )
 
+[node name="Spatial" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -150.662 )
+
 [node name="Carrier" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
 
@@ -167,8 +173,20 @@ anims/RESET = SubResource( 7 )
 anims/Takeoff = SubResource( 8 )
 script = ExtResource( 5 )
 
-[node name="Cloud_2" parent="." instance=ExtResource( 14 )]
+[node name="Cloud_2" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4065, 40, -82.3549 )
+
+[node name="Cloud_5" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0783, 40, -82.3549 )
+
+[node name="Cloud_4" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9883, 40, -93.4496 )
+
+[node name="Cloud_3" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18861, 40, -93.4496 )
+
+[node name="Cloud_1" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4065, 40, -102.25 )
 
 [node name="ParachuteFuel" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8809, 40, -70.5438 )
@@ -190,6 +208,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5253, 40, -80.4955 )
 
 [node name="Enemies" type="Node" parent="."]
 script = ExtResource( 7 )
+boss = null
 
 [node name="Node" type="Node" parent="Enemies"]
 
@@ -244,3 +263,5 @@ transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 5
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
 [connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]
+
+[editable path="Spatial"]

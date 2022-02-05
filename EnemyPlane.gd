@@ -29,8 +29,10 @@ func on_area_entered(other):
 func _process(delta):
 	# use global coordinates, not local to node
 	var firing = false
+	
+	var p = player.get_camera_origin()
 	if cooldownLeft <= delta and player.is_inside_tree():
-		var offset = player.transform.origin - transform.origin
+		var offset = p - transform.origin
 		var distance = offset.length()
 		var vel = -get_global_transform().basis.z * speed
 		var playerVel = -player.get_global_transform().basis.z * player.speed
@@ -42,8 +44,7 @@ func _process(delta):
 		#var future_offset = offset + velDiff * distance / (bulletSpeed * 60)
 		if distance < 80:
 			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, [$Area], 2147483647, false, true)
-			var c = result["collider"]
-			var clear = c != null and c.get_parent() == player
+			var clear = result.empty() or (result["collider"].get_parent() == player)
 			
 			if clear:
 				var b = bullet.instance()
@@ -61,13 +62,13 @@ func _process(delta):
 	self.translate(Vector3(0, 0, -speed))
 	d += delta
 	if d > 0.5:
-		var dx = transform.origin.x - player.transform.origin.x
+		var dx = transform.origin.x - p.x
 		if dx < -wraparound:
 			transform.origin.x += 2 * wraparound
 		elif dx > wraparound:
 			transform.origin.x -= 2 * wraparound
 			
-		var dz = transform.origin.z - player.transform.origin.z
+		var dz = transform.origin.z - p.z
 		if dz < -wraparound:
 			transform.origin.z += 2 * wraparound
 		elif dz > wraparound:

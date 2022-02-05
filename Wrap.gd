@@ -1,7 +1,6 @@
 extends Spatial
 const wraparound = 288
 var player
-
 var d=0
 func _ready():
 	player = get_tree().get_root().get_node("Main/Player")

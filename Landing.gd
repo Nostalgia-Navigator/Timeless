@@ -1,11 +1,5 @@
 extends Spatial
 
-enum GoodieType {STAR, TIME, CREWMATE, SHIELDS, WEAPON, BOMB, FUEL}
-export(GoodieType) var goodie
-export(Material) var color1
-export(Material) var color2
-
-
 const wraparound = 288
 var player
 var d=0
@@ -25,3 +19,21 @@ func _process(delta):
 		elif dz > wraparound:
 			transform.origin.z -= 2 * wraparound
 		d = 0
+func _on_area_entered(area):
+	var n = area.get_parent()
+	
+	if n.is_in_group("Player") and n.playing:
+		n.playing = false
+		var p = n.get_parent()
+		p.remove_child(n)
+		$PlayerHolder.add_child(n)
+		
+		#var pos = n.get_global_transform().origin
+		#var pos2 = $PlayerHolder.get_global_transform().origin
+		#n.transform.origin = pos2
+		n.rotation = Vector3(0, PI, 0)
+		n.transform.origin = Vector3(0, 0, 0)
+		n.exhaust.emitting = false
+		n.get_node("AnimationPlayer").play("RESET")
+		$Animation.play("Landing")
+	pass # Replace with function body.

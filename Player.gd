@@ -99,6 +99,11 @@ func respawn():
 	
 	$AnimationPlayer.play("Invulnerable")
 	
+func get_camera_origin():
+	
+	if is_inside_tree():
+		return get_global_transform().origin
+	return transform.origin
 func _process(delta):
 	
 	#var ray_length = 1000

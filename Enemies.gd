@@ -1,6 +1,6 @@
 extends Node
 
-export(PackedScene) var boss
+export(PackedScene) var boss = preload("res://BleriotXIMonoplaneCyan.tscn")
 var count = 0
 func _ready():
 	var leaves = getLeaves(self)
@@ -12,8 +12,13 @@ func _ready():
 func check_boss():
 	count -= 1
 	if count == 0:
+		var b = boss.instance()
+		b.connect("on_destroyed", self, "on_boss_destroyed")
+		get_parent().add_child(b)
 		pass
-
+func on_boss_destroyed():
+	
+	pass
 func getLeaves(n):
 	if n.is_in_group("Plane"):
 		return [n]
