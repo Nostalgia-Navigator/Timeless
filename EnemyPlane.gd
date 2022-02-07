@@ -84,7 +84,7 @@ func on_damage(projectile):
 			var m = 90
 			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 			
-		emit_signal("on_destroyed")
+		emit_signal("on_destroyed", self)
 	else:
 		var vel = -get_global_transform().basis.z * speed * 15
 		var d = debris.instance()

@@ -183,7 +183,7 @@ var star = preload("res://Blender/StarParticle.tscn")
 func _on_area_entered(area):
 	if area.is_in_group("Goodie"):
 		var p = area.get_parent().get_parent().get_parent().get_parent()
-		p.queue_free()
+		p.remove()
 		
 		for i in range(0, 16):
 			var s = star.instance()

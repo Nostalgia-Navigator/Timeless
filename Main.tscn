@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Carrier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Camera.gd" type="Script" id=4]
 [ext_resource path="res://Takeoff.gd" type="Script" id=5]
-[ext_resource path="res://BleriotXIMonoplaneRed.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Plane/BleriotXIMonoplaneRed.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies.gd" type="Script" id=7]
 [ext_resource path="res://ParachuteStar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ParachuteFuel.tscn" type="PackedScene" id=9]
@@ -16,7 +16,9 @@
 [ext_resource path="res://Cloud_1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Cloud_2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Cloud_3.tscn" type="PackedScene" id=16]
-[ext_resource path="res://WrightMilitaryFlyerOrange.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Plane/WrightMilitaryFlyerOrange.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Frame.png" type="Texture" id=18]
+[ext_resource path="res://Minimap.gd" type="Script" id=19]
 
 [sub_resource type="Environment" id=6]
 ambient_light_energy = 0.0
@@ -106,6 +108,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 25, 2.5 ), Vector3( 0, 25, 2.5 ), Vector3( 0, 25, -10 ), Vector3( 0, 50, -24 ), Vector3( 0, 40, -42 ) ]
 }
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0.0117647, 0.266667, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+width = 1
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
 
 [node name="Main" type="Spatial"]
 
@@ -269,6 +286,96 @@ transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 6
 
 [node name="BleriotXIMonoplaneRed5" parent="Enemies/Node3" instance=ExtResource( 6 )]
 transform = Transform( 0.741789, 0, 0.670634, 0, 1, 0, -0.670634, 0, 0.741789, 53.3503, 40, -60.1278 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 592.0
+margin_bottom = 592.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Minimap" type="MarginContainer" parent="Control"]
+margin_right = 1030.0
+margin_bottom = 1030.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+player = NodePath("../../Player")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Minimap"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1025.0
+margin_bottom = 1025.0
+custom_constants/margin_right = 80
+custom_constants/margin_top = 80
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 80
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="TextureRect" parent="Control/Minimap/MarginContainer"]
+margin_left = 80.0
+margin_top = 80.0
+margin_right = 940.0
+margin_bottom = 940.0
+texture = SubResource( 12 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+position = Vector2( 430, 430 )
+color = Color( 0, 0.858824, 1, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -16, 0, 0, 16, 16, 0, 0, -16 )
+
+[node name="Goodie" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+color = Color( 0, 0.529412, 1, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Green" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+color = Color( 0, 1, 0.576471, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Yellow" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+color = Color( 0.945098, 1, 0, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Orange" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+color = Color( 1, 0.654902, 0, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Frame" type="NinePatchRect" parent="Control/Minimap"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1025.0
+margin_bottom = 1025.0
+texture = ExtResource( 18 )
+patch_margin_left = 84
+patch_margin_top = 84
+patch_margin_right = 84
+patch_margin_bottom = 84
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
 [connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]

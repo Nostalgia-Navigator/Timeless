@@ -1,6 +1,6 @@
 extends Node
 
-export(PackedScene) var boss = preload("res://BleriotXIMonoplaneCyan.tscn")
+export(PackedScene) var boss = preload("res://Plane/BleriotXIMonoplaneCyan.tscn")
 const outro = preload("res://Landing.tscn")
 var count = 0
 var player
@@ -12,7 +12,7 @@ func _ready():
 		var n = c.name
 		print(c.name)
 		c.connect("on_destroyed", self, "check_boss")
-func check_boss():
+func check_boss(e):
 	count -= 1
 	if count == 0:
 		var b = boss.instance()
