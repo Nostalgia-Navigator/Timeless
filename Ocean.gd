@@ -1,10 +1,6 @@
 extends Area
 var splash = preload("res://SplashRing.tscn")
 var explosion = preload("res://BombExplosion.tscn")
-func _ready():
-	pass
-
-
 func _on_area_entered(area):
 	var n = area.get_parent()
 	if n.name == "Bomb":

@@ -8,19 +8,12 @@ const timer = preload("res://ParticleTimer.tscn")
 const explosion = preload("res://Explosion.tscn")
 const debris = preload("res://Debris.tscn")
 const bullet = preload("res://SmallBullet.tscn")
-
-const wraparound = 128
-var player
-
 signal on_destroyed
 
-var d=0
 const fireCooldown = 5
 var cooldownLeft = fireCooldown
 func _ready():
 	smoke = $Smoke
-	var root = get_tree().get_root().get_node("Main")
-	player = root.get_node("Player")
 	$Area.connect("area_entered", self, "on_area_entered")
 func on_area_entered(other):
 	var p = other.get_parent()
@@ -29,7 +22,7 @@ func on_area_entered(other):
 func _process(delta):
 	# use global coordinates, not local to node
 	var firing = false
-	
+	var player = $Wraparound.player
 	var p = player.get_camera_origin()
 	if cooldownLeft <= delta and player.is_inside_tree():
 		var offset = p - transform.origin
@@ -60,20 +53,6 @@ func _process(delta):
 		cooldownLeft -= delta
 		
 	self.translate(Vector3(0, 0, -speed))
-	d += delta
-	if d > 0.5:
-		var dx = transform.origin.x - p.x
-		if dx < -wraparound:
-			transform.origin.x += 2 * wraparound
-		elif dx > wraparound:
-			transform.origin.x -= 2 * wraparound
-			
-		var dz = transform.origin.z - p.z
-		if dz < -wraparound:
-			transform.origin.z += 2 * wraparound
-		elif dz > wraparound:
-			transform.origin.z -= 2 * wraparound
-		d = 0
 func on_damage(projectile):
 	var damage = projectile.damage
 	hp -= damage

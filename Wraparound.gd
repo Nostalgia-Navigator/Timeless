@@ -1,18 +1,19 @@
-extends Spatial
+extends Timer
 const wraparound = 288
 var player
 var d=0
 func _ready():
 	player = get_tree().get_root().get_node("Main/Player")
 func wrap():
-	var t = get_parent().transform
-	var dx = t.origin.x - player.transform.origin.x
+	var o = get_parent().transform.origin
+	var dx = o.x - player.transform.origin.x
 	if dx < -wraparound:
-		t.origin.x += 2 * wraparound
+		o.x += 2 * wraparound
 	elif dx > wraparound:
-		t.origin.x -= 2 * wraparound
-	var dz = t.origin.z - player.transform.origin.z
+		o.x -= 2 * wraparound
+	var dz = o.z - player.transform.origin.z
 	if dz < -wraparound:
-		t.origin.z += 2 * wraparound
+		o.z += 2 * wraparound
 	elif dz > wraparound:
-		t.origin.z -= 2 * wraparound
+		o.z -= 2 * wraparound
+	get_parent().transform.origin = o
