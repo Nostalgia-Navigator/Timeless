@@ -9,8 +9,9 @@
 [ext_resource path="res://Wraparound.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Blender/WrightBFlyerGreen.material" type="Material" id=8]
 
-[node name="WrightBFlyerGreen" instance=ExtResource( 3 )]
+[node name="WrightBFlyerGreen" groups=["Plane"] instance=ExtResource( 3 )]
 script = ExtResource( 5 )
+markerType = 1
 material = ExtResource( 8 )
 
 [node name="Area" type="Area" parent="." index="5"]

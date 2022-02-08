@@ -11,9 +11,50 @@
 
 [node name="WrightMilitaryFlyerOrange" groups=["Plane"] instance=ExtResource( 1 )]
 script = ExtResource( 6 )
+markerType = 2
 material = ExtResource( 2 )
 
+[node name="Cone" parent="." index="0"]
+transform = Transform( -1, 8.74228e-08, -1.04251e-15, 0, 1.19249e-08, 1, 8.74228e-08, 1, -1.19249e-08, 6.60042e-07, -0.7, 7.55 )
+
+[node name="Cube000" parent="." index="1"]
+transform = Transform( 0.2, 0, 8.26528e-08, 0, 0.2, 0, -8.26528e-08, 0, 0.2, 1, 0.0241284, -0.542702 )
+
+[node name="Cube001" parent="." index="2"]
+transform = Transform( 7.39105e-08, 0, -0.2, 0, 0.2, 0, 0.2, 0, 7.39105e-08, -3.41499e-07, 0.124128, -2.5427 )
+
+[node name="Cube002" parent="." index="3"]
+transform = Transform( 7.39105e-08, 0, -0.2, 0, 0.2, 0, 0.2, 0, 7.39105e-08, -3.41499e-07, 0.124128, -2.5427 )
+
+[node name="Cube003" parent="." index="4"]
+transform = Transform( 7.39105e-08, 0, 0.2, 0, 0.2, 0, 0.2, 0, -7.39105e-08, -3.41499e-07, 0.124128, -2.5427 )
+
+[node name="Cube004" parent="." index="5"]
+transform = Transform( 7.39105e-08, 0, -0.2, 0, 0.2, 0, 0.2, 0, 7.39105e-08, 1.05689e-08, 0.124128, -1.2427 )
+
+[node name="Cube005" parent="." index="6"]
+transform = Transform( 7.39105e-08, 0, 0.2, 0, 0.2, 0, 0.2, 0, -7.39105e-08, 1.05689e-08, 0.124128, -1.2427 )
+
+[node name="Cube006" parent="." index="7"]
+transform = Transform( 0.2, 0, 8.26528e-08, 0, 0.2, 0, -8.26528e-08, 0, 0.2, 7.14769e-07, 0.449128, 3.4573 )
+
+[node name="Cube008" parent="." index="8"]
+transform = Transform( 0.2, 0, 8.26528e-08, 0, 0.2, 0, -8.26528e-08, 0, 0.2, 1.74992e-07, 0.327615, 1.2281 )
+
+[node name="Cube010" parent="." index="9"]
+transform = Transform( 0.2, 0, 8.26528e-08, 0, 0.2, 0, -8.26528e-08, 0, 0.2, -1, 0.0241284, -0.542702 )
+
+[node name="Cube011" parent="." index="10"]
+transform = Transform( 0.2, 0, 8.26528e-08, 0, 0.2, 0, -8.26528e-08, 0, 0.2, -6.0618e-07, 0.0241284, -4.9427 )
+
+[node name="Cylinder" parent="." index="11"]
+transform = Transform( -2.86603e-15, 1.31134e-07, -0.5, -0.5, -4.37114e-08, 0, -2.18557e-08, 1, 6.55671e-08, -2.0477, 0.424123, 3.80867 )
+
+[node name="Cylinder001" parent="." index="12"]
+transform = Transform( -2.86603e-15, 1.31134e-07, 0.5, -0.5, -4.37114e-08, 0, -2.18557e-08, 1, -6.55671e-08, 2.0477, 0.424123, 3.80867 )
+
 [node name="Area" type="Area" parent="." index="14"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

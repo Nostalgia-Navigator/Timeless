@@ -1,13 +1,13 @@
 extends MarginContainer
 
 export (NodePath) var player
-
 onready var grid = $MarginContainer/Grid
 onready var player_marker = $MarginContainer/Grid/Player
 onready var goodie_marker = $MarginContainer/Grid/Goodie
 onready var l1_marker = $MarginContainer/Grid/Green
 onready var l2_marker = $MarginContainer/Grid/Yellow
 onready var l3_marker = $MarginContainer/Grid/Orange
+onready var planeMarkers = [l1_marker, l2_marker, l3_marker]
 
 var grid_scale
 var markers = {}
@@ -18,7 +18,9 @@ func _ready():
 	grid_scale = grid.rect_size / (300 * 2)
 	for enemy in get_tree().get_nodes_in_group("Plane"):
 		enemy.connect("on_destroyed", self, "remove_marker")
-		var new_marker = l1_marker.duplicate()
+		var i = enemy.markerType
+		var n = enemy.name
+		var new_marker = planeMarkers[i].duplicate()
 		grid.add_child(new_marker)
 		new_marker.show()
 		markers[enemy] = new_marker
@@ -37,7 +39,7 @@ func _process(delta):
 		return
 	player_marker.rotation = player.rotation.y + PI/2
 	for enemy in markers:
-		var o = enemy.transform.origin - player.transform.origin
+		var o = enemy.get_global_transform().origin - player.transform.origin
 		o = Vector2(o.x, o.z)
 		var p = o * grid_scale + grid.rect_size / 2
 		

@@ -5,8 +5,8 @@
 		<author>Anonymous</author>
 		<authoring_tool>Collada Exporter for Blender 2.6+, by Juan Linietsky (juan@codenix.com)</authoring_tool>
 	</contributor>
-	<created>2022-02-06T17:24:06Z</created>
-	<modified>2022-02-06T17:24:06Z</modified>
+	<created>2022-02-07T17:31:18Z</created>
+	<modified>2022-02-07T17:31:18Z</modified>
 	<unit meter="1.0" name="meter"/>
 	<up_axis>Z_UP</up_axis>
 </asset>
@@ -2348,7 +2348,7 @@
 <library_visual_scenes>
 	<visual_scene id="id-scene-1" name="scene">
 		<node id="Cone_cell" name="Cone_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 5.0067901611328125e-06 0.0 1.0 0.0 3.1153576374053955 0.0 0.0 1.0 -0.6999896764755249 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -4.7344365157186985e-06 -3.2584136988589307e-07 -1.0 0.0 -3.1153576374053955 0.0 0.0 1.0 -0.6999896764755249 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-4">
 				<bind_material>
 					<technique_common>
@@ -2358,7 +2358,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cone_cell.001" name="Cone_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.6398988962173462 0.0 1.0 0.0 1.6310386657714844 0.0 0.0 1.0 -0.21809081733226776 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.6398987770080566 -3.2584136988589307e-07 -1.0 0.0 -1.6310386657714844 0.0 0.0 1.0 -0.21809081733226776 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-6">
 				<bind_material>
 					<technique_common>
@@ -2368,7 +2368,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cone_cell.002" name="Cone_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.05148985981941223 0.0 1.0 0.0 1.8343968391418457 0.0 0.0 1.0 -1.2181048393249512 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.0514896959066391 -3.2584136988589307e-07 -1.0 0.0 -1.8343968391418457 0.0 0.0 1.0 -1.2181048393249512 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-8">
 				<bind_material>
 					<technique_common>
@@ -2378,7 +2378,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cone_cell.003" name="Cone_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -0.5303410291671753 0.0 1.0 0.0 1.8378485441207886 0.0 0.0 1.0 -0.169601708650589 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 0.5303412675857544 -3.2584136988589307e-07 -1.0 0.0 -1.8378485441207886 0.0 0.0 1.0 -0.169601708650589 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-10">
 				<bind_material>
 					<technique_common>
@@ -2388,7 +2388,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.000_cell" name="Cube.000_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -1.0504319667816162 0.0 1.0 0.0 -3.0481200218200684 0.0 0.0 1.0 0.06433431804180145 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 1.050431728363037 -3.2584136988589307e-07 -1.0 0.0 3.0481200218200684 0.0 0.0 1.0 0.06433431804180145 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-12">
 				<bind_material>
 					<technique_common>
@@ -2398,7 +2398,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.000_cell.001" name="Cube.000_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -1.0213840007781982 0.0 1.0 0.0 -3.191723346710205 0.0 0.0 1.0 0.17671677470207214 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 1.0213837623596191 -3.2584136988589307e-07 -1.0 0.0 3.191723346710205 0.0 0.0 1.0 0.17671677470207214 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-14">
 				<bind_material>
 					<technique_common>
@@ -2408,7 +2408,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.000_cell.002" name="Cube.000_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -1.0103801488876343 0.0 1.0 0.0 -1.281982421875 0.0 0.0 1.0 0.1138516217470169 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 1.0103799104690552 -3.2584136988589307e-07 -1.0 0.0 1.281982421875 0.0 0.0 1.0 0.1138516217470169 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-16">
 				<bind_material>
 					<technique_common>
@@ -2418,7 +2418,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.000_cell.003" name="Cube.000_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -0.9549593925476074 0.0 1.0 0.0 -3.2921087741851807 0.0 0.0 1.0 0.09019018709659576 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 0.9549591541290283 -3.2584136988589307e-07 -1.0 0.0 3.2921087741851807 0.0 0.0 1.0 0.09019018709659576 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-18">
 				<bind_material>
 					<technique_common>
@@ -2428,7 +2428,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.001_cell" name="Cube.001_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -1.2168879508972168 0.0 1.0 0.0 -1.9917875528335571 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 1.2168879508972168 -3.2584136988589307e-07 -1.0 0.0 1.9917877912521362 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-20">
 				<bind_material>
 					<technique_common>
@@ -2438,7 +2438,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.001_cell.001" name="Cube.001_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -3.1704213619232178 0.0 1.0 0.0 -0.5103094577789307 0.0 0.0 1.0 0.12500593066215515 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 3.1704213619232178 -3.2584136988589307e-07 -1.0 0.0 0.5103096961975098 0.0 0.0 1.0 0.12500593066215515 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-22">
 				<bind_material>
 					<technique_common>
@@ -2448,7 +2448,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.001_cell.002" name="Cube.001_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.4286061525344849 0.0 1.0 0.0 -1.8429622650146484 0.0 0.0 1.0 0.12414750456809998 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.428606390953064 -3.2584136988589307e-07 -1.0 0.0 1.8429622650146484 0.0 0.0 1.0 0.12414750456809998 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-24">
 				<bind_material>
 					<technique_common>
@@ -2458,7 +2458,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.001_cell.003" name="Cube.001_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 3.350338935852051 0.0 1.0 0.0 -0.34238412976264954 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -3.350338935852051 -3.2584136988589307e-07 -1.0 0.0 0.34238383173942566 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-26">
 				<bind_material>
 					<technique_common>
@@ -2468,7 +2468,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.002_cell" name="Cube.002_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.1205341815948486 0.0 1.0 0.0 -4.676461696624756 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.1205346584320068 -3.2584136988589307e-07 -1.0 0.0 4.676461696624756 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-28">
 				<bind_material>
 					<technique_common>
@@ -2478,7 +2478,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.002_cell.001" name="Cube.002_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 3.447655200958252 0.0 1.0 0.0 -0.8561590909957886 0.0 0.0 1.0 0.17470717430114746 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -3.447655200958252 -3.2584136988589307e-07 -1.0 0.0 0.8561588525772095 0.0 0.0 1.0 0.17470717430114746 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-30">
 				<bind_material>
 					<technique_common>
@@ -2488,7 +2488,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.002_cell.002" name="Cube.002_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.9072606563568115 0.0 1.0 0.0 -3.3404932022094727 0.0 0.0 1.0 0.12415002286434174 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.9072608947753906 -3.2584136988589307e-07 -1.0 0.0 3.3404932022094727 0.0 0.0 1.0 0.12415002286434174 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-32">
 				<bind_material>
 					<technique_common>
@@ -2498,7 +2498,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.002_cell.003" name="Cube.002_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 3.296496629714966 0.0 1.0 0.0 -1.0999635457992554 0.0 0.0 1.0 0.06822352111339569 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -3.296496629714966 -3.2584136988589307e-07 -1.0 0.0 1.0999633073806763 0.0 0.0 1.0 0.06822352111339569 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-34">
 				<bind_material>
 					<technique_common>
@@ -2508,7 +2508,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.003_cell" name="Cube.003_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -2.029634952545166 0.0 1.0 0.0 -3.1432900428771973 0.0 0.0 1.0 0.06860385835170746 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 2.029634952545166 -3.2584136988589307e-07 -1.0 0.0 3.1432900428771973 0.0 0.0 1.0 0.06860385835170746 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-36">
 				<bind_material>
 					<technique_common>
@@ -2518,7 +2518,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.003_cell.001" name="Cube.003_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -4.1692423820495605 0.0 1.0 0.0 0.3580845892429352 0.0 0.0 1.0 0.17453156411647797 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 4.1692423820495605 -3.2584136988589307e-07 -1.0 0.0 -0.35808423161506653 0.0 0.0 1.0 0.17453156411647797 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-38">
 				<bind_material>
 					<technique_common>
@@ -2528,7 +2528,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.003_cell.002" name="Cube.003_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -1.8751544952392578 0.0 1.0 0.0 -3.392451524734497 0.0 0.0 1.0 0.1745130568742752 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 1.8751542568206787 -3.2584136988589307e-07 -1.0 0.0 3.3924520015716553 0.0 0.0 1.0 0.1745130568742752 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-40">
 				<bind_material>
 					<technique_common>
@@ -2538,7 +2538,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.003_cell.003" name="Cube.003_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -3.157147169113159 0.0 1.0 0.0 -1.32478928565979 0.0 0.0 1.0 0.136673703789711 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 3.157147169113159 -3.2584136988589307e-07 -1.0 0.0 1.3247895240783691 0.0 0.0 1.0 0.136673703789711 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-42">
 				<bind_material>
 					<technique_common>
@@ -2548,7 +2548,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.004_cell" name="Cube.004_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.8676284551620483 0.0 1.0 0.0 -0.01856483519077301 0.0 0.0 1.0 0.14626742899417877 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.8676284551620483 -3.2584136988589307e-07 -1.0 0.0 0.01856476068496704 0.0 0.0 1.0 0.14626742899417877 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-44">
 				<bind_material>
 					<technique_common>
@@ -2558,7 +2558,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.004_cell.001" name="Cube.004_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.41365233063697815 0.0 1.0 0.0 -0.6913706064224243 0.0 0.0 1.0 0.17940175533294678 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.4136523902416229 -3.2584136988589307e-07 -1.0 0.0 0.6913706064224243 0.0 0.0 1.0 0.17940175533294678 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-46">
 				<bind_material>
 					<technique_common>
@@ -2568,7 +2568,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.004_cell.002" name="Cube.004_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -0.3899537920951843 0.0 1.0 0.0 -1.7626395225524902 0.0 0.0 1.0 0.12410452216863632 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 0.3899536728858948 -3.2584136988589307e-07 -1.0 0.0 1.7626395225524902 0.0 0.0 1.0 0.12410452216863632 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-48">
 				<bind_material>
 					<technique_common>
@@ -2578,7 +2578,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.004_cell.003" name="Cube.004_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.374994158744812 0.0 1.0 0.0 -0.742863118648529 0.0 0.0 1.0 0.07436594367027283 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.3749942183494568 -3.2584136988589307e-07 -1.0 0.0 0.7428629994392395 0.0 0.0 1.0 0.07436594367027283 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-50">
 				<bind_material>
 					<technique_common>
@@ -2588,7 +2588,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.005_cell" name="Cube.005_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -0.8752331733703613 0.0 1.0 0.0 -0.008748665452003479 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 0.8752331733703613 -3.2584136988589307e-07 -1.0 0.0 0.008748741820454597 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-52">
 				<bind_material>
 					<technique_common>
@@ -2598,7 +2598,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.005_cell.001" name="Cube.005_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -0.5251543521881104 0.0 1.0 0.0 -0.5426451563835144 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 0.5251543521881104 -3.2584136988589307e-07 -1.0 0.0 0.542645275592804 0.0 0.0 1.0 0.12412843108177185 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-54">
 				<bind_material>
 					<technique_common>
@@ -2608,7 +2608,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.005_cell.002" name="Cube.005_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.8626566529273987 0.0 1.0 0.0 -2.443140983581543 0.0 0.0 1.0 0.1746072769165039 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.8626568913459778 -3.2584136988589307e-07 -1.0 0.0 2.443140983581543 0.0 0.0 1.0 0.1746072769165039 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-56">
 				<bind_material>
 					<technique_common>
@@ -2618,7 +2618,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.005_cell.003" name="Cube.005_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.43136656284332275 0.0 1.0 0.0 -1.8178560733795166 0.0 0.0 1.0 0.12403248250484467 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.4313666820526123 -3.2584136988589307e-07 -1.0 0.0 1.8178560733795166 0.0 0.0 1.0 0.12403248250484467 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-58">
 				<bind_material>
 					<technique_common>
@@ -2628,7 +2628,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.006_cell" name="Cube.006_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.7505176067352295 0.0 1.0 0.0 3.457298994064331 0.0 0.0 1.0 0.44918233156204224 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.7505171298980713 -3.2584136988589307e-07 -1.0 0.0 -3.4572994709014893 0.0 0.0 1.0 0.44918233156204224 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-62">
 				<bind_material>
 					<technique_common>
@@ -2638,7 +2638,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.006_cell.001" name="Cube.006_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -3.459026336669922 0.0 1.0 0.0 3.3974616527557373 0.0 0.0 1.0 0.5399113297462463 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 3.459026336669922 -3.2584136988589307e-07 -1.0 0.0 -3.397461175918579 0.0 0.0 1.0 0.5399113297462463 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-64">
 				<bind_material>
 					<technique_common>
@@ -2648,7 +2648,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.006_cell.002" name="Cube.006_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -1.640869140625 0.0 1.0 0.0 3.445737361907959 0.0 0.0 1.0 0.437536358833313 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 1.6408696174621582 -3.2584136988589307e-07 -1.0 0.0 -3.445737361907959 0.0 0.0 1.0 0.437536358833313 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-66">
 				<bind_material>
 					<technique_common>
@@ -2658,7 +2658,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.006_cell.003" name="Cube.006_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -3.5071756839752197 0.0 1.0 0.0 3.390350818634033 0.0 0.0 1.0 0.3623286783695221 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 3.507176160812378 -3.2584136988589307e-07 -1.0 0.0 -3.390350818634033 0.0 0.0 1.0 0.3623286783695221 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-68">
 				<bind_material>
 					<technique_common>
@@ -2668,7 +2668,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.008_cell" name="Cube.008_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -6.6972856521606445 0.0 1.0 0.0 0.9374797940254211 0.0 0.0 1.0 0.6527519226074219 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 6.6972856521606445 -3.2584136988589307e-07 -1.0 0.0 -0.9374791979789734 0.0 0.0 1.0 0.6527519226074219 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-70">
 				<bind_material>
 					<technique_common>
@@ -2678,7 +2678,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.008_cell.001" name="Cube.008_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -2.7049038410186768 0.0 1.0 0.0 1.7462291717529297 0.0 0.0 1.0 0.6653307676315308 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 2.704904317855835 -3.2584136988589307e-07 -1.0 0.0 -1.7462289333343506 0.0 0.0 1.0 0.6653307676315308 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-72">
 				<bind_material>
 					<technique_common>
@@ -2688,7 +2688,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.008_cell.002" name="Cube.008_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 3.941458225250244 0.0 1.0 0.0 1.827887773513794 0.0 0.0 1.0 0.6358931660652161 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -3.941458225250244 -3.2584136988589307e-07 -1.0 0.0 -1.8278882503509521 0.0 0.0 1.0 0.6358931660652161 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-74">
 				<bind_material>
 					<technique_common>
@@ -2698,7 +2698,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.008_cell.003" name="Cube.008_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -5.626665115356445 0.0 1.0 0.0 1.954817295074463 0.0 0.0 1.0 0.7953631281852722 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 5.626665115356445 -3.2584136988589307e-07 -1.0 0.0 -1.9548168182373047 0.0 0.0 1.0 0.7953631281852722 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-76">
 				<bind_material>
 					<technique_common>
@@ -2708,7 +2708,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.010_cell" name="Cube.010_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.05046808719635 0.0 1.0 0.0 -0.8215227723121643 0.0 0.0 1.0 0.124033622443676 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.0504683256149292 -3.2584136988589307e-07 -1.0 0.0 0.8215226531028748 0.0 0.0 1.0 0.124033622443676 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-78">
 				<bind_material>
 					<technique_common>
@@ -2718,7 +2718,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.010_cell.001" name="Cube.010_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.0000091791152954 0.0 1.0 0.0 -3.192939281463623 0.0 0.0 1.0 0.166326105594635 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.0000094175338745 -3.2584136988589307e-07 -1.0 0.0 3.192939281463623 0.0 0.0 1.0 0.166326105594635 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-80">
 				<bind_material>
 					<technique_common>
@@ -2728,7 +2728,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.010_cell.002" name="Cube.010_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 0.9495448470115662 0.0 1.0 0.0 -0.8224110007286072 0.0 0.0 1.0 0.12405246496200562 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -0.9495449662208557 -3.2584136988589307e-07 -1.0 0.0 0.8224108815193176 0.0 0.0 1.0 0.12405246496200562 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-82">
 				<bind_material>
 					<technique_common>
@@ -2738,7 +2738,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.010_cell.003" name="Cube.010_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.0125563144683838 0.0 1.0 0.0 -2.8773293495178223 0.0 0.0 1.0 0.06956800073385239 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.012556552886963 -3.2584136988589307e-07 -1.0 0.0 2.8773293495178223 0.0 0.0 1.0 0.06956800073385239 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-84">
 				<bind_material>
 					<technique_common>
@@ -2748,7 +2748,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.011_cell" name="Cube.011_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 2.7263224124908447 0.0 1.0 0.0 -5.240414142608643 0.0 0.0 1.0 0.30973154306411743 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -2.726322889328003 -3.2584136988589307e-07 -1.0 0.0 5.240414142608643 0.0 0.0 1.0 0.30973154306411743 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-86">
 				<bind_material>
 					<technique_common>
@@ -2758,7 +2758,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.011_cell.001" name="Cube.011_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -0.9596436023712158 0.0 1.0 0.0 -5.243013858795166 0.0 0.0 1.0 0.2140779048204422 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 0.9596431255340576 -3.2584136988589307e-07 -1.0 0.0 5.243013858795166 0.0 0.0 1.0 0.2140779048204422 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-88">
 				<bind_material>
 					<technique_common>
@@ -2768,7 +2768,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.011_cell.002" name="Cube.011_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.6927415132522583 0.0 1.0 0.0 -5.413881301879883 0.0 0.0 1.0 0.24770581722259521 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.6927419900894165 -3.2584136988589307e-07 -1.0 0.0 5.413881301879883 0.0 0.0 1.0 0.24770581722259521 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-90">
 				<bind_material>
 					<technique_common>
@@ -2778,7 +2778,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cube.011_cell.003" name="Cube.011_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.7522896528244019 0.0 1.0 0.0 -5.014227390289307 0.0 0.0 1.0 0.22659334540367126 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.75229012966156 -3.2584136988589307e-07 -1.0 0.0 5.014227390289307 0.0 0.0 1.0 0.22659334540367126 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-92">
 				<bind_material>
 					<technique_common>
@@ -2788,7 +2788,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder.001_cell" name="Cylinder.001_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -2.091249942779541 0.0 1.0 0.0 3.662761926651001 0.0 0.0 1.0 0.5754042863845825 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 2.091249942779541 -3.2584136988589307e-07 -1.0 0.0 -3.6627614498138428 0.0 0.0 1.0 0.5754042863845825 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-96">
 				<bind_material>
 					<technique_common>
@@ -2798,7 +2798,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder.001_cell.001" name="Cylinder.001_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -2.1786954402923584 0.0 1.0 0.0 3.7033262252807617 0.0 0.0 1.0 0.3955889940261841 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 2.1786959171295166 -3.2584136988589307e-07 -1.0 0.0 -3.7033262252807617 0.0 0.0 1.0 0.3955889940261841 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-98">
 				<bind_material>
 					<technique_common>
@@ -2808,7 +2808,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder.001_cell.002" name="Cylinder.001_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -1.9378308057785034 0.0 1.0 0.0 3.6312544345855713 0.0 0.0 1.0 0.4076048731803894 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 1.9378310441970825 -3.2584136988589307e-07 -1.0 0.0 -3.631253957748413 0.0 0.0 1.0 0.4076048731803894 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-100">
 				<bind_material>
 					<technique_common>
@@ -2818,7 +2818,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder.001_cell.003" name="Cylinder.001_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 -2.0017035007476807 0.0 1.0 0.0 3.7979111671447754 0.0 0.0 1.0 0.41841253638267517 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 2.001703977584839 -3.2584136988589307e-07 -1.0 0.0 -3.7979111671447754 0.0 0.0 1.0 0.41841253638267517 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-102">
 				<bind_material>
 					<technique_common>
@@ -2828,7 +2828,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder_cell" name="Cylinder_cell" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 1.9927016496658325 0.0 1.0 0.0 3.6667706966400146 0.0 0.0 1.0 0.30946823954582214 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -1.9927014112472534 -3.2584136988589307e-07 -1.0 0.0 -3.666771173477173 0.0 0.0 1.0 0.30946823954582214 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-104">
 				<bind_material>
 					<technique_common>
@@ -2838,7 +2838,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder_cell.001" name="Cylinder_cell.001" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 2.0018351078033447 0.0 1.0 0.0 3.696453809738159 0.0 0.0 1.0 0.5403943657875061 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -2.0018346309661865 -3.2584136988589307e-07 -1.0 0.0 -3.6964542865753174 0.0 0.0 1.0 0.5403943657875061 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-106">
 				<bind_material>
 					<technique_common>
@@ -2848,7 +2848,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder_cell.002" name="Cylinder_cell.002" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 2.1609766483306885 0.0 1.0 0.0 3.7296972274780273 0.0 0.0 1.0 0.5124006271362305 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -2.1609761714935303 -3.2584136988589307e-07 -1.0 0.0 -3.7296972274780273 0.0 0.0 1.0 0.5124006271362305 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-108">
 				<bind_material>
 					<technique_common>
@@ -2858,7 +2858,7 @@
 			</instance_geometry>
 		</node>
 		<node id="Cylinder_cell.003" name="Cylinder_cell.003" type="NODE">
-			<matrix sid="transform"> 1.0 0.0 0.0 2.0988731384277344 0.0 1.0 0.0 3.751464366912842 0.0 0.0 1.0 0.3011769950389862 0.0 0.0 0.0 1.0  </matrix>
+			<matrix sid="transform"> -1.0 3.2584136988589307e-07 0.0 -2.0988731384277344 -3.2584136988589307e-07 -1.0 0.0 -3.751464366912842 0.0 0.0 1.0 0.3011769950389862 0.0 0.0 0.0 1.0  </matrix>
 			<instance_geometry url="#id-mesh-110">
 				<bind_material>
 					<technique_common>

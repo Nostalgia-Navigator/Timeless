@@ -1,5 +1,6 @@
 extends Spatial
 
+export(int, 0, 2, 1) var markerType
 export(int) var hp = 15
 export(float) var speed = 0.4
 export(Material) var material
@@ -12,6 +13,8 @@ signal on_destroyed
 
 const fireCooldown = 5
 var cooldownLeft = fireCooldown
+
+var d = 0
 func _ready():
 	smoke = $Smoke
 	$Area.connect("area_entered", self, "on_area_entered")
@@ -20,12 +23,15 @@ func on_area_entered(other):
 	if p.is_in_group("Player"):
 		p.on_damage(10)
 func _process(delta):
+	d += delta
+	rotation_degrees.y += sin(d * (PI * 2) / 8) * 3 / 15
+	
 	# use global coordinates, not local to node
 	var firing = false
 	var player = $Wraparound.player
 	var p = player.get_camera_origin()
 	if cooldownLeft <= delta and player.is_inside_tree():
-		var offset = p - transform.origin
+		var offset = p - get_global_transform().origin
 		var distance = offset.length()
 		var vel = -get_global_transform().basis.z * speed
 		var playerVel = -player.get_global_transform().basis.z * player.speed
@@ -41,10 +47,11 @@ func _process(delta):
 			
 			if clear:
 				var b = bullet.instance()
-				b.transform.origin = get_global_transform().origin
-				b.vel = 1.2 * offset.normalized() + vel
 				
 				get_parent().add_child(b)
+				b.set_global_transform(get_global_transform())
+				b.vel = 1.2 * offset.normalized() + vel
+				
 				cooldownLeft = fireCooldown
 				firing = true
 		if !firing:
@@ -70,10 +77,10 @@ func on_damage(projectile):
 		queue_free()
 		
 		var e = explosion.instance()
-		e.transform.origin = get_global_transform().origin
 		e.emitting = true
 		e.process_material.set("initial_velocity", -speed * 60 * 1.25)
 		get_parent().add_child(e)
+		e.set_global_transform(get_global_transform())
 		
 		var vel = -get_global_transform().basis.z * speed * 15
 		var shards = $Destruction.destroy()
@@ -88,13 +95,14 @@ func on_damage(projectile):
 	else:
 		var vel = -get_global_transform().basis.z * speed * 15
 		var d = debris.instance()
+		get_parent().add_child(d)
 		d.get_node("Body").set_surface_material(0, material)
-		d.transform.origin = projectile.get_global_transform().origin
+		d.set_global_transform(projectile.get_global_transform())
 		var angle = randf() * PI * 2
 		d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
 		var m = 90
 		d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
-		get_parent().add_child(d)
+		
 		if hp <= 10:
 			smoke.emitting = true
 			smoke.process_material.set("initial_velocity", -speed * 60)
