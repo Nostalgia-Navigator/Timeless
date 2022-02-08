@@ -5,7 +5,8 @@ var d=0
 func _ready():
 	player = get_tree().get_root().get_node("Main/Player")
 func wrap():
-	var o = get_parent().transform.origin
+	var t = get_parent().get_global_transform()
+	var o = t.origin
 	var dx = o.x - player.transform.origin.x
 	if dx < -wraparound:
 		o.x += 2 * wraparound
@@ -16,4 +17,5 @@ func wrap():
 		o.z += 2 * wraparound
 	elif dz > wraparound:
 		o.z -= 2 * wraparound
-	get_parent().transform.origin = o
+	t.origin = o
+	get_parent().set_global_transform(t)

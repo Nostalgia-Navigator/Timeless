@@ -24,7 +24,7 @@ func on_area_entered(other):
 		p.on_damage(10)
 func _process(delta):
 	d += delta
-	rotation_degrees.y += sin(d * (PI * 2) / 8) * 3 / 15
+	#rotation_degrees.y += sin(d * (PI * 2) / 8) * 3 / 15
 	
 	# use global coordinates, not local to node
 	var firing = false

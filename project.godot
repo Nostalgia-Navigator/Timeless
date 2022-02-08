@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Wingnuts: Temporal Navigator 3D"
-run/main_scene="res://MissionBriefing.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]

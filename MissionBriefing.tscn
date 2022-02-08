@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://PlaneHolder.tscn" type="PackedScene" id=2]
@@ -152,6 +152,325 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "Enter"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 227.844, -110.807 ), Vector2( 90, 60 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Description:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1.1 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 269.402, 933.129 ), Vector2( 269.402, 933.129 ), Vector2( 90, 135 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Description2:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1.2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 663.523, -164.455 ), Vector2( 663.523, -164.455 ), Vector2( 90, 200 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Plane1:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 1.3 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 803.228, -407.269 ), Vector2( 803.228, -407.269 ), Vector2( 120, 240 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlaneHolder1a:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 1.4 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 104.526, -493.284 ), Vector2( 104.526, -493.284 ), Vector2( 720, 140 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlaneHolder1b:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 80.7223, -367.427 ), Vector2( 80.7223, -367.427 ), Vector2( 570, 140 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Plane2:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6, 1.6 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 421.333, -621.333 ), Vector2( 421.333, -621.333 ), Vector2( 120, 360 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("PlaneHolder2a:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.7, 1.7 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1177.31, -479.165 ), Vector2( 1177.31, -479.165 ), Vector2( 570, 260 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("PlaneHolder2b:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.8, 1.8 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 242.54, 1027.13 ), Vector2( 242.54, 1027.13 ), Vector2( 720, 260 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Plane3:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.9, 1.9 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 965.045, 1129.27 ), Vector2( 965.045, 1129.27 ), Vector2( 120, 480 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("PlaneHolder3:rect_position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( -280.948, 1059.23 ), Vector2( -280.948, 1059.23 ), Vector2( 650, 380 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Player:rect_position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.1, 2.1 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1430.49, -241.05 ), Vector2( 1430.49, -241.05 ), Vector2( 90, 600 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("PlayerHolder:rect_position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1.2, 2.2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1754, -873.333 ), Vector2( 1754, -873.333 ), Vector2( 650, 500 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 90, 60 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Description:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 90, 135 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Description2:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 90, 200 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Plane1:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 120, 240 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlaneHolder1a:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 570, 140 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlaneHolder1b:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 720, 140 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Plane2:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 120, 360 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("PlaneHolder2a:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 570, 260 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("PlaneHolder2b:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 720, 260 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Plane3:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 120, 480 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("PlaneHolder3:rect_position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 650, 380 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Player:rect_position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 90, 600 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("PlayerHolder:rect_position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 650, 500 ) ]
+}
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -202,7 +521,7 @@ __meta__ = {
 [node name="Plane1" type="Label" parent="."]
 margin_left = 120.0
 margin_top = 240.0
-margin_right = 872.0
+margin_right = 871.998
 margin_bottom = 297.0
 theme = SubResource( 4 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
@@ -211,29 +530,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaneHolder2" parent="Plane1" instance=ExtResource( 2 )]
-margin_left = 450.0
-margin_top = -100.0
-margin_right = 690.0
-margin_bottom = 140.0
+[node name="PlaneHolder1a" parent="." instance=ExtResource( 2 )]
+margin_left = 570.0
+margin_top = 140.0
+margin_right = 810.0
+margin_bottom = 380.0
 
-[node name="Rig" parent="Plane1/PlaneHolder2/Viewport" index="0"]
+[node name="Rig" parent="PlaneHolder1a/Viewport" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18 )
 
-[node name="BleriotXIMonoplaneCyan" parent="Plane1/PlaneHolder2/Viewport/Rig/Holder" index="0" instance=ExtResource( 5 )]
+[node name="BleriotXIMonoplaneCyan" parent="PlaneHolder1a/Viewport/Rig/Holder" index="0" instance=ExtResource( 5 )]
 
-[node name="PlaneHolder3" parent="Plane1" instance=ExtResource( 2 )]
-margin_left = 600.0
-margin_top = -100.0
-margin_right = 840.0
-margin_bottom = 140.0
+[node name="PlaneHolder1b" parent="." instance=ExtResource( 2 )]
+margin_top = 140.0
+margin_bottom = 380.0
 
-[node name="Rig" parent="Plane1/PlaneHolder3/Viewport" index="0"]
+[node name="Rig" parent="PlaneHolder1b/Viewport" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -18 )
 
-[node name="BleriotXIMonoplaneRed" parent="Plane1/PlaneHolder3/Viewport/Rig/Holder" index="0" instance=ExtResource( 4 )]
+[node name="BleriotXIMonoplaneRed" parent="PlaneHolder1b/Viewport/Rig/Holder" index="0" instance=ExtResource( 4 )]
 
-[node name="AnimationPlayer" parent="Plane1/PlaneHolder3/Viewport/Rig" index="2"]
+[node name="AnimationPlayer" parent="PlaneHolder1b/Viewport/Rig" index="2"]
 anims/RESET = SubResource( 5 )
 anims/Spin = SubResource( 6 )
 
@@ -249,40 +566,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaneHolder4" parent="Plane2" instance=ExtResource( 2 )]
-margin_left = 450.0
-margin_top = -100.0
-margin_right = 690.0
-margin_bottom = 140.0
+[node name="PlaneHolder2a" parent="." instance=ExtResource( 2 )]
+margin_left = 570.0
+margin_top = 260.0
+margin_right = 810.0
+margin_bottom = 500.0
 
-[node name="Rig" parent="Plane2/PlaneHolder4/Viewport" index="0"]
+[node name="Rig" parent="PlaneHolder2a/Viewport" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36 )
 
-[node name="WrightBFlyerGreen" parent="Plane2/PlaneHolder4/Viewport/Rig/Holder" index="0" instance=ExtResource( 6 )]
+[node name="WrightBFlyerGreen" parent="PlaneHolder2a/Viewport/Rig/Holder" index="0" instance=ExtResource( 6 )]
 
-[node name="AnimationPlayer" parent="Plane2/PlaneHolder4/Viewport/Rig" index="2"]
+[node name="AnimationPlayer" parent="PlaneHolder2a/Viewport/Rig" index="2"]
 anims/RESET = SubResource( 7 )
 anims/Spin = SubResource( 8 )
 
-[node name="PlaneHolder5" parent="Plane2" instance=ExtResource( 2 )]
-margin_left = 600.0
-margin_top = -100.0
-margin_right = 840.0
-margin_bottom = 140.0
+[node name="PlaneHolder2b" parent="." instance=ExtResource( 2 )]
+margin_top = 260.0
+margin_bottom = 500.0
 
-[node name="Rig" parent="Plane2/PlaneHolder5/Viewport" index="0"]
+[node name="Rig" parent="PlaneHolder2b/Viewport" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -36 )
 
-[node name="WrightBFlyerOrange" parent="Plane2/PlaneHolder5/Viewport/Rig/Holder" index="0" instance=ExtResource( 7 )]
+[node name="WrightBFlyerOrange" parent="PlaneHolder2b/Viewport/Rig/Holder" index="0" instance=ExtResource( 7 )]
 
-[node name="AnimationPlayer" parent="Plane2/PlaneHolder5/Viewport/Rig" index="2"]
+[node name="AnimationPlayer" parent="PlaneHolder2b/Viewport/Rig" index="2"]
 anims/RESET = SubResource( 9 )
 anims/Spin = SubResource( 10 )
 
 [node name="Plane3" type="Label" parent="."]
 margin_left = 120.0
 margin_top = 480.0
-margin_right = 872.0
+margin_right = 871.999
 margin_bottom = 537.0
 theme = SubResource( 4 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
@@ -291,18 +606,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaneHolder2" parent="Plane3" instance=ExtResource( 2 )]
-margin_left = 530.0
-margin_top = -100.0
-margin_right = 770.0
-margin_bottom = 140.0
+[node name="PlaneHolder3" parent="." instance=ExtResource( 2 )]
+margin_left = 650.0
+margin_right = 890.0
 
-[node name="Rig" parent="Plane3/PlaneHolder2/Viewport" index="0"]
+[node name="Rig" parent="PlaneHolder3/Viewport" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
 
-[node name="WrightMilitaryFlyerOrange" parent="Plane3/PlaneHolder2/Viewport/Rig/Holder" index="0" instance=ExtResource( 8 )]
+[node name="WrightMilitaryFlyerOrange" parent="PlaneHolder3/Viewport/Rig/Holder" index="0" instance=ExtResource( 8 )]
 
-[node name="AnimationPlayer" parent="Plane3/PlaneHolder2/Viewport/Rig" index="2"]
+[node name="AnimationPlayer" parent="PlaneHolder3/Viewport/Rig" index="2"]
 anims/RESET = SubResource( 11 )
 anims/Spin = SubResource( 12 )
 
@@ -318,20 +631,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaneHolder" parent="Player" instance=ExtResource( 2 )]
-margin_left = 560.0
-margin_top = -100.0
-margin_right = 800.0
-margin_bottom = 140.0
+[node name="PlayerHolder" parent="." instance=ExtResource( 2 )]
+margin_left = 650.0
+margin_top = 500.0
+margin_right = 890.0
+margin_bottom = 740.0
 
-[node name="Rig" parent="Player/PlaneHolder/Viewport" index="0"]
+[node name="Rig" parent="PlayerHolder/Viewport" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 19 )
 
-[node name="Player" parent="Player/PlaneHolder/Viewport/Rig/Holder" index="0" instance=ExtResource( 3 )]
+[node name="Player" parent="PlayerHolder/Viewport/Rig/Holder" index="0" instance=ExtResource( 3 )]
 
-[editable path="Plane1/PlaneHolder2"]
-[editable path="Plane1/PlaneHolder3"]
-[editable path="Plane2/PlaneHolder4"]
-[editable path="Plane2/PlaneHolder5"]
-[editable path="Plane3/PlaneHolder2"]
-[editable path="Player/PlaneHolder"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Enter"
+anims/Enter = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+
+[editable path="PlaneHolder1a"]
+[editable path="PlaneHolder1b"]
+[editable path="PlaneHolder2a"]
+[editable path="PlaneHolder2b"]
+[editable path="PlaneHolder3"]
+[editable path="PlayerHolder"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Plane/WrightBFlyerGreen.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Plane/WrightBFlyerOrange.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Plane/WrightMilitaryFlyerOrange.tscn" type="PackedScene" id=22]
+[ext_resource path="res://FlyCircle.gd" type="Script" id=23]
 
 [sub_resource type="Environment" id=6]
 ambient_light_energy = 0.0
@@ -237,61 +238,82 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
 script = ExtResource( 7 )
 boss = ExtResource( 6 )
 
-[node name="Node3" type="Spatial" parent="Enemies"]
+[node name="Group" type="Spatial" parent="Enemies"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 73.6499 )
 
-[node name="WrightBFlyerGreen" parent="Enemies/Node3" instance=ExtResource( 20 )]
+[node name="WrightBFlyerGreen" parent="Enemies/Group" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6831, 0, -13.7063 )
 
-[node name="WrightBFlyerGreen2" parent="Enemies/Node3" instance=ExtResource( 20 )]
+[node name="WrightBFlyerGreen2" parent="Enemies/Group" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5721, 0, 12.4205 )
 
-[node name="WrightBFlyerOrange" parent="Enemies/Node3" instance=ExtResource( 21 )]
+[node name="WrightBFlyerOrange" parent="Enemies/Group" instance=ExtResource( 21 )]
 
-[node name="BleriotXIMonoplaneCyan" parent="Enemies/Node3" instance=ExtResource( 17 )]
+[node name="BleriotXIMonoplaneCyan" parent="Enemies/Group" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8255, 0, -11.7646 )
 
-[node name="BleriotXIMonoplaneRed" parent="Enemies/Node3" instance=ExtResource( 6 )]
+[node name="BleriotXIMonoplaneRed" parent="Enemies/Group" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0934, 0, 12.3005 )
 
-[node name="Spatial" type="Spatial" parent="Enemies"]
+[node name="Group2" type="Spatial" parent="Enemies"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9186, 0, -166.805 )
 
-[node name="BleriotXIMonoplaneRed" parent="Enemies/Spatial" instance=ExtResource( 6 )]
+[node name="BleriotXIMonoplaneRed" parent="Enemies/Group2" instance=ExtResource( 6 )]
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -7, 0, -21 )
 
-[node name="WrightMilitaryFlyerOrange" parent="Enemies/Spatial" instance=ExtResource( 22 )]
+[node name="WrightMilitaryFlyerOrange" parent="Enemies/Group2" instance=ExtResource( 22 )]
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 7, 0, -12 )
 
-[node name="WrightBFlyerGreen" parent="Enemies/Spatial" instance=ExtResource( 20 )]
+[node name="WrightBFlyerGreen" parent="Enemies/Group2" instance=ExtResource( 20 )]
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -3.8147e-06, 0, -1.52588e-05 )
 
-[node name="WrightBFlyerOrange" parent="Enemies/Spatial" instance=ExtResource( 21 )]
+[node name="WrightBFlyerOrange" parent="Enemies/Group2" instance=ExtResource( 21 )]
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -3.8147e-06, 0, -34 )
 
-[node name="WrightBFlyerOrange2" parent="Enemies/Spatial" instance=ExtResource( 21 )]
+[node name="WrightBFlyerOrange2" parent="Enemies/Group2" instance=ExtResource( 21 )]
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -14, 0, -42 )
 
-[node name="WrightBFlyerGreen2" parent="Enemies/Spatial" instance=ExtResource( 20 )]
+[node name="WrightBFlyerGreen2" parent="Enemies/Group2" instance=ExtResource( 20 )]
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 15, 0, -26 )
 
-[node name="Spatial2" type="Spatial" parent="Enemies"]
+[node name="Group3" type="Spatial" parent="Enemies"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12116, 0, -204.325 )
 
-[node name="BleriotXIMonoplaneCyan" parent="Enemies/Spatial2" instance=ExtResource( 17 )]
+[node name="BleriotXIMonoplaneCyan" parent="Enemies/Group3" instance=ExtResource( 17 )]
 transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 18, 0, -13 )
 
-[node name="BleriotXIMonoplaneCyan2" parent="Enemies/Spatial2" instance=ExtResource( 17 )]
+[node name="BleriotXIMonoplaneCyan2" parent="Enemies/Group3" instance=ExtResource( 17 )]
 transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 26, 0, 3 )
 
-[node name="WrightMilitaryFlyerOrange" parent="Enemies/Spatial2" instance=ExtResource( 22 )]
+[node name="WrightMilitaryFlyerOrange" parent="Enemies/Group3" instance=ExtResource( 22 )]
 transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 0, 0, 0 )
 
-[node name="WrightBFlyerOrange" parent="Enemies/Spatial2" instance=ExtResource( 21 )]
+[node name="WrightBFlyerOrange" parent="Enemies/Group3" instance=ExtResource( 21 )]
 transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 30, 0, -12 )
 
-[node name="WrightMilitaryFlyerOrange2" parent="Enemies/Spatial2" instance=ExtResource( 22 )]
+[node name="WrightMilitaryFlyerOrange2" parent="Enemies/Group3" instance=ExtResource( 22 )]
 transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 5, 0, -19 )
+
+[node name="Spatial" type="Spatial" parent="Enemies"]
+transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -115, 0, -73 )
+script = ExtResource( 23 )
+
+[node name="BleriotXIMonoplaneCyan" parent="Enemies/Spatial" instance=ExtResource( 17 )]
+
+[node name="WrightMilitaryFlyerOrange" parent="Enemies/Spatial" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14 )
+
+[node name="WrightMilitaryFlyerOrange2" parent="Enemies/Spatial" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -29 )
+
+[node name="WrightBFlyerOrange" parent="Enemies/Spatial" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -12 )
+
+[node name="WrightBFlyerOrange2" parent="Enemies/Spatial" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -12 )
+
+[node name="WrightBFlyerOrange3" parent="Enemies/Spatial" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -28 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 592.0
