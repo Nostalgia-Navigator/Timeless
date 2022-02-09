@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Crosshair.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Blender/Window.material" type="Material" id=8]
 [ext_resource path="res://Blender/Hull.material" type="Material" id=9]
 [ext_resource path="res://GreenBarrier.png" type="Texture" id=10]
+[ext_resource path="res://Barrier.gd" type="Script" id=11]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -281,7 +282,7 @@ tracks/5/keys = {
 "values": [ Color( 0.972549, 1, 0.521569, 0.2 ), Color( 0.972549, 1, 0.521569, 1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Barrier:opacity")
+tracks/6/path = NodePath("Node/Barrier:opacity")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -380,7 +381,7 @@ tracks/5/keys = {
 "values": [ Color( 0.972549, 1, 0.521569, 1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Barrier:opacity")
+tracks/6/path = NodePath("Node/Barrier:opacity")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -526,13 +527,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -40 )
 anims/Invulnerable = SubResource( 16 )
 anims/RESET = SubResource( 17 )
 
-[node name="Barrier" type="Sprite3D" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="Barrier" type="Sprite3D" parent="Node"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 opacity = 0.0
 pixel_size = 0.02
 texture = ExtResource( 10 )
+script = ExtResource( 11 )
 
-[node name="Spin" type="AnimationPlayer" parent="Barrier"]
+[node name="Spin" type="AnimationPlayer" parent="Node/Barrier"]
 autoplay = "Spin"
 anims/RESET = SubResource( 18 )
 anims/Spin = SubResource( 19 )

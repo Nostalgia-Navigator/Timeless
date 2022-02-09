@@ -6,7 +6,7 @@ const brakeSpeed = 0.5
 const thrustSpeed = 2.4
 var exhaust
 const bullet = preload("res://PlayerBullet1.tscn")
-const explosion = preload("res://Explosion.tscn")
+const explosion = preload("res://PlaneExplosion.tscn")
 const debris = preload("res://Debris.tscn")
 const shake = preload("res://Shake.tscn")
 const bombdrop = preload("res://BombDrop.tscn")
@@ -31,12 +31,13 @@ func _ready():
 	exhaust = $Exhaust
 	parent = get_parent()
 func on_damage(projectile):
-	
+	if(!playing):
+		return
+	if(!vulnerable):
+		return
 	var dmg = projectile
 	if projectile is Node:
 		dmg = projectile.damage
-	if(!vulnerable):
-		return
 	emit_signal("on_damaged")
 	if hp <= dmg:
 		var e = explosion.instance()
@@ -57,9 +58,8 @@ func on_damage(projectile):
 		
 		exhaust.emitting = false
 		remove_child(exhaust)
-		
 		var n = Spatial.new()
-		n.transform.origin = get_global_transform().origin
+		n.set_global_transform(get_global_transform())
 		n.add_child(exhaust)
 		get_parent().add_child(n)
 		
@@ -85,17 +85,20 @@ func on_damage(projectile):
 		t.connect("timeout", t, "queue_free")
 		parent.add_child(t)
 		t.start()
-		parent.remove_child(self)
+		hide()
+		playing = false
 	else:
 		hp -= dmg
 func respawn():
-	parent.add_child(self)
+	show()
+	playing = true
 	hp = fullHP
 	
 	var p = exhaust.get_parent()
+	var n = p.name
 	p.remove_child(exhaust)
-	add_child(exhaust)
 	p.queue_free()
+	add_child(exhaust)
 	
 	$AnimationPlayer.play("Invulnerable")
 	
@@ -181,6 +184,8 @@ func _process(delta):
 
 var star = preload("res://Blender/StarParticle.tscn")
 func _on_area_entered(area):
+	if(!playing):
+		return
 	if area.is_in_group("Goodie"):
 		var p = area.get_parent().get_parent().get_parent().get_parent()
 		p.remove()

@@ -23,7 +23,7 @@ func check_boss(e):
 		b.connect("on_destroyed", self, "on_boss_destroyed")
 		get_parent().add_child(b)
 		pass
-func on_boss_destroyed():
+func on_boss_destroyed(boss):
 	var o = outro.instance()
 	var angle = randf() * PI * 2
 	var distance = 100
@@ -33,9 +33,9 @@ func on_boss_destroyed():
 	get_parent().add_child(o)
 	pass
 func getLeaves(n):
-	if n.is_in_group("Plane"):
-		return [n]
 	var a = []
+	if n.is_in_group("Plane"):
+		a.append(n)
 	for c in n.get_children():
 		a.append_array(getLeaves(c))
 	return a

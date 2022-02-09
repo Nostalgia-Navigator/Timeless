@@ -29,3 +29,9 @@ shard_template = ExtResource( 6 )
 shard_scene = ExtResource( 5 )
 
 [node name="Wraparound" parent="." index="8" instance=ExtResource( 8 )]
+
+[node name="Left" type="Spatial" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+
+[node name="Right" type="Spatial" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )

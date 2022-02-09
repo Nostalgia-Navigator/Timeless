@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Blender/Spike.dae" type="PackedScene" id=1]
+[ext_resource path="res://Plane/Spike.gd" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=3]
+radius = 2.5
+height = 5.0
+
+[sub_resource type="Animation" id=1]
+resource_name = "Movement"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 0.5, 2, 2 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 50 ), Vector3( 0, -48, 50 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Spike" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Body" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+
+[node name="Area" type="Area" parent="Body"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Body/Area"]
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Movement"
+anims/Movement = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Body/Area" to="." method="_on_area_entered"]
