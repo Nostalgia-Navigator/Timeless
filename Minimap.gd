@@ -32,12 +32,13 @@ func _ready():
 		new_marker.show()
 		markers[goodie] = new_marker
 func remove_marker(e):
-	grid.remove_child(markers[e])
-	markers.erase(e)
+	if markers.has(e):
+		grid.remove_child(markers[e])
+		markers.erase(e)
 func _process(delta):
 	if !player:
 		return
-	player_marker.rotation = player.rotation.y + PI/2
+	#player_marker.rotation = player.rotation.y + PI/2
 	for enemy in markers:
 		var o = enemy.get_global_transform().origin - player.transform.origin
 		o = Vector2(o.x, o.z)

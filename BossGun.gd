@@ -1,16 +1,61 @@
 extends MeshInstance
 
+
+enum BulletType { Spike, Wave, Zigzag, Rainbow }
+#export(BulletType) var bullet = BulletType.Spike
 onready var main = get_parent()
+var cooldown_timer
+var fire_timer
+
 func _ready():
-	var t = Timer.new()
-	add_child(t)
-	t.wait_time = 3
-	t.connect("timeout", self, "fire")
-	t.start()
-const spike=  preload("res://Plane/Spike.tscn")
+	cooldown_timer = Timer.new()
+	add_child(cooldown_timer)
+	cooldown_timer.wait_time = 6
+	cooldown_timer.connect("timeout", self, "fire")
+	
+	fire_timer = Timer.new()
+	add_child(fire_timer)
+	fire_timer.wait_time = 1
+	fire_timer.connect("timeout", self, "fire")
+	
+	var init_timer = Timer.new()
+	add_child(init_timer)
+	init_timer.wait_time = randf()*8
+	init_timer.connect("timeout", fire_timer, "start")
+	init_timer.connect("timeout", init_timer, "queue_free")
+	init_timer.start()
+	
+	
+const spike = preload("res://Plane/SpikeBullet.tscn")
+const wave = preload("res://Plane/WaveBullet.tscn")
+const zigzag = preload("res://Plane/ZigzagBullet.tscn")
+const rainbow = preload("res://RainbowBullet.tscn")
+const bullets = [spike, wave, zigzag, rainbow]
+#const zigzag = preload("res://Blender/ZigZagBullet.tscn")
+func cooldown():
+	cooldown_timer.stop()
+	fire_timer.start()
 func fire():
-	var s = spike.instance()
+	
+	
+	
 	var player = main.get_node("Wraparound").player
+	var from = get_global_transform().origin
+	var to = player.get_global_transform().origin
+	
+	fire_timer.stop()
+	cooldown_timer.start()
+	var bullet = randi()%len(bullets)
+	var s = bullets[bullet].instance()
+	if bullet == BulletType.Spike:
+		pass
+	elif bullet == BulletType.Wave or bullet == BulletType.Zigzag:
+		s.speed = 1
+	elif bullet == BulletType.Rainbow:
+		var speed = 1
+		var angle = (Vector2(to.x, to.z) - Vector2(from.x, from.z)).angle()
+		s.vel = Vector3(speed * cos(angle), 0, speed * sin(angle))
+	
 	var world = player.get_parent()
 	world.add_child(s)
 	s.set_global_transform(get_global_transform())

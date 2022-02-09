@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Blender/ZigZagBullet.dae" type="PackedScene" id=1]
+[ext_resource path="res://Plane/Spike.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Movement"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -10, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/ZigZagBullet/Cylinder000:mesh:surface_1/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0, 1, 0.505882, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/ZigZagBullet/Cylinder000:mesh:surface_1/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ) ]
+}
+
+[node name="ZigzagBullet" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+
+[node name="ZigZagBullet" parent="Body" instance=ExtResource( 1 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="Area" type="Area" parent="Body"]
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Body/Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+depth = 0.5
+polygon = PoolVector2Array( 0.475936, -0.167179, 0.860067, 0.261262, 0.30192, 0.402539, 0.000700082, 0.907784, -0.311045, 0.417352, -0.880902, 0.278565, -0.495225, -0.152766, -0.544622, -0.761473, -0.000864826, -0.508672, 0.549768, -0.768778 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Movement"
+anims/Movement = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]
+
+[editable path="Body/ZigZagBullet"]

@@ -14,11 +14,10 @@ func _ready():
 		c.connect("on_destroyed", self, "check_boss")
 func check_boss(e):
 	count -= 1
-	if count == 0:
+	if count <= 0:
 		var b = boss.instance()
-		
 		var angle = randf() * PI * 2
-		var distance = 100
+		var distance = 300
 		b.transform.origin = player.get_global_transform().origin + Vector3(distance*cos(angle), 0, distance*sin(angle))
 		b.connect("on_destroyed", self, "on_boss_destroyed")
 		get_parent().add_child(b)

@@ -12,7 +12,7 @@ albedo_color = Color( 1, 0.854902, 0, 1 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "Color"
-length = 0.8
+length = 2.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sphere:material/0:albedo_color")
@@ -21,10 +21,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4 ),
+"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2 ),
 "update": 0,
-"values": [ Color( 1, 0.854902, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 1, 0.854902, 0, 1 ) ]
+"values": [ Color( 0, 0.741176, 1, 1 ), Color( 1, 0.854902, 0, 1 ), Color( 0, 0.741176, 1, 1 ), Color( 0.464844, 0.464844, 0.464844, 1 ), Color( 1, 0, 0.329412, 1 ), Color( 0.464844, 0.464844, 0.464844, 1 ), Color( 0, 0.741176, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -46,7 +46,7 @@ tracks/0/keys = {
 margin = 0.05
 radius = 0.5
 
-[node name="SmallBullet" type="Spatial"]
+[node name="RainbowBullet" type="Spatial"]
 script = ExtResource( 2 )
 hit = "Player"
 

@@ -6,7 +6,6 @@ export(int, 0, 2, 1) var markerType
 export(float) var speed = 0.4
 export(Material) var material
 export(BehaviorType) var behavior = BehaviorType.patrol
-var d = 0
 
 
 const timer = preload("res://ParticleTimer.tscn")
@@ -19,9 +18,6 @@ const bullet = preload("res://SmallBullet.tscn")
 const smoke = preload("res://BossSmoke.tscn")
 signal on_destroyed
 signal on_damaged
-
-const fireCooldown = 5
-var cooldownLeft = fireCooldown
 
 const BossGun = preload("res://BossGun.gd")
 var sections = []
@@ -39,41 +35,13 @@ func on_area_entered(other):
 	var p = other.get_parent()
 	if p.is_in_group("Player"):
 		p.on_damage(10)
+var d = 0
 func _process(delta):
 	# use global coordinates, not local to node
 	var firing = false
 	var player = $Wraparound.player
 	var world = player.get_parent()
 	var p = player.get_camera_origin()
-	if cooldownLeft <= delta and player.is_inside_tree():
-		var offset = p - get_global_transform().origin
-		var distance = offset.length()
-		var vel = -get_global_transform().basis.z * speed
-		var playerVel = -player.get_global_transform().basis.z * player.speed
-		var velDiff = playerVel - vel
-		var bulletSpeed = 1.5
-		
-		
-		
-		#var future_offset = offset + velDiff * distance / (bulletSpeed * 60)
-		if distance < 80:
-			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, [$Area], 2147483647, false, true)
-			var clear = result.empty() or (result["collider"].get_parent() == player)
-			
-			if clear:
-				var b = bullet.instance()
-				
-				world.add_child(b)
-				b.set_global_transform(get_global_transform())
-				b.vel = 1.2 * offset.normalized() + vel
-				
-				cooldownLeft = fireCooldown
-				firing = true
-		if !firing:
-			cooldownLeft = 0.5
-	else:
-		cooldownLeft -= delta
-	
 	if get_parent().is_in_group("Plane"):
 		return
 	d += delta
