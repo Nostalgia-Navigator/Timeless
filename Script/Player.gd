@@ -30,6 +30,8 @@ signal on_damaged
 func _ready():
 	exhaust = $Exhaust
 	parent = get_parent()
+	
+const parachute = preload("res://Goodies/ParachutePlayer.tscn")
 func on_damage(projectile):
 	if(!playing):
 		return
@@ -46,6 +48,7 @@ func on_damage(projectile):
 		e.process_material.set("initial_velocity", -speed * 15 )
 		get_parent().add_child(e)
 		
+		
 		var vel = -get_global_transform().basis.z * speed * 15
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
@@ -55,13 +58,17 @@ func on_damage(projectile):
 			var m = 90
 			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 		
-		
 		exhaust.emitting = false
 		remove_child(exhaust)
 		var n = Spatial.new()
 		n.set_global_transform(get_global_transform())
 		n.add_child(exhaust)
 		get_parent().add_child(n)
+		
+		
+		var p = parachute.instance()
+		p.set_global_transform(get_global_transform())
+		get_parent().add_child(p)
 		
 		#for i in range(10):
 		#	var d = debris.instance()
@@ -79,7 +86,7 @@ func on_damage(projectile):
 		#	get_parent().add_child(d)
 		
 		var t = Timer.new()
-		t.wait_time = 4
+		t.wait_time = 6
 		t.one_shot = true
 		t.connect("timeout", self, "respawn")
 		t.connect("timeout", t, "queue_free")

@@ -3,10 +3,8 @@ const bullet = preload("res://Bullet/SmallBullet.tscn")
 
 enum BehaviorType { meander, patrol, pursue } 
 export(BehaviorType) var behavior = BehaviorType.patrol
-
 export(float) var speed = 0.4
 var planes = []
-
 var d = 0
 func _ready():
 	for c in get_children():
@@ -30,6 +28,8 @@ func remove_plane(e, projectile):
 	if len(planes) == 0:
 		queue_free()
 func fire(timer):
+	if len(planes) == 0:
+		queue_free()
 	
 	var attacker = planes[randi() % len(planes)]
 	var a = attacker.get_global_transform().origin
@@ -56,10 +56,7 @@ func fire(timer):
 				timer.on_fired()
 
 func _process(delta):
-	
 	var p = $Wraparound.player.get_global_transform().origin
-	
-	
 	if behavior == BehaviorType.meander:
 		rotation_degrees.y += sin(d * (PI * 2) / 8) * 3 / 15
 	if behavior == BehaviorType.patrol:

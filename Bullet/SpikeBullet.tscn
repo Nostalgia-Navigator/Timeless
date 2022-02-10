@@ -9,7 +9,7 @@ height = 5.0
 
 [sub_resource type="Animation" id=1]
 resource_name = "Movement"
-length = 5.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:translation")
 tracks/0/interp = 1
@@ -21,6 +21,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 0.5, 2, 2 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 50 ), Vector3( 0, -48, 50 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Cone002:mesh:surface_1/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.8, 0.623839, 0.336228, 1 ), Color( 0.8, 0.623839, 0.336228, 1 ), Color( 0.8, 0.623529, 0.337255, 0.4 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -36,6 +48,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Cone002:mesh:surface_1/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.8, 0.623839, 0.336228, 1 ) ]
 }
 
 [node name="SpikeBullet" type="Spatial"]
@@ -60,3 +84,5 @@ autostart = true
 
 [connection signal="area_entered" from="Body/Area" to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
+
+[editable path="Body"]
