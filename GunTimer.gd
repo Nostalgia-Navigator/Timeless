@@ -1,0 +1,29 @@
+extends Node
+
+export(float) var cooldown
+export(float) var fireCheckInterval 
+
+func set_time(cooldown, fireCheckInterval):
+	$Cooldown.wait_time = cooldown
+	$Fire.wait_time = fireCheckInterval
+
+signal check_fire
+func _ready():
+	set_time(cooldown, fireCheckInterval)
+	$Cooldown.connect("timeout", self, "check_fire")
+	$Fire.connect("timeout", self, "check_fire")
+	
+	$Cooldown.start()
+func check_fire():
+	$Cooldown.stop()
+	$Fire.start()
+	emit_signal("check_fire", self)
+func on_fired():
+	$Cooldown.start()
+	$Fire.stop()
+	
+func stop():
+	$Cooldown.stop()
+	$Fire.stop()
+func start():
+	$Cooldown.start()

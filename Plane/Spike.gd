@@ -5,7 +5,8 @@ func _process(delta):
 	translate(Vector3(0, 0, speed))
 func _on_area_entered(area):
 	var p = area.get_parent()
+	var n = p.name
 	if p.is_in_group("Player"):
 		if (p.playing and p.vulnerable):
 			p.on_damage(self)
-			self.queue_free()
+			queue_free()
