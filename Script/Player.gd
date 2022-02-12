@@ -11,7 +11,6 @@ const debris = preload("res://Effect/Debris.tscn")
 const shake = preload("res://Effect/Shake.tscn")
 const bombdrop = preload("res://Effect/BombDrop.tscn")
 const fireCooldown = 0.1
-var fireCooldownLeft = 0
 
 const bombCooldown = 0.8
 var bombCooldownLeft = 0
@@ -19,6 +18,10 @@ var bombCooldownLeft = 0
 const fullHP = 30
 var hp = fullHP
 var parent
+
+var bulletCount = 0
+var firing = false
+
 export(bool) var playing = false
 export(bool) var vulnerable = false
 func intro_done(a):
@@ -125,7 +128,6 @@ func _process(delta):
 	if(!playing):
 		return
 	
-	fireCooldownLeft -= delta
 	bombCooldownLeft -= delta
 	
 	var thrusting = false
@@ -173,13 +175,18 @@ func _process(delta):
 	
 	self.translate(Vector3(0, 0, -speed))
 	
-	if(Input.is_key_pressed(KEY_X)) and fireCooldownLeft <= 0:
+	var x = Input.is_key_pressed(KEY_X)
+	if x and !firing and bulletCount < 5:
+		
 		var b = bullet.instance()
 		get_parent().add_child(b)
 		b.transform.origin = $Gun.get_global_transform().origin
 		b.rotation.y = self.rotation.y
 		b.vel = -get_global_transform().basis.z * (speed + 2)
-		fireCooldownLeft = fireCooldown
+		
+		bulletCount += 1
+		b.connect("tree_exited", self, "on_bullet_expired")
+	firing = x
 	if(Input.is_key_pressed(KEY_Z)) and bombCooldownLeft <= 0:
 		var b = bombdrop.instance()
 		b.transform.origin = $Crosshair.get_global_transform().origin
@@ -187,7 +194,8 @@ func _process(delta):
 		get_parent().add_child(b)
 		bombCooldownLeft = bombCooldown
 		
-
+func on_bullet_expired():
+	bulletCount -= 1
 
 var star = preload("res://Blender/StarParticle.tscn")
 func _on_area_entered(area):

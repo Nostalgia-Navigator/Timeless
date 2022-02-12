@@ -233,7 +233,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5253, 40, -58.4955 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5253, 40, -80.4955 )
 
 [node name="ParachutePlayer" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5253, 40, -67.1957 )
 
 [node name="ParachuteCrewmate" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5253, 40, -80.4955 )
