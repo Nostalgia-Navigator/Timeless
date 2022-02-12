@@ -13,6 +13,7 @@
 [node name="BleriotXIMonoplaneRed" groups=["Plane"] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 material = ExtResource( 7 )
+score = 125
 
 [node name="Area" type="Area" parent="." index="5"]
 

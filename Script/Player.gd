@@ -19,6 +19,10 @@ const fullHP = 30
 var hp = fullHP
 var parent
 
+var shields = 100
+
+var score = 0
+
 var bulletCount = 0
 var firing = false
 
@@ -180,6 +184,7 @@ func _process(delta):
 		
 		var b = bullet.instance()
 		get_parent().add_child(b)
+		b.source = self
 		b.transform.origin = $Gun.get_global_transform().origin
 		b.rotation.y = self.rotation.y
 		b.vel = -get_global_transform().basis.z * (speed + 2)

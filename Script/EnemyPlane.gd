@@ -5,6 +5,7 @@ export(int, 0, 2, 1) var markerType
 export(int) var hp = 15
 export(float) var speed = 0.4
 export(Material) var material
+export(int) var score = 0
 var d = 0
 
 
@@ -72,8 +73,8 @@ func _process(delta):
 			
 			if clear:
 				var b = bullet.instance()
-				
 				world.add_child(b)
+				b.source = self
 				b.set_global_transform(get_global_transform())
 				b.vel = 1.2 * offset.normalized() + vel
 				
@@ -129,6 +130,8 @@ func on_damage(projectile):
 			s.get_parent().remove_child(s)
 			world.add_child(s)
 			s.set_global_transform(st)
+			
+		projectile.source.score += score
 		emit_signal("on_destroyed", self, projectile)
 		call_deferred("queue_free")
 	else:

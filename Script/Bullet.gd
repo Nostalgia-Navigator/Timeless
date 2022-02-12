@@ -2,6 +2,7 @@ extends Spatial
 export(Vector3) var vel
 export(int) var damage = 4
 export(String, "Plane", "Player") var hit = "Plane"
+var source
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
