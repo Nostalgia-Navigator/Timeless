@@ -96,7 +96,7 @@ angular_damp = 0.0
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="." index="4"]
-wait_time = 4.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_entered"]

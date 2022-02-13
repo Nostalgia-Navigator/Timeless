@@ -38,12 +38,12 @@ func damage(projectile):
 		d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 		
 	if damaged:
-		remove()
+		remove(projectile)
 		return
 	
 	damaged = true
 	$Warning.play("Warn")
 	$Flashing.play("Flash")
-func remove():
-	self.emit_signal("on_removed", self)
+func remove(source):
+	self.emit_signal("on_removed", self, source)
 	queue_free()

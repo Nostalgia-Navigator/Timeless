@@ -7,9 +7,9 @@ var offset
 func _ready():
 	player = get_node(player)
 	player.connect("on_damaged", self, "shake")
-	offset = self.transform.origin - player.transform.origin
+	offset = transform.origin - player.transform.origin
 func shake():
 	add_child(shake.instance())
 func _process(delta):
 	var p = player.get_camera_origin() + offset
-	self.transform.origin = Vector3(p.x, transform.origin.y, p.z)
+	transform.origin = Vector3(p.x, transform.origin.y, p.z)

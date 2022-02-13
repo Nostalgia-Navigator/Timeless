@@ -4,6 +4,10 @@ export(float) var speed = 0
 const standardSpeed = 0.6
 const brakeSpeed = 0.5
 const thrustSpeed = 2.4
+
+var sideSpeed = 0
+const strafeSpeed = 0.6
+
 var exhaust
 const bullet = preload("res://Bullet/PlayerBullet1.tscn")
 const explosion = preload("res://Explosion/Plane.tscn")
@@ -135,19 +139,20 @@ func _process(delta):
 	bombCooldownLeft -= delta
 	
 	var thrusting = false
-	var braking = false
+	var enableStrafe = false
+	var strafing = false
 	var accel = 0.25/30
 	var turning = false
 	var turn = PI/75
 	var turnAngle = PI * 6 / 16
+	var strafeAngle = PI * 4.5 / 16
 	
 	
 	if(Input.is_key_pressed(KEY_DOWN)):
-		braking = true
-		if(speed > brakeSpeed):
-			speed -= accel
+		enableStrafe = true
 			
 	var body_rotation = $Body.rotation
+	
 	if(Input.is_key_pressed(KEY_UP)):
 		thrusting = true
 		exhaust.emitting = true
@@ -155,29 +160,38 @@ func _process(delta):
 		if(speed < thrustSpeed):
 			speed += accel
 	if(Input.is_key_pressed(KEY_LEFT)):
-		body_rotation.z += (turnAngle - body_rotation.z) / 20
-		
-		self.rotation.y += turn
-		turning = true
+		if enableStrafe:
+			body_rotation.z += sign(strafeAngle - body_rotation.z) * strafeAngle / 20
+			strafing = true
+			if sideSpeed > -strafeSpeed:
+				sideSpeed += -strafeSpeed / 15
+		else:
+			body_rotation.z += sign(turnAngle - body_rotation.z) * turnAngle / 20
+			self.rotation.y += turn
+			turning = true
 	if(Input.is_key_pressed(KEY_RIGHT)):
-		body_rotation.z += (-turnAngle - body_rotation.z) / 20
-		
-		self.rotation.y -= turn
-		turning = true
+		if enableStrafe:
+			body_rotation.z += sign(-strafeAngle - body_rotation.z) * strafeAngle / 20
+			strafing = true
+			if sideSpeed < strafeSpeed:
+				sideSpeed += strafeSpeed / 15
+		else:
+			body_rotation.z += sign(-turnAngle - body_rotation.z) * turnAngle / 20
+			self.rotation.y -= turn
+			turning = true
 	if(!thrusting):
 		exhaust.emitting = false
 		if speed > standardSpeed:
 			speed -= accel
-	if(!braking):
-		if speed < standardSpeed:
-			speed += accel
-	if(!turning):
+	if(!turning and !strafing):
 		body_rotation.z *= 0.9
+	if !strafing and sideSpeed != 0:
+		sideSpeed -= sign(sideSpeed) * strafeSpeed / 15
 		
 	$Body.rotation = body_rotation
 	
 	
-	self.translate(Vector3(0, 0, -speed))
+	self.translate(Vector3(sideSpeed, 0, -speed))
 	
 	var x = Input.is_key_pressed(KEY_X)
 	if x and !firing and bulletCount < 5:
@@ -208,7 +222,7 @@ func _on_area_entered(area):
 		return
 	if area.is_in_group("Goodie"):
 		var p = area.get_parent().get_parent().get_parent().get_parent()
-		p.remove()
+		p.remove(self)
 		
 		for i in range(0, 16):
 			var s = star.instance()

@@ -19,9 +19,11 @@ var markers = {}
 
 # TO DO: boss plane, carrier outro
 func _ready():
+	call_deferred("register_markers")
+func register_markers():
 	player = get_node(player)
 	player_marker.position = grid.rect_size / 2
-	grid_scale = grid.rect_size / (300 * 2)
+	grid_scale = grid.rect_size / (288 * 2)
 	
 	carrier = player.get_parent().get_node("Carrier")
 	var m = carrier_marker.duplicate()
@@ -30,6 +32,8 @@ func _ready():
 	markers[carrier] = m
 	carrier.connect("tree_exited", self, "remove_carrier")
 	
+	var enemies = player.get_parent().get_node("Enemies")
+	enemies.connect("on_boss_spawned", self, "register_boss")
 	
 	for enemy in get_tree().get_nodes_in_group("Plane"):
 		enemy.connect("on_destroyed", self, "remove_marker")
@@ -41,17 +45,24 @@ func _ready():
 		markers[enemy] = new_marker
 	for goodie in get_tree().get_nodes_in_group("Goodie"):
 		goodie = goodie.get_parent().get_parent().get_parent().get_parent()
-		goodie.connect("on_removed", self, "remove_marker_2")
+		goodie.connect("on_removed", self, "remove_marker")
 		var new_marker = goodie_marker.duplicate()
 		grid.add_child(new_marker)
 		new_marker.show()
 		markers[goodie] = new_marker
+func register_boss(boss):
+	boss.connect("on_destroyed", self, "remove_marker")
+	var new_marker = boss_marker.duplicate()
+	grid.add_child(new_marker)
+	new_marker.show()
+	markers[boss] = new_marker
+	
+	
 func remove_carrier():
 	grid.remove_child(markers[carrier])
 	markers.erase(carrier)
 func remove_marker(e, projectile):
-	remove_marker_2(e)
-func remove_marker_2(e):
+	
 	if markers.has(e):
 		grid.remove_child(markers[e])
 		markers.erase(e)
@@ -63,7 +74,14 @@ func _process(delta):
 		var o = enemy.get_global_transform().origin - player.transform.origin
 		o = Vector2(o.x, o.z)
 		var p = o * grid_scale + grid.rect_size / 2
-		
-		p.x = clamp(p.x, 0, grid.rect_size.x)
-		p.y = clamp(p.y, 0, grid.rect_size.y)
+		while p.x > grid.rect_size.x:
+			p.x -= grid.rect_size.x
+		while p.x < 0:
+			p.x += grid.rect_size.x
+			
+		while p.y > grid.rect_size.y:
+			p.y -= grid.rect_size.y
+		while p.y < 0:
+			p.y += grid.rect_size.y
+			
 		markers[enemy].position = p

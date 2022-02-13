@@ -153,7 +153,7 @@ func on_damage(projectile):
 			var angle = randf() * PI * 2
 			d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
-			d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+			d.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 		
 		if hp <= 10:
 			smoke.emitting = true

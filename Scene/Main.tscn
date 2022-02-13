@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Plane/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
@@ -7,15 +7,9 @@
 [ext_resource path="res://Script/Takeoff.gd" type="Script" id=5]
 [ext_resource path="res://Plane/BleriotXIMonoplaneRed.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Script/Level.gd" type="Script" id=7]
-[ext_resource path="res://Goodies/ParachuteStar.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Goodies/ParachuteFuel.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Goodies/ParachuteShields.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Goodies/ParachuteTime.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Goodies/ParachuteCrewmate.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Goodies/ParachutePlayer.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Cloud/1.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Cloud/2.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Cloud/3.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Island2D/RandomIsland.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Distribution.gd" type="Script" id=9]
+[ext_resource path="res://Cloud2D/RandomCloud.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Plane/BleriotXIMonoplaneCyan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Frame.png" type="Texture" id=18]
 [ext_resource path="res://Script/Minimap.gd" type="Script" id=19]
@@ -25,7 +19,7 @@
 [ext_resource path="res://Plane/Boss1.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Blender/Hero/Carrier/001.png" type="Texture" id=24]
 [ext_resource path="res://Blender/Hero/Boss1/001.png" type="Texture" id=25]
-[ext_resource path="res://Flight.tscn" type="PackedScene" id=26]
+[ext_resource path="res://FlightGenerator.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Environment" id=6]
 ambient_light_energy = 0.0
@@ -151,32 +145,32 @@ directional_shadow_max_distance = 300.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
 
-[node name="Floor" type="Spatial" parent="."]
+[node name="Ocean" type="Spatial" parent="."]
 
-[node name="Spatial" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile" parent="Ocean" instance=ExtResource( 2 )]
 
-[node name="Spatial2" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile2" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 0 )
 
-[node name="Spatial3" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile3" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, 0 )
 
-[node name="Spatial4" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile4" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 288 )
 
-[node name="Spatial5" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile5" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 288 )
 
-[node name="Spatial6" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile6" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, 288 )
 
-[node name="Spatial7" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile7" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -288 )
 
-[node name="Spatial8" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile8" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, -288 )
 
-[node name="Spatial9" parent="Floor" instance=ExtResource( 2 )]
+[node name="Tile9" parent="Ocean" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, -288 )
 
 [node name="Carrier" parent="." instance=ExtResource( 3 )]
@@ -196,125 +190,66 @@ anims/RESET = SubResource( 7 )
 anims/Takeoff = SubResource( 8 )
 script = ExtResource( 5 )
 
-[node name="Cloud_2" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4065, 40, -82.3549 )
-
-[node name="Cloud_5" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0783, 40, -15.3549 )
-
-[node name="Cloud_4" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61.9883, 40, -119.45 )
-
-[node name="Cloud_3" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8114, 40, -133.45 )
-
-[node name="Cloud_1" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4065, 40, -140.25 )
-
-[node name="Cloud_6" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5935, 40, 15.75 )
-
-[node name="Cloud_7" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4065, 40, 23.75 )
-
-[node name="Cloud_8" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5935, 40, -29.25 )
-
-[node name="ParachuteFuel" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8809, 40, -70.5438 )
-
-[node name="ParachuteShields" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5253, 40, -64.4955 )
-
-[node name="ParachuteStar" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5253, 40, -58.4955 )
-
-[node name="ParachuteTime" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5253, 40, -80.4955 )
-
-[node name="ParachutePlayer" parent="." instance=ExtResource( 13 )]
-
-[node name="ParachuteCrewmate" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5253, 40, -80.4955 )
-
 [node name="Enemies" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
 script = ExtResource( 7 )
 boss = ExtResource( 23 )
 
-[node name="Flight4" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 73.6499 )
+[node name="FlightGenerator" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 21 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightBFlyerOrange" parent="Enemies/Flight4" instance=ExtResource( 21 )]
+[node name="FlightGenerator5" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -105.881, 0, -65.0807 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightBFlyerGreen" parent="Enemies/Flight4" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6831, 0, -13.7063 )
+[node name="FlightGenerator6" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -138.298, 0, 27.7335 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightBFlyerGreen2" parent="Enemies/Flight4" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5721, 0, 12.4205 )
+[node name="FlightGenerator7" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -68.0641, 0, 80.0151 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="BleriotXIMonoplaneCyan" parent="Enemies/Flight4" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8255, 0, -11.7646 )
+[node name="FlightGenerator8" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.8702, 0, -70.9968 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="BleriotXIMonoplaneRed" parent="Enemies/Flight4" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0934, 0, 12.3005 )
+[node name="FlightGenerator9" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71335, 0, -131.758 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="Flight3" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 46.9186, 0, -187.805 )
+[node name="FlightGenerator10" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 112.374, 1.52588e-05, -155.991 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="BleriotXIMonoplaneRed" parent="Enemies/Flight3" instance=ExtResource( 6 )]
+[node name="FlightGenerator11" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100.926, 3.05176e-05, -152.197 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightMilitaryFlyerOrange" parent="Enemies/Flight3" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6244, 0, -0.79425 )
+[node name="FlightGenerator12" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 147.925, 3.05176e-05, -99.3489 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightBFlyerGreen" parent="Enemies/Flight3" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5622, 0, -14.6865 )
+[node name="FlightGenerator2" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0, 32 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightBFlyerOrange2" parent="Enemies/Flight3" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.437828, 0, 14.7583 )
+[node name="FlightGenerator3" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2545, 0, 68.8209 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightBFlyerOrange3" parent="Enemies/Flight3" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5622, 0, 14.6865 )
+[node name="FlightGenerator4" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 0, 115 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="WrightBFlyerGreen2" parent="Enemies/Flight3" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5526, 0, 15.3301 )
+[node name="FlightGenerator13" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.994, 0, 121.216 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
-[node name="Flight2" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 14.8788, 0, -217.325 )
-
-[node name="BleriotXIMonoplaneCyan" parent="Enemies/Flight2" instance=ExtResource( 17 )]
-
-[node name="BleriotXIMonoplaneCyan2" parent="Enemies/Flight2" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9282, 0, -9.8564 )
-
-[node name="WrightMilitaryFlyerOrange" parent="Enemies/Flight2" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08846, 0, -20.2583 )
-
-[node name="WrightBFlyerOrange2" parent="Enemies/Flight2" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8923, 0, 5.13399 )
-
-[node name="WrightMilitaryFlyerOrange2" parent="Enemies/Flight2" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2583, 0, -1.30383 )
-
-[node name="Flight" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -102.876, 0, -66 )
-
-[node name="WrightMilitaryFlyerOrange" parent="Enemies/Flight" instance=ExtResource( 22 )]
-
-[node name="BleriotXIMonoplaneCyan" parent="Enemies/Flight" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14 )
-
-[node name="WrightMilitaryFlyerOrange2" parent="Enemies/Flight" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -15 )
-
-[node name="WrightBFlyerOrange" parent="Enemies/Flight" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 1.99998 )
-
-[node name="WrightBFlyerOrange2" parent="Enemies/Flight" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 1.99998 )
-
-[node name="WrightBFlyerOrange3" parent="Enemies/Flight" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -14 )
+[node name="FlightGenerator14" parent="Enemies" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -239.684, 0, -181.236 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="Control" type="Control" parent="."]
 margin_right = 592.0
@@ -420,13 +355,23 @@ patch_margin_right = 84
 patch_margin_bottom = 84
 
 [node name="TextureProgress" type="TextureProgress" parent="Control/Minimap"]
-margin_left = 80.0
-margin_top = 1024.0
-margin_right = 510.0
-margin_bottom = 1144.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1025.0
+margin_bottom = 1025.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Islands" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+script = ExtResource( 9 )
+scene = ExtResource( 8 )
+
+[node name="Clouds" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0 )
+script = ExtResource( 9 )
+scene = ExtResource( 10 )
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
 [connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]

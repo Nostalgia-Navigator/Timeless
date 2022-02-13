@@ -4,8 +4,12 @@ export(PackedScene) var boss = preload("res://Plane/BleriotXIMonoplaneCyan.tscn"
 const outro = preload("res://Landing.tscn")
 var count = 0
 var player
+
+signal on_boss_spawned
 func _ready():
 	player = get_tree().get_root().get_node("Main/Player")
+	call_deferred("register_planes")
+func register_planes():
 	var leaves = getLeaves(self)
 	count = len(leaves)
 	for c in leaves:
@@ -21,6 +25,7 @@ func check_boss(e, projectile):
 		b.transform.origin = player.get_global_transform().origin + Vector3(distance*cos(angle), 0, distance*sin(angle))
 		b.connect("on_destroyed", self, "on_boss_destroyed")
 		get_parent().add_child(b)
+		emit_signal("on_boss_spawned", b)
 func on_boss_destroyed(boss, projectile):
 	var o = outro.instance()
 	var angle = randf() * PI * 2
@@ -34,8 +39,10 @@ func getLeaves(n):
 	var a = []
 	if n.is_in_group("Plane"):
 		a.append(n)
-	for c in n.get_children():
-		a.append_array(getLeaves(c))
+	var ch = n.get_children()
+	for c in ch:
+		var l = getLeaves(c)
+		a.append_array(l)
 	return a
 	
 	

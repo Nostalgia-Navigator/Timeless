@@ -7,6 +7,8 @@ export(float) var speed = 0.4
 var planes = []
 var d = 0
 func _ready():
+	call_deferred("register_planes")
+func register_planes():
 	for c in get_children():
 		if c.is_in_group("Plane"):
 			planes.append(c)
@@ -15,8 +17,9 @@ func _ready():
 			c.connect("on_destroyed", self, "remove_plane")
 func on_plane_damaged(e, projectile):
 	if len(planes) > 0 and randi()%10 == 0:
-		var attacker = planes[randi() % len(planes)]
-		
+		var attacker = get_random_plane()
+		if attacker == null:
+			return
 		var t = attacker.get_global_transform()
 		remove_child(attacker)
 		get_parent().add_child(attacker)
@@ -27,11 +30,26 @@ func remove_plane(e, projectile):
 	planes.erase(e)
 	if len(planes) == 0:
 		queue_free()
+
+func get_random_plane():
+	var attacker = null
+	while attacker == null:
+		
+		if len(planes) == 0:
+			queue_free()
+			return
+		else:
+			attacker = planes[randi() % len(planes)]
+			if !is_instance_valid(attacker):
+				planes.erase(attacker)
+				attacker = null
+				
+	return attacker
 func fire(timer):
-	if len(planes) == 0:
-		queue_free()
 	
-	var attacker = planes[randi() % len(planes)]
+	var attacker = get_random_plane()
+	if attacker == null:
+		return
 	var a = attacker.get_global_transform().origin
 	
 	var player = $Wraparound.player
@@ -57,8 +75,9 @@ func fire(timer):
 
 func _process(delta):
 	var p = $Wraparound.player.get_global_transform().origin
+	d += delta
 	if behavior == BehaviorType.meander:
-		rotation_degrees.y += sin(d * (PI * 2) / 8) * 3 / 15
+		rotation_degrees.y += sin(d * (PI * 2) / 12) * 3 / 15
 	if behavior == BehaviorType.patrol:
 		rotation_degrees.y += delta * 360 / 60
 	elif behavior == BehaviorType.pursue:
