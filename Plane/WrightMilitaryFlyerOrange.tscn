@@ -7,8 +7,8 @@
 [ext_resource path="res://Effect/DebrisTemplate.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Script/EnemyPlane.gd" type="Script" id=6]
 [ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=7]
-[ext_resource path="res://Wraparound.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GunTimer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Owner.gd" type="Script" id=10]
 
 [node name="WrightMilitaryFlyerOrange" groups=["Plane"] instance=ExtResource( 1 )]
 script = ExtResource( 6 )
@@ -18,6 +18,9 @@ score = 220
 
 [node name="Area" type="Area" parent="." index="14"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+collision_mask = 0
+script = ExtResource( 10 )
+root = NodePath("..")
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -32,12 +35,10 @@ script = ExtResource( 7 )
 shard_template = ExtResource( 5 )
 shard_scene = ExtResource( 3 )
 
-[node name="Wraparound" parent="." index="17" instance=ExtResource( 8 )]
+[node name="GunTimer" parent="." index="17" instance=ExtResource( 9 )]
 
-[node name="GunTimer" parent="." index="18" instance=ExtResource( 9 )]
-
-[node name="Left" type="Spatial" parent="." index="19"]
+[node name="Left" type="Spatial" parent="." index="18"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
 
-[node name="Right" type="Spatial" parent="." index="20"]
+[node name="Right" type="Spatial" parent="." index="19"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )

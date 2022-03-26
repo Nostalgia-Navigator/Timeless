@@ -4,7 +4,7 @@
 [ext_resource path="res://Blender/Shell.material" type="Material" id=2]
 [ext_resource path="res://Blender/Wing.material" type="Material" id=3]
 [ext_resource path="res://Blender/Window_001.material" type="Material" id=4]
-[ext_resource path="res://Script/TestArea.gd" type="Script" id=5]
+[ext_resource path="res://Owner.gd" type="Script" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.008"
@@ -77,6 +77,7 @@ material/1 = null
 
 [node name="Area" type="Area" parent="." index="2"]
 script = ExtResource( 5 )
+root = NodePath("..")
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 shape = SubResource( 3 )

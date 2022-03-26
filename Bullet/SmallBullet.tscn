@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Script/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Owner.gd" type="Script" id=2]
 
 [sub_resource type="SphereMesh" id=8]
 radius = 1.5
@@ -46,7 +47,7 @@ tracks/0/keys = {
 margin = 0.05
 radius = 0.5
 
-[node name="SmallBullet" type="Spatial"]
+[node name="SmallBullet" type="Spatial" groups=["Bullet"]]
 script = ExtResource( 1 )
 hit = "Player"
 
@@ -61,10 +62,13 @@ anims/Color = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 
 [node name="Area" type="Area" parent="."]
+collision_mask = 0
 gravity_vec = Vector3( 0, 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
+script = ExtResource( 2 )
+root = NodePath("..")
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 3 )

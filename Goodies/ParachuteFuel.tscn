@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Blender/ParachuteFuel.dae" type="PackedScene" id=1]
 [ext_resource path="res://Wraparound.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Blender/ParachuteLightGreen.material" type="Material" id=3]
 [ext_resource path="res://Blender/ParachuteDarkGreen.material" type="Material" id=4]
 [ext_resource path="res://Script/Goodie.gd" type="Script" id=5]
+[ext_resource path="res://Owner.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 3.0
@@ -312,6 +313,7 @@ color2 = ExtResource( 3 )
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Sideturn/Turn/Spin" groups=["Goodie"]]
+script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Sideturn/Turn/Spin/Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2, 0 )

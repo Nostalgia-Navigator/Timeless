@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Blender/Spike.dae" type="PackedScene" id=1]
 [ext_resource path="res://Plane/Spike.gd" type="Script" id=2]
+[ext_resource path="res://Owner.gd" type="Script" id=3]
 
 [sub_resource type="CylinderShape" id=3]
 radius = 2.5
@@ -62,13 +63,15 @@ tracks/1/keys = {
 "values": [ Color( 0.8, 0.623839, 0.336228, 1 ) ]
 }
 
-[node name="SpikeBullet" type="Spatial"]
+[node name="SpikeBullet" type="Spatial" groups=["Bullet"]]
 script = ExtResource( 2 )
 
 [node name="Body" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Body"]
+collision_mask = 0
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Body/Area"]
 shape = SubResource( 3 )

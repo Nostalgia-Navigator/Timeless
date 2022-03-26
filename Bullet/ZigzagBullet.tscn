@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Blender/ZigZagBullet.dae" type="PackedScene" id=1]
 [ext_resource path="res://Plane/Spike.gd" type="Script" id=2]
+[ext_resource path="res://Owner.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Movement"
@@ -59,7 +60,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 0, 0, 1 ) ]
 }
 
-[node name="ZigzagBullet" type="Spatial"]
+[node name="ZigzagBullet" type="Spatial" groups=["Bullet"]]
 script = ExtResource( 2 )
 
 [node name="Body" type="Spatial" parent="."]
@@ -69,6 +70,9 @@ transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Body"]
+collision_mask = 0
+script = ExtResource( 3 )
+root = NodePath("../..")
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Body/Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Effect/Crosshair.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Script/Player.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Blender/Hull.material" type="Material" id=9]
 [ext_resource path="res://Effect/GreenBarrier.png" type="Texture" id=10]
 [ext_resource path="res://Script/Barrier.gd" type="Script" id=11]
+[ext_resource path="res://Owner.gd" type="Script" id=12]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -494,6 +495,9 @@ skeleton = NodePath("../..")
 material/0 = null
 
 [node name="Area" type="Area" parent="."]
+collision_layer = 2
+script = ExtResource( 12 )
+root = NodePath("..")
 
 [node name="Main" type="CollisionPolygon" parent="Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.375, 0 )

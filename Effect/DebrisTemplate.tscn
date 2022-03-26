@@ -1,6 +1,7 @@
 [gd_scene format=2]
 
 [node name="{name}Shard{number}" type="RigidBody"]
+collision_mask = 0
 gravity_scale = 2.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

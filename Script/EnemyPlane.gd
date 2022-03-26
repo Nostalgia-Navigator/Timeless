@@ -8,7 +8,6 @@ export(Material) var material
 export(int) var score = 0
 var d = 0
 
-
 const timer = preload("res://Effect/ParticleTimer.tscn")
 const explosion = preload("res://Explosion/Plane.tscn")
 const debris = preload("res://Effect/Debris.tscn")
@@ -20,20 +19,17 @@ signal on_damaged
 var solo = true
 
 onready var smoke = $Smoke
-
+onready var player = get_tree().get_root().get_node("Main/Player")
 const fireCooldown = 5
 var cooldownLeft = fireCooldown
 func _ready():
 	$Area.connect("area_entered", self, "on_area_entered")
 	
-	
 func set_solo(s):
 	solo = s
 	if s:
-		$Wraparound.start()
 		$GunTimer.start()
 	else:
-		$Wraparound.stop()
 		$GunTimer.stop()
 func on_area_entered(other):
 	var p = other.get_parent()
@@ -55,7 +51,6 @@ func _process(delta):
 			prevPos = p
 		return
 	
-	var player = $Wraparound.player
 	var world = player.get_parent()
 	var p = player.get_camera_origin()
 	if cooldownLeft <= delta and player.is_inside_tree():
@@ -97,8 +92,9 @@ func on_damage(projectile):
 	var damage = projectile.damage
 	hp -= damage
 	
-	var world = $Wraparound.player.get_parent()
+	var world = player.get_parent()
 	if(hp <= 0):
+		var smoke = $Smoke
 		smoke.emitting = false
 		var p = smoke.get_parent()
 		if p:
@@ -108,7 +104,6 @@ func on_damage(projectile):
 		t.time = 5
 		t.transform.origin = smoke.get_global_transform().origin
 		t.call_deferred("add_child", smoke)
-		
 		world.call_deferred("add_child", t)
 		
 		var e = explosion.instance()
@@ -121,9 +116,9 @@ func on_damage(projectile):
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
-			var speed = rand_range(1, 5)
+			var speed = rand_range(5, 15)
 			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
-			var m = 90
+			var m = 30
 			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 			
 			var st = s.get_global_transform()
@@ -156,8 +151,8 @@ func on_damage(projectile):
 			d.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 		
 		if hp <= 10:
-			smoke.emitting = true
-			smoke.process_material.set("initial_velocity", -speed * 60)
+			$Smoke.emitting = true
+			$Smoke.process_material.set("initial_velocity", -speed * 60)
 		
 		emit_signal("on_damaged", self, projectile)
 

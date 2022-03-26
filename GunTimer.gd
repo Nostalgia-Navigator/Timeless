@@ -10,8 +10,6 @@ func set_time(cooldown, fireCheckInterval):
 signal check_fire
 func _ready():
 	set_time(cooldown, fireCheckInterval)
-	$Cooldown.connect("timeout", self, "check_fire")
-	$Fire.connect("timeout", self, "check_fire")
 	
 	$Cooldown.start()
 func check_fire():
