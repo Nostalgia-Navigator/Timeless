@@ -1,5 +1,8 @@
 extends Timer
-const size = 288
+
+class_name Wraparound
+
+const EXTENT = 240
 var player
 signal on_wrapped
 func _ready():
@@ -9,18 +12,18 @@ func wrap():
 	var o = t.origin
 	var dx = o.x - player.transform.origin.x
 	var delta = Vector3(0, 0, 0)
-	if dx < -size:
-		delta.x += 2 * size
-	elif dx > size:
-		o.x -= 2 * size
-		delta.x -= 2 * size
+	if dx < -EXTENT:
+		delta.x += 2 * EXTENT
+	elif dx > EXTENT:
+		o.x -= 2 * EXTENT
+		delta.x -= 2 * EXTENT
 	var dz = o.z - player.transform.origin.z
-	if dz < -size:
-		o.z += 2 * size
-		delta.z += 2 * size
-	elif dz > size:
-		o.z -= 2 * size
-		delta.z -= 2 * size
+	if dz < -EXTENT:
+		o.z += 2 * EXTENT
+		delta.z += 2 * EXTENT
+	elif dz > EXTENT:
+		o.z -= 2 * EXTENT
+		delta.z -= 2 * EXTENT
 	if delta.length() == 0:
 		return
 	get_parent().global_translate(delta)

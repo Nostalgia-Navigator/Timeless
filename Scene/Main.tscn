@@ -366,11 +366,13 @@ __meta__ = {
 [node name="Islands" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
 script = ExtResource( 9 )
+size = 480
 scene = ExtResource( 8 )
 
 [node name="Clouds" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0 )
 script = ExtResource( 9 )
+size = 480
 scene = ExtResource( 10 )
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]

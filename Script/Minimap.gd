@@ -17,13 +17,15 @@ var boss
 var grid_scale
 var markers = {}
 
+const Wraparound = preload("res://Script/Wraparound.gd")
+
 # TO DO: boss plane, carrier outro
 func _ready():
 	call_deferred("register_markers")
 func register_markers():
 	player = get_node(player)
 	player_marker.position = grid.rect_size / 2
-	grid_scale = grid.rect_size / (288 * 2)
+	grid_scale = grid.rect_size / (Wraparound.EXTENT * 2)
 	
 	carrier = player.get_parent().get_node("Carrier")
 	var m = carrier_marker.duplicate()

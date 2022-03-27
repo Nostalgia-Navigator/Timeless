@@ -17,6 +17,7 @@ surfaces/0 = {
 [sub_resource type="SpatialMaterial" id=2]
 
 [node name="Debris" type="RigidBody"]
+collision_mask = 0
 gravity_scale = 2.0
 
 [node name="Body" type="MeshInstance" parent="."]

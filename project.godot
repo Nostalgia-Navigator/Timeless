@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "RepositoryItem",
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/RepositoryItem.gd"
+}, {
+"base": "Timer",
+"class": "Wraparound",
+"language": "GDScript",
+"path": "res://Script/Wraparound.gd"
 } ]
 _global_script_class_icons={
 "ArrayUtils": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "GistItem": "",
 "GitAPI": "",
 "InvitationItem": "",
-"RepositoryItem": ""
+"RepositoryItem": "",
+"Wraparound": ""
 }
 
 [application]
