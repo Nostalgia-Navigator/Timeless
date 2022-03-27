@@ -27,10 +27,6 @@ func _ready():
 	
 func set_solo(s):
 	solo = s
-	if s:
-		$GunTimer.start()
-	else:
-		$GunTimer.stop()
 func on_area_entered(other):
 	var p = other.get_parent()
 	if p.is_in_group("Player"):

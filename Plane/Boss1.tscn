@@ -17,6 +17,7 @@ material = ExtResource( 4 )
 
 [node name="Area" type="Area" parent="." index="0"]
 collision_mask = 0
+monitoring = false
 script = ExtResource( 9 )
 root = NodePath("..")
 
@@ -161,3 +162,5 @@ shard_template = ExtResource( 7 )
 shard_scene = ExtResource( 6 )
 
 [node name="Wraparound" parent="." index="26" instance=ExtResource( 2 )]
+
+[connection signal="area_entered" from="Area" to="." method="on_area_entered"]

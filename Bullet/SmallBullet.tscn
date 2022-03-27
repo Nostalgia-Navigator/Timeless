@@ -63,6 +63,7 @@ anims/RESET = SubResource( 7 )
 
 [node name="Area" type="Area" parent="."]
 collision_mask = 0
+monitorable = false
 gravity_vec = Vector3( 0, 0, 0 )
 gravity = 0.0
 linear_damp = 0.0

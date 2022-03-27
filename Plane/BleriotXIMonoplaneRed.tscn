@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Blender/BleriotXIMonoplaneRed.dae" type="PackedScene" id=1]
 [ext_resource path="res://Script/EnemyPlane.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Blender/BleriotXIMonoplaneRedDebris.dae" type="PackedScene" id=5]
 [ext_resource path="res://Effect/DebrisTemplate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Blender/Red.material" type="Material" id=7]
-[ext_resource path="res://GunTimer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Owner.gd" type="Script" id=10]
 
 [node name="BleriotXIMonoplaneRed" groups=["Plane"] instance=ExtResource( 1 )]
@@ -17,6 +16,7 @@ score = 125
 
 [node name="Area" type="Area" parent="." index="5"]
 collision_mask = 0
+monitoring = false
 script = ExtResource( 10 )
 root = NodePath("..")
 
@@ -33,10 +33,10 @@ script = ExtResource( 4 )
 shard_template = ExtResource( 6 )
 shard_scene = ExtResource( 5 )
 
-[node name="GunTimer" parent="." index="8" instance=ExtResource( 9 )]
-
-[node name="Left" type="Spatial" parent="." index="9"]
+[node name="Left" type="Spatial" parent="." index="8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
 
-[node name="Right" type="Spatial" parent="." index="10"]
+[node name="Right" type="Spatial" parent="." index="9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+
+[connection signal="area_entered" from="Area" to="." method="on_area_entered"]

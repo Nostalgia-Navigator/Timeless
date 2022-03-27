@@ -236,4 +236,7 @@ func _on_area_entered(area):
 			s.angular_velocity = Vector3(0, randf() * PI*2 + PI*2, 0)
 			s.linear_velocity = Vector3(speed*cos(angle),0,speed*sin(angle))
 			get_parent().add_child(s)
-		
+	else:
+		var p = area.get_parent()
+		if p.is_in_group("Plane"):
+			on_damage(10)

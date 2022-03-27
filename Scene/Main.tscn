@@ -364,7 +364,7 @@ __meta__ = {
 }
 
 [node name="Islands" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
 script = ExtResource( 9 )
 scene = ExtResource( 8 )
 

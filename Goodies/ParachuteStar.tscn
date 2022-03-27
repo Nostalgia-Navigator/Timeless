@@ -288,6 +288,7 @@ color2 = ExtResource( 3 )
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Sideturn/Turn/Spin" groups=["Goodie"]]
+collision_mask = 0
 script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Sideturn/Turn/Spin/Area"]
