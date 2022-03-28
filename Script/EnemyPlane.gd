@@ -8,6 +8,8 @@ export(Material) var material
 export(int) var score = 0
 var d = 0
 
+var turnLeft = 180
+
 const timer = preload("res://Effect/ParticleTimer.tscn")
 const explosion = preload("res://Explosion/Plane.tscn")
 const debris = preload("res://Effect/Debris.tscn")
@@ -37,7 +39,7 @@ func _physics_process(delta):
 		p = Vector2(p.x, p.z)
 		
 		var offset = p - prevPos
-		if offset.length() > 0:
+		if offset.x != 0 || offset.y != 0:
 			var angle = -PI/2 - offset.angle() - get_parent_rotation()
 			rotation.y = lerp_angle(rotation.y, angle, 0.1)
 			
@@ -47,21 +49,17 @@ func _physics_process(delta):
 	var world = player.get_parent()
 	var p = player.get_camera_origin()
 	if cooldownLeft <= delta and player.is_inside_tree():
-		var offset = p - get_global_transform().origin
-		var distance = offset.length()
-		var vel = -get_global_transform().basis.z * speed
-		var playerVel = -player.get_global_transform().basis.z * player.speed
-		var velDiff = playerVel - vel
-		var bulletSpeed = 1.5
-		#var future_offset = offset + velDiff * distance / (bulletSpeed * 60)
 		var firing = false
-		if distance < 80:
+		var offset = p - get_global_transform().origin
+		if offset.length() < 80:
 			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, [$Area], 2147483647, false, true)
 			var clear = result.empty() or (result["collider"].get_parent() == player)
 			
 			if clear:
 				var b = bullet.instance()
 				world.add_child(b)
+				
+				var vel = -get_global_transform().basis.z * speed
 				b.source = self
 				b.set_global_transform(get_global_transform())
 				b.vel = 1.2 * ADJUST * offset.normalized() + vel
@@ -72,10 +70,14 @@ func _physics_process(delta):
 			cooldownLeft = 0.5
 	else:
 		cooldownLeft -= delta
-	
-	
 	d += delta
-	if (($Left.get_global_transform().origin - p).length() < ($Right.get_global_transform().origin - p).length()):
+	if turnLeft != 0:
+		var turnDelta = sign(turnLeft) * delta * 6 * 360 / 30
+		if abs(turnDelta) > abs(turnLeft):
+			turnDelta = turnLeft
+		rotation_degrees.y += turnDelta
+		turnLeft -= turnDelta
+	elif (($Left.get_global_transform().origin - p).length() < ($Right.get_global_transform().origin - p).length()):
 		rotation_degrees.y += delta * 360 / 30
 	else:
 		rotation_degrees.y -= delta * 360 / 30
@@ -101,15 +103,15 @@ func on_damage(projectile):
 		
 		var e = explosion.instance()
 		e.emitting = true
-		e.process_material.set("initial_velocity", -speed * 15 / ADJUST)
+		e.process_material.set("initial_velocity", -speed)
 		world.add_child(e)
 		e.set_global_transform(get_global_transform())
 		
-		var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
+		var vel = -get_global_transform().basis.z * speed
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
-			var speed = rand_range(5, 15)
+			var speed = rand_range(10, 20)
 			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
 			var m = 30
 			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
@@ -145,7 +147,7 @@ func on_damage(projectile):
 		
 		if hp <= 10:
 			$Smoke.emitting = true
-			$Smoke.process_material.set("initial_velocity", -speed * 60 / ADJUST)
+			$Smoke.process_material.set("initial_velocity", -speed)
 		
 		emit_signal("on_damaged", self, projectile)
 

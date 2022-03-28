@@ -15,7 +15,7 @@ markerType = 2
 material = ExtResource( 2 )
 score = 220
 
-[node name="Area" type="Area" parent="." index="14"]
+[node name="Area" type="Area" parent="." index="2"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 collision_mask = 0
 monitoring = false
@@ -25,20 +25,20 @@ root = NodePath("..")
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 depth = 3.0
-polygon = PoolVector2Array( 2.51305, 5.74325, -2.54248, 5.72295, -3.03162, 5.26258, -2.46203, 4.74158, -1.09822, 4.74534, -3.97048, 0.203792, -7.48804, 0.181413, -8.00896, -1.31113, -8.0278, -1.75326, -5.97448, -2.84129, -4.08711, -3.31738, -2.5307, -3.48008, -0.916935, -3.60319, 0.118817, -7.5154, 1.08651, -3.54924, 2.57893, -3.46817, 4.0278, -3.29062, 5.97635, -2.8013, 7.90697, -1.7835, 7.92176, -1.34279, 7.42411, 0.193544, 3.95795, 0.150082, 1.09652, 4.73564, 2.52365, 4.76977, 3.0163, 5.24251 )
+polygon = PoolVector2Array( 2.51533, 4.76783, -2.48644, 4.79801, -3.02081, 4.27473, -2.51043, 3.72726, -1.20464, 3.74267, -4.2319, -1.31873, -7.45528, -1.34334, -7.96068, -1.78878, -7.92107, -2.39244, -7.45216, -2.86916, -2.42114, -3.51973, -0.944658, -3.51394, 0.118817, -7.5154, 1.08577, -3.51583, 2.48281, -3.5085, 7.36837, -2.81444, 7.88898, -2.30536, 7.89492, -1.35491, 4.20886, -1.31577, 1.25243, 3.7288, 2.50388, 3.73628, 3.06463, 4.23344 )
 
-[node name="Smoke" parent="." index="15" instance=ExtResource( 4 )]
+[node name="Smoke" parent="." index="3" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621676, -3.4118 )
 
-[node name="Destruction" type="Node" parent="." index="16"]
+[node name="Destruction" type="Node" parent="." index="4"]
 script = ExtResource( 7 )
 shard_template = ExtResource( 5 )
 shard_scene = ExtResource( 3 )
 
-[node name="Left" type="Spatial" parent="." index="17"]
+[node name="Left" type="Spatial" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
 
-[node name="Right" type="Spatial" parent="." index="18"]
+[node name="Right" type="Spatial" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
 
 [connection signal="area_entered" from="Area" to="." method="on_area_entered"]

@@ -4,6 +4,7 @@ export(PackedScene) var boss = preload("res://Plane/BleriotXIMonoplaneCyan.tscn"
 const outro = preload("res://Landing.tscn")
 var count = 0
 var player
+export(Array, PackedScene) var planeTypes
 
 signal on_boss_spawned
 func _ready():

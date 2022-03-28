@@ -194,62 +194,49 @@ script = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
 script = ExtResource( 7 )
 boss = ExtResource( 23 )
+planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 21 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator5" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -105.881, 0, -65.0807 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator6" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -138.298, 0, 27.7335 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator7" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -68.0641, 0, 80.0151 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator8" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.8702, 0, -70.9968 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator9" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71335, 0, -131.758 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator10" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 112.374, 1.52588e-05, -155.991 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator11" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100.926, 3.05176e-05, -152.197 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator12" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 147.925, 3.05176e-05, -99.3489 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator2" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0, 32 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator3" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2545, 0, 68.8209 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator4" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 0, 115 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator13" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.994, 0, 121.216 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="FlightGenerator14" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -239.684, 0, -181.236 )
-planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="Control" type="Control" parent="."]
 margin_right = 592.0

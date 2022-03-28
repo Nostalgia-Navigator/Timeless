@@ -1,5 +1,5 @@
 extends Spatial
-export(Array, PackedScene) var planeTypes
+onready var planeTypes = get_parent().planeTypes
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var flight = preload("res://Flight.tscn").instance()
