@@ -1,12 +1,14 @@
 extends Spatial
 
+const ADJUST = 40
+
 export(float) var speed = 0
-const standardSpeed = 0.6
-const brakeSpeed = 0.5
-const thrustSpeed = 2.4
+const standardSpeed = 0.6 * ADJUST
+const brakeSpeed = 0.5 * ADJUST
+const thrustSpeed = 2.4 * ADJUST
 
 var sideSpeed = 0
-const strafeSpeed = 0.6
+const strafeSpeed = 0.6 * ADJUST
 
 var exhaust
 const bullet = preload("res://Bullet/PlayerBullet1.tscn")
@@ -56,11 +58,11 @@ func on_damage(projectile):
 		var e = explosion.instance()
 		e.transform.origin = get_global_transform().origin
 		e.emitting = true
-		e.process_material.set("initial_velocity", -speed * 15 )
+		e.process_material.set("initial_velocity", -speed * 15 / ADJUST)
 		get_parent().add_child(e)
 		
 		
-		var vel = -get_global_transform().basis.z * speed * 15
+		var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
@@ -125,7 +127,7 @@ func get_camera_origin():
 	if is_inside_tree():
 		return get_global_transform().origin
 	return transform.origin
-func _process(delta):
+func _physics_process(delta):
 	
 	#var ray_length = 1000
 	#var mouse_pos = get_viewport().get_mouse_position()
@@ -141,7 +143,7 @@ func _process(delta):
 	var thrusting = false
 	var enableStrafe = false
 	var strafing = false
-	var accel = 0.25/30
+	var accel = ADJUST * 0.25/30
 	var turning = false
 	var turn = PI/75
 	var turnAngle = PI * 6 / 16
@@ -156,7 +158,7 @@ func _process(delta):
 	if(Input.is_key_pressed(KEY_UP)):
 		thrusting = true
 		exhaust.emitting = true
-		exhaust.process_material.set("initial_velocity", -speed * 30)
+		exhaust.process_material.set("initial_velocity", -speed * 30 / ADJUST)
 		if(speed < thrustSpeed):
 			speed += accel
 	if(Input.is_key_pressed(KEY_LEFT)):
@@ -191,7 +193,7 @@ func _process(delta):
 	$Body.rotation = body_rotation
 	
 	
-	self.translate(Vector3(sideSpeed, 0, -speed))
+	self.translate(Vector3(sideSpeed, 0, -speed) * delta)
 	
 	var x = Input.is_key_pressed(KEY_X)
 	if x and !firing and bulletCount < 5:
@@ -201,7 +203,7 @@ func _process(delta):
 		b.source = self
 		b.transform.origin = $Gun.get_global_transform().origin
 		b.rotation.y = self.rotation.y
-		b.vel = -get_global_transform().basis.z * (speed + 2)
+		b.vel = -get_global_transform().basis.z * (speed + 2 * ADJUST)
 		
 		bulletCount += 1
 		b.connect("tree_exited", self, "on_bullet_expired")

@@ -36,9 +36,6 @@ func cooldown():
 	cooldown_timer.stop()
 	fire_timer.start()
 func fire():
-	
-	
-	
 	var player = main.get_node("Wraparound").player
 	var from = get_global_transform().origin
 	var to = player.get_global_transform().origin
@@ -50,9 +47,9 @@ func fire():
 	if bullet == BulletType.Spike:
 		pass
 	elif bullet == BulletType.Wave or bullet == BulletType.Zigzag:
-		s.speed = 1
+		s.speed = 1 * 40
 	elif bullet == BulletType.Rainbow:
-		var speed = 1
+		var speed = 1 * 40
 		var angle = (Vector2(to.x, to.z) - Vector2(from.x, from.z)).angle()
 		s.vel = Vector3(speed * cos(angle), 0, speed * sin(angle))
 	

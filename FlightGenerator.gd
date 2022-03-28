@@ -10,8 +10,7 @@ func _ready():
 	for f in form:
 		var plane = planeTypes[randi()%len(planeTypes)].instance()
 		flight.add_child(plane)
-		var o = f.transform.origin
-		plane.transform.origin = o
+		plane.transform.origin = f.transform.origin
 	
 	flight.register_planes()
 	flight.behavior = flight.BehaviorType.meander

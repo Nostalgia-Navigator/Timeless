@@ -36,31 +36,25 @@ func on_area_entered(other):
 	if p.is_in_group("Player"):
 		p.on_damage(10)
 var d = 0
-func _process(delta):
-	# use global coordinates, not local to node
-	var firing = false
-	var player = $Wraparound.player
-	var world = player.get_parent()
-	var p = player.get_camera_origin()
-	if get_parent().is_in_group("Plane"):
-		return
+func _physics_process(delta):
 	d += delta
 	if behavior == BehaviorType.meander:
 		rotation_degrees.y += sin(d * (PI * 2) / 8) * 3 / 15
 	if behavior == BehaviorType.patrol:
 		rotation_degrees.y += delta * 360 / 60
 	elif behavior == BehaviorType.pursue:
+		
+		var p = $Wraparound.player.get_camera_origin()
 		if (($Left.get_global_transform().origin - p).length() < ($Right.get_global_transform().origin - p).length()):
 			rotation_degrees.y += delta * 360 / 60
 		else:
 			rotation_degrees.y -= delta * 360 / 60
-	self.translate(Vector3(0, 0, -speed))
+	self.translate(Vector3(0, 0, -speed * 40 * delta))
 func on_damage(projectile):
-	var world = $Wraparound.player.get_parent()
 	hp -= projectile.damage
 	if hp > 0:
 		var vel = -get_global_transform().basis.z * speed * 15
-		
+		var world = $Wraparound.player.get_parent()
 		for i in range(5):
 			var d = debris.instance()
 			world.add_child(d)
@@ -71,18 +65,14 @@ func on_damage(projectile):
 			d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
 			d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
-		
-		
 		var hitExplosion = explosion_hit.instance()
 		hitExplosion.emitting = true
-		#e.process_material.set("initial_velocity", 10)
 		add_child(hitExplosion)
 		hitExplosion.set_global_transform(projectile.get_global_transform())
-		
-		
 		return
 	while(hp <= 0):
 		if len(sections) == 0:
+			var world = $Wraparound.player.get_parent()
 			for i in get_explosion_points($ExplosionPoints):
 				var bossExplosion = explosion_boss.instance()
 				bossExplosion.emitting = true
@@ -95,8 +85,6 @@ func on_damage(projectile):
 				#e.process_material.set("initial_velocity", 10)
 				world.add_child(longExplosion)
 				longExplosion.set_global_transform(i.get_global_transform())
-				
-				
 			var vel = -get_global_transform().basis.z * speed * 15
 			var shards = $Destruction.destroy()
 			for s in shards.get_children():
@@ -105,10 +93,6 @@ func on_damage(projectile):
 				s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
 				var m = 90
 				s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
-				
-			
-			
-			
 			emit_signal("on_destroyed", self, projectile)
 			call_deferred("queue_free")
 			return

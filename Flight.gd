@@ -3,7 +3,7 @@ const bullet = preload("res://Bullet/SmallBullet.tscn")
 
 enum BehaviorType { meander, patrol, pursue } 
 export(BehaviorType) var behavior = BehaviorType.patrol
-export(float) var speed = 0.4
+export(float) var speed = 0.4 * 40
 var planes = []
 var d = 0
 func _ready():
@@ -16,35 +16,32 @@ func register_planes():
 			c.connect("on_damaged", self, "on_plane_damaged")
 			c.connect("on_destroyed", self, "remove_plane")
 func on_plane_damaged(e, projectile):
-	if len(planes) > 0 and randi()%10 == 0:
-		var attacker = get_random_plane()
-		if attacker == null:
-			return
-		var t = attacker.get_global_transform()
-		remove_child(attacker)
-		get_parent().add_child(attacker)
-		attacker.set_global_transform(t)
-		attacker.set_solo(true)
-		remove_plane(attacker, null)
+	if randi()%10 > 0:
+		return
+	var attacker = get_random_plane()
+	if attacker == null:
+		return
+	var t = attacker.get_global_transform()
+	remove_child(attacker)
+	get_parent().add_child(attacker)
+	attacker.set_global_transform(t)
+	attacker.set_solo(true)
+	remove_plane(attacker, null)
 func remove_plane(e, projectile):
 	planes.erase(e)
 	if len(planes) == 0:
 		queue_free()
 
 func get_random_plane():
-	var attacker = null
-	while attacker == null:
-		
-		if len(planes) == 0:
-			queue_free()
-			return
-		else:
-			attacker = planes[randi() % len(planes)]
-			if !is_instance_valid(attacker):
-				planes.erase(attacker)
-				attacker = null
-				
-	return attacker
+	var alive = []
+	for p in planes:
+		if is_instance_valid(p):
+			alive.append(p)
+	if len(alive) > 0:
+		planes = alive
+		return alive[randi() % len(alive)]
+	queue_free()
+	return null
 func fire(timer):
 	
 	var attacker = get_random_plane()
@@ -70,10 +67,9 @@ func fire(timer):
 				var b = bullet.instance()
 				world.add_child(b)
 				b.set_global_transform(attacker.get_global_transform())
-				b.vel = 1.2 * offset.normalized() + vel
+				b.vel = 1.2 * 40 * offset.normalized() + vel
 				timer.on_fired()
-
-func _process(delta):
+func _physics_process(delta):
 	var p = $Wraparound.player.get_global_transform().origin
 	d += delta
 	if behavior == BehaviorType.meander:
@@ -86,6 +82,4 @@ func _process(delta):
 		else:
 			rotation_degrees.y -= delta * 360 / 60
 	
-	self.translate(Vector3(0, 0, -speed))
-	
-	pass
+	self.translate(Vector3(0, 0, -speed * delta))

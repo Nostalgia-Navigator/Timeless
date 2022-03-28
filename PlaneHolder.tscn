@@ -37,9 +37,6 @@ margin_left = 720.0
 margin_top = 380.0
 margin_right = 960.0
 margin_bottom = 620.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 240, 240 )

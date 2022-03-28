@@ -1,9 +1,9 @@
 extends Spatial
 
-
+const ADJUST = 40
 export(int, 0, 2, 1) var markerType
 export(int) var hp = 15
-export(float) var speed = 0.4
+export(float) var speed = 0.4 * ADJUST
 export(Material) var material
 export(int) var score = 0
 var d = 0
@@ -22,9 +22,6 @@ onready var smoke = $Smoke
 onready var player = get_tree().get_root().get_node("Main/Player")
 const fireCooldown = 5
 var cooldownLeft = fireCooldown
-func _ready():
-	$Area.connect("area_entered", self, "on_area_entered")
-	
 func set_solo(s):
 	solo = s
 func on_area_entered(other):
@@ -33,7 +30,7 @@ func on_area_entered(other):
 		p.on_damage(10)
 		
 var prevPos = Vector2(0, 0)
-func _process(delta):
+func _physics_process(delta):
 	# use global coordinates, not local to node
 	if !solo:
 		var p = get_global_transform().origin
@@ -67,7 +64,7 @@ func _process(delta):
 				world.add_child(b)
 				b.source = self
 				b.set_global_transform(get_global_transform())
-				b.vel = 1.2 * offset.normalized() + vel
+				b.vel = 1.2 * ADJUST * offset.normalized() + vel
 				
 				cooldownLeft = fireCooldown
 				firing = true
@@ -83,7 +80,7 @@ func _process(delta):
 	else:
 		rotation_degrees.y -= delta * 360 / 30
 		
-	self.translate(Vector3(0, 0, -speed))
+	self.translate(Vector3(0, 0, -speed * delta))
 func on_damage(projectile):
 	var damage = projectile.damage
 	hp -= damage
@@ -104,11 +101,11 @@ func on_damage(projectile):
 		
 		var e = explosion.instance()
 		e.emitting = true
-		e.process_material.set("initial_velocity", -speed * 15)
+		e.process_material.set("initial_velocity", -speed * 15 / ADJUST)
 		world.add_child(e)
 		e.set_global_transform(get_global_transform())
 		
-		var vel = -get_global_transform().basis.z * speed * 15
+		var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
@@ -134,7 +131,7 @@ func on_damage(projectile):
 		# Create some debris
 		
 		for i in range(3):
-			var vel = -get_global_transform().basis.z * speed * 15
+			var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
 			var d = debris.instance()
 			world.add_child(d)
 			d.get_node("Body").set_surface_material(0, material)
@@ -148,7 +145,7 @@ func on_damage(projectile):
 		
 		if hp <= 10:
 			$Smoke.emitting = true
-			$Smoke.process_material.set("initial_velocity", -speed * 60)
+			$Smoke.process_material.set("initial_velocity", -speed * 60 / ADJUST)
 		
 		emit_signal("on_damaged", self, projectile)
 
