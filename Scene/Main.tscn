@@ -255,9 +255,6 @@ planeTypes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ), ExtResour
 margin_right = 592.0
 margin_bottom = 592.0
 rect_scale = Vector2( 0.25, 0.25 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Minimap" type="MarginContainer" parent="Control"]
 margin_right = 1030.0

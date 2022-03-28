@@ -54,10 +54,19 @@ func register_markers():
 		markers[goodie] = new_marker
 func register_boss(boss):
 	boss.connect("on_destroyed", self, "remove_marker")
+	boss.connect("on_destroyed", self, "add_landing")
 	var new_marker = boss_marker.duplicate()
 	grid.add_child(new_marker)
 	new_marker.show()
 	markers[boss] = new_marker
+func add_landing(boss, projectile):
+	call_deferred("add_landing_deferred")
+func add_landing_deferred():
+	carrier = player.get_parent().get_node("Landing/Carrier")
+	var m = carrier_marker.duplicate()
+	grid.add_child(m)
+	m.show()
+	markers[carrier] = m
 	
 	
 func remove_carrier():
