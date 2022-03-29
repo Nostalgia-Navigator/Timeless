@@ -4,7 +4,7 @@
 [ext_resource path="res://Island2D/OGLS.7000.dat.png" type="Texture" id=2]
 [ext_resource path="res://AutoPolygon.gd" type="Script" id=3]
 
-[node name="Island2D" type="Sprite3D"]
+[node name="Island2D" type="Sprite3D" groups=["Island"]]
 pixel_size = 0.25
 axis = 1
 shaded = true

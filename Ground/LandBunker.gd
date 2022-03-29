@@ -1,10 +1,13 @@
 extends Spatial
+const wreck = preload("res://Blender/LandBunkerWreck.dae")
 const hit = preload("res://Explosion/Hit.tscn")
 const explosion = preload("res://Explosion/Bunker.tscn")
 
 func _ready():
 	pass
 func on_outer_hit(area):
+	if area.get_parent().is_in_group("Island"):
+		return
 	var n = area.root
 	if n.name == "Tile":
 		return
@@ -17,6 +20,8 @@ func on_outer_hit(area):
 		n.queue_free()
 		$Smoke.emitting = true
 func on_inner_hit(area):
+	if area.get_parent().is_in_group("Island"):
+		return
 	var n = area.root
 	if n == null: 
 		n = area.get_parent()
@@ -27,6 +32,10 @@ func on_inner_hit(area):
 		e.emitting = true
 		get_parent().add_child(e)
 		n.queue_free()
+		
+		var w = wreck.instance()
+		w.set_global_transform(get_global_transform())
+		get_parent().add_child(w)
 		
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():

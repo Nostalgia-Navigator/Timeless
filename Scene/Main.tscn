@@ -352,7 +352,6 @@ __meta__ = {
 }
 
 [node name="Surface" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 script = ExtResource( 9 )
 size = 480
 scene = ExtResource( 12 )
