@@ -117,9 +117,6 @@ func on_damage(projectile):
 		sectionSmoke.emitting = true
 		add_child(sectionSmoke)
 		sectionSmoke.set_global_transform(section.get_global_transform())
-		
-			
-
 func get_explosion_points(n):
 	if n.get_child_count() == 0:
 		return [n]
@@ -127,4 +124,3 @@ func get_explosion_points(n):
 	for c in n.get_children():
 		a.append_array(get_explosion_points(c))
 	return a
-	

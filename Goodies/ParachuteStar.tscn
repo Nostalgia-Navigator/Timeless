@@ -290,6 +290,7 @@ transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
 [node name="Area" type="Area" parent="Sideturn/Turn/Spin" groups=["Goodie"]]
 collision_mask = 0
 script = ExtResource( 6 )
+root = NodePath("../../../..")
 
 [node name="CollisionShape" type="CollisionShape" parent="Sideturn/Turn/Spin/Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2, 0 )

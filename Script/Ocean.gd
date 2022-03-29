@@ -1,6 +1,8 @@
 extends Area
 var splash = preload("res://Effect/SplashRing.tscn")
 var explosion = preload("res://Explosion/Bomb.tscn")
+
+onready var root = get_parent()
 func _on_area_entered(area):
 	var n = area.owner
 	if n == null: 

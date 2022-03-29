@@ -50,7 +50,6 @@ emitting = false
 amount = 150
 lifetime = 2.0
 one_shot = true
-explosiveness = 0.01
 visibility_aabb = AABB( -64, -64, -64, 128, 128, 128 )
 local_coords = false
 process_material = SubResource( 5 )
@@ -58,7 +57,7 @@ draw_pass_1 = SubResource( 7 )
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 4.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
