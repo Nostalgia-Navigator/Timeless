@@ -122,7 +122,7 @@ height = 1.5
 script = ExtResource( 4 )
 
 [node name="Cone" parent="." index="0"]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3.69601e-07, 2, -3.15772e-08 )
+transform = Transform( 0.883883, 0, 0.883883, 0, 1.25, 0, -0.883883, 0, 0.883883, 0, 2.5, 0 )
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Spin"

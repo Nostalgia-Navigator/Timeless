@@ -240,8 +240,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.994, 0, 121.216 )
 [node name="FlightGenerator14" parent="Enemies" instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -239.684, 0, -181.236 )
 
-[node name="Boss1" parent="Enemies" instance=ExtResource( 23 )]
-
 [node name="Control" type="Control" parent="."]
 margin_right = 592.0
 margin_bottom = 592.0
