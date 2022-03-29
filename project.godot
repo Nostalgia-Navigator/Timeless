@@ -70,7 +70,7 @@ BFCHelpers="*res://addons/bitmap_font_creator/BFCHelpers.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/SIsilicon.3d.text/plugin.cfg", "res://addons/destruction/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/SIsilicon.3d.text/plugin.cfg", "res://addons/destruction/plugin.cfg", "res://addons/vpainter/plugin.cfg" )
 
 [gdnative]
 

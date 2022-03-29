@@ -110,11 +110,12 @@ func on_damage(projectile):
 		var vel = -get_global_transform().basis.z * speed
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
-			var angle = rand_range(0, PI*2)
+			#var offset = (s.get_global_transform().origin - transform.origin)
+			var angle = (rand_range(0, PI*2))
 			var speed = rand_range(10, 20)
-			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
+			s.linear_velocity = vel + speed * Vector3(cos(angle), 0, sin(angle))	
 			var m = 30
-			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+			s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 			
 			var st = s.get_global_transform()
 			s.get_parent().remove_child(s)

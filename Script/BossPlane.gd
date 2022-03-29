@@ -89,10 +89,10 @@ func on_damage(projectile):
 			var shards = $Destruction.destroy()
 			for s in shards.get_children():
 				var angle = rand_range(0, PI*2)
-				var speed = rand_range(0, 0)
-				s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
-				var m = 90
-				s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+				var speed = rand_range(10, 20)
+				s.linear_velocity = vel + speed * Vector3(cos(angle), 0, sin(angle))	
+				var m = 30
+				s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 			emit_signal("on_destroyed", self, projectile)
 			call_deferred("queue_free")
 			return

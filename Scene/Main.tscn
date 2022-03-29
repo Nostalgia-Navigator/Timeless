@@ -362,6 +362,7 @@ scene = ExtResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+volume_db = -10.0
 autoplay = true
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
