@@ -52,11 +52,11 @@ surfaces/1 = {
 }
 
 [sub_resource type="CapsuleShape" id=3]
-radius = 0.6
-height = 1.75
+radius = 0.66
+height = 2.0
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.5, 0.5, 0.5 )
+extents = Vector3( 0.6, 0.6, 1 )
 
 [node name="Bomb" instance=ExtResource( 1 )]
 
@@ -83,7 +83,7 @@ root = NodePath("..")
 shape = SubResource( 3 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Area" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5 )
 shape = SubResource( 4 )
 
 [connection signal="area_entered" from="Area" to="Area" method="on_area_entered"]

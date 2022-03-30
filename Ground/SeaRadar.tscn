@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Blender/SeaRadar.dae" type="PackedScene" id=1]
+[ext_resource path="res://Ground/SeaRadar.gd" type="Script" id=2]
+[ext_resource path="res://Wraparound.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effect/DebrisTemplate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=5]
+[ext_resource path="res://Blender/SeaRadarDebris.dae" type="PackedScene" id=6]
+[ext_resource path="res://Effect/BunkerSmoke.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CylinderShape" id=3]
+radius = 3.0
+
+[sub_resource type="CylinderShape" id=4]
+radius = 1.25
+height = 3.0
+
+[sub_resource type="CylinderShape" id=5]
+radius = 2.5
+height = 1.5
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cylinder021:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Spin"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cylinder021:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[node name="SeaRadar" groups=["Surface"] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Cylinder007" parent="." index="0"]
+transform = Transform( 1.5625, 0, 0, 0, 1.25, 0, 0, 0, 1.5625, 0, 1.8125, 0 )
+
+[node name="OuterHit" type="Area" parent="Cylinder007" index="0"]
+transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -1.45, 0 )
+collision_mask = 0
+
+[node name="CollisionPolygon" type="CollisionShape" parent="Cylinder007/OuterHit" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 3 )
+
+[node name="InnerHit" type="Area" parent="Cylinder007" index="1"]
+transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -1.45, 0 )
+collision_mask = 0
+
+[node name="CollisionPolygon" type="CollisionShape" parent="Cylinder007/InnerHit" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
+shape = SubResource( 4 )
+
+[node name="Cylinder021" parent="." index="1"]
+transform = Transform( 1.5625, 0, 0, 0, 1.25, 0, 0, 0, 1.5625, 0, 1.8125, 0 )
+
+[node name="InnerHit" type="Area" parent="Cylinder021" index="0"]
+transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 3, 0 )
+collision_mask = 0
+
+[node name="CollisionPolygon" type="CollisionShape" parent="Cylinder021/InnerHit" index="0"]
+transform = Transform( 0.92388, 0.382683, 1.19209e-07, -0.270598, 0.653281, 0.707107, 0.270598, -0.653281, 0.707107, 0.25, 0.5, -0.433013 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "Spin"
+anims/RESET = SubResource( 1 )
+anims/Spin = SubResource( 2 )
+
+[node name="Smoke" parent="." index="3" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+lifetime = 5.0
+
+[node name="Destruction" type="Node" parent="." index="4"]
+script = ExtResource( 5 )
+shard_template = ExtResource( 4 )
+shard_scene = ExtResource( 6 )
+
+[node name="Wraparound" parent="." index="5" instance=ExtResource( 3 )]
+
+[connection signal="area_entered" from="Cylinder007/OuterHit" to="." method="on_outer_hit"]
+[connection signal="area_entered" from="Cylinder007/InnerHit" to="." method="on_inner_hit"]
+[connection signal="area_entered" from="Cylinder021/InnerHit" to="." method="on_inner_hit"]

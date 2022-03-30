@@ -3,12 +3,15 @@ extends MarginContainer
 onready var grid = $MarginContainer/Grid
 onready var player_marker = $MarginContainer/Grid/Player
 onready var goodie_marker = $MarginContainer/Grid/Goodie
-onready var l1_marker = $MarginContainer/Grid/Green
-onready var l2_marker = $MarginContainer/Grid/Yellow
-onready var l3_marker = $MarginContainer/Grid/Orange
+onready var cyan = $MarginContainer/Grid/Cyan
+onready var green = $MarginContainer/Grid/Green
+onready var yellow = $MarginContainer/Grid/Yellow
+onready var orange = $MarginContainer/Grid/Orange
+onready var red = $MarginContainer/Grid/Red
 onready var carrier_marker = $MarginContainer/Grid/Carrier
 onready var boss_marker = $MarginContainer/Grid/Boss
-onready var planeMarkers = [l1_marker, l2_marker, l3_marker]
+onready var planeMarkers = [green, yellow, orange]
+onready var surface_marker = red
 
 export (NodePath) var player
 var carrier
@@ -22,17 +25,48 @@ const Wraparound = preload("res://Script/Wraparound.gd")
 # TO DO: boss plane, carrier outro
 func _ready():
 	call_deferred("register_markers")
+	
+func register_island():
+	for island in get_tree().get_nodes_in_group("Island"):
+		var s = Sprite.new()
+		s.scale = s.scale / 2
+		s.texture = island.texture
+		markers[island] = s
+		grid.add_child(s)
+	
 func register_markers():
 	player = get_node(player)
 	player_marker.position = grid.rect_size / 2
 	grid_scale = grid.rect_size / (Wraparound.EXTENT * 2)
 	
-	carrier = player.get_parent().get_node("Carrier")
-	var m = carrier_marker.duplicate()
-	grid.add_child(m)
-	m.show()
-	markers[carrier] = m
-	carrier.connect("tree_exited", self, "remove_carrier")
+	
+	if true:
+		carrier = player.get_parent().get_node("Carrier")
+		var m = carrier_marker.duplicate()
+		grid.add_child(m)
+		m.show()
+		markers[carrier] = m
+		carrier.connect("tree_exited", self, "remove_carrier")
+	
+	call_deferred("register_island")
+	
+	for goodie in get_tree().get_nodes_in_group("Goodie"):
+		if goodie is Area:
+			continue
+		goodie.connect("on_removed", self, "remove_marker")
+		
+		var m = goodie_marker.duplicate()
+		grid.add_child(m)
+		m.show()
+		markers[goodie] = m
+		
+	for surface in get_tree().get_nodes_in_group("Surface"):
+		surface.connect("on_destroyed", self, "remove_marker")
+		
+		var m = surface_marker.duplicate()
+		grid.add_child(m)
+		m.show()
+		markers[surface] = m
 	
 	var enemies = player.get_parent().get_node("Enemies")
 	enemies.connect("on_boss_spawned", self, "register_boss")

@@ -13,9 +13,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 2, 1 ),
+"transitions": PoolRealArray( 2, 2 ),
 "update": 0,
-"values": [ Vector3( 0, 38, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 38, 0 ), Vector3( 0, -1, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("y/z:translation")
@@ -24,7 +24,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.95 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 39 ), Vector3( 0, 0, 0 ) ]
@@ -50,8 +50,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 2, 1 ),
+"times": PoolRealArray( 0, 0.95 ),
+"transitions": PoolRealArray( 2, 2 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( -90, 0, 0 ) ]
 }

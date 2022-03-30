@@ -297,7 +297,7 @@ surfaces/0 = {
 "vertex_count": 1146
 }
 
-[node name="ParachuteFuel" type="Spatial"]
+[node name="ParachuteFuel" type="Spatial" groups=["Goodie"]]
 script = ExtResource( 5 )
 goodie = 3
 color1 = ExtResource( 4 )

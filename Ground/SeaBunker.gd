@@ -1,5 +1,4 @@
 extends Spatial
-const wreck = preload("res://Blender/LandBunkerWreck.dae")
 const hit = preload("res://Explosion/Hit.tscn")
 const explosion = preload("res://Explosion/Bunker.tscn")
 
@@ -33,10 +32,6 @@ func on_inner_hit(area):
 		get_parent().add_child(e)
 		n.queue_free()
 		
-		var w = wreck.instance()
-		w.set_global_transform(get_global_transform())
-		get_parent().add_child(w)
-		
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			#var offset = (s.get_global_transform().origin - transform.origin)
@@ -50,23 +45,22 @@ func on_inner_hit(area):
 			s.get_parent().remove_child(s)
 			get_parent().add_child(s)
 			s.set_global_transform(st)
+		
 		emit_signal("on_destroyed", self, n)
 		queue_free()
-
-const charging = preload("res://Ground/LandBunkerCharge.tscn")
-
 onready var cooldown = rand_range(6, 12)
 func _process(delta):
 	cooldown -= delta
 	if cooldown <= 0:
 		cooldown = 6
 		charge()
+const charging = preload("res://Ground/LandBunkerCharge.tscn")		
 func charge():
 	var c = charging.instance()
 	add_child(c)
 	c.transform.origin = Vector3(0, 0.1, 0)
 	c.get_node("AnimationPlayer").connect("animation_finished", self, "fire")
-const shot = preload("res://Bullet/LandBunkerShot.tscn") 
+const shot = preload("res://Ground/SeaBunkerShot.tscn") 
 const radius2 = 80*80
 func fire(anim):
 	var player = $Wraparound.player
@@ -83,4 +77,4 @@ func fire(anim):
 		
 		#tr.origin = from
 		s.set_global_transform(tr)
-		s.rotation.y = atan2(offset.x, offset.z)
+		s.rotation.y = PI + atan2(offset.x, offset.z)

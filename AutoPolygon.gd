@@ -23,7 +23,12 @@ func _create_collision_polygon():
 			p.rotation_degrees.x = 90
 			p.set_polygon(poly.polygons[i])
 			
-			p.transform.origin -= Vector3((texture.get_width() / 2) + offsetX, 0, (texture.get_height() / 2) + offsetY) * scale.x
+			#p.transform.origin -= Vector3((texture.get_width() / 2) + offsetX, 0, (texture.get_height() / 2) + offsetY) * scale.x
 			p.scale = scale
 			a.call_deferred("add_child", p)
 		call_deferred("add_child", a)
+		a.connect("area_entered", self, "on_area_entered")
+func on_area_entered(other):
+	var p = other.get_parent()
+	if p.name == "Bomb":
+		p.queue_free()
