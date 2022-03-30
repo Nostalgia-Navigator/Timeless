@@ -51,3 +51,27 @@ func on_inner_hit(area):
 			get_parent().add_child(s)
 			s.set_global_transform(st)
 		queue_free()
+
+const charging = preload("res://Ground/LandBunkerCharge.tscn")
+func charge():
+	var c = charging.instance()
+	add_child(c)
+	c.transform.origin = Vector3(0, 0.1, 0)
+	c.get_node("AnimationPlayer").connect("animation_finished", self, "fire")
+const shot = preload("res://Bullet/LandBunkerShot.tscn") 
+func fire(anim):
+	var player = $Wraparound.player
+	var tr = get_global_transform()
+	
+	var from = tr.origin
+	var to = player.get_global_transform().origin
+	
+	from = Vector3(from.x, to.y, from.z)
+	var offset = to - from
+	if offset.length() < 80:
+		var s = shot.instance()
+		get_parent().add_child(s)
+		
+		#tr.origin = from
+		s.set_global_transform(tr)
+		s.rotation.y = atan2(offset.x, offset.z)

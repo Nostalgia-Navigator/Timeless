@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Blender/LandBunker.dae" type="PackedScene" id=1]
 [ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Ground/LandBunker.gd" type="Script" id=4]
 [ext_resource path="res://Blender/LandBunkerDebris.dae" type="PackedScene" id=5]
 [ext_resource path="res://Effect/BunkerSmoke.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Wraparound.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -145,12 +146,19 @@ shape = SubResource( 4 )
 
 [node name="Smoke" parent="." index="5" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-emitting = false
+lifetime = 5.0
 
 [node name="Destruction" type="Node" parent="." index="6"]
 script = ExtResource( 2 )
 shard_template = ExtResource( 3 )
 shard_scene = ExtResource( 5 )
 
+[node name="Timer" type="Timer" parent="." index="7"]
+wait_time = 6.0
+autostart = true
+
+[node name="Wraparound" parent="." index="8" instance=ExtResource( 7 )]
+
 [connection signal="area_entered" from="OuterHit" to="." method="on_outer_hit"]
 [connection signal="area_entered" from="InnerHit" to="." method="on_inner_hit"]
+[connection signal="timeout" from="Timer" to="." method="charge"]

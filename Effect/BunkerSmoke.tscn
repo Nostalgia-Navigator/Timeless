@@ -41,6 +41,7 @@ albedo_texture = ExtResource( 1 )
 material = SubResource( 4 )
 
 [node name="Smoke" type="Particles"]
+emitting = false
 amount = 60
 lifetime = 4.0
 visibility_aabb = AABB( -130, -105, -133, 260, 210, 264 )
