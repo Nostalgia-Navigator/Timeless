@@ -99,7 +99,7 @@ func on_damage(projectile):
 		#	get_parent().add_child(d)
 		
 		var t = Timer.new()
-		t.wait_time = 6
+		t.wait_time = 4
 		t.one_shot = true
 		t.connect("timeout", self, "respawn")
 		t.connect("timeout", t, "queue_free")
@@ -113,15 +113,12 @@ func respawn():
 	show()
 	playing = true
 	hp = fullHP
-	
 	var p = exhaust.get_parent()
 	var n = p.name
 	p.remove_child(exhaust)
 	p.queue_free()
 	add_child(exhaust)
-	
 	$AnimationPlayer.play("Invulnerable")
-	
 func get_camera_origin():
 	
 	if is_inside_tree():

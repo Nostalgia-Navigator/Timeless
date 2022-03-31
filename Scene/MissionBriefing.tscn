@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://PlaneHolder.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Scene/TopGun.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Scene/Main.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scene/SetScene.gd" type="Script" id=14]
+[ext_resource path="res://Scene/SetMusic.gd" type="Script" id=15]
+[ext_resource path="res://Audio/stage_01.mp3" type="AudioStream" id=16]
 
 [sub_resource type="BitmapFont" id=16]
 
@@ -22,7 +24,7 @@ default_font = SubResource( 16 )
 
 [sub_resource type="Gradient" id=19]
 offsets = PoolRealArray( 0, 0.230068, 0.489749, 0.931663, 1 )
-colors = PoolColorArray( 0.243137, 0.313726, 0.482353, 1, 0.243137, 0.396078, 0.898039, 1, 0.219608, 0.282353, 0.721569, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
+colors = PoolColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
 
 [sub_resource type="GradientTexture" id=20]
 gradient = SubResource( 19 )
@@ -329,6 +331,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [ Vector2( 1754, -873.333 ), Vector2( 1754, -873.333 ), Vector2( 650, 500 ) ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath(".:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=14]
 length = 0.001
@@ -488,13 +502,25 @@ tracks/12/keys = {
 "update": 0,
 "values": [ Vector2( 650, 500 ) ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath(".:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 15 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = 1800.0
 margin_right = 2880.0
 margin_bottom = 1800.0
@@ -691,6 +717,10 @@ custom_fonts/font = ExtResource( 12 )
 text = "START"
 align = 1
 valign = 1
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 15 )
+stream = ExtResource( 16 )
 
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="clicked"]
 

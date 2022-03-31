@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Blender/Render0001.png" type="Texture" id=1]
 [ext_resource path="res://Scene/SetScene.gd" type="Script" id=2]
@@ -14,25 +14,65 @@
 [ext_resource path="res://OGLS.27001.dat.png" type="Texture" id=12]
 [ext_resource path="res://OGLS.27003.dat.png" type="Texture" id=13]
 [ext_resource path="res://Interface (master).mp3" type="AudioStream" id=14]
+[ext_resource path="res://Scene/SetMusic.gd" type="Script" id=15]
 
 [sub_resource type="BitmapFont" id=16]
 
 [sub_resource type="Theme" id=15]
 default_font = SubResource( 16 )
 
-[sub_resource type="Gradient" id=19]
+[sub_resource type="Gradient" id=22]
 offsets = PoolRealArray( 0, 0.230068, 0.489749, 0.931663, 1 )
 colors = PoolColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
 
 [sub_resource type="GradientTexture" id=20]
-gradient = SubResource( 19 )
+gradient = SubResource( 22 )
 
 [sub_resource type="Animation" id=13]
 resource_name = "Enter"
-length = 3.4
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Exit"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=14]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="DynamicFont" id=21]
 size = 128
@@ -56,6 +96,7 @@ expand = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Enter"
 anims/Enter = SubResource( 13 )
+anims/Exit = SubResource( 23 )
 anims/RESET = SubResource( 14 )
 
 [node name="Sprite2" type="Sprite" parent="."]
@@ -90,6 +131,7 @@ texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
 script = ExtResource( 2 )
 scene = ExtResource( 3 )
+fade = true
 
 [node name="Label" type="Label" parent="TextureButton"]
 margin_left = 36.9888
@@ -123,9 +165,8 @@ position = Vector2( 1572.67, 863.075 )
 scale = Vector2( 1.75, 1.75 )
 texture = ExtResource( 7 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SetMusic" type="Node" parent="."]
+script = ExtResource( 15 )
 stream = ExtResource( 14 )
-volume_db = -10.0
-autoplay = true
 
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="clicked"]

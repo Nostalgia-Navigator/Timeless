@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 6 ),
 "transitions": PoolRealArray( 2, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 60, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 45, 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Center:rotation_degrees")
@@ -45,10 +45,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.75, 1.5, 2.25, 3, 3.75, 4.5, 5.25, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ), Vector3( 0, 540, 0 ), Vector3( 0, 720, 0 ), Vector3( 0, 900, 0 ), Vector3( 0, 1080, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ), Vector3( 0, 540, 0 ), Vector3( 0, 720, 0 ), Vector3( 0, 900, 0 ), Vector3( 0, 1080, 0 ), Vector3( 0, 1260, 0 ), Vector3( 0, 1440, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Center/Y:translation")

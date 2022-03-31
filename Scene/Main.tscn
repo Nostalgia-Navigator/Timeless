@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Plane/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
@@ -10,11 +10,12 @@
 [ext_resource path="res://Island2D/RandomIsland.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Distribution.gd" type="Script" id=9]
 [ext_resource path="res://Cloud2D/RandomCloud.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Audio/stage_01.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Ground/LandRadar.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Ground/SeaBunker.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Ground/LandBunker.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Ground/SeaRadar.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scene/SurfaceDistribution.gd" type="Script" id=15]
+[ext_resource path="res://Ground/LandCannon.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Plane/BleriotXIMonoplaneCyan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Frame.png" type="Texture" id=18]
 [ext_resource path="res://Script/Minimap.gd" type="Script" id=19]
@@ -25,6 +26,7 @@
 [ext_resource path="res://Blender/Hero/Carrier/001.png" type="Texture" id=24]
 [ext_resource path="res://Blender/Hero/Boss1/001.png" type="Texture" id=25]
 [ext_resource path="res://FlightGenerator.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Ground/SeaCannon.tscn" type="PackedScene" id=27]
 
 [sub_resource type="Environment" id=6]
 ambient_light_energy = 0.0
@@ -245,7 +247,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -239.684, 0, -181.236 )
 
 [node name="Surface" type="Spatial" parent="."]
 script = ExtResource( 15 )
-scenes = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ) ]
+scenes = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 27 ) ]
 
 [node name="Islands" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
@@ -258,11 +260,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0 )
 script = ExtResource( 9 )
 size = 480
 scene = ExtResource( 10 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-volume_db = -10.0
-autoplay = true
 
 [node name="Control" type="Control" parent="."]
 margin_right = 592.0

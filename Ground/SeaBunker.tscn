@@ -69,7 +69,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Spin"
-length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder005:rotation_degrees")
@@ -78,10 +77,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Cylinder005:mesh:surface_4/material:albedo_color")
@@ -90,10 +89,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 0.8, 0.618204, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ), Color( 0.8, 0.618204, 0, 1 ) ]
+"values": [ Color( 0.8, 0.618204, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ), Color( 0.8, 0.618204, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ), Color( 0.8, 0.618204, 0, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Cylinder:mesh:surface_2/material:albedo_color")
@@ -102,10 +101,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 0.8, 0.618204, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ), Color( 0.8, 0.619608, 0, 1 ) ]
+"values": [ Color( 0.8, 0.618204, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ), Color( 0.8, 0.619608, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ), Color( 0.8, 0.619608, 0, 1 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Cylinder:mesh:surface_3/material:albedo_color")
@@ -114,10 +113,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 0.8, 0, 0.0663277, 1 ), Color( 0.8, 0.619608, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ) ]
+"values": [ Color( 0.8, 0, 0.0663277, 1 ), Color( 0.8, 0.619608, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ), Color( 0.8, 0.619608, 0, 1 ), Color( 0.8, 0, 0.0666667, 1 ) ]
 }
 
 [node name="SeaBunker" groups=["Surface"] instance=ExtResource( 4 )]
@@ -127,7 +126,6 @@ script = ExtResource( 7 )
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 3.66708e-07, 0.625, -1.15484e-06 )
 
 [node name="OuterHit" type="Area" parent="Cylinder" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Cylinder/OuterHit" index="0"]
@@ -137,7 +135,6 @@ shape = SubResource( 1 )
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.375, 0 )
 
 [node name="InnerHit" type="Area" parent="Cylinder005" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Cylinder005/InnerHit" index="0"]

@@ -3,8 +3,7 @@ onready var planeTypes = get_parent().planeTypes
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var flight = preload("res://Flight.tscn").instance()
-	var formations = preload("res://Formations.tscn").instance()
-	var form = formations.get_random_formation()
+	var form = Formations.get_random_formation()
 	get_parent().call_deferred("add_child", flight)
 	flight.transform.origin = transform.origin
 	for f in form:

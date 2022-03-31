@@ -5,14 +5,8 @@ export(String, "Plane", "Player") var hit = "Plane"
 var source
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	for c in get_children():
-		if c is MeshInstance:
-			pass
-			#c.set_surface_material(0, c.get_surface_material(0).duplicate())
 	pass
 func _physics_process(delta):
-	
 	self.global_translate(vel * delta)
 func _on_area_entered(area):
 	var p = area.get_parent()

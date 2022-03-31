@@ -11,10 +11,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
 "update": 0,
-"values": [ 0.8, 0.1 ]
+"values": [ 0.3, 0.3, 0.1 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:opacity")
@@ -70,7 +70,7 @@ tracks/1/keys = {
 "values": [ 0.5 ]
 }
 
-[node name="Spatial" type="Sprite3D"]
+[node name="Charge" type="Sprite3D"]
 modulate = Color( 0.380392, 0.886275, 1, 1 )
 opacity = 0.5
 pixel_size = 1.0
