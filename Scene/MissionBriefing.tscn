@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://PlaneHolder.tscn" type="PackedScene" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=9]
 [ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=10]
 [ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=11]
-[ext_resource path="res://addons/github-integration/fonts/Roboto-Black.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Scene/TopGun.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Scene/Main.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scene/SetScene.gd" type="Script" id=14]
 
@@ -489,11 +489,6 @@ tracks/12/keys = {
 "values": [ Vector2( 650, 500 ) ]
 }
 
-[sub_resource type="DynamicFont" id=18]
-size = 72
-outline_size = 2
-font_data = ExtResource( 12 )
-
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -692,8 +687,10 @@ margin_right = 251.46
 margin_bottom = 91.8899
 rect_scale = Vector2( 0.25, 0.25 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = ExtResource( 12 )
 text = "START"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="clicked"]
 
