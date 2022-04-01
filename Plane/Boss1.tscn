@@ -26,31 +26,31 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1, 
 depth = 4.0
 polygon = PoolVector2Array( -30.4055, -5.45403, -30.4808, -2.04551, -28.3911, 2.41512, -3.869, 2.53792, -1.04621, 6.45038, -1.06462, 9.50946, -0.462777, 10.5713, 0.53975, 10.4955, 1.11162, 9.66037, 1.02171, 6.48229, 3.53034, 2.77433, 28.3907, 2.58853, 30.4884, -1.60465, 30.2712, -5.15869, 14.4545, -5.2474, 6.36971, -10.7058, 5.16165, -20.4654, 7.49734, -22.2224, 7.34311, -26.2561, -7.43785, -26.0148, -7.24099, -22.2402, -4.95461, -20.4494, -6.48239, -10.6547, -14.3945, -5.52646 )
 
-[node name="Gun" parent="." index="15"]
+[node name="Gun" parent="." index="3"]
 script = ExtResource( 3 )
 
-[node name="Gun001" parent="." index="16"]
+[node name="Gun001" parent="." index="4"]
 script = ExtResource( 3 )
 
-[node name="Gun002" parent="." index="17"]
+[node name="Gun002" parent="." index="5"]
 script = ExtResource( 3 )
 
-[node name="Gun003" parent="." index="18"]
+[node name="Gun003" parent="." index="6"]
 script = ExtResource( 3 )
 
-[node name="Gun004" parent="." index="19"]
+[node name="Gun004" parent="." index="7"]
 script = ExtResource( 3 )
 
-[node name="Gun005" parent="." index="20"]
+[node name="Gun005" parent="." index="8"]
 script = ExtResource( 3 )
 
-[node name="Gun006" parent="." index="21"]
+[node name="Gun006" parent="." index="9"]
 script = ExtResource( 3 )
 
-[node name="Gun007" parent="." index="22"]
+[node name="Gun007" parent="." index="10"]
 script = ExtResource( 3 )
 
-[node name="ExplosionPoints" type="Spatial" parent="." index="24"]
+[node name="ExplosionPoints" type="Spatial" parent="." index="13"]
 
 [node name="Front" type="Spatial" parent="ExplosionPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
@@ -156,11 +156,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 [node name="ExplosionPoints11" type="Position3D" parent="ExplosionPoints/Tail" index="9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
 
-[node name="Destruction" type="Node" parent="." index="25"]
+[node name="Destruction" type="Node" parent="." index="14"]
 script = ExtResource( 8 )
 shard_template = ExtResource( 7 )
 shard_scene = ExtResource( 6 )
 
-[node name="Wraparound" parent="." index="26" instance=ExtResource( 2 )]
+[node name="Wraparound" parent="." index="15" instance=ExtResource( 2 )]
 
 [connection signal="area_entered" from="Area" to="." method="on_area_entered"]
