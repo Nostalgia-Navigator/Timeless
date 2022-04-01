@@ -15,7 +15,7 @@ markerType = 1
 material = ExtResource( 8 )
 score = 125
 
-[node name="Area" type="Area" parent="." index="5"]
+[node name="Area" type="Area" parent="." index="2"]
 collision_mask = 0
 monitoring = false
 script = ExtResource( 10 )
@@ -26,18 +26,18 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25
 depth = 0.5
 polygon = PoolVector2Array( 0.632587, -2.30965, 0.637194, -1.85487, 3.4845, -1.85828, 4.06549, -1.37475, 3.51349, -0.879022, 0.205344, -0.857658, 0.198956, 1.7198, 1.0353, 1.71429, 0.993628, 2.32902, -0.993578, 2.32334, -1.03164, 1.71912, -0.183611, 1.72314, -0.259107, -0.830057, -3.42807, -0.837138, -3.91663, -1.34829, -3.4292, -1.88153, -0.585764, -1.88435, -0.58804, -2.29836 )
 
-[node name="Smoke" parent="." index="6" instance=ExtResource( 2 )]
+[node name="Smoke" parent="." index="3" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24335, -1.8236 )
 
-[node name="Destruction" type="Node" parent="." index="7"]
+[node name="Destruction" type="Node" parent="." index="4"]
 script = ExtResource( 6 )
 shard_template = ExtResource( 4 )
 shard_scene = ExtResource( 1 )
 
-[node name="Left" type="Spatial" parent="." index="8"]
+[node name="Left" type="Spatial" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
 
-[node name="Right" type="Spatial" parent="." index="9"]
+[node name="Right" type="Spatial" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
 
 [connection signal="area_entered" from="Area" to="." method="on_area_entered"]
