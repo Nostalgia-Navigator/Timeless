@@ -71,7 +71,7 @@ transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Body"]
 collision_mask = 0
-monitoring = false
+monitorable = false
 script = ExtResource( 3 )
 root = NodePath("../..")
 

@@ -57,9 +57,6 @@ tracks/0/keys = {
 [node name="LandRadar" instance=ExtResource( 1 )]
 script = ExtResource( 7 )
 
-[node name="Cube" parent="." index="0"]
-transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
-
 [node name="OuterHit" type="Area" parent="Cube" index="0"]
 collision_mask = 0
 
@@ -72,7 +69,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
 shape = SubResource( 2 )
 
 [node name="Cylinder021" parent="." index="1"]
-transform = Transform( 1.5625, 0, 0, 0, 1.25, 0, 0, 0, 1.5625, 0, 3.0625, 0 )
+transform = Transform( 1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 0, 2.45, 0 )
 
 [node name="InnerHit" type="Area" parent="Cylinder021" index="0"]
 collision_mask = 0

@@ -7,14 +7,15 @@ func _on_area_entered(area):
 	var n = area.owner
 	if n == null: 
 		n = area.get_parent()
-	if n.name == "Bomb":
+	var name = n.name
+	if name == "Bomb":
 		var e = explosion.instance()
 		var p = area.get_global_transform().origin
 		e.transform.origin = Vector3(p.x, 0.001, p.z)
 		e.emitting = true
 		get_tree().get_root().get_child(0).add_child(e)
 		n.queue_free()
-	elif n.name == "SpikeBullet":
+	elif n.is_in_group("Bullet"):
 		var s = splash.instance()
 		var p = area.get_global_transform().origin
 		get_tree().get_root().get_child(0).add_child(s)

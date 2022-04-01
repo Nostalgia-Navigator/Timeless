@@ -76,6 +76,18 @@ tracks/3/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Center/Y/X/Cube:mesh:surface_1/material:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.708498, 0, 1 ), Color( 1, 0.708498, 0, 1 ), Color( 1, 0.709804, 0, 0.2 ), Color( 1, 0.709804, 0, 0.2 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -114,6 +126,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Center/Y/X/Cube:mesh:surface_1/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.708498, 0, 1 ) ]
 }
 
 [node name="SeaRadarShot" instance=ExtResource( 1 )]
