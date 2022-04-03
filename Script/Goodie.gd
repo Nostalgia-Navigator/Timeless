@@ -1,5 +1,7 @@
 extends Spatial
 
+class_name Goodie
+
 enum GoodieType {STAR, TIME, CREWMATE, SHIELDS, WEAPON, BOMB, FUEL}
 export(GoodieType) var goodie
 export(Material) var color1

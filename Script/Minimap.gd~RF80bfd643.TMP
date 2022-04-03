@@ -29,7 +29,7 @@ func _ready():
 func register_island():
 	for island in get_tree().get_nodes_in_group("Island"):
 		var s = Sprite.new()
-		s.scale = s.scale / 2
+		s.scale = s.scale / 8
 		s.texture = island.texture
 		markers[island] = s
 		grid.add_child(s)
@@ -37,7 +37,7 @@ func register_island():
 func register_markers():
 	player = get_node(player)
 	player_marker.position = grid.rect_size / 2
-	grid_scale = grid.rect_size / (Wraparound.EXTENT * 2)
+	grid_scale = grid.rect_size / (Wraparound.EXTENT )
 	
 	
 	if true:
@@ -80,8 +80,7 @@ func register_markers():
 		new_marker.show()
 		markers[enemy] = new_marker
 	for goodie in get_tree().get_nodes_in_group("Goodie"):
-		if goodie is Area:
-			continue
+		goodie = goodie.get_parent().get_parent().get_parent().get_parent()
 		goodie.connect("on_removed", self, "remove_marker")
 		var new_marker = goodie_marker.duplicate()
 		grid.add_child(new_marker)

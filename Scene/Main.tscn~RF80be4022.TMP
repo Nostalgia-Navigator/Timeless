@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Plane/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
@@ -27,7 +27,6 @@
 [ext_resource path="res://Blender/Hero/Boss1/001.png" type="Texture" id=25]
 [ext_resource path="res://FlightGenerator.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Ground/SeaCannon.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Scene/PlaceGoodies.gd" type="Script" id=28]
 
 [sub_resource type="Environment" id=6]
 ambient_light_energy = 0.0
@@ -119,30 +118,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 25, 2.5 ), Vector3( 0, 25, 2.5 ), Vector3( 0, 25, -15 ), Vector3( 0, 45, -30 ), Vector3( 0, 40, -48 ) ]
 }
-
-[sub_resource type="Gradient" id=15]
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=16]
-gradient = SubResource( 15 )
-width = 120
-
-[sub_resource type="Gradient" id=17]
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 1, 0.239216, 0.239216, 1 )
-
-[sub_resource type="GradientTexture" id=18]
-gradient = SubResource( 17 )
-width = 120
-
-[sub_resource type="Gradient" id=19]
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=20]
-gradient = SubResource( 19 )
-width = 120
 
 [sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0 )
@@ -286,42 +261,13 @@ script = ExtResource( 9 )
 size = 480
 scene = ExtResource( 10 )
 
-[node name="Goodies" type="Spatial" parent="."]
-script = ExtResource( 28 )
-goodies = [ 0, 0, 2, 2, 2, 3, 3, 6, 6, 6 ]
-extent = 480
-
-[node name="Control2" type="Label" parent="."]
-visible = false
-margin_top = 259.0
-margin_right = 121.0
-margin_bottom = 279.0
-text = "Shields"
-
-[node name="TextureProgress" type="TextureProgress" parent="."]
-visible = false
-margin_top = 280.0
-margin_right = 1200.0
-margin_bottom = 300.0
-value = 50.0
-texture_under = SubResource( 16 )
-texture_progress = SubResource( 18 )
-texture_progress_offset = Vector2( 2, 2 )
-
-[node name="ShieldBarBack" type="TextureRect" parent="."]
-visible = false
-margin_top = 272.0
-margin_right = 120.0
-margin_bottom = 292.0
-texture = SubResource( 20 )
-expand = true
-
 [node name="Control" type="Control" parent="."]
-rect_scale = Vector2( 0.25, 0.25 )
+margin_right = 200.0
+margin_bottom = 200.0
 
 [node name="Minimap" type="MarginContainer" parent="Control"]
-margin_right = 1030.0
-margin_bottom = 1030.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -330,10 +276,12 @@ script = ExtResource( 19 )
 player = NodePath("../../Player")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/Minimap"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 1025.0
-margin_bottom = 1025.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
 custom_constants/margin_right = 80
 custom_constants/margin_top = 80
 custom_constants/margin_left = 80
@@ -343,10 +291,8 @@ __meta__ = {
 }
 
 [node name="Grid" type="TextureRect" parent="Control/Minimap/MarginContainer"]
-margin_left = 80.0
-margin_top = 80.0
-margin_right = 940.0
-margin_bottom = 940.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = SubResource( 12 )
 stretch_mode = 2
 __meta__ = {
@@ -354,76 +300,83 @@ __meta__ = {
 }
 
 [node name="Player" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
-position = Vector2( 430, 430 )
+position = Vector2( 84, 84 )
 z_index = 1
 color = Color( 0, 0.858824, 1, 1 )
 texture = SubResource( 14 )
-polygon = PoolVector2Array( -16, 0, 0, 16, 16, 0, 0, -16 )
+polygon = PoolVector2Array( -4, 0, 0, 4, 4, 0, 0, -4 )
 
 [node name="Goodie" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
+position = Vector2( 84, 84 )
 color = Color( 0, 0.529412, 1, 1 )
 texture = SubResource( 14 )
-polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+polygon = PoolVector2Array( -2, 0, 0, 2, 2, 0, 0, -2 )
 
 [node name="Green" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
+position = Vector2( 84, 84 )
 color = Color( 0, 1, 0.576471, 1 )
 texture = SubResource( 14 )
-polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+polygon = PoolVector2Array( -2, 0, 0, 2, 2, 0, 0, -2 )
 
 [node name="Yellow" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
+position = Vector2( 84, 84 )
 color = Color( 0.945098, 1, 0, 1 )
 texture = SubResource( 14 )
-polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+polygon = PoolVector2Array( -2, 0, 0, 2, 2, 0, 0, -2 )
 
 [node name="Orange" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
+position = Vector2( 84, 84 )
 color = Color( 1, 0.654902, 0, 1 )
 texture = SubResource( 14 )
-polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+polygon = PoolVector2Array( -2, 0, 0, 2, 2, 0, 0, -2 )
 
 [node name="Red" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
+position = Vector2( 84, 84 )
 color = Color( 1, 0, 0, 1 )
 texture = SubResource( 14 )
-polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+polygon = PoolVector2Array( -2, 0, 0, 2, 2, 0, 0, -2 )
 
 [node name="Cyan" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
+position = Vector2( 84, 84 )
 color = Color( 0, 0.952941, 1, 1 )
 texture = SubResource( 14 )
-polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+polygon = PoolVector2Array( -2, 0, 0, 2, 2, 0, 0, -2 )
 
 [node name="Carrier" type="Sprite" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
-scale = Vector2( 0.05, 0.05 )
+position = Vector2( 84, 84 )
+scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 24 )
 
 [node name="Boss" type="Sprite" parent="Control/Minimap/MarginContainer/Grid"]
 visible = false
-position = Vector2( 430, 430 )
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( 84, 84 )
+scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 25 )
 
 [node name="Frame" type="NinePatchRect" parent="Control/Minimap"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 1025.0
-margin_bottom = 1025.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 18 )
 patch_margin_left = 84
 patch_margin_top = 84
 patch_margin_right = 84
 patch_margin_bottom = 84
+
+[node name="TextureProgress" type="TextureProgress" parent="Control/Minimap"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 195.0
+margin_bottom = 195.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
 [connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]
