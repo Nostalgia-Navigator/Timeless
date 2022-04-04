@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Script/ExplosionColor.gd" type="Script" id=1]
-[ext_resource path="res://fire_02.png" type="Texture" id=2]
+[ext_resource path="res://Images/fire_02.png" type="Texture" id=2]
 
 [sub_resource type="Curve" id=3]
 max_value = 5.0

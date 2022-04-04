@@ -1,6 +1,6 @@
 extends Node
 
-export(PackedScene) var boss = preload("res://Plane/BleriotXIMonoplaneCyan.tscn")
+export(PackedScene) var boss
 const outro = preload("res://Landing.tscn")
 var count = 0
 var player

@@ -11,7 +11,7 @@ var sideSpeed = 0
 const strafeSpeed = 0.6 * ADJUST
 
 var exhaust
-const bullet = preload("res://Bullet/PlayerBullet1.tscn")
+const bullet = preload("res://Bullet/PlayerBullet3.tscn")
 const explosion = preload("res://Explosion/Plane.tscn")
 const debris = preload("res://Effect/Debris.tscn")
 const shake = preload("res://Effect/Shake.tscn")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Script/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Owner.gd" type="Script" id=2]
+[ext_resource path="res://Script/Owner.gd" type="Script" id=2]
 
 [sub_resource type="SphereMesh" id=8]
 radius = 1.5

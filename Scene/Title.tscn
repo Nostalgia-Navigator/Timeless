@@ -4,16 +4,16 @@
 [ext_resource path="res://Scene/SetScene.gd" type="Script" id=2]
 [ext_resource path="res://Scene/MissionBriefing.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Blender/Hero/Wingnuts 3D/001.png" type="Texture" id=4]
-[ext_resource path="res://TopGun-vmK0Z.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Scene/TopGun.tres" type="DynamicFont" id=6]
-[ext_resource path="res://OGLS.27002.dat.png" type="Texture" id=7]
-[ext_resource path="res://OGLS.27004.dat.png" type="Texture" id=8]
+[ext_resource path="res://Font/TopGun-vmK0Z.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Images/OGLS.27002.dat.png" type="Texture" id=7]
+[ext_resource path="res://Images/OGLS.27004.dat.png" type="Texture" id=8]
 [ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=9]
 [ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=10]
 [ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=11]
-[ext_resource path="res://OGLS.27001.dat.png" type="Texture" id=12]
-[ext_resource path="res://OGLS.27003.dat.png" type="Texture" id=13]
-[ext_resource path="res://Interface (master).mp3" type="AudioStream" id=14]
+[ext_resource path="res://Images/OGLS.27001.dat.png" type="Texture" id=12]
+[ext_resource path="res://Images/OGLS.27003.dat.png" type="Texture" id=13]
+[ext_resource path="res://Sound/Interface (master).mp3" type="AudioStream" id=14]
 [ext_resource path="res://Scene/SetMusic.gd" type="Script" id=15]
 
 [sub_resource type="BitmapFont" id=16]
@@ -146,23 +146,25 @@ align = 1
 valign = 1
 
 [node name="Sprite5" type="Sprite" parent="."]
-position = Vector2( 835.505, 861.077 )
-scale = Vector2( 1.75, 1.75 )
+position = Vector2( 795.285, 765.135 )
+scale = Vector2( 2.5, 2.5 )
+z_index = 2
 texture = ExtResource( 8 )
 
 [node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( 1099.21, 888.05 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 1007.57, 799.629 )
+scale = Vector2( 2.25, 2.25 )
 texture = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1308.97, 831.111 )
-scale = Vector2( 2, 2 )
+position = Vector2( 1275.21, 705.715 )
+scale = Vector2( 3, 3 )
+z_index = 4
 texture = ExtResource( 12 )
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 1572.67, 863.075 )
-scale = Vector2( 1.75, 1.75 )
+position = Vector2( 1554.99, 777.87 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 7 )
 
 [node name="SetMusic" type="Node" parent="."]

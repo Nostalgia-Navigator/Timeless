@@ -11,11 +11,11 @@
 [ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=9]
 [ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=10]
 [ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=11]
-[ext_resource path="res://Scene/TopGun.tres" type="DynamicFont" id=12]
-[ext_resource path="res://Scene/Main.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Scene/Mission.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scene/SetScene.gd" type="Script" id=14]
 [ext_resource path="res://Scene/SetMusic.gd" type="Script" id=15]
-[ext_resource path="res://Audio/stage_01.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Sound/stage_01.mp3" type="AudioStream" id=16]
 
 [sub_resource type="BitmapFont" id=16]
 

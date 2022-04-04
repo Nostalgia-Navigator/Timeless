@@ -63,8 +63,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Timeless - Wingnuts: Temporal Navigator"
-run/main_scene="res://Scene/Main.tscn"
-boot_splash/image="res://Blender/Output/Nostalgia Navigator/001.png"
+run/main_scene="res://Scene/Mission.tscn"
+boot_splash/image="res://Images/Project Timeless.png"
 config/icon="res://Blender/Render0001.png"
 
 [autoload]
@@ -75,7 +75,7 @@ IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 BFCHelpers="*res://addons/bitmap_font_creator/BFCHelpers.gd"
 Bgm="*res://Scene/BGM.tscn"
-Formations="*res://Formations.tscn"
+Formations="*res://Plane/Formations.tscn"
 
 [editor_plugins]
 

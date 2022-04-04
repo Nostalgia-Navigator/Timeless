@@ -157,7 +157,7 @@ script = ExtResource( 2 )
 [node name="Spin" type="Spatial" parent="Sideturn/Turn"]
 
 [node name="ParachutePlayer" parent="Sideturn/Turn/Spin" instance=ExtResource( 1 )]
-transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 
 [node name="Spinner" type="AnimationPlayer" parent="."]
 autoplay = "Spin"
@@ -172,3 +172,5 @@ anims/Warn = SubResource( 5 )
 autoplay = "Descend"
 anims/Descend = SubResource( 6 )
 anims/RESET = SubResource( 7 )
+
+[editable path="Sideturn/Turn/Spin/ParachutePlayer"]

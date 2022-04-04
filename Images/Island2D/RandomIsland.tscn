@@ -1,0 +1,25 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Script/SingleGenerator.gd" type="Script" id=1]
+[ext_resource path="res://Images/Island2D/OGLS.7002.dat.png" type="Texture" id=2]
+[ext_resource path="res://Images/Island2D/OGLS.7005.dat.png" type="Texture" id=3]
+[ext_resource path="res://Images/Island2D/OGLS.7003.dat.png" type="Texture" id=4]
+[ext_resource path="res://Images/Island2D/OGLS.7000.dat.png" type="Texture" id=5]
+[ext_resource path="res://Images/Island2D/OGLS.7001.dat.png" type="Texture" id=6]
+[ext_resource path="res://Images/Island2D/OGLS.7004.dat.png" type="Texture" id=7]
+[ext_resource path="res://Images/Island2D/OGLS.7006.dat.png" type="Texture" id=8]
+[ext_resource path="res://Images/Island2D/OGLS.7007.dat.png" type="Texture" id=9]
+[ext_resource path="res://Images/Island2D/OGLS.7008.dat.png" type="Texture" id=10]
+[ext_resource path="res://Images/Island2D/OGLS.7009.dat.png" type="Texture" id=11]
+[ext_resource path="res://Images/Island2D/OGLS.7010.dat.png" type="Texture" id=12]
+[ext_resource path="res://Images/Island2D/OGLS.7011.dat.png" type="Texture" id=13]
+[ext_resource path="res://Images/Island2D/IslandBase.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Images/Island2D/OGLS.7013.dat.png" type="Texture" id=15]
+[ext_resource path="res://Images/Island2D/OGLS.7012.dat.png" type="Texture" id=16]
+[ext_resource path="res://Images/Island2D/OGLS.7015.dat.png" type="Texture" id=17]
+[ext_resource path="res://Images/Island2D/OGLS.7014.dat.png" type="Texture" id=18]
+
+[node name="IslandGenerator" type="Position3D"]
+script = ExtResource( 1 )
+sprites = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 17 ) ]
+scene = ExtResource( 14 )

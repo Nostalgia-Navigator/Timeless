@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Blender/PlayerBullet3.dae" type="PackedScene" id=1]
+[ext_resource path="res://Script/Bullet.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+resource_local_to_scene = true
+albedo_color = Color( 1, 0.470588, 0.6, 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cube:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cube:material/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.470588, 0.6, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Spin"
+length = 1.8
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cube:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -2070, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cube:material/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65, 1.8 ),
+"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 0.470588, 0.6, 1 ), Color( 1, 0, 0.72549, 1 ), Color( 1, 0.470588, 0.6, 1 ), Color( 1, 0, 0.72549, 1 ), Color( 1, 0.470588, 0.6, 1 ), Color( 1, 0, 0.72549, 1 ), Color( 1, 0.470588, 0.6, 1 ), Color( 1, 0, 0.72549, 1 ), Color( 1, 0.470588, 0.6, 1 ), Color( 1, 0, 0.72549, 1 ), Color( 1, 0.470588, 0.6, 1 ), Color( 1, 0, 0.72549, 1 ), Color( 1, 0.470588, 0.6, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="PlayerBullet3" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Cube" parent="." index="0"]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+material/0 = SubResource( 1 )
+
+[node name="Area" type="Area" parent="Cube" index="0"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape" type="CollisionPolygon" parent="Cube/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+depth = 0.0
+polygon = PoolVector2Array( 2.48647, 1.00503, 2.9926, -0.0429837, 3.03795, 1.00507, 2.7835, 2.00263, 2.30393, 3.00104, 0.983676, 4.03474, -0.045208, 4.53311, -0.988103, 4.79356, -2.0504, 4.80204, -2.54639, 4.55315, -2.85899, 3.96354, -2.74896, 3.23389, -2.39793, 2.81789, -1.90186, 2.70651, -1.47024, 2.73378, -0.50254, 2.73645, 0.516457, 2.49705, 1.45122, 2.01064 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Spin"
+anims/RESET = SubResource( 2 )
+anims/Spin = SubResource( 3 )
+
+[connection signal="area_entered" from="Cube/Area" to="." method="_on_area_entered"]

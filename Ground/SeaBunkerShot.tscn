@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Blender/SeaBunkerShot.dae" type="PackedScene" id=1]
-[ext_resource path="res://Owner.gd" type="Script" id=2]
+[ext_resource path="res://Script/Owner.gd" type="Script" id=2]
 [ext_resource path="res://Script/Bullet.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]

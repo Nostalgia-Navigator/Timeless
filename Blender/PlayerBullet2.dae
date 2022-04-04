@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+<asset>
+	<contributor>
+		<author>Anonymous</author>
+		<authoring_tool>Collada Exporter for Blender 2.6+, by Juan Linietsky (juan@codenix.com)</authoring_tool>
+	</contributor>
+	<created>2022-04-03T19:08:25Z</created>
+	<modified>2022-04-03T19:08:25Z</modified>
+	<unit meter="1.0" name="meter"/>
+	<up_axis>Z_UP</up_axis>
+</asset>
+<library_geometries>
+	<geometry id="id-mesh-2" name="Cone">
+		<mesh>
+			<source id="id-mesh-2-positions">
+				<float_array id="id-mesh-2-positions-array" count="72"> 0.0 1.0 0.0 0.0 0.0 0.75 1.0 -4.371138828673793e-08 0.0 1.0 -4.371138828673793e-08 0.0 0.0 0.0 0.75 -8.742277657347586e-08 -1.0 0.0 -8.742277657347586e-08 -1.0 0.0 0.0 0.0 0.75 -1.0 1.1924880638503055e-08 0.0 -1.0 1.1924880638503055e-08 0.0 0.0 0.0 0.75 0.0 1.0 0.0 0.0 1.0 0.0 1.0 -4.371138828673793e-08 0.0 -1.4901161193847656e-08 1.4906100798128818e-09 -0.75 -1.0 1.1924880638503055e-08 0.0 0.0 1.0 0.0 -1.4901161193847656e-08 1.4906100798128818e-09 -0.75 -8.742277657347586e-08 -1.0 0.0 -1.0 1.1924880638503055e-08 0.0 -1.4901161193847656e-08 1.4906100798128818e-09 -0.75 1.0 -4.371138828673793e-08 0.0 -8.742277657347586e-08 -1.0 0.0 -1.4901161193847656e-08 1.4906100798128818e-09 -0.75</float_array>
+				<technique_common>
+				<accessor source="#id-mesh-2-positions-array" count="24" stride="3">
+					<param name="X" type="float"/>
+					<param name="Y" type="float"/>
+					<param name="Z" type="float"/>
+				</accessor>
+				</technique_common>
+			</source>
+			<source id="id-mesh-2-normals">
+				<float_array id="id-mesh-2-normals-array" count="72"> 0.514495849609375 0.5144957900047302 0.6859943866729736 0.514495849609375 0.5144957900047302 0.6859943866729736 0.514495849609375 0.5144957900047302 0.6859943866729736 0.5144957304000854 -0.514495849609375 0.6859943866729736 0.5144957304000854 -0.514495849609375 0.6859943866729736 0.5144957304000854 -0.514495849609375 0.6859943866729736 -0.5144957900047302 -0.5144957304000854 0.6859943866729736 -0.5144957900047302 -0.5144957304000854 0.6859943866729736 -0.5144957900047302 -0.5144957304000854 0.6859943866729736 -0.5144957900047302 0.5144957900047302 0.6859943866729736 -0.5144957900047302 0.5144957900047302 0.6859943866729736 -0.5144957900047302 0.5144957900047302 0.6859943866729736 0.514495849609375 0.5144957900047302 -0.6859943866729736 0.514495849609375 0.5144957900047302 -0.6859943866729736 0.514495849609375 0.5144957900047302 -0.6859943866729736 -0.5144957900047302 0.5144957900047302 -0.6859943866729736 -0.5144957900047302 0.5144957900047302 -0.6859943866729736 -0.5144957900047302 0.5144957900047302 -0.6859943866729736 -0.5144957900047302 -0.5144957304000854 -0.6859943866729736 -0.5144957900047302 -0.5144957304000854 -0.6859943866729736 -0.5144957900047302 -0.5144957304000854 -0.6859943866729736 0.5144957304000854 -0.514495849609375 -0.6859943866729736 0.5144957304000854 -0.514495849609375 -0.6859943866729736 0.5144957304000854 -0.514495849609375 -0.6859943866729736</float_array>
+				<technique_common>
+				<accessor source="#id-mesh-2-normals-array" count="24" stride="3">
+					<param name="X" type="float"/>
+					<param name="Y" type="float"/>
+					<param name="Z" type="float"/>
+				</accessor>
+				</technique_common>
+			</source>
+			<vertices id="id-mesh-2-vertices">
+				<input semantic="POSITION" source="#id-mesh-2-positions"/>
+			</vertices>
+			<polygons count="8">
+				<input semantic="VERTEX" source="#id-mesh-2-vertices" offset="0"/>
+				<input semantic="NORMAL" source="#id-mesh-2-normals" offset="0"/>
+				<p> 0 1 2 </p>
+				<p> 3 4 5 </p>
+				<p> 6 7 8 </p>
+				<p> 9 10 11 </p>
+				<p> 12 13 14 </p>
+				<p> 15 16 17 </p>
+				<p> 18 19 20 </p>
+				<p> 21 22 23 </p>
+			</polygons>
+		</mesh>
+	</geometry>
+</library_geometries>
+<library_visual_scenes>
+	<visual_scene id="id-scene-1" name="scene">
+		<node id="Cone" name="Cone" type="NODE">
+			<matrix sid="transform"> 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0  </matrix>
+			<instance_geometry url="#id-mesh-2">
+			</instance_geometry>
+		</node>
+	</visual_scene>
+</library_visual_scenes>
+<scene>
+	<instance_visual_scene url="#id-scene-1" />
+</scene>
+</COLLADA>

@@ -5,7 +5,7 @@
 [ext_resource path="res://Blender/ParachuteLightGreen.material" type="Material" id=3]
 [ext_resource path="res://Blender/ParachuteDarkGreen.material" type="Material" id=4]
 [ext_resource path="res://Script/Goodie.gd" type="Script" id=5]
-[ext_resource path="res://Owner.gd" type="Script" id=6]
+[ext_resource path="res://Script/Owner.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 3.0
@@ -151,43 +151,43 @@ resource_name = "Flash"
 length = 0.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Cylinder:mesh:surface_1/material:albedo_color")
+tracks/0/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_1/material:albedo_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 0.0352941, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Cylinder011:mesh:surface_1/material:albedo_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 0, 0.34902, 1 ), Color( 1, 0, 0, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_1/material:albedo_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 0, 0.56, 0.0373333, 1 ), Color( 1, 0, 0, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_2/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 1, 0.0612461, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_3/material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0.34902, 1 ), Color( 1, 0, 0, 1 ) ]
+}
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_2/material:albedo_color")
+tracks/3/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_4/material:albedo_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -196,10 +196,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Color( 0, 1, 0.0612461, 1 ), Color( 1, 0, 0, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Cylinder009:mesh:surface_1/material:albedo_color")
+tracks/4/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_5/material:albedo_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -208,13 +208,13 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+"values": [ Color( 0.0352941, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=9]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Cylinder:mesh:surface_1/material:albedo_color")
+tracks/0/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_1/material:albedo_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -223,10 +223,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.0352941, 0, 1, 1 ) ]
+"values": [ Color( 0, 0.56, 0.0373333, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Cylinder011:mesh:surface_1/material:albedo_color")
+tracks/1/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_2/material:albedo_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -235,10 +235,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0.34902, 1 ) ]
+"values": [ Color( 0, 1, 0.0612461, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_1/material:albedo_color")
+tracks/2/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_3/material:albedo_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -247,10 +247,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0.56, 0.0373333, 1 ) ]
+"values": [ Color( 1, 0, 0.34902, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_2/material:albedo_color")
+tracks/3/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_4/material:albedo_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -259,10 +259,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0612461, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Cylinder009:mesh:surface_1/material:albedo_color")
+tracks/4/path = NodePath("Sideturn/Turn/Spin/ParachuteFuel/Sphere:mesh:surface_5/material:albedo_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -271,7 +271,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0.0352941, 0, 1, 1 ) ]
 }
 
 [sub_resource type="SpatialMaterial" id=6]
@@ -310,7 +310,7 @@ color2 = ExtResource( 3 )
 [node name="Spin" type="Spatial" parent="Sideturn/Turn"]
 
 [node name="ParachuteFuel" parent="Sideturn/Turn/Spin" instance=ExtResource( 1 )]
-transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Sideturn/Turn/Spin" groups=["Goodie"]]
 collision_mask = 0

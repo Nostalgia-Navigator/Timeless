@@ -62,7 +62,7 @@ func _physics_process(delta):
 				var vel = -get_global_transform().basis.z * speed
 				b.source = self
 				b.set_global_transform(get_global_transform())
-				b.vel = 1.2 * ADJUST * offset.normalized() + vel
+				b.vel = 1 * ADJUST * offset.normalized() + vel
 				
 				cooldownLeft = fireCooldown
 				firing = true
@@ -83,9 +83,15 @@ func _physics_process(delta):
 		rotation_degrees.y -= delta * 360 / 30
 		
 	self.translate(Vector3(0, 0, -speed * delta))
+
 func on_damage(projectile):
 	var damage = projectile.damage
 	hp -= damage
+	
+	var h = hit.instance()
+	get_parent().add_child(h)
+	h.emitting = true
+	h.set_global_transform(projectile.get_global_transform())
 	
 	var world = player.get_parent()
 	if(hp <= 0):

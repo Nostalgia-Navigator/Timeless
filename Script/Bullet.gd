@@ -1,6 +1,6 @@
 extends Spatial
 export(Vector3) var vel
-export(int) var damage = 4
+export(int) var damage = rand_range(4, 16)
 export(String, "Plane", "Player") var hit = "Plane"
 var source
 
