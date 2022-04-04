@@ -1,6 +1,8 @@
 extends Spatial
 
 const ADJUST = 40
+export(String) var planeName
+export(NodePath) var body
 export(int, 0, 2, 1) var markerType
 export(int) var hp = 15
 export(float) var speed = 0.4 * ADJUST
@@ -12,18 +14,36 @@ var turnLeft = 180
 
 const timer = preload("res://Effect/ParticleTimer.tscn")
 const explosion = preload("res://Explosion/Plane.tscn")
-const debris = preload("res://Effect/Debris.tscn")
+const chunk = preload("res://Effect/Debris.tscn")
 const bullet = preload("res://Bullet/SmallBullet.tscn")
 const hit = preload("res://Explosion/Hit.tscn")
 signal on_destroyed
 signal on_damaged
 
 var solo = true
-
-onready var smoke = $Smoke
 onready var player = get_tree().get_root().get_node("Main/Player")
 const fireCooldown = 5
 var cooldownLeft = fireCooldown
+
+export(PackedScene) var debris
+const shardTemplate = preload("res://Effect/DebrisTemplate.tscn")
+const DestructionUtils = preload("res://addons/destruction/DestructionUtils.gd")
+
+var smoke
+var left
+var right
+func _ready():
+	body = get_node(body)
+	left = Spatial.new()
+	left.transform.origin = Vector3(-1, 0, 0)
+	add_child(left)
+	
+	right = Spatial.new()
+	right.transform.origin = Vector3(1, 0, 0)
+	add_child(right)
+
+	smoke = preload("res://Effect/PlaneSmoke.tscn").instance()
+	add_child(smoke)
 func set_solo(s):
 	solo = s
 func on_area_entered(other):
@@ -77,7 +97,7 @@ func _physics_process(delta):
 			turnDelta = turnLeft
 		rotation_degrees.y += turnDelta
 		turnLeft -= turnDelta
-	elif (($Left.get_global_transform().origin - p).length() < ($Right.get_global_transform().origin - p).length()):
+	elif ((left.get_global_transform().origin - p).length() < (right.get_global_transform().origin - p).length()):
 		rotation_degrees.y += delta * 360 / 30
 	else:
 		rotation_degrees.y -= delta * 360 / 30
@@ -95,7 +115,6 @@ func on_damage(projectile):
 	
 	var world = player.get_parent()
 	if(hp <= 0):
-		var smoke = $Smoke
 		smoke.emitting = false
 		var p = smoke.get_parent()
 		if p:
@@ -114,7 +133,9 @@ func on_damage(projectile):
 		e.set_global_transform(get_global_transform())
 		
 		var vel = -get_global_transform().basis.z * speed
-		var shards = $Destruction.destroy()
+		
+		var shards = DestructionUtils.create_shards(debris.instance(), shardTemplate)
+		
 		for s in shards.get_children():
 			#var offset = (s.get_global_transform().origin - transform.origin)
 			var angle = (rand_range(0, PI*2))
@@ -123,10 +144,8 @@ func on_damage(projectile):
 			var m = 30
 			s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 			
-			var st = s.get_global_transform()
-			s.get_parent().remove_child(s)
-			world.add_child(s)
-			s.set_global_transform(st)
+		world.add_child(shards)
+		shards.set_global_transform(get_global_transform())
 			
 		projectile.source.score += score
 		emit_signal("on_destroyed", self, projectile)
@@ -141,7 +160,7 @@ func on_damage(projectile):
 		
 		for i in range(3):
 			var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
-			var d = debris.instance()
+			var d = chunk.instance()
 			world.add_child(d)
 			d.get_node("Body").set_surface_material(0, material)
 			d.set_global_transform(projectile.get_global_transform())
@@ -153,8 +172,8 @@ func on_damage(projectile):
 			d.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 		
 		if hp <= 10:
-			$Smoke.emitting = true
-			$Smoke.process_material.set("initial_velocity", -speed)
+			smoke.emitting = true
+			smoke.process_material.set("initial_velocity", -speed)
 		
 		emit_signal("on_damaged", self, projectile)
 

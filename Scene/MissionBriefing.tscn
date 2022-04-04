@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://PlaneHolder.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Scene/SetMusic.gd" type="Script" id=15]
 [ext_resource path="res://Sound/stage_01.mp3" type="AudioStream" id=16]
 [ext_resource path="res://Scene/MoveIn.gd" type="Script" id=17]
+[ext_resource path="res://Scene/MissionBriefing.gd" type="Script" id=18]
 
 [sub_resource type="BitmapFont" id=16]
 
@@ -192,6 +193,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 18 )
 
 [node name="Title" type="Label" parent="Content"]
 margin_left = 90.0
