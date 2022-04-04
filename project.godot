@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Timeless - Wingnuts: Temporal Navigator"
-run/main_scene="res://Scene/Mission.tscn"
+run/main_scene="res://Scene/MissionBriefing.tscn"
 boot_splash/image="res://Images/Project Timeless.png"
 config/icon="res://Blender/Render0001.png"
 
