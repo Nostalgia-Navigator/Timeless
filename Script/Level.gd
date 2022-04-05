@@ -1,13 +1,21 @@
 extends Node
 
+export(bool) var debug = true
 export(PackedScene) var boss
-const outro = preload("res://Landing.tscn")
+const outro = preload("res://Misc/Landing.tscn")
 var count = 0
 var player
 export(Array, PackedScene) var planeTypes
 
 signal on_boss_spawned
 func _ready():
+	if !debug:
+		var l = Game.get_current_level_desc()
+		boss = l.boss
+		planeTypes = []
+		planeTypes.append_array(l.A)
+		planeTypes.append_array(l.B)
+		planeTypes.append_array(l.C)
 	player = get_tree().get_root().get_node("Main/Player")
 	call_deferred("register_planes")
 func register_planes():

@@ -69,8 +69,13 @@ func on_damage(projectile):
 		hitExplosion.emitting = true
 		add_child(hitExplosion)
 		hitExplosion.set_global_transform(projectile.get_global_transform())
+		
+		Game.stats.hits += 1
+		
 		return
 	while(hp <= 0):
+		
+		Game.stats.hits += 1
 		if len(sections) == 0:
 			var world = $Wraparound.player.get_parent()
 			for i in get_explosion_points($ExplosionPoints):
@@ -95,6 +100,9 @@ func on_damage(projectile):
 				s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 			emit_signal("on_destroyed", self, projectile)
 			call_deferred("queue_free")
+			
+			
+			Game.destroyed.bosses += 1
 			return
 		hp += sectionHp
 		
@@ -117,6 +125,7 @@ func on_damage(projectile):
 		sectionSmoke.emitting = true
 		add_child(sectionSmoke)
 		sectionSmoke.set_global_transform(section.get_global_transform())
+		
 func get_explosion_points(n):
 	if n.get_child_count() == 0:
 		return [n]

@@ -27,8 +27,6 @@ var parent
 
 var shields = 100
 
-var score = 0
-
 var bulletCount = 0
 var firing = false
 
@@ -39,6 +37,8 @@ func intro_done(a):
 		playing = true
 		speed = standardSpeed
 		$AnimationPlayer.play("Invulnerable")
+func get_body():
+	return $Body
 signal on_damaged
 func _ready():
 	exhaust = $Exhaust
@@ -133,6 +133,9 @@ func _physics_process(delta):
 	#var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	
 	if(!playing):
+		
+		if Input.is_key_pressed(KEY_X) and landed:
+			get_tree().change_scene_to(debrief)
 		return
 	
 	bombCooldownLeft -= delta
@@ -212,10 +215,13 @@ func _physics_process(delta):
 		get_parent().add_child(b)
 		bombCooldownLeft = bombCooldown
 		
+
+var debrief = load("res://Menu/Debriefing.tscn")
+
 func on_bullet_expired():
 	bulletCount -= 1
 
-var star = preload("res://Blender/StarParticle.tscn")
+const star = preload("res://Blender/StarParticle.tscn")
 func _on_area_entered(area):
 	if(!playing):
 		return
@@ -239,3 +245,9 @@ func _on_area_entered(area):
 		var p = area.get_parent()
 		if p.is_in_group("Plane"):
 			on_damage(10)
+			
+var landed = false
+func on_landed(anim):
+	landed = true
+	var label = get_tree().get_root().get_node("Main/LevelComplete")
+	label.show()

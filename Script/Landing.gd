@@ -17,3 +17,4 @@ func _on_area_entered(area):
 		n.exhaust.emitting = false
 		n.get_node("AnimationPlayer").play("RESET")
 		$Animation.play("Landing")
+		$Animation.connect("animation_finished", n, "on_landed")

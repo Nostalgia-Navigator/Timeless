@@ -32,8 +32,10 @@ const DestructionUtils = preload("res://addons/destruction/DestructionUtils.gd")
 var smoke
 var left
 var right
+
+func get_body():
+	return get_node(body)
 func _ready():
-	body = get_node(body)
 	left = Spatial.new()
 	left.transform.origin = Vector3(-1, 0, 0)
 	add_child(left)
@@ -133,9 +135,7 @@ func on_damage(projectile):
 		e.set_global_transform(get_global_transform())
 		
 		var vel = -get_global_transform().basis.z * speed
-		
 		var shards = DestructionUtils.create_shards(debris.instance(), shardTemplate)
-		
 		for s in shards.get_children():
 			#var offset = (s.get_global_transform().origin - transform.origin)
 			var angle = (rand_range(0, PI*2))
@@ -143,21 +143,15 @@ func on_damage(projectile):
 			s.linear_velocity = vel + speed * Vector3(cos(angle), 0, sin(angle))	
 			var m = 30
 			s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
-			
 		world.add_child(shards)
 		shards.set_global_transform(get_global_transform())
-			
-		projectile.source.score += score
+		
+		Game.stats.hits += 1	
+		Game.destroyed.aircraft += 1
+		
 		emit_signal("on_destroyed", self, projectile)
 		call_deferred("queue_free")
 	else:
-		
-		#var e = hit.instance()
-		#world.add_child(e)
-		#e.emitting = true
-		#e.set_global_transform(projectile.get_global_transform())
-		# Create some debris
-		
 		for i in range(3):
 			var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
 			var d = chunk.instance()
@@ -170,14 +164,11 @@ func on_damage(projectile):
 			d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
 			d.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
-		
 		if hp <= 10:
 			smoke.emitting = true
 			smoke.process_material.set("initial_velocity", -speed)
-		
+		Game.stats.hits += 1
 		emit_signal("on_damaged", self, projectile)
-
-
 func get_parent_rotation():
 	var result = 0
 	var n = get_parent()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Wraparound.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Misc/Wraparound.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Island2D/OGLS.7000.dat.png" type="Texture" id=2]
 [ext_resource path="res://Script/AutoPolygon.gd" type="Script" id=3]
 
