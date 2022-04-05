@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Plane/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Misc/Tile.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Surface/SeaCannon.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Misc/PlaceGoodies.gd" type="Script" id=28]
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=29]
+[ext_resource path="res://Menu/Readout.gd" type="Script" id=30]
 
 [sub_resource type="Environment" id=6]
 ambient_light_energy = 0.0
@@ -220,9 +221,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0 )
 
-[node name="Gun" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
-
 [node name="Takeoff" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Carrier")
 autoplay = "Takeoff"
@@ -303,15 +301,7 @@ script = ExtResource( 28 )
 goodies = [ 0, 0, 2, 2, 2, 3, 3, 6, 6, 6 ]
 extent = 480
 
-[node name="Control2" type="Label" parent="."]
-visible = false
-margin_top = 259.0
-margin_right = 121.0
-margin_bottom = 279.0
-text = "Shields"
-
 [node name="TextureProgress" type="TextureProgress" parent="."]
-visible = false
 margin_top = 280.0
 margin_right = 1200.0
 margin_bottom = 300.0
@@ -353,20 +343,23 @@ custom_fonts/font = SubResource( 22 )
 text = "Press Enter to finish"
 align = 1
 
-[node name="Control" type="Control" parent="."]
-rect_scale = Vector2( 0.25, 0.25 )
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 256.0
+margin_bottom = 384.0
+color = Color( 0, 0, 0, 1 )
 
-[node name="Minimap" type="MarginContainer" parent="Control"]
+[node name="Minimap" type="MarginContainer" parent="."]
 margin_right = 1030.0
 margin_bottom = 1030.0
+rect_scale = Vector2( 0.25, 0.25 )
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
 script = ExtResource( 19 )
-player = NodePath("../../Player")
+player = NodePath("../Player")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Minimap"]
+[node name="MarginContainer" type="MarginContainer" parent="Minimap"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 1025.0
@@ -379,7 +372,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Grid" type="TextureRect" parent="Control/Minimap/MarginContainer"]
+[node name="Grid" type="TextureRect" parent="Minimap/MarginContainer"]
 margin_left = 80.0
 margin_top = 80.0
 margin_right = 940.0
@@ -390,68 +383,68 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Player" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 position = Vector2( 430, 430 )
 z_index = 1
 color = Color( 0, 0.858824, 1, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -16, 0, 0, 16, 16, 0, 0, -16 )
 
-[node name="Goodie" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Goodie" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 color = Color( 0, 0.529412, 1, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 
-[node name="Green" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Green" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 color = Color( 0, 1, 0.576471, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 
-[node name="Yellow" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Yellow" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 color = Color( 0.945098, 1, 0, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 
-[node name="Orange" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Orange" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 color = Color( 1, 0.654902, 0, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 
-[node name="Red" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Red" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 color = Color( 1, 0, 0, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 
-[node name="Cyan" type="Polygon2D" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Cyan" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 color = Color( 0, 0.952941, 1, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 
-[node name="Carrier" type="Sprite" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Carrier" type="Sprite" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 24 )
 
-[node name="Boss" type="Sprite" parent="Control/Minimap/MarginContainer/Grid"]
+[node name="Boss" type="Sprite" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 25 )
 
-[node name="Frame" type="NinePatchRect" parent="Control/Minimap"]
+[node name="Frame" type="NinePatchRect" parent="Minimap"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 1025.0
@@ -461,6 +454,54 @@ patch_margin_left = 84
 patch_margin_top = 84
 patch_margin_right = 84
 patch_margin_bottom = 84
+
+[node name="Readout" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 30 )
+player = NodePath("../Player")
+
+[node name="Shields" type="Label" parent="Readout"]
+margin_left = 21.25
+margin_top = 259.0
+margin_right = 109.25
+margin_bottom = 273.0
+text = "Shields: 100"
+
+[node name="ShieldsRect" type="ColorRect" parent="Readout"]
+margin_left = 21.25
+margin_top = 273.0
+margin_right = 237.25
+margin_bottom = 289.0
+color = Color( 0.12549, 0.607843, 0.407843, 1 )
+
+[node name="Fuel" type="Label" parent="Readout"]
+margin_left = 21.25
+margin_top = 294.75
+margin_right = 109.25
+margin_bottom = 308.75
+text = "Fuel: 100"
+
+[node name="FuelRect" type="ColorRect" parent="Readout"]
+margin_left = 21.25
+margin_top = 308.75
+margin_right = 237.25
+margin_bottom = 324.75
+color = Color( 0.607843, 0.12549, 0.364706, 1 )
+
+[node name="Time" type="Label" parent="Readout"]
+margin_left = 21.25
+margin_top = 329.327
+margin_right = 109.25
+margin_bottom = 343.327
+text = "Time: 100"
+
+[node name="TimeRect2" type="ColorRect" parent="Readout"]
+margin_left = 21.25
+margin_top = 343.327
+margin_right = 237.25
+margin_bottom = 359.327
+color = Color( 0.12549, 0.415686, 0.607843, 1 )
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
 [connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]

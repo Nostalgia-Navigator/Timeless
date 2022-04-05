@@ -33,6 +33,8 @@ func level(location, year, A, B, C, boss, surfaceTypes, goodieTypes, misc):
 func get_current_level_desc():
 	return levels[currentLevel]
 
+var paused = null
+
 enum Difficulty {
 	Trivial, Easy, Medium, Challenging, Diabolical
 }

@@ -1,5 +1,4 @@
 extends Node
-export(PackedScene) var scene
 export(bool) var fade = false
 export(NodePath) var anim
 func _ready():
@@ -10,7 +9,13 @@ func clicked():
 		anim.connect("animation_finished", self, "transition")
 		return
 	
-	get_tree().change_scene_to(scene)	
+	go()
 func transition(a):
 	anim.disconnect("animation_finished", self, "transition")
-	get_tree().change_scene_to(scene)	
+	go()
+func go():
+	var paused = Game.paused
+	var root = get_tree().root
+	root.remove_child(root.get_child(root.get_child_count() - 1))
+	root.add_child(paused)
+	Game.paused = null

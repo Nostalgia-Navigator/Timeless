@@ -4,9 +4,6 @@ export(int) var damage = rand_range(4, 16)
 export(String, "Plane", "Player") var hit = "Plane"
 var source
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 func _physics_process(delta):
 	self.global_translate(vel * delta)
 func _on_area_entered(area):

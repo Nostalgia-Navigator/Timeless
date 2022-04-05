@@ -61,7 +61,10 @@ func fire(timer):
 		var bulletSpeed = 1.5
 		#var future_offset = offset + velDiff * distance / (bulletSpeed * 60)
 		if distance < 80:
-			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, [$Area], 2147483647, false, true)
+			var child_areas = []
+			for n in planes:
+				child_areas.append(n.get_node("Area"))
+			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, child_areas, 2147483647, false, true)
 			var clear = result.empty() or (result["collider"].get_parent() == player)
 			if clear:
 				var b = bullet.instance()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Effect/Crosshair.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Script/Player.gd" type="Script" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Blender/Window.material" type="Material" id=8]
 [ext_resource path="res://Blender/Hull.material" type="Material" id=9]
 [ext_resource path="res://Effect/GreenBarrier.png" type="Texture" id=10]
-[ext_resource path="res://Script/Barrier.gd" type="Script" id=11]
 [ext_resource path="res://Script/Owner.gd" type="Script" id=12]
 
 [sub_resource type="ArrayMesh" id=1]
@@ -283,7 +282,7 @@ tracks/5/keys = {
 "values": [ Color( 0.972549, 1, 0.521569, 0.2 ), Color( 0.972549, 1, 0.521569, 1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Node/Barrier:opacity")
+tracks/6/path = NodePath("Barrier:opacity")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -382,7 +381,7 @@ tracks/5/keys = {
 "values": [ Color( 0.972549, 1, 0.521569, 1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Node/Barrier:opacity")
+tracks/6/path = NodePath("Barrier:opacity")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -531,18 +530,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -40 )
 anims/Invulnerable = SubResource( 16 )
 anims/RESET = SubResource( 17 )
 
-[node name="Node" type="Node" parent="."]
-
-[node name="Barrier" type="Sprite3D" parent="Node"]
+[node name="Barrier" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 opacity = 0.0
 pixel_size = 0.02
 texture = ExtResource( 10 )
-script = ExtResource( 11 )
 
-[node name="Spin" type="AnimationPlayer" parent="Node/Barrier"]
+[node name="Spin" type="AnimationPlayer" parent="Barrier"]
 autoplay = "Spin"
 anims/RESET = SubResource( 18 )
 anims/Spin = SubResource( 19 )
+
+[node name="Gun" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_entered"]

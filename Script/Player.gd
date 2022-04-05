@@ -21,11 +21,12 @@ const fireCooldown = 0.1
 const bombCooldown = 0.8
 var bombCooldownLeft = 0
 
-const fullHP = 30
+const fullHP = 100
 var hp = fullHP
 var parent
 
-var shields = 100
+const fullFuel = 100
+var fuel = fullFuel
 
 var bulletCount = 0
 var firing = false
@@ -53,7 +54,6 @@ func on_damage(projectile):
 	var dmg = projectile
 	if projectile is Node:
 		dmg = projectile.damage
-	emit_signal("on_damaged")
 	if hp <= dmg:
 		var e = explosion.instance()
 		e.transform.origin = get_global_transform().origin
@@ -107,8 +107,13 @@ func on_damage(projectile):
 		t.start()
 		hide()
 		playing = false
+		hp = 0
 	else:
 		hp -= dmg
+	
+	emit_signal("on_damaged", self)
+	
+signal on_respawned
 func respawn():
 	show()
 	playing = true
@@ -119,6 +124,7 @@ func respawn():
 	p.queue_free()
 	add_child(exhaust)
 	$AnimationPlayer.play("Invulnerable")
+	emit_signal("on_respawned", self)
 func get_camera_origin():
 	
 	if is_inside_tree():
@@ -132,10 +138,21 @@ func _physics_process(delta):
 	#var from = camera.project_ray_origin(mouse_pos)
 	#var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	
+	if Input.is_key_pressed(KEY_ESCAPE):
+		var r = get_tree().get_root()
+		
+		var sc = get_parent()
+		r.remove_child(sc)
+		
+		Game.paused = sc
+		var paused = load("res://Menu/Pause.tscn").instance()
+		r.add_child(paused)
+	
 	if(!playing):
 		
-		if Input.is_key_pressed(KEY_X) and landed:
+		if Input.is_key_pressed(KEY_ENTER) and landed:
 			get_tree().change_scene_to(debrief)
+		
 		return
 	
 	bombCooldownLeft -= delta
@@ -193,6 +210,8 @@ func _physics_process(delta):
 	$Body.rotation = body_rotation
 	
 	
+	fuel -= delta / 2
+	
 	self.translate(Vector3(sideSpeed, 0, -speed) * delta)
 	
 	var x = Input.is_key_pressed(KEY_X)
@@ -244,7 +263,7 @@ func _on_area_entered(area):
 	else:
 		var p = area.get_parent()
 		if p.is_in_group("Plane"):
-			on_damage(10)
+			on_damage(rand_range(10, 25))
 			
 var landed = false
 func on_landed(anim):

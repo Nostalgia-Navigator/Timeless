@@ -99,6 +99,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [sub_resource type="SphereMesh" id=5]
 radius = 0.2
@@ -107,12 +121,11 @@ height = 0.4
 [node name="SplashRing" type="Spatial"]
 
 [node name="Torus000" type="MeshInstance" parent="."]
-transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )
 
 [node name="Torus001" type="MeshInstance" parent="."]
-transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = ExtResource( 3 )
 
@@ -120,9 +133,6 @@ material/0 = ExtResource( 3 )
 autoplay = "default"
 anims/RESET = SubResource( 4 )
 anims/default = SubResource( 3 )
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Particles" type="CPUParticles" parent="."]
 amount = 3
@@ -138,5 +148,3 @@ emission_ring_axis = Vector3( 0, 1, 0 )
 direction = Vector3( 0, 1, 0 )
 initial_velocity = 6.0
 initial_velocity_random = 0.5
-
-[connection signal="timeout" from="Timer" to="." method="queue_free"]

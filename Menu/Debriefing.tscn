@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Menu/Play.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menu/Briefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=3]
 [ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=4]
@@ -120,7 +120,8 @@ margin_bottom = 117.0
 theme = SubResource( 2 )
 text = "Bonus Points Awarded"
 
-[node name="Level" type="Label" parent="Content"]
+[node name="Label" type="Label" parent="Content"]
+visible = false
 margin_left = 90.0
 margin_top = 135.0
 margin_right = 842.0
@@ -129,17 +130,7 @@ theme = SubResource( 4 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Starting Level I. Location: The Baltic Sea, Northern Europe. Year: 1909"
 
-[node name="Label" type="Label" parent="Content"]
-visible = false
-margin_left = 120.0
-margin_top = 240.0
-margin_right = 871.998
-margin_bottom = 297.0
-theme = SubResource( 4 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "1. Bleriot XI Monoplane:"
-
-[node name="SaveGame" type="TextureButton" parent="Content"]
+[node name="Continue" type="TextureButton" parent="Content"]
 margin_left = 82.24
 margin_top = 678.773
 margin_right = 210.24
@@ -150,8 +141,10 @@ texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
 script = ExtResource( 7 )
 scene = ExtResource( 1 )
+fade = true
+anim = NodePath("../../AnimationPlayer")
 
-[node name="Label" type="Label" parent="Content/SaveGame"]
+[node name="Label" type="Label" parent="Content/Continue"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -35.7212
@@ -162,7 +155,36 @@ grow_horizontal = 0
 rect_scale = Vector2( 0.2, 0.2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "Save Game"
+text = "Continue"
+align = 1
+valign = 1
+
+[node name="Quit" type="TextureButton" parent="Content"]
+margin_left = 82.24
+margin_top = 750.773
+margin_right = 210.24
+margin_bottom = 782.773
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+script = ExtResource( 7 )
+scene = ExtResource( 1 )
+fade = true
+anim = NodePath("../../AnimationPlayer")
+
+[node name="Label" type="Label" parent="Content/Quit"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -35.7212
+margin_top = 9.33203
+margin_right = 325.279
+margin_bottom = 124.332
+grow_horizontal = 0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Quit"
 align = 1
 valign = 1
 
@@ -175,4 +197,7 @@ light_specular = 0.0
 script = ExtResource( 8 )
 stream = ExtResource( 10 )
 
-[connection signal="pressed" from="Content/SaveGame" to="Content/SaveGame" method="clicked"]
+[connection signal="pressed" from="Content/Continue" to="Content" method="next_level"]
+[connection signal="pressed" from="Content/Continue" to="Content/Continue" method="clicked"]
+[connection signal="pressed" from="Content/Quit" to="Content" method="next_level"]
+[connection signal="pressed" from="Content/Quit" to="Content/Quit" method="clicked"]

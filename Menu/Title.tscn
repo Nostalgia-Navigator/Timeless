@@ -150,6 +150,7 @@ texture_hover = ExtResource( 10 )
 script = ExtResource( 2 )
 scene = ExtResource( 3 )
 fade = true
+anim = NodePath("../AnimationPlayer")
 
 [node name="Label" type="Label" parent="TextureButton"]
 margin_left = 36.9888

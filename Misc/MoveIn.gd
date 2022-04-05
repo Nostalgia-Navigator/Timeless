@@ -1,4 +1,5 @@
 extends Control
+export(float) var delay = 0.2
 var index = 0
 var items = []
 func _ready():
@@ -29,7 +30,7 @@ func _ready():
 var time = 0	
 func _process(delta):
 	if index < len(items):
-		if time < 0.25:
+		if time < delay:
 			time += delta
 		else:
 			time = 0

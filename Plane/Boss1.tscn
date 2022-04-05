@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Blender/Boss1.dae" type="PackedScene" id=1]
 [ext_resource path="res://Misc/Wraparound.tscn" type="PackedScene" id=2]
@@ -6,14 +6,13 @@
 [ext_resource path="res://Blender/Boss1Red.material" type="Material" id=4]
 [ext_resource path="res://Script/BossPlane.gd" type="Script" id=5]
 [ext_resource path="res://Blender/Boss1Debris.dae" type="PackedScene" id=6]
-[ext_resource path="res://Effect/DebrisTemplate.tscn" type="PackedScene" id=7]
-[ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=8]
 [ext_resource path="res://Script/Owner.gd" type="Script" id=9]
 
 [node name="Boss1" groups=["Plane"] instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 speed = 0.2
 material = ExtResource( 4 )
+debris = ExtResource( 6 )
 
 [node name="Area" type="Area" parent="." index="0"]
 collision_mask = 0
@@ -132,35 +131,30 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 [node name="ExplosionPoints11" type="Position3D" parent="ExplosionPoints/Tail" index="9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
 
-[node name="Destruction" type="Node" parent="." index="14"]
-script = ExtResource( 8 )
-shard_template = ExtResource( 7 )
-shard_scene = ExtResource( 6 )
+[node name="Wraparound" parent="." index="14" instance=ExtResource( 2 )]
 
-[node name="Wraparound" parent="." index="15" instance=ExtResource( 2 )]
-
-[node name="Gun" parent="." index="18"]
+[node name="Gun" parent="." index="17"]
 script = ExtResource( 3 )
 
-[node name="Gun001" parent="." index="19"]
+[node name="Gun001" parent="." index="18"]
 script = ExtResource( 3 )
 
-[node name="Gun002" parent="." index="20"]
+[node name="Gun002" parent="." index="19"]
 script = ExtResource( 3 )
 
-[node name="Gun003" parent="." index="21"]
+[node name="Gun003" parent="." index="20"]
 script = ExtResource( 3 )
 
-[node name="Gun004" parent="." index="22"]
+[node name="Gun004" parent="." index="21"]
 script = ExtResource( 3 )
 
-[node name="Gun005" parent="." index="23"]
+[node name="Gun005" parent="." index="22"]
 script = ExtResource( 3 )
 
-[node name="Gun006" parent="." index="24"]
+[node name="Gun006" parent="." index="23"]
 script = ExtResource( 3 )
 
-[node name="Gun007" parent="." index="25"]
+[node name="Gun007" parent="." index="24"]
 script = ExtResource( 3 )
 
 [connection signal="area_entered" from="Area" to="." method="on_area_entered"]

@@ -28,6 +28,8 @@ var cooldownLeft = fireCooldown
 export(PackedScene) var debris
 const shardTemplate = preload("res://Effect/DebrisTemplate.tscn")
 const DestructionUtils = preload("res://addons/destruction/DestructionUtils.gd")
+onready var shards = DestructionUtils.create_shards(debris.instance(), shardTemplate)
+
 
 var smoke
 var left
@@ -49,9 +51,10 @@ func _ready():
 func set_solo(s):
 	solo = s
 func on_area_entered(other):
-	var p = other.get_parent()
-	if p.is_in_group("Player"):
-		p.on_damage(10)
+	#var p = other.get_parent()
+	#if p.is_in_group("Player"):
+	#	p.on_damage(rand_range(10, 25))
+	pass
 		
 var prevPos = Vector2(0, 0)
 func _physics_process(delta):
@@ -135,7 +138,6 @@ func on_damage(projectile):
 		e.set_global_transform(get_global_transform())
 		
 		var vel = -get_global_transform().basis.z * speed
-		var shards = DestructionUtils.create_shards(debris.instance(), shardTemplate)
 		for s in shards.get_children():
 			#var offset = (s.get_global_transform().origin - transform.origin)
 			var angle = (rand_range(0, PI*2))
@@ -161,7 +163,7 @@ func on_damage(projectile):
 			
 			var p = d.get_global_transform().origin
 			var angle = randf() * PI * 2
-			d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
+			d.linear_velocity = vel - projectile.vel.normalized() * 20 + 5 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
 			d.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 		if hp <= 10:

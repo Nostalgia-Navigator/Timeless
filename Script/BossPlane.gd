@@ -13,7 +13,7 @@ const explosion_hit = preload("res://Explosion/Hit.tscn")
 const explosion_section = preload("res://Explosion/Section.tscn")
 const explosion_boss = preload("res://Explosion/Boss.tscn")
 const explosion_long = preload("res://Explosion/Long.tscn")
-const debris = preload("res://Effect/Debris.tscn")
+const piece = preload("res://Effect/Debris.tscn")
 const bullet = preload("res://Bullet/SmallBullet.tscn")
 const smoke = preload("res://Effect/BossSmoke.tscn")
 signal on_destroyed
@@ -22,8 +22,15 @@ signal on_damaged
 const BossGun = preload("res://Script/BossGun.gd")
 var sections = []
 
-const sectionHp = 20
+const sectionHp = 50
 var hp = sectionHp
+
+
+export(PackedScene) var debris
+const shardTemplate = preload("res://Effect/DebrisTemplate.tscn")
+const DestructionUtils = preload("res://addons/destruction/DestructionUtils.gd")
+onready var shards = DestructionUtils.create_shards(debris.instance(), shardTemplate)
+
 
 func _ready():
 	$Area.connect("area_entered", self, "on_area_entered")
@@ -34,7 +41,7 @@ func _ready():
 func on_area_entered(other):
 	var p = other.get_parent()
 	if p.is_in_group("Player"):
-		p.on_damage(10)
+		p.on_damage(rand_range(10, 25))
 var d = 0
 func _physics_process(delta):
 	d += delta
@@ -54,15 +61,15 @@ func on_damage(projectile):
 	hp -= projectile.damage
 	if hp > 0:
 		var vel = -get_global_transform().basis.z * speed * 15
-		var world = $Wraparound.player.get_parent()
+		var world = get_parent()
 		for i in range(5):
-			var d = debris.instance()
+			var d = piece.instance()
 			world.add_child(d)
 			d.get_node("Body").set_surface_material(0, material)
 			d.set_global_transform(projectile.get_global_transform())
 			var p = d.get_global_transform().origin
 			var angle = randf() * PI * 2
-			d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
+			d.linear_velocity = vel - projectile.vel.normalized() * 20 + 5 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
 			d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 		var hitExplosion = explosion_hit.instance()
@@ -77,7 +84,7 @@ func on_damage(projectile):
 		
 		Game.stats.hits += 1
 		if len(sections) == 0:
-			var world = $Wraparound.player.get_parent()
+			var world = get_parent()
 			for i in get_explosion_points($ExplosionPoints):
 				var bossExplosion = explosion_boss.instance()
 				bossExplosion.emitting = true
@@ -91,7 +98,6 @@ func on_damage(projectile):
 				world.add_child(longExplosion)
 				longExplosion.set_global_transform(i.get_global_transform())
 			var vel = -get_global_transform().basis.z * speed * 15
-			var shards = $Destruction.destroy()
 			for s in shards.get_children():
 				var angle = rand_range(0, PI*2)
 				var speed = rand_range(10, 20)

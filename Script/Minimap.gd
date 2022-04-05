@@ -105,8 +105,9 @@ func add_landing_deferred():
 	
 	
 func remove_carrier():
-	grid.remove_child(markers[carrier])
-	markers.erase(carrier)
+	if carrier in markers:
+		grid.remove_child(markers[carrier])
+		markers.erase(carrier)
 func remove_marker(e, projectile):
 	
 	if markers.has(e):

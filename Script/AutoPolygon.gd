@@ -1,5 +1,6 @@
 extends Sprite3D
 func _ready():
+	if true: return
 	call_deferred("_create_collision_polygon")
 func _create_collision_polygon():
 		var bm = BitMap.new()

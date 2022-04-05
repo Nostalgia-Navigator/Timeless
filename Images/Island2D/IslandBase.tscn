@@ -8,6 +8,7 @@
 pixel_size = 0.25
 axis = 1
 shaded = true
+double_sided = false
 alpha_cut = 2
 texture = ExtResource( 2 )
 script = ExtResource( 3 )

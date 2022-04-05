@@ -1,0 +1,682 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Menu/Title.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=3]
+[ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=4]
+[ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=5]
+[ext_resource path="res://Misc/MoveIn.gd" type="Script" id=6]
+[ext_resource path="res://Misc/SetScene.gd" type="Script" id=7]
+[ext_resource path="res://Misc/SetMusic.gd" type="Script" id=8]
+[ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Sound/stage_01.mp3" type="AudioStream" id=10]
+
+[sub_resource type="BitmapFont" id=16]
+
+[sub_resource type="Theme" id=15]
+default_font = SubResource( 16 )
+
+[sub_resource type="Animation" id=21]
+resource_name = "Enter"
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Exit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0, 0.230068, 0.489749, 0.931663, 1 )
+colors = PoolColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 17 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource( 15 )
+script = ExtResource( 6 )
+delay = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TextureRect2")
+autoplay = "Enter"
+anims/Enter = SubResource( 21 )
+anims/Exit = SubResource( 23 )
+anims/RESET = SubResource( 22 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 1800.0
+margin_right = 2880.0
+margin_bottom = 1800.0
+rect_rotation = 90.0
+texture = SubResource( 20 )
+expand = true
+
+[node name="Content" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="Content"]
+margin_left = 393.5
+margin_top = 60.0
+margin_right = 630.5
+margin_bottom = 117.0
+grow_horizontal = 2
+theme = SubResource( 2 )
+text = "Game Over"
+align = 1
+
+[node name="L1" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 120.0
+margin_right = 440.0
+margin_bottom = 149.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Final score:"
+
+[node name="L2" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 120.0
+margin_right = 440.0
+margin_bottom = 149.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "0"
+align = 2
+
+[node name="L3" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 152.0
+margin_right = 440.0
+margin_bottom = 181.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Ships destroyed:"
+
+[node name="L4" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 152.0
+margin_right = 440.0
+margin_bottom = 181.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "0"
+align = 2
+
+[node name="L5" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 184.0
+margin_right = 440.0
+margin_bottom = 213.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Difficulty level:"
+
+[node name="L6" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 184.0
+margin_right = 440.0
+margin_bottom = 213.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Trivial"
+align = 2
+
+[node name="L7" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 120.0
+margin_right = 904.0
+margin_bottom = 149.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Level reached:"
+
+[node name="L8" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 120.0
+margin_right = 904.0
+margin_bottom = 149.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "0"
+align = 2
+
+[node name="L9" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 152.0
+margin_right = 904.0
+margin_bottom = 181.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Time taken:"
+
+[node name="L10" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 152.0
+margin_right = 904.0
+margin_bottom = 181.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "0"
+align = 2
+
+[node name="L11" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 184.0
+margin_right = 904.0
+margin_bottom = 213.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Rank:"
+
+[node name="L12" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 184.0
+margin_right = 904.0
+margin_bottom = 213.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.964706, 0, 1 )
+text = "Unranked"
+align = 2
+
+[node name="L13" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 248.0
+margin_right = 440.0
+margin_bottom = 277.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "Total shots taken:"
+
+[node name="L14" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 248.0
+margin_right = 440.0
+margin_bottom = 277.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "0"
+align = 2
+
+[node name="L15" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 280.0
+margin_right = 440.0
+margin_bottom = 309.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "Total shots hit:"
+
+[node name="L16" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 280.0
+margin_right = 440.0
+margin_bottom = 309.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "0"
+align = 2
+
+[node name="L17" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 312.0
+margin_right = 440.0
+margin_bottom = 341.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "Accuracy:"
+
+[node name="L18" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 312.0
+margin_right = 440.0
+margin_bottom = 341.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "0%"
+align = 2
+
+[node name="L19" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 248.0
+margin_right = 904.0
+margin_bottom = 277.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "Bullets used:"
+
+[node name="L20" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 248.0
+margin_right = 904.0
+margin_bottom = 277.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "0"
+align = 2
+
+[node name="L21" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 280.0
+margin_right = 904.0
+margin_bottom = 309.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "Bombs used:"
+
+[node name="L22" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 280.0
+margin_right = 904.0
+margin_bottom = 309.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "0"
+align = 2
+
+[node name="L23" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 312.0
+margin_right = 904.0
+margin_bottom = 341.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "Missiles used:"
+
+[node name="L24" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 312.0
+margin_right = 904.0
+margin_bottom = 341.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.239216, 1 )
+text = "0"
+align = 2
+
+[node name="L25" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 376.0
+margin_right = 440.0
+margin_bottom = 405.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "Air unit destruction:"
+
+[node name="L26" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 376.0
+margin_right = 824.0
+margin_bottom = 405.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "Aircraft destroyed:"
+
+[node name="L27" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 376.0
+margin_right = 904.0
+margin_bottom = 405.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "0"
+align = 2
+
+[node name="L28" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 408.0
+margin_right = 824.0
+margin_bottom = 437.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "Blimps destroyed:"
+
+[node name="L29" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 408.0
+margin_right = 904.0
+margin_bottom = 437.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "0"
+align = 2
+
+[node name="L30" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 440.0
+margin_right = 824.0
+margin_bottom = 469.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "Helicopters destroyed:"
+
+[node name="L31" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 440.0
+margin_right = 904.0
+margin_bottom = 469.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "0"
+align = 2
+
+[node name="L32" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 472.0
+margin_right = 824.0
+margin_bottom = 501.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "Bosses destroyed:"
+
+[node name="L33" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 472.0
+margin_right = 904.0
+margin_bottom = 501.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "0"
+align = 2
+
+[node name="L34" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 504.0
+margin_right = 824.0
+margin_bottom = 533.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "Missiles destroyed:"
+
+[node name="L35" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 504.0
+margin_right = 904.0
+margin_bottom = 533.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "0"
+align = 2
+
+[node name="L36" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 536.0
+margin_right = 824.0
+margin_bottom = 565.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "Air mines destroyed:"
+
+[node name="L37" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 536.0
+margin_right = 904.0
+margin_bottom = 565.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.894118, 1 )
+text = "0"
+align = 2
+
+[node name="L38" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 600.0
+margin_right = 440.0
+margin_bottom = 629.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.807843, 0, 1 )
+text = "Ground unit destruction:"
+
+[node name="L39" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 600.0
+margin_right = 824.0
+margin_bottom = 629.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.807843, 0, 1 )
+text = "Land installations destroyed:"
+
+[node name="L40" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 600.0
+margin_right = 904.0
+margin_bottom = 629.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.807843, 0, 1 )
+text = "0"
+align = 2
+
+[node name="L41" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 632.0
+margin_right = 824.0
+margin_bottom = 661.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.807843, 0, 1 )
+text = "Sea installations destroyed:"
+
+[node name="L42" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 632.0
+margin_right = 904.0
+margin_bottom = 661.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.807843, 0, 1 )
+text = "0"
+align = 2
+
+[node name="L43" type="Label" parent="Content"]
+margin_left = 504.0
+margin_top = 664.0
+margin_right = 824.0
+margin_bottom = 693.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.807843, 0, 1 )
+text = "Boats bombed:"
+
+[node name="L44" type="Label" parent="Content"]
+margin_left = 584.0
+margin_top = 664.0
+margin_right = 904.0
+margin_bottom = 693.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.807843, 0, 1 )
+text = "0"
+align = 2
+
+[node name="L45" type="Label" parent="Content"]
+margin_left = 120.0
+margin_top = 728.0
+margin_right = 440.0
+margin_bottom = 757.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "Goodies"
+
+[node name="L46" type="Label" parent="Content"]
+margin_left = 240.0
+margin_top = 728.0
+margin_right = 440.0
+margin_bottom = 757.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "damaged:"
+
+[node name="L47" type="Label" parent="Content"]
+margin_left = 240.0
+margin_top = 728.0
+margin_right = 440.0
+margin_bottom = 757.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "0"
+align = 2
+
+[node name="L48" type="Label" parent="Content"]
+margin_left = 240.0
+margin_top = 760.0
+margin_right = 440.0
+margin_bottom = 789.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "destroyed:"
+
+[node name="L49" type="Label" parent="Content"]
+margin_left = 240.0
+margin_top = 760.0
+margin_right = 440.0
+margin_bottom = 789.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "0"
+align = 2
+
+[node name="L50" type="Label" parent="Content"]
+margin_left = 240.0
+margin_top = 792.0
+margin_right = 440.0
+margin_bottom = 821.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "collected:"
+
+[node name="L51" type="Label" parent="Content"]
+margin_left = 240.0
+margin_top = 792.0
+margin_right = 440.0
+margin_bottom = 821.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "0"
+align = 2
+
+[node name="L52" type="Label" parent="Content"]
+margin_left = 672.0
+margin_top = 728.0
+margin_right = 876.0
+margin_bottom = 757.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "Sailboats bombed:"
+
+[node name="L53" type="Label" parent="Content"]
+margin_left = 704.0
+margin_top = 728.0
+margin_right = 904.0
+margin_bottom = 757.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "0"
+align = 2
+
+[node name="L54" type="Label" parent="Content"]
+margin_left = 672.0
+margin_top = 760.0
+margin_right = 872.0
+margin_bottom = 789.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "Tankers used:"
+
+[node name="L55" type="Label" parent="Content"]
+margin_left = 704.0
+margin_top = 760.0
+margin_right = 904.0
+margin_bottom = 789.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.454902, 0.909804, 1 )
+text = "0"
+align = 2
+
+[node name="Start" type="TextureButton" parent="Content"]
+margin_left = 82.24
+margin_top = 838.773
+margin_right = 210.24
+margin_bottom = 870.773
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+script = ExtResource( 7 )
+scene = ExtResource( 1 )
+fade = true
+anim = NodePath("../../AnimationPlayer")
+
+[node name="Label" type="Label" parent="Content/Start"]
+margin_left = 37.4597
+margin_top = 6.88989
+margin_right = 251.46
+margin_bottom = 91.8899
+rect_scale = Vector2( 0.25, 0.25 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Title"
+align = 1
+valign = 1
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.866025, -0.433013, -0.25, 0, -0.5, 0.866025, -0.5, -0.75, -0.433013, 0, 5, 0 )
+light_energy = 2.0
+light_specular = 0.0
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 8 )
+stream = ExtResource( 10 )
+
+[connection signal="pressed" from="Content/Start" to="Content/Start" method="clicked"]
