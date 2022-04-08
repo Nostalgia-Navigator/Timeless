@@ -19,7 +19,7 @@ func on_outer_hit(area):
 		e.transform.origin = Vector3(p.x, 1, p.z)
 		e.emitting = true
 		get_parent().add_child(e)
-		n.queue_free()
+		n.remove()
 		$Smoke.emitting = true
 		
 		hp -= 1
@@ -37,7 +37,7 @@ func on_inner_hit(area):
 		e.transform.origin = Vector3(p.x, 1, p.z)
 		e.emitting = true
 		get_parent().add_child(e)
-		n.queue_free()
+		n.remove()
 		
 		hp -= 2
 		if hp < 1:

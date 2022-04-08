@@ -22,7 +22,7 @@ signal on_damaged
 const BossGun = preload("res://Script/BossGun.gd")
 var sections = []
 
-const sectionHp = 50
+const sectionHp = 500
 var hp = sectionHp
 
 
@@ -57,6 +57,15 @@ func _physics_process(delta):
 		else:
 			rotation_degrees.y -= delta * 360 / 60
 	self.translate(Vector3(0, 0, -speed * 40 * delta))
+	
+const planeHit = [
+	preload("res://Sounds/Hit/PlaneHit - snd .1008.dat.wav"),
+	preload("res://Sounds/Hit/PlaneHit - snd .1009.dat.wav"),
+	preload("res://Sounds/Hit/PlaneHit - snd .1010.dat.wav"),
+	preload("res://Sounds/Hit/PlaneHit - snd .1011.dat.wav")
+]
+
+const explosionSound = preload("res://Sounds/BossDestroyed/BossDesttroyed - snd .1002.dat.wav")
 func on_damage(projectile):
 	hp -= projectile.damage
 	if hp > 0:
@@ -77,12 +86,18 @@ func on_damage(projectile):
 		add_child(hitExplosion)
 		hitExplosion.set_global_transform(projectile.get_global_transform())
 		
-		Game.stats.hits += 1
+		
+		
+		
+		var s = AudioStreamPlayer.new()
+		s.stream = planeHit[randi()%len(planeHit)]
+		Bgm.add_child(s)
+		s.play()
+		s.connect("finished", s, "queue_free")
 		
 		return
 	while(hp <= 0):
 		
-		Game.stats.hits += 1
 		if len(sections) == 0:
 			var world = get_parent()
 			for i in get_explosion_points($ExplosionPoints):
@@ -101,9 +116,21 @@ func on_damage(projectile):
 			for s in shards.get_children():
 				var angle = rand_range(0, PI*2)
 				var speed = rand_range(10, 20)
-				s.linear_velocity = vel + speed * Vector3(cos(angle), 0, sin(angle))	
+				var y = rand_range(-1, 1)
+				s.linear_velocity = vel + speed * Vector3(cos(angle), y, sin(angle))	
 				var m = 30
 				s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
+			world.add_child(shards)
+			shards.set_global_transform(get_global_transform())
+		
+			
+		
+			var s = AudioStreamPlayer.new()
+			s.stream = explosionSound
+			Bgm.add_child(s)
+			s.play()
+			s.connect("finished", s, "queue_free")
+			
 			emit_signal("on_destroyed", self, projectile)
 			call_deferred("queue_free")
 			

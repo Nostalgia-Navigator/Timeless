@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Menu/Briefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://Misc/SetScene.gd" type="Script" id=7]
 [ext_resource path="res://Misc/SetMusic.gd" type="Script" id=8]
 [ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Sound/stage_01.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Music/stage_01.mp3" type="AudioStream" id=10]
 [ext_resource path="res://Menu/Debriefing.gd" type="Script" id=11]
+[ext_resource path="res://Menu/GameOver.tscn" type="PackedScene" id=12]
 
 [sub_resource type="BitmapFont" id=16]
 
@@ -169,7 +170,7 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
 script = ExtResource( 7 )
-scene = ExtResource( 1 )
+scene = ExtResource( 12 )
 fade = true
 anim = NodePath("../../AnimationPlayer")
 
@@ -187,11 +188,6 @@ custom_fonts/font = ExtResource( 9 )
 text = "Quit"
 align = 1
 valign = 1
-
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.866025, -0.433013, -0.25, 0, -0.5, 0.866025, -0.5, -0.75, -0.433013, 0, 5, 0 )
-light_energy = 2.0
-light_specular = 0.0
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource( 8 )

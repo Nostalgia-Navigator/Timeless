@@ -40,9 +40,12 @@ func damage(projectile):
 		d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 		
 	if damaged:
+		Game.conduct.goodiesDestroyed += 1
 		remove(projectile)
 		return
 	
+	
+	Game.conduct.goodiesDamaged += 1
 	damaged = true
 	$Warning.play("Warn")
 	$Flashing.play("Flash")

@@ -10,7 +10,7 @@
 [ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=9]
 [ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=10]
 [ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=12]
-[ext_resource path="res://Sound/stage_01.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Music/stage_01.mp3" type="AudioStream" id=13]
 
 [sub_resource type="BitmapFont" id=16]
 
@@ -45,6 +45,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../DirectionalLight")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -89,6 +103,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 15 )
 script = ExtResource( 2 )
+delay = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../TextureRect2")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Menu/Title.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://Misc/SetScene.gd" type="Script" id=7]
 [ext_resource path="res://Misc/SetMusic.gd" type="Script" id=8]
 [ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Sound/stage_01.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Music/stage_01.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Menu/GameOver.gd" type="Script" id=11]
 
 [sub_resource type="BitmapFont" id=16]
 
@@ -112,6 +113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+script = ExtResource( 11 )
 
 [node name="Title" type="Label" parent="Content"]
 margin_left = 393.5

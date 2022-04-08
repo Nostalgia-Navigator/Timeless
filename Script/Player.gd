@@ -11,15 +11,14 @@ var sideSpeed = 0
 const strafeSpeed = 0.6 * ADJUST
 
 var exhaust
-const bullet = preload("res://Bullet/PlayerBullet3.tscn")
+const bullet = preload("res://Bullet/PlayerBullet1.tscn")
 const explosion = preload("res://Explosion/Plane.tscn")
 const debris = preload("res://Effect/Debris.tscn")
 const shake = preload("res://Effect/Shake.tscn")
 const bombdrop = preload("res://Effect/BombDrop.tscn")
 const fireCooldown = 0.1
 
-const bombCooldown = 0.8
-var bombCooldownLeft = 0
+var bombsLeft = 1
 
 const fullHP = 100
 var hp = fullHP
@@ -42,6 +41,9 @@ func get_body():
 	return $Body
 signal on_damaged
 func _ready():
+	
+	Game.reset_current_stats()
+	
 	exhaust = $Exhaust
 	parent = get_parent()
 	
@@ -67,7 +69,8 @@ func on_damage(projectile):
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
 			var speed = rand_range(10, 20)
-			s.linear_velocity = vel + Vector3(speed * cos(angle), 0, speed * sin(angle))	
+			var y = rand_range(-1, 1)
+			s.linear_velocity = vel + Vector3(speed * cos(angle), y, speed * sin(angle))	
 			var m = 90
 			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
 		
@@ -98,6 +101,15 @@ func on_damage(projectile):
 		#	body.set_surface_material(0, material)
 		#	get_parent().add_child(d)
 		
+		
+		var s = AudioStreamPlayer.new()
+		s.stream = playerExplosion
+		Bgm.add_child(s)
+		s.play()
+		s.connect("finished", s, "queue_free")
+		
+		Game.deaths += 1
+		
 		var t = Timer.new()
 		t.wait_time = 4
 		t.one_shot = true
@@ -110,14 +122,15 @@ func on_damage(projectile):
 		hp = 0
 	else:
 		hp -= dmg
-	
 	emit_signal("on_damaged", self)
-	
+const bombDropSound = preload("res://Sounds/Fire/BombDrop - snd .1032.dat.wav")
+const playerExplosion = preload("res://Sounds/Explosion/PlayerDestroyed - snd .1000.dat.wav")
 signal on_respawned
 func respawn():
 	show()
 	playing = true
 	hp = fullHP
+	fuel = fullFuel
 	var p = exhaust.get_parent()
 	var n = p.name
 	p.remove_child(exhaust)
@@ -138,24 +151,15 @@ func _physics_process(delta):
 	#var from = camera.project_ray_origin(mouse_pos)
 	#var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	
-	if Input.is_key_pressed(KEY_ESCAPE):
-		var r = get_tree().get_root()
-		
-		var sc = get_parent()
-		r.remove_child(sc)
-		
-		Game.paused = sc
-		var paused = load("res://Menu/Pause.tscn").instance()
-		r.add_child(paused)
-	
 	if(!playing):
 		
 		if Input.is_key_pressed(KEY_ENTER) and landed:
-			get_tree().change_scene_to(debrief)
+			get_tree().change_scene("res://Menu/Debriefing.tscn")
 		
 		return
 	
-	bombCooldownLeft -= delta
+	Game.stats.time += delta
+	Game.current.timeLeft = max(Game.current.timeLeft - delta, 0)
 	
 	var thrusting = false
 	var enableStrafe = false
@@ -209,45 +213,88 @@ func _physics_process(delta):
 		
 	$Body.rotation = body_rotation
 	
-	
-	fuel -= delta / 2
+	if fuel <= delta/2:
+		fuel = 0
+		#destruct
+	else:
+		fuel -= delta / 2
 	
 	self.translate(Vector3(sideSpeed, 0, -speed) * delta)
 	
-	var x = Input.is_key_pressed(KEY_X)
+	var x = Input.is_key_pressed(KEY_C)
 	if x and !firing and bulletCount < 5:
 		
 		var b = bullet.instance()
 		get_parent().add_child(b)
 		b.source = self
+		var minDamage = Game.bulletMinDamageTable[Game.difficulty]
+		b.damage = rand_range(minDamage, 100)
 		b.transform.origin = $Gun.get_global_transform().origin
 		b.rotation.y = self.rotation.y
 		b.vel = -get_global_transform().basis.z * (speed + 2 * ADJUST)
 		
+		Game.current.shots += 1
+		Game.stats.shots += 1
+		Game.stats.bullets += 1
+		
 		bulletCount += 1
+		b.connect("on_hit", self, "on_bullet_hit")
 		b.connect("tree_exited", self, "on_bullet_expired")
 	firing = x
-	if(Input.is_key_pressed(KEY_Z)) and bombCooldownLeft <= 0:
+	if(Input.is_key_pressed(KEY_X)) and bombsLeft > 0:
+		
+		Game.stats.bombs += 1
+		
+		var s = AudioStreamPlayer.new()
+		s.stream = bombDropSound
+		Bgm.add_child(s)
+		s.play()
+		s.connect("finished", s, "queue_free")
+		
 		var b = bombdrop.instance()
+		bombsLeft -= 1
+		b.connect("tree_exited", self, "on_bomb_removed")
 		b.transform.origin = $Crosshair.get_global_transform().origin
 		b.rotation_degrees.y = rotation_degrees.y
 		get_parent().add_child(b)
-		bombCooldownLeft = bombCooldown
-		
-
-var debrief = load("res://Menu/Debriefing.tscn")
-
+func on_bullet_hit(bullet, other):
+	Game.current.hits += 1
+	Game.stats.hits += 1
+func on_bomb_removed():
+	bombsLeft += 1
 func on_bullet_expired():
 	bulletCount -= 1
-
+const GoodieType = preload("res://Script/Goodie.gd").GoodieType
 const star = preload("res://Blender/StarParticle.tscn")
 func _on_area_entered(area):
 	if(!playing):
 		return
 	if area.is_in_group("Goodie"):
+		Game.conduct.goodiesCollected += 1
 		var p = area.get_parent().get_parent().get_parent().get_parent()
 		p.remove(self)
 		
+		var g = p.goodie
+		if g == GoodieType.STAR:
+			Game.score += 2500
+			pass
+		elif g == GoodieType.TIME:
+			Game.current.timeLeft += 30
+			pass
+		elif g == GoodieType.CREWMATE:
+			Game.current.crewmatesSaved += 1
+			pass
+		elif g == GoodieType.SHIELDS:
+			hp = min(100, hp + 10)
+			pass
+		elif g == GoodieType.WEAPON:
+			pass
+		elif g == GoodieType.BOMB:
+			bombsLeft += 1
+			pass
+		elif g == GoodieType.FUEL:
+			fuel = min(100, fuel + 10)
+			pass
 		for i in range(0, 16):
 			var s = star.instance()
 			var m = [p.color1, p.color2][i%2]

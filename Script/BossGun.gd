@@ -31,6 +31,8 @@ const wave = preload("res://Bullet/WaveBullet.tscn")
 const zigzag = preload("res://Bullet/ZigzagBullet.tscn")
 const rainbow = preload("res://Bullet/RainbowBullet.tscn")
 const bullets = [spike, wave, zigzag, rainbow]
+
+const gunshot = preload("res://Sounds/Fire/Gunshot - snd .1019.dat.wav")
 #const zigzag = preload("res://Blender/ZigZagBullet.tscn")
 func cooldown():
 	cooldown_timer.stop()
@@ -52,6 +54,14 @@ func fire():
 		var speed = 1 * 40
 		var angle = (Vector2(to.x, to.z) - Vector2(from.x, from.z)).angle()
 		s.vel = Vector3(speed * cos(angle), 0, speed * sin(angle))
+	
+	s.damage = rand_range(5, 25)
+	
+	var st = AudioStreamPlayer.new()
+	st.stream = gunshot
+	Bgm.add_child(st)
+	st.play()
+	st.connect("finished", s, "queue_free")
 	
 	var world = player.get_parent()
 	world.add_child(s)

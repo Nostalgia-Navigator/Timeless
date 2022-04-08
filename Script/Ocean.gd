@@ -14,7 +14,7 @@ func _on_area_entered(area):
 		e.transform.origin = Vector3(p.x, 0.001, p.z)
 		e.emitting = true
 		get_tree().get_root().get_child(0).add_child(e)
-		n.queue_free()
+		n.remove()
 	elif n.is_in_group("Bullet"):
 		var s = splash.instance()
 		var p = area.get_global_transform().origin

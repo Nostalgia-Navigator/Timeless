@@ -33,6 +33,7 @@ func register_island():
 		s.texture = island.texture
 		markers[island] = s
 		grid.add_child(s)
+		s.z_index = 0
 	
 func register_markers():
 	player = get_node(player)
@@ -116,11 +117,12 @@ func remove_marker(e, projectile):
 func _process(delta):
 	if !player:
 		return
+		
+	var center = grid.rect_size / 2
 	#player_marker.rotation = player.rotation.y + PI/2
 	for enemy in markers:
 		var o = enemy.get_global_transform().origin - player.transform.origin
-		o = Vector2(o.x, o.z)
-		var p = o * grid_scale + grid.rect_size / 2
+		var p = Vector2(o.x, o.z) * grid_scale + center
 		while p.x > grid.rect_size.x:
 			p.x -= grid.rect_size.x
 		while p.x < 0:
@@ -131,4 +133,6 @@ func _process(delta):
 		while p.y < 0:
 			p.y += grid.rect_size.y
 			
-		markers[enemy].position = p
+		var m = markers[enemy]
+		m.position = p
+		m.rotation_degrees = PI - enemy.rotation_degrees.y

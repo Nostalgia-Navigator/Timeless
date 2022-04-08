@@ -13,7 +13,7 @@
 [ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=11]
 [ext_resource path="res://Images/OGLS.27001.dat.png" type="Texture" id=12]
 [ext_resource path="res://Images/OGLS.27003.dat.png" type="Texture" id=13]
-[ext_resource path="res://Sound/Interface (master).mp3" type="AudioStream" id=14]
+[ext_resource path="res://Music/Interface (master).mp3" type="AudioStream" id=14]
 [ext_resource path="res://Misc/SetMusic.gd" type="Script" id=15]
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=16]
 

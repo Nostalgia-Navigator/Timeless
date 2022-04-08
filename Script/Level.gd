@@ -24,7 +24,7 @@ func register_planes():
 	count = len(leaves)
 	for c in leaves:
 		var n = c.name
-		print(c.name)
+		#print(c.name)
 		c.connect("on_destroyed", self, "check_boss")
 func check_boss(e, projectile):
 	count -= 1

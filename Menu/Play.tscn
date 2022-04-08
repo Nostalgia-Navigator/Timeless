@@ -345,7 +345,7 @@ align = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 256.0
-margin_bottom = 384.0
+margin_bottom = 400.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Minimap" type="MarginContainer" parent="."]
@@ -393,6 +393,7 @@ polygon = PoolVector2Array( -16, 0, 0, 16, 16, 0, 0, -16 )
 [node name="Goodie" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
+z_index = 1
 color = Color( 0, 0.529412, 1, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
@@ -400,6 +401,7 @@ polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 [node name="Green" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
+z_index = 1
 color = Color( 0, 1, 0.576471, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
@@ -407,6 +409,7 @@ polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 [node name="Yellow" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
+z_index = 1
 color = Color( 0.945098, 1, 0, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
@@ -414,6 +417,7 @@ polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 [node name="Orange" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
+z_index = 1
 color = Color( 1, 0.654902, 0, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
@@ -421,6 +425,7 @@ polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 [node name="Red" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
+z_index = 1
 color = Color( 1, 0, 0, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
@@ -428,6 +433,7 @@ polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 [node name="Cyan" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
+z_index = 1
 color = Color( 0, 0.952941, 1, 1 )
 texture = SubResource( 14 )
 polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
@@ -436,12 +442,14 @@ polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 visible = false
 position = Vector2( 430, 430 )
 scale = Vector2( 0.05, 0.05 )
+z_index = 1
 texture = ExtResource( 24 )
 
 [node name="Boss" type="Sprite" parent="Minimap/MarginContainer/Grid"]
 visible = false
 position = Vector2( 430, 430 )
 scale = Vector2( 0.1, 0.1 )
+z_index = 1
 texture = ExtResource( 25 )
 
 [node name="Frame" type="NinePatchRect" parent="Minimap"]
@@ -463,45 +471,52 @@ player = NodePath("../Player")
 
 [node name="Shields" type="Label" parent="Readout"]
 margin_left = 21.25
-margin_top = 259.0
+margin_top = 261.31
 margin_right = 109.25
-margin_bottom = 273.0
+margin_bottom = 275.31
 text = "Shields: 100"
 
 [node name="ShieldsRect" type="ColorRect" parent="Readout"]
 margin_left = 21.25
-margin_top = 273.0
+margin_top = 275.31
 margin_right = 237.25
-margin_bottom = 289.0
+margin_bottom = 291.31
 color = Color( 0.12549, 0.607843, 0.407843, 1 )
 
 [node name="Fuel" type="Label" parent="Readout"]
 margin_left = 21.25
-margin_top = 294.75
+margin_top = 297.06
 margin_right = 109.25
-margin_bottom = 308.75
+margin_bottom = 311.06
 text = "Fuel: 100"
 
 [node name="FuelRect" type="ColorRect" parent="Readout"]
 margin_left = 21.25
-margin_top = 308.75
+margin_top = 311.06
 margin_right = 237.25
-margin_bottom = 324.75
+margin_bottom = 327.06
 color = Color( 0.607843, 0.12549, 0.364706, 1 )
 
 [node name="Time" type="Label" parent="Readout"]
 margin_left = 21.25
-margin_top = 329.327
+margin_top = 331.637
 margin_right = 109.25
-margin_bottom = 343.327
+margin_bottom = 345.637
 text = "Time: 100"
 
-[node name="TimeRect2" type="ColorRect" parent="Readout"]
+[node name="TimeRect" type="ColorRect" parent="Readout"]
 margin_left = 21.25
-margin_top = 343.327
+margin_top = 345.637
 margin_right = 237.25
-margin_bottom = 359.327
+margin_bottom = 361.637
 color = Color( 0.12549, 0.415686, 0.607843, 1 )
+
+[node name="Score" type="Label" parent="Readout"]
+margin_left = 21.25
+margin_top = 367.561
+margin_right = 109.25
+margin_bottom = 381.561
+text = "Score: 0"
 
 [connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
 [connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]
