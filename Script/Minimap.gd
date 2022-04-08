@@ -26,31 +26,14 @@ const Wraparound = preload("res://Script/Wraparound.gd")
 func _ready():
 	call_deferred("register_markers")
 	
-func register_island():
+func register_level():
 	for island in get_tree().get_nodes_in_group("Island"):
 		var s = Sprite.new()
 		s.scale = s.scale / 2
 		s.texture = island.texture
 		markers[island] = s
 		grid.add_child(s)
-		s.z_index = 0
-	
-func register_markers():
-	player = get_node(player)
-	player_marker.position = grid.rect_size / 2
-	grid_scale = grid.rect_size / (Wraparound.EXTENT * 2)
-	
-	
-	if true:
-		carrier = player.get_parent().get_node("Carrier")
-		var m = carrier_marker.duplicate()
-		grid.add_child(m)
-		m.show()
-		markers[carrier] = m
-		carrier.connect("tree_exited", self, "remove_carrier")
-	
-	call_deferred("register_island")
-	
+		#s.z_index = 0
 	for goodie in get_tree().get_nodes_in_group("Goodie"):
 		if goodie is Area:
 			continue
@@ -88,6 +71,23 @@ func register_markers():
 		grid.add_child(new_marker)
 		new_marker.show()
 		markers[goodie] = new_marker
+	
+func register_markers():
+	player = get_node(player)
+	player_marker.position = grid.rect_size / 2
+	grid_scale = grid.rect_size / (Wraparound.EXTENT * 2)
+	
+	
+	if true:
+		carrier = player.get_parent().get_node("Carrier")
+		var m = carrier_marker.duplicate()
+		grid.add_child(m)
+		m.show()
+		markers[carrier] = m
+		carrier.connect("tree_exited", self, "remove_carrier")
+	
+	call_deferred("register_level")
+	
 func register_boss(boss):
 	boss.connect("on_destroyed", self, "remove_marker")
 	boss.connect("on_destroyed", self, "add_landing")

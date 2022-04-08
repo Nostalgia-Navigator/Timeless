@@ -5,7 +5,7 @@ export(String) var planeName
 export(NodePath) var body
 export(int, 0, 2, 1) var markerType
 export(int) var hp = 100
-export(float) var speed = 0.4 * ADJUST
+onready var speed = Game.planeSpeed[Game.difficulty]
 export(Material) var material
 export(int) var score = 0
 var d = 0
@@ -158,7 +158,6 @@ func on_damage(projectile):
 		world.add_child(shards)
 		shards.set_global_transform(get_global_transform())
 		
-		Game.stats.hits += 1	
 		Game.destroyed.aircraft += 1
 		
 		
@@ -186,7 +185,6 @@ func on_damage(projectile):
 		if hp <= 10:
 			smoke.emitting = true
 			smoke.process_material.set("initial_velocity", -speed)
-		Game.stats.hits += 1
 		
 		
 		var s = AudioStreamPlayer.new()

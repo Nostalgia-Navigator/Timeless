@@ -10,7 +10,7 @@ var fire_timer
 func _ready():
 	cooldown_timer = Timer.new()
 	add_child(cooldown_timer)
-	cooldown_timer.wait_time = 6
+	cooldown_timer.wait_time = 5
 	cooldown_timer.connect("timeout", self, "fire")
 	
 	fire_timer = Timer.new()
@@ -61,7 +61,7 @@ func fire():
 	st.stream = gunshot
 	Bgm.add_child(st)
 	st.play()
-	st.connect("finished", s, "queue_free")
+	st.connect("finished", st, "queue_free")
 	
 	var world = player.get_parent()
 	world.add_child(s)

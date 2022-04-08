@@ -4,8 +4,12 @@ export(int) var size = 288*2
 export(int) var count = 100
 export(int) var separation = 60
 export(PackedScene) var scene
+export(bool) var useParent = false
+
 func _ready():
-	var parent = get_parent()
+	var n = self
+	if useParent:
+		n = get_parent()
 	var p = size * size
 	
 	var prev = []
@@ -29,7 +33,7 @@ func _ready():
 		prev.append(v)
 		var instance = scene.instance()
 		instance.transform.origin = v
-		call_deferred("add_child", instance)
+		n.call_deferred("add_child", instance)
 func wrap(v, origin):
 	var r = size/2
 	while (origin.x - v.x) > r:

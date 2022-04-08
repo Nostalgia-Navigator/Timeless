@@ -236,47 +236,13 @@ debug = false
 boss = ExtResource( 23 )
 planeTypes = [ ExtResource( 21 ), ExtResource( 6 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 22 ) ]
 
-[node name="FlightGenerator" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 21 )
-
-[node name="FlightGenerator5" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -105.881, 0, -65.0807 )
-
-[node name="FlightGenerator6" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -138.298, 0, 27.7335 )
-
-[node name="FlightGenerator7" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -68.0641, 0, 80.0151 )
-
-[node name="FlightGenerator8" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.8702, 0, -70.9968 )
-
-[node name="FlightGenerator9" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71335, 0, -131.758 )
-
-[node name="FlightGenerator10" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 112.374, 1.52588e-05, -155.991 )
-
-[node name="FlightGenerator11" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100.926, 3.05176e-05, -152.197 )
-
-[node name="FlightGenerator12" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 147.925, 3.05176e-05, -99.3489 )
-
-[node name="FlightGenerator2" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0, 32 )
-
-[node name="FlightGenerator3" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2545, 0, 68.8209 )
-
-[node name="FlightGenerator4" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 0, 115 )
-
-[node name="FlightGenerator13" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.994, 0, 121.216 )
-
-[node name="FlightGenerator14" parent="Enemies" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -239.684, 0, -181.236 )
+[node name="Flights" type="Spatial" parent="Enemies"]
+script = ExtResource( 9 )
+size = 450
+count = 24
+separation = 40
+scene = ExtResource( 26 )
+useParent = true
 
 [node name="Surface" type="Spatial" parent="."]
 script = ExtResource( 15 )

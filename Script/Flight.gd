@@ -4,7 +4,8 @@ const gunshot = preload("res://Sounds/Fire/Gunshot - snd .1019.dat.wav")
 
 enum BehaviorType { meander, patrol, pursue } 
 export(BehaviorType) var behavior = BehaviorType.patrol
-export(float) var speed = 0.4 * 40
+onready var speed = Game.planeSpeed[Game.difficulty]
+onready var turnRate = 360 / 60
 var planes = []
 var d = 0
 func _ready():
@@ -81,7 +82,7 @@ func fire(timer):
 				var b = bullet.instance()
 				world.add_child(b)
 				b.set_global_transform(attacker.get_global_transform())
-				b.vel = 1.2 * 40 * offset.normalized() + vel
+				b.vel = 1 * 40 * offset.normalized() + vel
 				timer.on_fired()
 func _physics_process(delta):
 	var p = $Wraparound.player.get_global_transform().origin
@@ -89,11 +90,11 @@ func _physics_process(delta):
 	if behavior == BehaviorType.meander:
 		rotation_degrees.y += sin(d * (PI * 2) / 12) * 3 / 15
 	if behavior == BehaviorType.patrol:
-		rotation_degrees.y += delta * 360 / 60
+		rotation_degrees.y += delta * turnRate
 	elif behavior == BehaviorType.pursue:
 		if (($Left.get_global_transform().origin - p).length() < ($Right.get_global_transform().origin - p).length()):
-			rotation_degrees.y += delta * 360 / 60
+			rotation_degrees.y += delta * turnRate
 		else:
-			rotation_degrees.y -= delta * 360 / 60
+			rotation_degrees.y -= delta * turnRate
 	
 	self.translate(Vector3(0, 0, -speed * delta))

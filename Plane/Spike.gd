@@ -1,6 +1,6 @@
 extends Spatial
 export(float) var speed
-export(int) var damage = 4
+export(int) var damage = rand_range(5, 25)
 func _physics_process(delta):
 	translate(Vector3(0, 0, speed * delta))
 func _on_area_entered(area):

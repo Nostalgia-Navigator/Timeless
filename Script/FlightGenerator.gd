@@ -7,12 +7,14 @@ func _ready():
 		return
 	var flight = preload("res://Plane/Flight.tscn").instance()
 	var form = Formations.get_random_formation()
-	get_parent().call_deferred("add_child", flight)
-	flight.transform.origin = transform.origin
 	for f in form:
 		var plane = planeTypes[randi()%len(planeTypes)].instance()
 		flight.add_child(plane)
 		plane.transform.origin = f.transform.origin
+	
+	
+	get_parent().call_deferred("add_child", flight)
+	flight.transform.origin = transform.origin
 	
 	#flight.register_planes()
 	flight.behavior = flight.BehaviorType.meander

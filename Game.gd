@@ -40,12 +40,20 @@ var paused = null
 enum Difficulty {
 	Trivial, Easy, Medium, Challenging, Diabolical
 }
+
+const playerSpeed = {
+	Difficulty.Trivial: 12,
+	Difficulty.Easy: 16,
+	Difficulty.Medium: 20,
+	Difficulty.Challenging: 24,
+	Difficulty.Diabolical: 28,
+}
 const planeSpeed = {
-	Difficulty.Trivial: 45,
-	Difficulty.Easy: 45,
-	Difficulty.Medium: 45,
-	Difficulty.Challenging: 45,
-	Difficulty.Diabolical: 45,
+	Difficulty.Trivial: 8,
+	Difficulty.Easy: 12,
+	Difficulty.Medium: 16,
+	Difficulty.Challenging: 20,
+	Difficulty.Diabolical: 24,
 }
 const surfaceHP = {
 	Difficulty.Trivial: 20,

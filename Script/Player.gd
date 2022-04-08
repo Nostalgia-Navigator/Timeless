@@ -2,21 +2,18 @@ extends Spatial
 
 const ADJUST = 40
 
-export(float) var speed = 0
-const standardSpeed = 0.6 * ADJUST
-const brakeSpeed = 0.5 * ADJUST
-const thrustSpeed = 2.4 * ADJUST
+var speed = 0
+onready var standardSpeed = Game.playerSpeed[Game.difficulty]
+onready var thrustSpeed = standardSpeed * 2
 
 var sideSpeed = 0
-const strafeSpeed = 0.6 * ADJUST
 
-var exhaust
+onready var exhaust = $Exhaust
 const bullet = preload("res://Bullet/PlayerBullet1.tscn")
 const explosion = preload("res://Explosion/Plane.tscn")
 const debris = preload("res://Effect/Debris.tscn")
 const shake = preload("res://Effect/Shake.tscn")
 const bombdrop = preload("res://Effect/BombDrop.tscn")
-const fireCooldown = 0.1
 
 var bombsLeft = 1
 
@@ -44,7 +41,6 @@ func _ready():
 	
 	Game.reset_current_stats()
 	
-	exhaust = $Exhaust
 	parent = get_parent()
 	
 const parachute = preload("res://Goodies/ParachutePlayer.tscn")
@@ -186,8 +182,8 @@ func _physics_process(delta):
 		if enableStrafe:
 			body_rotation.z += sign(strafeAngle - body_rotation.z) * strafeAngle / 20
 			strafing = true
-			if sideSpeed > -strafeSpeed:
-				sideSpeed += -strafeSpeed / 15
+			if sideSpeed > -standardSpeed:
+				sideSpeed += -standardSpeed / 15
 		else:
 			body_rotation.z += sign(turnAngle - body_rotation.z) * turnAngle / 20
 			self.rotation.y += turn
@@ -196,8 +192,8 @@ func _physics_process(delta):
 		if enableStrafe:
 			body_rotation.z += sign(-strafeAngle - body_rotation.z) * strafeAngle / 20
 			strafing = true
-			if sideSpeed < strafeSpeed:
-				sideSpeed += strafeSpeed / 15
+			if sideSpeed < standardSpeed:
+				sideSpeed += standardSpeed / 15
 		else:
 			body_rotation.z += sign(-turnAngle - body_rotation.z) * turnAngle / 20
 			self.rotation.y -= turn
@@ -209,7 +205,7 @@ func _physics_process(delta):
 	if(!turning and !strafing):
 		body_rotation.z *= 0.9
 	if !strafing and sideSpeed != 0:
-		sideSpeed -= sign(sideSpeed) * strafeSpeed / 15
+		sideSpeed -= sign(sideSpeed) * standardSpeed / 15
 		
 	$Body.rotation = body_rotation
 	

@@ -18,6 +18,8 @@ func _ready():
 		planeTypes.append_array(l.C)
 	boss = boss.instance()
 	player = get_tree().get_root().get_node("Main/Player")
+	call_deferred("pre_register_planes")
+func pre_register_planes():
 	call_deferred("register_planes")
 func register_planes():
 	var leaves = getLeaves(self)
@@ -49,6 +51,7 @@ func getLeaves(n):
 		a.append(n)
 	var ch = n.get_children()
 	for c in ch:
+		var name = c.name
 		var l = getLeaves(c)
 		a.append_array(l)
 	return a

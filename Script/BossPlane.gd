@@ -2,8 +2,7 @@ extends Spatial
 
 enum BehaviorType { meander, patrol, pursue } 
 
-export(int, 0, 2, 1) var markerType
-export(float) var speed = 0.4
+onready var speed = Game.planeSpeed[Game.difficulty] / 2
 export(Material) var material
 export(BehaviorType) var behavior = BehaviorType.patrol
 
@@ -56,7 +55,7 @@ func _physics_process(delta):
 			rotation_degrees.y += delta * 360 / 60
 		else:
 			rotation_degrees.y -= delta * 360 / 60
-	self.translate(Vector3(0, 0, -speed * 40 * delta))
+	self.translate(Vector3(0, 0, -speed * delta))
 	
 const planeHit = [
 	preload("res://Sounds/Hit/PlaneHit - snd .1008.dat.wav"),
@@ -69,7 +68,7 @@ const explosionSound = preload("res://Sounds/BossDestroyed/BossDesttroyed - snd 
 func on_damage(projectile):
 	hp -= projectile.damage
 	if hp > 0:
-		var vel = -get_global_transform().basis.z * speed * 15
+		var vel = -get_global_transform().basis.z * speed
 		var world = get_parent()
 		for i in range(5):
 			var d = piece.instance()
@@ -112,7 +111,7 @@ func on_damage(projectile):
 				#e.process_material.set("initial_velocity", 10)
 				world.add_child(longExplosion)
 				longExplosion.set_global_transform(i.get_global_transform())
-			var vel = -get_global_transform().basis.z * speed * 15
+			var vel = -get_global_transform().basis.z * speed
 			for s in shards.get_children():
 				var angle = rand_range(0, PI*2)
 				var speed = rand_range(10, 20)
