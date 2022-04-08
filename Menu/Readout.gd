@@ -14,7 +14,7 @@ func on_player_damaged(p):
 var time = 0
 func _process(delta):
 	time += delta
-	if(time >= 1):
+	if(time >= 0.5):
 		time = 0
 		update()
 func update():

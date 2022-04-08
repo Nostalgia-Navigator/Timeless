@@ -122,10 +122,10 @@ func on_damage(projectile):
 	var damage = projectile.damage
 	hp -= damage
 	
-	var h = hit.instance()
-	get_parent().add_child(h)
-	h.emitting = true
-	h.set_global_transform(projectile.get_global_transform())
+	#var h = hit.instance()
+	#get_parent().add_child(h)
+	#h.emitting = true
+	#h.set_global_transform(projectile.get_global_transform())
 	
 	var world = player.get_parent()
 	if(hp <= 0):
@@ -160,6 +160,8 @@ func on_damage(projectile):
 		
 		Game.destroyed.aircraft += 1
 		
+		Game.score += score
+		
 		
 		var s = AudioStreamPlayer.new()
 		s.stream = planeExplosion[randi()%len(planeExplosion)]
@@ -182,9 +184,9 @@ func on_damage(projectile):
 			d.linear_velocity = vel - projectile.vel.normalized() * 20 + 5 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
 			d.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
-		if hp <= 10:
+		if hp <= 50:
 			smoke.emitting = true
-			smoke.process_material.set("initial_velocity", -speed)
+			smoke.process_material.set("initial_velocity", -speed + min(4, speed/2))
 		
 		
 		var s = AudioStreamPlayer.new()

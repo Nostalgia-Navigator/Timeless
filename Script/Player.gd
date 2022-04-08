@@ -4,7 +4,7 @@ const ADJUST = 40
 
 var speed = 0
 onready var standardSpeed = Game.playerSpeed[Game.difficulty]
-onready var thrustSpeed = standardSpeed * 2
+onready var thrustSpeed = standardSpeed * 2.5
 
 var sideSpeed = 0
 
@@ -56,11 +56,11 @@ func on_damage(projectile):
 		var e = explosion.instance()
 		e.transform.origin = get_global_transform().origin
 		e.emitting = true
-		e.process_material.set("initial_velocity", -speed * 15 / ADJUST)
+		e.process_material.set("initial_velocity", -speed)
 		get_parent().add_child(e)
 		
 		
-		var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
+		var vel = -get_global_transform().basis.z * speed
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
 			var angle = rand_range(0, PI*2)
@@ -160,7 +160,7 @@ func _physics_process(delta):
 	var thrusting = false
 	var enableStrafe = false
 	var strafing = false
-	var accel = ADJUST * 0.25/30
+	var accel = 1.0/3
 	var turning = false
 	var turn = PI/75
 	var turnAngle = PI * 6 / 16
@@ -208,12 +208,10 @@ func _physics_process(delta):
 		sideSpeed -= sign(sideSpeed) * standardSpeed / 15
 		
 	$Body.rotation = body_rotation
-	
-	if fuel <= delta/2:
+	fuel -= speed * delta / 30
+	if fuel <= 0:
 		fuel = 0
 		#destruct
-	else:
-		fuel -= delta / 2
 	
 	self.translate(Vector3(sideSpeed, 0, -speed) * delta)
 	
