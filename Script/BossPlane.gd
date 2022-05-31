@@ -85,14 +85,7 @@ func on_damage(projectile):
 		add_child(hitExplosion)
 		hitExplosion.set_global_transform(projectile.get_global_transform())
 		
-		
-		
-		
-		var s = AudioStreamPlayer.new()
-		s.stream = planeHit[randi()%len(planeHit)]
-		Bgm.add_child(s)
-		s.play()
-		s.connect("finished", s, "queue_free")
+		Game.play_sound(planeHit[randi()%len(planeHit)])
 		
 		return
 	while(hp <= 0):
@@ -121,14 +114,8 @@ func on_damage(projectile):
 				s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
 			world.add_child(shards)
 			shards.set_global_transform(get_global_transform())
-		
-			
-		
-			var s = AudioStreamPlayer.new()
-			s.stream = explosionSound
-			Bgm.add_child(s)
-			s.play()
-			s.connect("finished", s, "queue_free")
+
+			Game.play_sound(explosionSound)
 			
 			emit_signal("on_destroyed", self, projectile)
 			call_deferred("queue_free")

@@ -57,11 +57,7 @@ func fire():
 	
 	s.damage = rand_range(5, 25)
 	
-	var st = AudioStreamPlayer.new()
-	st.stream = gunshot
-	Bgm.add_child(st)
-	st.play()
-	st.connect("finished", st, "queue_free")
+	Game.play_sound(gunshot)
 	
 	var world = player.get_parent()
 	world.add_child(s)

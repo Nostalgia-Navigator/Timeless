@@ -80,7 +80,7 @@ func fire(timer):
 				s.connect("finished", s, "queue_free")
 				
 				var b = bullet.instance()
-				world.add_child(b)
+				world.call_deferred("add_child", b)
 				b.set_global_transform(attacker.get_global_transform())
 				b.vel = 1 * 40 * offset.normalized() + vel
 				timer.on_fired()

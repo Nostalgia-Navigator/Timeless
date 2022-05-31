@@ -87,9 +87,9 @@ anims/Exit = SubResource( 23 )
 anims/RESET = SubResource( 22 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 1800.0
-margin_right = 2880.0
-margin_bottom = 1800.0
+margin_left = 1920.0
+margin_right = 3000.0
+margin_bottom = 1920.0
 rect_rotation = 90.0
 texture = SubResource( 20 )
 expand = true
@@ -101,20 +101,24 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Title" type="Label" parent="Content"]
-margin_left = 393.5
-margin_top = 60.0
-margin_right = 630.5
-margin_bottom = 117.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -120.0
+margin_top = 120.0
+margin_right = 117.0
+margin_bottom = 177.0
 grow_horizontal = 2
 theme = SubResource( 2 )
 text = "Paused"
 align = 1
 
 [node name="Quit" type="TextureButton" parent="Content"]
-margin_left = 82.24
-margin_top = 838.773
-margin_right = 210.24
-margin_bottom = 870.773
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = -240.0
+margin_right = 208.0
+margin_bottom = -208.0
 rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
@@ -137,10 +141,14 @@ align = 1
 valign = 1
 
 [node name="Continue" type="TextureButton" parent="Content"]
-margin_left = 818.24
-margin_top = 838.773
-margin_right = 946.24
-margin_bottom = 870.773
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -320.0
+margin_top = -240.0
+margin_right = -192.0
+margin_bottom = -208.0
 rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )

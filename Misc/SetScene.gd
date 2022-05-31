@@ -13,6 +13,7 @@ func clicked():
 		
 		var s = AudioStreamPlayer.new()
 		s.stream = transition
+		s.volume_db = -10
 		Bgm.add_child(s)
 		s.play()
 		s.connect("finished", s, "queue_free")

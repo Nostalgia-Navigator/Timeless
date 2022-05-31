@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Blender/ParachutePlayer.dae" type="PackedScene" id=1]
 [ext_resource path="res://Goodies/ParachutePlayer.gd" type="Script" id=2]
@@ -83,13 +83,6 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -15, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -15, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -15, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -15, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-length = 0.001
-
-[sub_resource type="Animation" id=5]
-resource_name = "Warn"
-length = 4.0
-
 [sub_resource type="Animation" id=6]
 resource_name = "Descend"
 length = 5.0
@@ -163,10 +156,6 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 autoplay = "Spin"
 anims/RESET = SubResource( 1 )
 anims/Spin = SubResource( 2 )
-
-[node name="Warning" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 4 )
-anims/Warn = SubResource( 5 )
 
 [node name="Movement" type="AnimationPlayer" parent="."]
 autoplay = "Descend"

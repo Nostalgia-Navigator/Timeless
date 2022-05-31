@@ -10,14 +10,14 @@ func _ready():
 func wrap():
 	var t = get_parent().get_global_transform()
 	var o = t.origin
-	var dx = o.x - player.transform.origin.x
+	var dx = o.x - player.get_global_transform().origin.x
 	var delta = Vector3(0, 0, 0)
 	if dx < -EXTENT:
 		delta.x += 2 * EXTENT
 	elif dx > EXTENT:
 		o.x -= 2 * EXTENT
 		delta.x -= 2 * EXTENT
-	var dz = o.z - player.transform.origin.z
+	var dz = o.z - player.get_global_transform().origin.z
 	if dz < -EXTENT:
 		o.z += 2 * EXTENT
 		delta.z += 2 * EXTENT

@@ -1,17 +1,19 @@
 extends Spatial
 
 export(bool) var debug = false
-export(Array, Goodie.GoodieType) var goodies
+const Goodie = preload("res://Script/Goodie.gd").GoodieType
+export(Array, Goodie) var goodies
 
 #STAR, TIME, CREWMATE, SHIELDS, WEAPON, BOMB, FUEL
 var map = {
-	Goodie.GoodieType.STAR: preload("res://Goodies/ParachuteStar.tscn"),
-	Goodie.GoodieType.TIME: preload("res://Goodies/ParachuteTime.tscn"),
-	Goodie.GoodieType.CREWMATE: preload("res://Goodies/ParachuteCrewmate.tscn"),
-	Goodie.GoodieType.SHIELDS: preload("res://Goodies/ParachuteShields.tscn"),
-	#Goodie.GoodieType.WEAPON: preload("res://Goodies/ParachuteGun.tscn"),
+	Goodie.star: preload("res://Goodies/ParachuteStar.tscn"),
+	Goodie.time: preload("res://Goodies/ParachuteTime.tscn"),
+	Goodie.crewmate: preload("res://Goodies/ParachuteCrewmate.tscn"),
+	Goodie.shields: preload("res://Goodies/ParachuteShields.tscn"),
+	Goodie.weapon: preload("res://Goodies/ParachuteGun.tscn"),
 	#Goodie.GoodieType.BOMB: preload("res://Goodies/ParachuteBomb.tscn"),
-	Goodie.GoodieType.FUEL: preload("res://Goodies/ParachuteFuel.tscn")
+	Goodie.fuel: preload("res://Goodies/ParachuteFuel.tscn"),
+	Goodie.mystery: preload("res://Goodies/ParachuteMystery.tscn")
 	
 }
 

@@ -1,12 +1,17 @@
 extends Spatial
 
 const star = preload("res://Blender/StarParticle.tscn")
-const color1 = preload("res://Blender/ParachuteRed.material")
-const color2 = preload("res://Blender/ParachuteBlue.material")
+
+const colors = [
+	preload("res://Blender/ParachuteRed.material"),
+	preload("res://Blender/ParachuteBlue.material"),
+	preload("res://Blender/ParachuteWhite.material")
+]
+
 func createParticles():
 	for i in range(15):
 		var s = star.instance()
-		var m = [color1, color2][i%2]
+		var m = colors[i%len(colors)]
 		for c in s.get_children():
 			if c is MeshInstance:
 				c.set_surface_material(0, m)

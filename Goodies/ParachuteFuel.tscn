@@ -299,9 +299,8 @@ surfaces/0 = {
 
 [node name="ParachuteFuel" type="Spatial" groups=["Goodie"]]
 script = ExtResource( 5 )
-goodie = 3
-color1 = ExtResource( 4 )
-color2 = ExtResource( 3 )
+goodie = 6
+colors = [ ExtResource( 4 ), ExtResource( 3 ) ]
 
 [node name="Sideturn" type="Spatial" parent="."]
 

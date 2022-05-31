@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Timeless - Wingnuts: Temporal Navigator"
-run/main_scene="res://Menu/Play.tscn"
+run/main_scene="res://Menu/Briefing.tscn"
 boot_splash/image="res://Images/Project Timeless Rect.png"
 config/icon="res://Images/Project Timeless Square (No Title).drawio.png"
 
@@ -77,6 +77,11 @@ BFCHelpers="*res://addons/bitmap_font_creator/BFCHelpers.gd"
 Bgm="*res://Misc/BGM.tscn"
 Formations="*res://Plane/Formations.tscn"
 Game="*res://Game.tscn"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
 
 [editor_plugins]
 

@@ -1,4 +1,7 @@
 extends Node
+
+const Goodie = preload("res://Script/Goodie.gd").GoodieType
+
 var levels = [
 	level("The Baltic Sea, Northern Europe", 1909,
 		[preload("res://Plane/A/BleriotXIMonoplaneCyan.tscn"),
@@ -8,10 +11,20 @@ var levels = [
 		[preload("res://Plane/C/WrightMilitaryFlyerOrange.tscn")],
 		preload("res://Plane/Boss1.tscn"),
 		[],
-		[],
+		[Goodie.crewmate, Goodie.crewmate, Goodie.crewmate, Goodie.crewmate, Goodie.fuel, Goodie.fuel, Goodie.fuel, Goodie.fuel, Goodie.shields, Goodie.shields, Goodie.shields, Goodie.star, Goodie.star, Goodie.time, Goodie.weapon],
 		[line("Initial aircraft supplied: J35A Draken", preload("res://Plane/Player.tscn"))],
 		300
 		),
+	level("The Frisian Islands, Germany", 1916,
+		[preload("res://Plane/A/Fokker EIII Green.tscn"), preload("res://Plane/A/Fokker EIII White.tscn")],
+		[preload("res://Plane/B/Junkers CLI MintGreen.tscn"), preload("res://Plane/B/Junkers CLI YellowGreen.tscn")],
+		[preload("res://Plane/C/WrightMilitaryFlyerOrange.tscn")], #placeholder
+		preload("res://Plane/Boss1.tscn"),
+		[],
+		[],
+		[],
+		300
+		)
 ]
 func line(desc, scene):
 	return {
@@ -132,5 +145,10 @@ class Current:
 	
 	func get_accuracy():
 		return float(hits) / shots
-
-
+func play_sound(stream):
+	var s = AudioStreamPlayer.new()
+	s.stream = stream
+	s.volume_db = -3
+	Bgm.add_child(s)
+	s.play()
+	s.connect("finished", s, "queue_free")

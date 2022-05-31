@@ -6,6 +6,11 @@ func _ready():
 	player=get_node(player)
 	player.connect("on_damaged", self, "on_player_damaged")
 	player.connect("on_respawned", self, "on_player_damaged")
+	player.connect("on_collected_goodie", self, "on_player_damaged")
+	
+	$Shields.text = "Shields: " + str(100)
+	$ShieldsRect.rect_size = Vector2(barWidth, 16)
+	
 	update()
 func on_player_damaged(p):
 	var hp = max(0, p.hp)
@@ -18,6 +23,8 @@ func _process(delta):
 		time = 0
 		update()
 func update():
+	
+	
 	$Fuel.text = "Fuel: " + str(int(player.fuel))
 	$FuelRect.rect_size = Vector2(barWidth * player.fuel / 100, 16)
 	

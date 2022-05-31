@@ -83,15 +83,11 @@ func _physics_process(delta):
 			var clear = result.empty() or (result["collider"].get_parent() == player)
 			
 			if clear:
-				var s = AudioStreamPlayer.new()
-				s.stream = gunshot
-				Bgm.add_child(s)
-				s.play()
-				s.connect("finished", s, "queue_free")
+				Game.play_sound(gunshot)
 				
 				var b = bullet.instance()
 				b.damage = rand_range(5, 25)
-				world.add_child(b)
+				world.call_deferred("add_child", b)
 				
 				var vel = -get_global_transform().basis.z * speed
 				b.source = self
@@ -143,7 +139,7 @@ func on_damage(projectile):
 		var e = explosion.instance()
 		e.emitting = true
 		e.process_material.set("initial_velocity", -speed)
-		world.add_child(e)
+		world.call_deferred("add_child", e)
 		e.set_global_transform(get_global_transform())
 		
 		var vel = -get_global_transform().basis.z * speed
@@ -155,19 +151,13 @@ func on_damage(projectile):
 			s.linear_velocity = vel + speed * Vector3(cos(angle), y, sin(angle))	
 			var m = 30
 			s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
-		world.add_child(shards)
+		world.call_deferred("add_child", shards)
 		shards.set_global_transform(get_global_transform())
 		
 		Game.destroyed.aircraft += 1
 		
 		Game.score += score
-		
-		
-		var s = AudioStreamPlayer.new()
-		s.stream = planeExplosion[randi()%len(planeExplosion)]
-		Bgm.add_child(s)
-		s.play()
-		s.connect("finished", s, "queue_free")
+		Game.play_sound(planeExplosion[randi()%len(planeExplosion)])
 		
 		emit_signal("on_destroyed", self, projectile)
 		call_deferred("queue_free")
@@ -175,7 +165,7 @@ func on_damage(projectile):
 		for i in range(3):
 			var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
 			var d = chunk.instance()
-			world.add_child(d)
+			world.call_deferred("add_child", d)
 			d.get_node("Body").set_surface_material(0, material)
 			d.set_global_transform(projectile.get_global_transform())
 			
@@ -188,14 +178,7 @@ func on_damage(projectile):
 			smoke.emitting = true
 			smoke.process_material.set("initial_velocity", -speed + min(4, speed/2))
 		
-		
-		var s = AudioStreamPlayer.new()
-		s.stream = planeHit[randi()%len(planeHit)]
-		Bgm.add_child(s)
-		s.play()
-		s.connect("finished", s, "queue_free")
-		
-		
+		Game.play_sound(planeHit[randi()%len(planeHit)])
 		emit_signal("on_damaged", self, projectile)
 const planeHit = [
 	preload("res://Sounds/Hit/PlaneHit - snd .1008.dat.wav"),

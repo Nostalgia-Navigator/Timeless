@@ -1,0 +1,559 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://Misc/SurfaceDistribution.gd" type="Script" id=1]
+[ext_resource path="res://Script/Takeoff.gd" type="Script" id=2]
+[ext_resource path="res://Blender/Hero/Carrier/001.png" type="Texture" id=3]
+[ext_resource path="res://Images/Frame.png" type="Texture" id=4]
+[ext_resource path="res://Blender/Hero/Boss1/001.png" type="Texture" id=5]
+[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Misc/Tile.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Plane/A/BleriotXIMonoplaneRed.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Plane/A/BleriotXIMonoplaneCyan.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Plane/B/WrightBFlyerGreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Plane/B/WrightBFlyerOrange.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Plane/C/WrightMilitaryFlyerOrange.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Plane/Player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Plane/Boss1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Script/Camera.gd" type="Script" id=15]
+[ext_resource path="res://Script/Distribution.gd" type="Script" id=16]
+[ext_resource path="res://Images/Cloud2D/RandomCloud.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Surface/LandBunker.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Surface/SeaRadar.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Surface/LandRadar.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Surface/LandCannon.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Plane/FlightGenerator.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Surface/SeaCannon.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Misc/Carrier.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Images/Island2D/RandomIsland.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Surface/SeaBunker.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Menu/Readout.gd" type="Script" id=27]
+[ext_resource path="res://Misc/PlaceGoodies.gd" type="Script" id=28]
+[ext_resource path="res://Script/Level.gd" type="Script" id=29]
+[ext_resource path="res://Script/Minimap.gd" type="Script" id=30]
+[ext_resource path="res://Menu/Pause.gd" type="Script" id=31]
+
+[sub_resource type="Environment" id=6]
+ambient_light_energy = 0.0
+ambient_light_sky_contribution = 0.0
+fog_depth_begin = 150.0
+fog_depth_end = 250.0
+
+[sub_resource type="Animation" id=9]
+resource_name = "CarrierLeave"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 4, 6 ),
+"transitions": PoolRealArray( 2, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 24, 0 ), Vector3( 0, 24, 120 ), Vector3( 0, 24, 300 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Player:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 25, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 24, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Takeoff"
+length = 3.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Player:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.7, 3.6 ),
+"transitions": PoolRealArray( 1, 2, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 25, 2.5 ), Vector3( 0, 25, 2.5 ), Vector3( 0, 25, -15 ), Vector3( 0, 45, -30 ), Vector3( 0, 40, -48 ) ]
+}
+
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
+width = 120
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 0.239216, 0.239216, 1 )
+
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
+width = 120
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+width = 120
+
+[sub_resource type="DynamicFont" id=21]
+size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0.0117647, 0.266667, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+width = 1
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+
+[sub_resource type="DynamicFont" id=23]
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=24]
+default_font = SubResource( 23 )
+
+[node name="Main" type="Spatial"]
+pause_mode = 1
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 108, 0 )
+far = 500.0
+script = ExtResource( 15 )
+player = NodePath("../Player")
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.808504, -0.5, -0.310356, -0.358368, -1.11787e-07, 0.93358, -0.46679, 0.866025, -0.179184, 23.1023, 73.1903, 0 )
+light_energy = 3.0
+light_specular = 0.0
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="Ocean" type="Spatial" parent="."]
+
+[node name="Tile" parent="Ocean" instance=ExtResource( 7 )]
+
+[node name="Tile2" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 0 )
+
+[node name="Tile3" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, 0 )
+
+[node name="Tile4" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 288 )
+
+[node name="Tile5" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 288 )
+
+[node name="Tile6" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, 288 )
+
+[node name="Tile7" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -288 )
+
+[node name="Tile8" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, -288 )
+
+[node name="Tile9" parent="Ocean" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, -288 )
+
+[node name="Carrier" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0 )
+
+[node name="Takeoff" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Carrier")
+autoplay = "Takeoff"
+anims/CarrierLeave = SubResource( 9 )
+anims/RESET = SubResource( 7 )
+anims/Takeoff = SubResource( 8 )
+script = ExtResource( 2 )
+
+[node name="Enemies" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
+script = ExtResource( 29 )
+debug = false
+boss = ExtResource( 14 )
+planeTypes = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
+
+[node name="Flights" type="Spatial" parent="Enemies"]
+script = ExtResource( 16 )
+size = 450
+count = 24
+separation = 40
+scene = ExtResource( 22 )
+useParent = true
+
+[node name="Surface" type="Spatial" parent="."]
+script = ExtResource( 1 )
+size = 450
+separation = 80
+scenes = [ ExtResource( 18 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 23 ) ]
+
+[node name="Islands" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
+script = ExtResource( 16 )
+size = 450
+scene = ExtResource( 25 )
+
+[node name="Clouds" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0 )
+script = ExtResource( 16 )
+size = 450
+scene = ExtResource( 17 )
+
+[node name="Goodies" type="Spatial" parent="."]
+script = ExtResource( 28 )
+goodies = [ 0, 0, 2, 2, 2, 3, 3, 6, 6, 6 ]
+extent = 480
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_top = 280.0
+margin_right = 1200.0
+margin_bottom = 300.0
+value = 50.0
+texture_under = SubResource( 16 )
+texture_progress = SubResource( 18 )
+texture_progress_offset = Vector2( 2, 2 )
+
+[node name="ShieldBarBack" type="TextureRect" parent="."]
+visible = false
+margin_top = 272.0
+margin_right = 120.0
+margin_bottom = 292.0
+texture = SubResource( 20 )
+expand = true
+
+[node name="LevelComplete" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_right = 180.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 1, 0.901961, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+text = "Level Completed"
+align = 1
+
+[node name="LevelComplete2" type="Label" parent="LevelComplete"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -237.5
+margin_top = 60.0
+margin_right = 246.5
+margin_bottom = 117.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 22 )
+text = "Press Enter to finish"
+align = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 256.0
+margin_bottom = 400.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Minimap" type="MarginContainer" parent="."]
+margin_right = 1030.0
+margin_bottom = 1030.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 30 )
+player = NodePath("../Player")
+
+[node name="MarginContainer" type="MarginContainer" parent="Minimap"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1025.0
+margin_bottom = 1025.0
+custom_constants/margin_right = 80
+custom_constants/margin_top = 80
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 80
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="TextureRect" parent="Minimap/MarginContainer"]
+margin_left = 80.0
+margin_top = 80.0
+margin_right = 940.0
+margin_bottom = 940.0
+texture = SubResource( 12 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
+position = Vector2( 430, 430 )
+z_index = 1
+color = Color( 0, 0.858824, 1, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -16, 0, 0, 16, 16, 0, 0, -16 )
+
+[node name="Goodie" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+z_index = 1
+color = Color( 0, 0.529412, 1, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Green" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+z_index = 1
+color = Color( 0, 1, 0.576471, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Yellow" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+z_index = 1
+color = Color( 0.945098, 1, 0, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Orange" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+z_index = 1
+color = Color( 1, 0.654902, 0, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Red" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+z_index = 1
+color = Color( 1, 0, 0, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Cyan" type="Polygon2D" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+z_index = 1
+color = Color( 0, 0.952941, 1, 1 )
+texture = SubResource( 14 )
+polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
+
+[node name="Carrier" type="Sprite" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+scale = Vector2( 0.05, 0.05 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="Boss" type="Sprite" parent="Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2( 430, 430 )
+scale = Vector2( 0.1, 0.1 )
+z_index = 1
+texture = ExtResource( 5 )
+
+[node name="Frame" type="NinePatchRect" parent="Minimap"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1025.0
+margin_bottom = 1025.0
+texture = ExtResource( 4 )
+patch_margin_left = 84
+patch_margin_top = 84
+patch_margin_right = 84
+patch_margin_bottom = 84
+
+[node name="Readout" type="Control" parent="."]
+script = ExtResource( 27 )
+player = NodePath("../Player")
+
+[node name="Shields" type="Label" parent="Readout"]
+margin_left = 21.25
+margin_top = 256.25
+margin_right = 109.25
+margin_bottom = 278.25
+theme = SubResource( 24 )
+text = "Shields"
+valign = 2
+
+[node name="ShieldsRect" type="ColorRect" parent="Readout"]
+margin_left = 21.5
+margin_top = 278.56
+margin_right = 237.5
+margin_bottom = 294.56
+color = Color( 0.12549, 0.607843, 0.407843, 1 )
+
+[node name="Fuel" type="Label" parent="Readout"]
+margin_left = 21.25
+margin_top = 294.56
+margin_right = 109.25
+margin_bottom = 316.56
+theme = SubResource( 24 )
+text = "Fuel"
+valign = 2
+
+[node name="FuelRect" type="ColorRect" parent="Readout"]
+margin_left = 21.25
+margin_top = 315.867
+margin_right = 237.25
+margin_bottom = 331.867
+color = Color( 0.607843, 0.12549, 0.364706, 1 )
+
+[node name="Time" type="Label" parent="Readout"]
+margin_left = 21.5
+margin_top = 331.867
+margin_right = 109.5
+margin_bottom = 353.867
+theme = SubResource( 24 )
+text = "Time"
+valign = 2
+
+[node name="TimeRect" type="ColorRect" parent="Readout"]
+margin_left = 21.5
+margin_top = 353.713
+margin_right = 237.5
+margin_bottom = 369.713
+color = Color( 0.12549, 0.415686, 0.607843, 1 )
+
+[node name="Score" type="Label" parent="Readout"]
+margin_left = 21.5
+margin_top = 369.713
+margin_right = 109.5
+margin_bottom = 391.713
+theme = SubResource( 24 )
+text = "Score"
+valign = 2
+
+[node name="Pause" type="ColorRect" parent="."]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 0.501961 )
+script = ExtResource( 31 )
+
+[node name="Label" type="Label" parent="Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -28.5
+margin_right = 180.0
+margin_bottom = 28.5
+custom_colors/font_color = Color( 1, 0.901961, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+text = "Paused"
+align = 1
+
+[node name="Resume" type="Button" parent="Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = 99.5
+margin_right = 180.0
+margin_bottom = 162.5
+custom_colors/font_color = Color( 1, 0.901961, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+text = "Resume"
+
+[node name="Resume2" type="Button" parent="Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = 187.5
+margin_right = 180.0
+margin_bottom = 250.5
+custom_colors/font_color = Color( 1, 0.901961, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+text = "Quit"
+
+[connection signal="animation_finished" from="Takeoff" to="Player" method="intro_done"]
+[connection signal="animation_finished" from="Takeoff" to="Takeoff" method="intro_done"]
+[connection signal="pressed" from="Pause/Resume" to="Pause" method="unpause"]
+[connection signal="pressed" from="Pause/Resume2" to="Pause" method="quit"]

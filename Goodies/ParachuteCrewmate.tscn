@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Blender/ParachuteCrewmate.dae" type="PackedScene" id=1]
 [ext_resource path="res://Misc/Wraparound.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Blender/ParachuteLightBrown.material" type="Material" id=4]
 [ext_resource path="res://Script/Goodie.gd" type="Script" id=5]
 [ext_resource path="res://Script/Owner.gd" type="Script" id=6]
+[ext_resource path="res://Blender/ParachuteDarkBrown.material" type="Material" id=7]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 3.0
@@ -347,9 +348,8 @@ surfaces/0 = {
 
 [node name="ParachuteCrewmate" type="Spatial" groups=["Goodie"]]
 script = ExtResource( 5 )
-goodie = 3
-color1 = ExtResource( 3 )
-color2 = ExtResource( 4 )
+goodie = 2
+colors = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ) ]
 
 [node name="Sideturn" type="Spatial" parent="."]
 

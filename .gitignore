@@ -2,3 +2,5 @@
 addons/*
 .mono/*
 *.import
+/Build/Timeless.pck
+/Build/Timeless.zip

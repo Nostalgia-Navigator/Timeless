@@ -2,10 +2,9 @@ extends Spatial
 
 class_name Goodie
 
-enum GoodieType {STAR, TIME, CREWMATE, SHIELDS, WEAPON, BOMB, FUEL}
+enum GoodieType {star, time, crewmate, shields, weapon, bomb, fuel, mystery }
 export(GoodieType) var goodie
-export(Material) var color1
-export(Material) var color2
+export(Array, Material) var colors
 
 const explosion = preload("res://Explosion/Hit.tscn")
 signal on_removed
@@ -20,6 +19,7 @@ func _process(delta):
 	
 const debris = preload("res://Effect/Debris.tscn")
 const material = preload("res://Blender/ParachuteRed.material")
+const slap = preload("res://Sounds/GoodiesDamaged/Slap - snd .1025.dat.wav")
 func damage(projectile):
 	
 	var e = explosion.instance()
@@ -44,6 +44,7 @@ func damage(projectile):
 		remove(projectile)
 		return
 	
+	Game.play_sound(slap)
 	
 	Game.conduct.goodiesDamaged += 1
 	damaged = true
