@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Blender/Render0001.png" type="Texture" id=1]
 [ext_resource path="res://Misc/SetScene.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Music/Interface (master).mp3" type="AudioStream" id=14]
 [ext_resource path="res://Misc/SetMusic.gd" type="Script" id=15]
 [ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Menu/CustomLevel.tscn" type="PackedScene" id=17]
 
 [sub_resource type="BitmapFont" id=16]
 
@@ -138,7 +139,7 @@ custom_fonts/font = SubResource( 24 )
 text = "Project Timeless v0.1"
 align = 1
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Play" type="TextureButton" parent="."]
 margin_left = 82.24
 margin_top = 720.983
 margin_right = 210.24
@@ -152,7 +153,7 @@ scene = ExtResource( 3 )
 fade = true
 anim = NodePath("../AnimationPlayer")
 
-[node name="Label" type="Label" parent="TextureButton"]
+[node name="Label" type="Label" parent="Play"]
 margin_left = 36.9888
 margin_top = 8.30261
 margin_right = 250.989
@@ -161,6 +162,32 @@ rect_scale = Vector2( 0.25, 0.25 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "PLAY"
+align = 1
+valign = 1
+
+[node name="Custom" type="TextureButton" parent="."]
+margin_left = 82.24
+margin_top = 784.983
+margin_right = 210.24
+margin_bottom = 816.983
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+script = ExtResource( 2 )
+scene = ExtResource( 17 )
+fade = true
+anim = NodePath("../AnimationPlayer")
+
+[node name="Label" type="Label" parent="Custom"]
+margin_left = 31.6555
+margin_top = 8.30261
+margin_right = 291.655
+margin_bottom = 123.303
+rect_scale = Vector2( 0.25, 0.25 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "CUSTOM"
 align = 1
 valign = 1
 
@@ -190,4 +217,5 @@ texture = ExtResource( 7 )
 script = ExtResource( 15 )
 stream = ExtResource( 14 )
 
-[connection signal="pressed" from="TextureButton" to="TextureButton" method="clicked"]
+[connection signal="pressed" from="Play" to="Play" method="clicked"]
+[connection signal="pressed" from="Custom" to="Custom" method="clicked"]

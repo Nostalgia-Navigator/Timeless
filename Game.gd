@@ -26,6 +26,8 @@ var levels = [
 		300
 		)
 ]
+
+var customLevel = null
 func line(desc, scene):
 	return {
 		"desc": desc,
@@ -46,6 +48,8 @@ func level(location, year, A, B, C, boss, surfaceTypes, goodieTypes, misc, time)
 	}
 
 func get_current_level_desc():
+	if customLevel:
+		return customLevel
 	return levels[currentLevel]
 
 var paused = null

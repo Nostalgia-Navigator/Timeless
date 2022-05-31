@@ -36,7 +36,7 @@ func on_inner_hit(area):
 		if wreck != null:
 			var w = wreck.instance()
 			w.set_global_transform(get_global_transform())
-			get_parent().add_child(w)
+			get_parent().call_deferred("add_child", w)
 		
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
@@ -49,7 +49,7 @@ func on_inner_hit(area):
 			
 			var st = s.get_global_transform()
 			s.get_parent().remove_child(s)
-			get_parent().add_child(s)
+			get_parent().call_deferred("add_child", s)
 			s.set_global_transform(st)
 		emit_signal("on_destroyed", self, n)
 		queue_free()

@@ -1,9 +1,14 @@
 extends Control
 
 func next_level():
+	if Game.customLevel:
+		return
 	if Game.currentLevel + 1 < len(Game.levels):
 		Game.currentLevel += 1
 func _ready():
+	if Game.customLevel:
+		$Continue.scene = preload("res://Menu/CustomLevel.tscn")
+	
 	var accuracy = Game.current.get_accuracy()
 	var bonus = accuracy * 2000
 	Game.score += bonus

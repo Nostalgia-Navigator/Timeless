@@ -1,0 +1,551 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=2]
+[ext_resource path="res://Music/stage_01.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=4]
+[ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=5]
+[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Blender/LandBunker.dae" type="PackedScene" id=7]
+[ext_resource path="res://Misc/PlaneHolder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menu/Level.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Misc/SetMusic.gd" type="Script" id=10]
+[ext_resource path="res://Blender/SeaBunker.dae" type="PackedScene" id=11]
+[ext_resource path="res://Misc/SetScene.gd" type="Script" id=12]
+[ext_resource path="res://Blender/SeaRadar.dae" type="PackedScene" id=13]
+[ext_resource path="res://Blender/LandRadar.dae" type="PackedScene" id=14]
+[ext_resource path="res://Blender/LandCannon.dae" type="PackedScene" id=15]
+[ext_resource path="res://Blender/SeaCannon.dae" type="PackedScene" id=16]
+[ext_resource path="res://Menu/MissionBuilder.gd" type="Script" id=17]
+
+[sub_resource type="BitmapFont" id=16]
+
+[sub_resource type="Theme" id=15]
+default_font = SubResource( 16 )
+
+[sub_resource type="Animation" id=21]
+resource_name = "Enter"
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Exit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../DirectionalLight")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0, 0.230068, 0.489749, 0.931663, 1 )
+colors = PoolColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 17 )
+
+[sub_resource type="DynamicFont" id=24]
+size = 80
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=25]
+default_font = SubResource( 24 )
+
+[sub_resource type="Animation" id=26]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "Spin"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "Spin"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "Spin"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "Spin"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="Animation" id=34]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "Spin"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Viewport/Rig/Holder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TextureRect2")
+autoplay = "Enter"
+anims/Enter = SubResource( 21 )
+anims/Exit = SubResource( 22 )
+anims/RESET = SubResource( 23 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 1800.0
+margin_right = 2880.0
+margin_bottom = 1800.0
+rect_rotation = 90.0
+texture = SubResource( 20 )
+expand = true
+
+[node name="Title" type="Label" parent="."]
+margin_left = 90.0
+margin_top = 60.0
+margin_right = 602.0
+margin_bottom = 117.0
+theme = SubResource( 2 )
+text = "Custom Level"
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -120.0
+margin_bottom = 40.0
+script = ExtResource( 17 )
+
+[node name="Exit" type="TextureButton" parent="UI"]
+margin_left = 80.0
+margin_top = 840.0
+margin_right = 208.0
+margin_bottom = 872.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 12 )
+fade = true
+anim = NodePath("../../AnimationPlayer")
+
+[node name="Label" type="Label" parent="UI/Exit"]
+margin_left = 37.4597
+margin_top = 6.88989
+margin_right = 251.46
+margin_bottom = 91.8899
+rect_scale = Vector2( 0.25, 0.25 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "EXIT"
+align = 1
+valign = 1
+
+[node name="Start" type="TextureButton" parent="UI"]
+margin_left = 1512.0
+margin_top = 840.0
+margin_right = 1640.0
+margin_bottom = 872.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 12 )
+scene = ExtResource( 9 )
+fade = true
+anim = NodePath("../../AnimationPlayer")
+
+[node name="Label" type="Label" parent="UI/Start"]
+margin_left = 37.4597
+margin_top = 6.88989
+margin_right = 251.46
+margin_bottom = 91.8899
+rect_scale = Vector2( 0.25, 0.25 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "START"
+align = 1
+valign = 1
+
+[node name="LandBunker" type="Button" parent="UI"]
+margin_left = 90.0
+margin_top = 180.0
+margin_right = 890.0
+margin_bottom = 420.0
+rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="Name" type="Label" parent="UI/LandBunker"]
+margin_left = 270.0
+margin_top = 60.0
+margin_right = 719.0
+margin_bottom = 180.0
+theme = SubResource( 25 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Land Bunker"
+valign = 1
+
+[node name="Container" parent="UI/LandBunker" instance=ExtResource( 8 )]
+
+[node name="LandBunker" parent="UI/LandBunker/Container/Viewport/Rig" index="0" instance=ExtResource( 7 )]
+
+[node name="Camera" parent="UI/LandBunker/Container/Viewport/Rig" index="2"]
+size = 8.0
+
+[node name="SeaBunker" type="Button" parent="UI"]
+margin_left = 450.0
+margin_top = 180.0
+margin_right = 1250.0
+margin_bottom = 420.0
+rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="Name" type="Label" parent="UI/SeaBunker"]
+margin_left = 270.0
+margin_top = 60.0
+margin_right = 719.0
+margin_bottom = 180.0
+theme = SubResource( 25 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Sea Bunker"
+valign = 1
+
+[node name="Container" parent="UI/SeaBunker" instance=ExtResource( 8 )]
+
+[node name="Rig" parent="UI/SeaBunker/Container/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+
+[node name="SeaBunker" parent="UI/SeaBunker/Container/Viewport/Rig" index="0" instance=ExtResource( 11 )]
+
+[node name="Camera" parent="UI/SeaBunker/Container/Viewport/Rig" index="2"]
+size = 8.0
+
+[node name="AnimationPlayer" parent="UI/SeaBunker/Container/Viewport/Rig" index="3"]
+anims/RESET = SubResource( 26 )
+anims/Spin = SubResource( 27 )
+
+[node name="LandRadar" type="Button" parent="UI"]
+margin_left = 90.0
+margin_top = 320.0
+margin_right = 890.0
+margin_bottom = 560.0
+rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="Name" type="Label" parent="UI/LandRadar"]
+margin_left = 270.0
+margin_top = 60.0
+margin_right = 719.0
+margin_bottom = 180.0
+theme = SubResource( 25 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Land Radar"
+valign = 1
+
+[node name="Container" parent="UI/LandRadar" instance=ExtResource( 8 )]
+
+[node name="Rig" parent="UI/LandRadar/Container/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+
+[node name="LandRadar" parent="UI/LandRadar/Container/Viewport/Rig" index="0" instance=ExtResource( 14 )]
+
+[node name="Camera" parent="UI/LandRadar/Container/Viewport/Rig" index="2"]
+size = 8.0
+
+[node name="AnimationPlayer" parent="UI/LandRadar/Container/Viewport/Rig" index="3"]
+anims/RESET = SubResource( 28 )
+anims/Spin = SubResource( 29 )
+
+[node name="SeaRadar" type="Button" parent="UI"]
+margin_left = 450.0
+margin_top = 320.0
+margin_right = 1250.0
+margin_bottom = 560.0
+rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="Name" type="Label" parent="UI/SeaRadar"]
+margin_left = 270.0
+margin_top = 60.0
+margin_right = 719.0
+margin_bottom = 180.0
+theme = SubResource( 25 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Sea Bunker"
+valign = 1
+
+[node name="Container" parent="UI/SeaRadar" instance=ExtResource( 8 )]
+
+[node name="Rig" parent="UI/SeaRadar/Container/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -16 )
+
+[node name="SeaRadar" parent="UI/SeaRadar/Container/Viewport/Rig" index="0" instance=ExtResource( 13 )]
+
+[node name="Camera" parent="UI/SeaRadar/Container/Viewport/Rig" index="2"]
+size = 8.0
+
+[node name="AnimationPlayer" parent="UI/SeaRadar/Container/Viewport/Rig" index="3"]
+anims/RESET = SubResource( 30 )
+anims/Spin = SubResource( 31 )
+
+[node name="LandCannon" type="Button" parent="UI"]
+margin_left = 90.0
+margin_top = 460.0
+margin_right = 890.0
+margin_bottom = 700.0
+rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="Name" type="Label" parent="UI/LandCannon"]
+margin_left = 270.0
+margin_top = 60.0
+margin_right = 719.0
+margin_bottom = 180.0
+theme = SubResource( 25 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Land Cannon"
+valign = 1
+
+[node name="Container" parent="UI/LandCannon" instance=ExtResource( 8 )]
+
+[node name="Rig" parent="UI/LandCannon/Container/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32 )
+
+[node name="LandCannon" parent="UI/LandCannon/Container/Viewport/Rig" index="0" instance=ExtResource( 15 )]
+transform = Transform( 0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, 0, 0 )
+
+[node name="Camera" parent="UI/LandCannon/Container/Viewport/Rig" index="2"]
+size = 8.0
+
+[node name="AnimationPlayer" parent="UI/LandCannon/Container/Viewport/Rig" index="3"]
+anims/RESET = SubResource( 32 )
+anims/Spin = SubResource( 33 )
+
+[node name="SeaCannon" type="Button" parent="UI"]
+margin_left = 450.0
+margin_top = 460.0
+margin_right = 1250.0
+margin_bottom = 700.0
+rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="Name" type="Label" parent="UI/SeaCannon"]
+margin_left = 270.0
+margin_top = 60.0
+margin_right = 719.0
+margin_bottom = 180.0
+theme = SubResource( 25 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Sea Cannon"
+valign = 1
+
+[node name="Container" parent="UI/SeaCannon" instance=ExtResource( 8 )]
+
+[node name="Rig" parent="UI/SeaCannon/Container/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -32 )
+
+[node name="SeaCannon" parent="UI/SeaCannon/Container/Viewport/Rig" index="0" instance=ExtResource( 16 )]
+transform = Transform( 0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, 0, 0 )
+
+[node name="Camera" parent="UI/SeaCannon/Container/Viewport/Rig" index="2"]
+size = 8.0
+
+[node name="AnimationPlayer" parent="UI/SeaCannon/Container/Viewport/Rig" index="3"]
+anims/RESET = SubResource( 34 )
+anims/Spin = SubResource( 35 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.866025, -0.433013, -0.25, 0, -0.5, 0.866025, -0.5, -0.75, -0.433013, 0, 5, 0 )
+light_energy = 2.0
+light_specular = 0.0
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 10 )
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="UI/Exit" to="UI/Exit" method="clicked"]
+[connection signal="pressed" from="UI/Start" to="UI/Start" method="clicked"]
+
+[editable path="UI/LandBunker/Container"]
+[editable path="UI/SeaBunker/Container"]
+[editable path="UI/LandRadar/Container"]
+[editable path="UI/SeaRadar/Container"]
+[editable path="UI/LandCannon/Container"]
+[editable path="UI/SeaCannon/Container"]
