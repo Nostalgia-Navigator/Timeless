@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Blender/L2AGreen.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/L2AGreenDebris.dae" type="PackedScene" id=2]
+[ext_resource path="res://Script/Owner.gd" type="Script" id=5]
+[ext_resource path="res://Blender/FokkerGreen.material" type="Material" id=7]
+[ext_resource path="res://Script/EnemyPlane.gd" type="Script" id=8]
+
+[node name="L2AGreen" groups=["Plane"] instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+planeName = "Fokker E.III"
+body = NodePath("Cube010")
+material = ExtResource( 7 )
+debris = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="." index="2"]
+collision_mask = 0
+monitoring = false
+script = ExtResource( 5 )
+root = NodePath("..")
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.6 )
+depth = 1.5
+polygon = PoolVector2Array( 0.355921, -2.27705, 0.355809, -1.95275, 2.29605, -1.94082, 2.87248, -1.4137, 2.87461, -0.986953, 0.249948, -0.973486, 0.193226, 1.32576, 0.57211, 1.32941, 0.942982, 1.88729, -0.968529, 1.87949, -0.573846, 1.33287, -0.181876, 1.33108, -0.21603, -0.933539, -2.82613, -0.950201, -2.84834, -1.32411, -2.27539, -1.95422, -0.387501, -1.94101, -0.369054, -2.28564 )
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_entered"]

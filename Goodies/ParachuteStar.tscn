@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Blender/ParachuteStar.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/Parachute/ParachuteStar.dae" type="PackedScene" id=1]
 [ext_resource path="res://Misc/Wraparound.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Blender/ParachuteStarYellow.material" type="Material" id=3]
-[ext_resource path="res://Blender/ParachuteStarBlue.material" type="Material" id=4]
+[ext_resource path="res://Blender/Parachute/ParachuteStarYellow.material" type="Material" id=3]
+[ext_resource path="res://Blender/Parachute/ParachuteStarBlue.material" type="Material" id=4]
 [ext_resource path="res://Script/Goodie.gd" type="Script" id=5]
 [ext_resource path="res://Script/Owner.gd" type="Script" id=6]
 

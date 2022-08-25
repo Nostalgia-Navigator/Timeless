@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Blender/Boss1.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/Plane/Boss1.dae" type="PackedScene" id=1]
 [ext_resource path="res://Misc/Wraparound.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Script/BossGun.gd" type="Script" id=3]
-[ext_resource path="res://Blender/Boss1Red.material" type="Material" id=4]
+[ext_resource path="res://Blender/Plane/Boss1Red.material" type="Material" id=4]
 [ext_resource path="res://Script/BossPlane.gd" type="Script" id=5]
-[ext_resource path="res://Blender/Boss1Debris.dae" type="PackedScene" id=6]
+[ext_resource path="res://Blender/Plane/Boss1Debris.dae" type="PackedScene" id=6]
 [ext_resource path="res://Script/Owner.gd" type="Script" id=9]
 
 [node name="Boss1" groups=["Plane"] instance=ExtResource( 1 )]

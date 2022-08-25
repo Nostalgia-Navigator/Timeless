@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Blender/WrightBFlyerOrange.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/WrightBFlyerOrange.material" type="Material" id=2]
+[ext_resource path="res://Script/Owner.gd" type="Script" id=3]
+[ext_resource path="res://Blender/WrightBFlyerOrangeDebris.dae" type="PackedScene" id=4]
+[ext_resource path="res://Script/EnemyPlane.gd" type="Script" id=5]
+
+[node name="WrightBFlyerOrange" groups=["Plane"] instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+planeName = "Wright B Flyer"
+body = NodePath("Cube010")
+markerType = 1
+material = ExtResource( 2 )
+score = 125
+debris = ExtResource( 4 )
+
+[node name="Area" type="Area" parent="." index="2"]
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+root = NodePath("..")
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0 )
+depth = 0.5
+polygon = PoolVector2Array( 0.632587, -2.30965, 0.637194, -1.85487, 3.4845, -1.85828, 4.06549, -1.37475, 3.51349, -0.879022, 0.205344, -0.857658, 0.198956, 1.7198, 1.0353, 1.71429, 0.993628, 2.32902, -0.993578, 2.32334, -1.03164, 1.71912, -0.183611, 1.72314, -0.259107, -0.830057, -3.42807, -0.837138, -3.91663, -1.34829, -3.4292, -1.88153, -0.585764, -1.88435, -0.58804, -2.29836 )
+
+[connection signal="area_entered" from="Area" to="." method="on_area_entered"]

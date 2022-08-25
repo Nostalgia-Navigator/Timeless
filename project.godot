@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Timeless - Wingnuts: Temporal Navigator"
-run/main_scene="res://Menu/Title.tscn"
+run/main_scene="res://Menu/Briefing.tscn"
 boot_splash/image="res://Images/Project Timeless Rect.png"
 config/icon="res://Images/Project Timeless Square (No Title).drawio.png"
 
@@ -87,7 +87,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/blender_importer/plugin.cfg", "res://addons/destruction/plugin.cfg", "res://addons/vpainter/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/destruction/plugin.cfg", "res://addons/vpainter/plugin.cfg" )
 
 [gdnative]
 

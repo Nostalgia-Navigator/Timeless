@@ -3,9 +3,9 @@ extends Spatial
 const star = preload("res://Blender/StarParticle.tscn")
 
 const colors = [
-	preload("res://Blender/ParachuteRed.material"),
-	preload("res://Blender/ParachuteBlue.material"),
-	preload("res://Blender/ParachuteWhite.material")
+	preload("res://Blender/Parachute/ParachuteRed.material"),
+	preload("res://Blender/Parachute/ParachuteBlue.material"),
+	preload("res://Blender/Parachute/ParachuteWhite.material")
 ]
 
 func createParticles():

@@ -4,11 +4,11 @@ const Goodie = preload("res://Script/Goodie.gd").GoodieType
 
 var levels = [
 	level("The Baltic Sea, Northern Europe", 1909,
-		[preload("res://Plane/A/BleriotXIMonoplaneCyan.tscn"),
-			preload("res://Plane/A/BleriotXIMonoplaneRed.tscn")],
-		[preload("res://Plane/B/WrightBFlyerGreen.tscn"),
-			preload("res://Plane/B/WrightBFlyerOrange.tscn")],
-		[preload("res://Plane/C/WrightMilitaryFlyerOrange.tscn")],
+		[preload("res://Plane/L1ACyan.tscn"),
+			preload("res://Plane/L1ARed.tscn")],
+		[preload("res://Plane/L1BGreen.tscn"),
+			preload("res://Plane/L1BOrange.tscn")],
+		[preload("res://Plane/L1C.tscn")],
 		preload("res://Plane/Boss1.tscn"),
 		[],
 		[Goodie.crewmate, Goodie.crewmate, Goodie.crewmate, Goodie.crewmate, Goodie.fuel, Goodie.fuel, Goodie.fuel, Goodie.fuel, Goodie.shields, Goodie.shields, Goodie.shields, Goodie.star, Goodie.star, Goodie.time, Goodie.weapon],
@@ -16,9 +16,9 @@ var levels = [
 		300
 		),
 	level("The Frisian Islands, Germany", 1916,
-		[preload("res://Plane/A/Fokker EIII Green.tscn"), preload("res://Plane/A/Fokker EIII White.tscn")],
-		[preload("res://Plane/B/Junkers CLI MintGreen.tscn"), preload("res://Plane/B/Junkers CLI YellowGreen.tscn")],
-		[preload("res://Plane/C/WrightMilitaryFlyerOrange.tscn")], #placeholder
+		[preload("res://Plane/L2AGreen.tscn"), preload("res://Plane/L2AWhite.tscn")],
+		[preload("res://Plane/L2BLime.tscn"), preload("res://Plane/L2BGreen.tscn")],
+		[preload("res://Plane/L1C.tscn")], #placeholder
 		preload("res://Plane/Boss1.tscn"),
 		[],
 		[],
@@ -89,7 +89,7 @@ const bulletMinDamageTable = {
 	
 }
 
-var currentLevel = 0
+var currentLevel = 1
 var difficulty = Difficulty.Diabolical
 
 class Stats:

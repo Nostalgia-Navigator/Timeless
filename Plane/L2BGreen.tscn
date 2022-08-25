@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Blender/L2BGreen.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/L2BGreenDebris.dae" type="PackedScene" id=2]
+[ext_resource path="res://Script/Owner.gd" type="Script" id=3]
+[ext_resource path="res://Blender/JunkersMintGreen.material" type="Material" id=4]
+[ext_resource path="res://Script/EnemyPlane.gd" type="Script" id=5]
+
+[node name="L2BGreen" groups=["Plane"] instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+planeName = "Junkers CL.I"
+body = NodePath("Cube010")
+material = ExtResource( 4 )
+debris = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="." index="2"]
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+root = NodePath("..")
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+polygon = PoolVector2Array( 0.214545, -1.54918, 0.212136, -0.775409, 2.99595, -0.777328, 2.91923, 0.269903, 0.240966, 0.27754, 0.238713, 2.1414, 0.744469, 2.13157, 1.17531, 2.77678, -1.23545, 2.78767, -0.713035, 2.11492, -0.20569, 2.12102, -0.243379, 0.28057, -2.9322, 0.265041, -2.94041, -0.779856, -0.215719, -0.789393, -0.222198, -1.55444 )
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_entered"]

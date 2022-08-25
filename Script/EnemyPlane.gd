@@ -204,3 +204,7 @@ func get_parent_rotation():
 		n = n.get_parent()
 	return result
 		
+
+
+func _on_area_entered(area):
+	pass # Replace with function body.

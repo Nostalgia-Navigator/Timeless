@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Plane/L1_A1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Blender/Fokker E.III Green.dae" type="PackedScene" id=2]
+[ext_resource path="res://Plane/L1ACyan.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Blender/L2AGreen.dae" type="PackedScene" id=2]
 
 [node name="Spatial" type="Spatial"]
 

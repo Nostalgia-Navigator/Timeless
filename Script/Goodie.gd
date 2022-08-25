@@ -18,7 +18,7 @@ func _process(delta):
 	transform.origin += vel
 	
 const debris = preload("res://Effect/Debris.tscn")
-const material = preload("res://Blender/ParachuteRed.material")
+const material = preload("res://Blender/Parachute/ParachuteRed.material")
 const slap = preload("res://Sounds/GoodiesDamaged/Slap - snd .1025.dat.wav")
 func damage(projectile):
 	
