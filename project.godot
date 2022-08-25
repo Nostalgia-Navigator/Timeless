@@ -87,7 +87,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/destruction/plugin.cfg", "res://addons/vpainter/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/blender_importer/plugin.cfg", "res://addons/destruction/plugin.cfg", "res://addons/vpainter/plugin.cfg" )
 
 [gdnative]
 

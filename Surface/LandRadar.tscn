@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Blender/LandRadar.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/Surface/LandRadar.dae" type="PackedScene" id=1]
 [ext_resource path="res://Misc/Wraparound.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Effect/DebrisTemplate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=4]
 [ext_resource path="res://Effect/BunkerSmoke.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Blender/LandRadarDebris.dae" type="PackedScene" id=6]
+[ext_resource path="res://Blender/Surface/LandRadarDebris.dae" type="PackedScene" id=6]
 [ext_resource path="res://Surface/Surface.gd" type="Script" id=7]
 [ext_resource path="res://Bullet/LandRadarShot.tscn" type="PackedScene" id=8]
 

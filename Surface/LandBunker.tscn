@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Blender/LandBunker.dae" type="PackedScene" id=1]
+[ext_resource path="res://Blender/Surface/LandBunker.dae" type="PackedScene" id=1]
 [ext_resource path="res://addons/destruction/destruction.gd" type="Script" id=2]
 [ext_resource path="res://Effect/DebrisTemplate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Surface/Surface.gd" type="Script" id=4]
-[ext_resource path="res://Blender/LandBunkerDebris.dae" type="PackedScene" id=5]
+[ext_resource path="res://Blender/Surface/LandBunkerDebris.dae" type="PackedScene" id=5]
 [ext_resource path="res://Effect/BunkerSmoke.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Misc/Wraparound.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Bullet/LandBunkerShot.tscn" type="PackedScene" id=8]
