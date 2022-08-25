@@ -73,11 +73,7 @@ func fire(timer):
 			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, child_areas, 2147483647, false, true)
 			var clear = result.empty() or (result["collider"].get_parent() == player)
 			if clear:
-				var s = AudioStreamPlayer.new()
-				s.stream = gunshot
-				Bgm.add_child(s)
-				s.play()
-				s.connect("finished", s, "queue_free")
+				Game.play_sound(gunshot, Game.Sounds.Gunshot)
 				
 				var b = bullet.instance()
 				world.call_deferred("add_child", b)

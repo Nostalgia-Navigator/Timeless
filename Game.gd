@@ -149,10 +149,29 @@ class Current:
 	
 	func get_accuracy():
 		return float(hits) / shots
-func play_sound(stream):
-	var s = AudioStreamPlayer.new()
+		
+var allowGunshot = true
+func play_sound(stream : AudioStream, soundType):
+	
+	if soundType == Sounds.Gunshot:
+		if !allowGunshot:
+			return
+		allowGunshot = false
+		get_tree().create_timer(0.2).connect("timeout", self, "set", ["allowGunshot", true])
+		
+	var s := AudioStreamPlayer.new()
 	s.stream = stream
-	s.volume_db = -3
+	s.volume_db = {
+		Sounds.Gunshot: -15,
+		Sounds.Hit: -15,
+		Sounds.Explosion: -15,
+		Sounds.Music: -10,
+		Sounds.Menu: -20,
+	}[soundType]
 	Bgm.add_child(s)
 	s.play()
 	s.connect("finished", s, "queue_free")
+
+enum Sounds {
+	Gunshot, Hit, Explosion, Music, Menu
+}

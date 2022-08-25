@@ -48,6 +48,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=23]
 resource_name = "Exit"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -55,7 +56,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
@@ -78,13 +79,13 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=21]
 size = 128
-outline_size = 3
+outline_size = 5
 extra_spacing_char = 9
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=24]
 size = 120
-outline_size = 3
+outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_char = 9
 font_data = ExtResource( 16 )
@@ -95,14 +96,14 @@ anchor_bottom = 1.0
 theme = SubResource( 15 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 1800.0
-margin_right = 2880.0
-margin_bottom = 1800.0
+margin_left = 1920.0
+margin_right = 3000.0
+margin_bottom = 1920.0
 rect_rotation = 90.0
 texture = SubResource( 20 )
 expand = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 autoplay = "Enter"
 anims/Enter = SubResource( 13 )
 anims/Exit = SubResource( 23 )
@@ -151,7 +152,7 @@ texture_hover = ExtResource( 10 )
 script = ExtResource( 2 )
 scene = ExtResource( 3 )
 fade = true
-anim = NodePath("../AnimationPlayer")
+anim = NodePath("../Anim")
 
 [node name="Label" type="Label" parent="Play"]
 margin_left = 36.9888
@@ -177,7 +178,7 @@ texture_hover = ExtResource( 10 )
 script = ExtResource( 2 )
 scene = ExtResource( 17 )
 fade = true
-anim = NodePath("../AnimationPlayer")
+anim = NodePath("../Anim")
 
 [node name="Label" type="Label" parent="Custom"]
 margin_left = 31.6555
@@ -192,24 +193,24 @@ align = 1
 valign = 1
 
 [node name="Sprite5" type="Sprite" parent="."]
-position = Vector2( 795.285, 765.135 )
+position = Vector2( 859.285, 765.135 )
 scale = Vector2( 2.5, 2.5 )
 z_index = 2
 texture = ExtResource( 8 )
 
 [node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( 1007.57, 799.629 )
+position = Vector2( 1071.57, 799.629 )
 scale = Vector2( 2.25, 2.25 )
 texture = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1275.21, 705.715 )
+position = Vector2( 1339.21, 705.715 )
 scale = Vector2( 3, 3 )
 z_index = 4
 texture = ExtResource( 12 )
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 1554.99, 777.87 )
+position = Vector2( 1618.99, 777.87 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 7 )
 

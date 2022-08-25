@@ -10,13 +10,7 @@ func _ready():
 	anim = get_node(anim)
 func clicked():
 	if fade:
-		
-		var s = AudioStreamPlayer.new()
-		s.stream = transition
-		s.volume_db = -10
-		Bgm.add_child(s)
-		s.play()
-		s.connect("finished", s, "queue_free")
+		Game.play_sound(transition, Game.Sounds.Menu)
 		anim.play("Exit")
 		anim.connect("animation_finished", self, "transition")
 		#Thread.new().start(self, "instance_scene")

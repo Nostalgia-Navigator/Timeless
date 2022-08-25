@@ -447,51 +447,41 @@ vulnerable = true
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.39078e-08, -0.258655, -0.60432 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Cube001" type="MeshInstance" parent="Body"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.866667, -0.0919882, 0.151236 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Cube002" type="MeshInstance" parent="Body"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.39078e-08, 0.163567, 0.0401245 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Cube003" type="MeshInstance" parent="Body"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.31137e-09, 0.791345, 1.40124 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Cube004" type="MeshInstance" parent="Body"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.84119e-08, 0.0413451, 2.35124 )
 mesh = SubResource( 5 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Cube005" type="MeshInstance" parent="Body"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.71532e-08, -0.0849707, -2.29087 )
 mesh = SubResource( 6 )
 skeleton = NodePath("../..")
-material/0 = null
-material/1 = null
-material/2 = null
 
 [node name="Cube006" type="MeshInstance" parent="Body"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.31137e-09, -0.468655, -0.0887644 )
 mesh = SubResource( 7 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Cube007" type="MeshInstance" parent="Body"]
 transform = Transform( -0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.866667, -0.0919882, 0.151236 )
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Area" type="Area" parent="."]
 collision_layer = 2

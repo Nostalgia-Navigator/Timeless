@@ -44,7 +44,7 @@ func damage(projectile):
 		remove(projectile)
 		return
 	
-	Game.play_sound(slap)
+	Game.play_sound(slap, Game.Sounds.Hit)
 	
 	Game.conduct.goodiesDamaged += 1
 	damaged = true

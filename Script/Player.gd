@@ -103,7 +103,7 @@ func on_damage(projectile):
 		#	get_parent().add_child(d)
 		
 		
-		Game.play_sound(playerExplosion)
+		Game.play_sound(playerExplosion, Game.Sounds.Explosion)
 		
 		Game.deaths += 1
 		
@@ -119,7 +119,7 @@ func on_damage(projectile):
 		hp = 0
 	else:
 		hp -= dmg
-		Game.play_sound(planeHit[randi()%len(planeHit)])
+		Game.play_sound(planeHit[randi()%len(planeHit)], Game.Sounds.Hit)
 		
 		var h = hit.instance()
 		get_parent().call_deferred("add_child", h)
@@ -256,7 +256,7 @@ func _physics_process(delta):
 		
 		Game.stats.bombs += 1
 		
-		Game.play_sound(bombDropSound)
+		Game.play_sound(bombDropSound, Game.Sounds.Gunshot)
 		
 		var b = bombdrop.instance()
 		bombsLeft -= 1
@@ -319,5 +319,5 @@ func _on_area_entered(area):
 var landed = false
 func on_landed(anim):
 	landed = true
-	var label = get_tree().get_root().get_node("Main/LevelComplete")
+	var label = get_tree().get_root().get_node("Main/Control/LevelComplete")
 	label.show()

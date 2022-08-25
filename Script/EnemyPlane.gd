@@ -83,7 +83,7 @@ func _physics_process(delta):
 			var clear = result.empty() or (result["collider"].get_parent() == player)
 			
 			if clear:
-				Game.play_sound(gunshot)
+				Game.play_sound(gunshot, Game.Sounds.Gunshot)
 				
 				var b = bullet.instance()
 				b.damage = rand_range(5, 25)
@@ -157,7 +157,7 @@ func on_damage(projectile):
 		Game.destroyed.aircraft += 1
 		
 		Game.score += score
-		Game.play_sound(planeExplosion[randi()%len(planeExplosion)])
+		Game.play_sound(planeExplosion[randi()%len(planeExplosion)], Game.Sounds.Explosion)
 		
 		emit_signal("on_destroyed", self, projectile)
 		call_deferred("queue_free")
@@ -178,7 +178,7 @@ func on_damage(projectile):
 			smoke.emitting = true
 			smoke.process_material.set("initial_velocity", -speed + min(4, speed/2))
 		
-		Game.play_sound(planeHit[randi()%len(planeHit)])
+		Game.play_sound(planeHit[randi()%len(planeHit)], Game.Sounds.Hit)
 		emit_signal("on_damaged", self, projectile)
 const planeHit = [
 	preload("res://Sounds/Hit/PlaneHit - snd .1008.dat.wav"),
