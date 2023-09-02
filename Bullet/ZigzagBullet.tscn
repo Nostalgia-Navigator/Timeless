@@ -9,14 +9,14 @@ resource_name = "Movement"
 length = 1.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body:translation")
+tracks/0/path = NodePath("Body:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 10, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -10, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
@@ -27,8 +27,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 1.2 ),
-"transitions": PoolRealArray( -2, -2, -2 ),
+"times": PackedFloat32Array( 0, 0.6, 1.2 ),
+"transitions": PackedFloat32Array( -2, -2, -2 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ), Color( 0, 1, 0.505882, 1 ), Color( 1, 0, 0, 1 ) ]
 }
@@ -36,14 +36,14 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body:translation")
+tracks/0/path = NodePath("Body:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
@@ -54,31 +54,31 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ) ]
 }
 
-[node name="ZigzagBullet" type="Spatial" groups=["Bullet"]]
+[node name="ZigzagBullet" type="Node3D" groups=["Bullet"]]
 script = ExtResource( 2 )
 
-[node name="Body" type="Spatial" parent="."]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 
 [node name="ZigZagBullet" parent="Body" instance=ExtResource( 1 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+transform = Transform3D( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="Body"]
+[node name="Area3D" type="Area3D" parent="Body"]
 collision_mask = 0
 monitorable = false
 script = ExtResource( 3 )
 root = NodePath("../..")
 
-[node name="CollisionPolygon" type="CollisionPolygon" parent="Body/Area"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Body/Area3D"]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 depth = 0.5
-polygon = PoolVector2Array( 0.475936, -0.167179, 0.860067, 0.261262, 0.30192, 0.402539, 0.000700082, 0.907784, -0.311045, 0.417352, -0.880902, 0.278565, -0.495225, -0.152766, -0.544622, -0.761473, -0.000864826, -0.508672, 0.549768, -0.768778 )
+polygon = PackedVector2Array( 0.475936, -0.167179, 0.860067, 0.261262, 0.30192, 0.402539, 0.000700082, 0.907784, -0.311045, 0.417352, -0.880902, 0.278565, -0.495225, -0.152766, -0.544622, -0.761473, -0.000864826, -0.508672, 0.549768, -0.768778 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Movement"

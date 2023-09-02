@@ -1,6 +1,6 @@
 extends Particles
 
-export(PoolColorArray) var colors
+@export var colors: PackedColorArray
 var _colors = [Color("bb00ff"), Color("0034ff"), Color("00ff8d")]
 
 # Called when the node enters the scene tree for the first time.

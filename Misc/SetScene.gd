@@ -1,7 +1,7 @@
 extends Node
-export(PackedScene) var scene
-export(bool) var fade = false
-export(NodePath) var anim
+@export var scene: PackedScene
+@export var fade: bool = false
+@export var anim: NodePath
 const transition = preload("res://Sounds/Menu/Transition - snd .1037.dat.wav")
 
 
@@ -12,12 +12,12 @@ func clicked():
 	if fade:
 		Game.play_sound(transition, Game.Sounds.Menu)
 		anim.play("Exit")
-		anim.connect("animation_finished", self, "transition")
+		anim.connect("animation_finished", Callable(self, "transition"))
 		#Thread.new().start(self, "instance_scene")
 	else:
-		get_tree().change_scene_to(scene)	
+		get_tree().change_scene_to_packed(scene)	
 func instance_scene():
-	scene.instance()
+	scene.instantiate()
 func transition(a):
-	anim.disconnect("animation_finished", self, "transition")
-	get_tree().change_scene_to(scene)	
+	anim.disconnect("animation_finished", Callable(self, "transition"))
+	get_tree().change_scene_to_packed(scene)	

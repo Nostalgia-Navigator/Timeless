@@ -14,122 +14,122 @@ speed = 0.2
 material = ExtResource( 4 )
 debris = ExtResource( 6 )
 
-[node name="Area" type="Area" parent="." index="0"]
+[node name="Area3D" type="Area3D" parent="." index="0"]
 collision_mask = 0
 monitoring = false
 script = ExtResource( 9 )
 root = NodePath("..")
 
-[node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1, 0 )
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D" index="0"]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1, 0 )
 depth = 4.0
-polygon = PoolVector2Array( -30.4055, -5.45403, -30.4808, -2.04551, -28.3911, 2.41512, -3.869, 2.53792, -1.04621, 6.45038, -1.06462, 9.50946, -0.462777, 10.5713, 0.53975, 10.4955, 1.11162, 9.66037, 1.02171, 6.48229, 3.53034, 2.77433, 28.3907, 2.58853, 30.4884, -1.60465, 30.2712, -5.15869, 14.4545, -5.2474, 6.36971, -10.7058, 5.16165, -20.4654, 7.49734, -22.2224, 7.34311, -26.2561, -7.43785, -26.0148, -7.24099, -22.2402, -4.95461, -20.4494, -6.48239, -10.6547, -14.3945, -5.52646 )
+polygon = PackedVector2Array( -30.4055, -5.45403, -30.4808, -2.04551, -28.3911, 2.41512, -3.869, 2.53792, -1.04621, 6.45038, -1.06462, 9.50946, -0.462777, 10.5713, 0.53975, 10.4955, 1.11162, 9.66037, 1.02171, 6.48229, 3.53034, 2.77433, 28.3907, 2.58853, 30.4884, -1.60465, 30.2712, -5.15869, 14.4545, -5.2474, 6.36971, -10.7058, 5.16165, -20.4654, 7.49734, -22.2224, 7.34311, -26.2561, -7.43785, -26.0148, -7.24099, -22.2402, -4.95461, -20.4494, -6.48239, -10.6547, -14.3945, -5.52646 )
 
-[node name="ExplosionPoints" type="Spatial" parent="." index="13"]
+[node name="ExplosionPoints" type="Node3D" parent="." index="13"]
 
-[node name="Front" type="Spatial" parent="ExplosionPoints" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+[node name="Front" type="Node3D" parent="ExplosionPoints" index="0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 
-[node name="ExplosionPoints5" type="Position3D" parent="ExplosionPoints/Front" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0 )
+[node name="ExplosionPoints5" type="Marker3D" parent="ExplosionPoints/Front" index="0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0 )
 
-[node name="ExplosionPoints4" type="Position3D" parent="ExplosionPoints/Front" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+[node name="ExplosionPoints4" type="Marker3D" parent="ExplosionPoints/Front" index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
 
-[node name="ExplosionPoints3" type="Position3D" parent="ExplosionPoints/Front" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
+[node name="ExplosionPoints3" type="Marker3D" parent="ExplosionPoints/Front" index="2"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
 
-[node name="ExplosionPoints2" type="Position3D" parent="ExplosionPoints/Front" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+[node name="ExplosionPoints2" type="Marker3D" parent="ExplosionPoints/Front" index="3"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
 
-[node name="ExplosionPoints8" type="Position3D" parent="ExplosionPoints/Front" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0 )
+[node name="ExplosionPoints8" type="Marker3D" parent="ExplosionPoints/Front" index="4"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0 )
 
-[node name="ExplosionPoints7" type="Position3D" parent="ExplosionPoints/Front" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+[node name="ExplosionPoints7" type="Marker3D" parent="ExplosionPoints/Front" index="5"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
 
-[node name="ExplosionPoints6" type="Position3D" parent="ExplosionPoints/Front" index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0 )
+[node name="ExplosionPoints6" type="Marker3D" parent="ExplosionPoints/Front" index="6"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0 )
 
-[node name="Middle" type="Spatial" parent="ExplosionPoints" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+[node name="Middle" type="Node3D" parent="ExplosionPoints" index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 
-[node name="ExplosionPoints5" type="Position3D" parent="ExplosionPoints/Middle" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0 )
+[node name="ExplosionPoints5" type="Marker3D" parent="ExplosionPoints/Middle" index="0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0 )
 
-[node name="ExplosionPoints9" type="Position3D" parent="ExplosionPoints/Middle" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0 )
+[node name="ExplosionPoints9" type="Marker3D" parent="ExplosionPoints/Middle" index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0 )
 
-[node name="ExplosionPoints4" type="Position3D" parent="ExplosionPoints/Middle" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+[node name="ExplosionPoints4" type="Marker3D" parent="ExplosionPoints/Middle" index="2"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
 
-[node name="ExplosionPoints3" type="Position3D" parent="ExplosionPoints/Middle" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
+[node name="ExplosionPoints3" type="Marker3D" parent="ExplosionPoints/Middle" index="3"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
 
-[node name="ExplosionPoints8" type="Position3D" parent="ExplosionPoints/Middle" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0 )
+[node name="ExplosionPoints8" type="Marker3D" parent="ExplosionPoints/Middle" index="4"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0 )
 
-[node name="ExplosionPoints7" type="Position3D" parent="ExplosionPoints/Middle" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+[node name="ExplosionPoints7" type="Marker3D" parent="ExplosionPoints/Middle" index="5"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
 
-[node name="ExplosionPoints6" type="Position3D" parent="ExplosionPoints/Middle" index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0 )
+[node name="ExplosionPoints6" type="Marker3D" parent="ExplosionPoints/Middle" index="6"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0 )
 
-[node name="ExplosionPoints10" type="Position3D" parent="ExplosionPoints/Middle" index="7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
+[node name="ExplosionPoints10" type="Marker3D" parent="ExplosionPoints/Middle" index="7"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
 
-[node name="Back" type="Spatial" parent="ExplosionPoints" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+[node name="Back" type="Node3D" parent="ExplosionPoints" index="2"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 
-[node name="ExplosionPoints9" type="Position3D" parent="ExplosionPoints/Back" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0 )
+[node name="ExplosionPoints9" type="Marker3D" parent="ExplosionPoints/Back" index="0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0 )
 
-[node name="ExplosionPoints4" type="Position3D" parent="ExplosionPoints/Back" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+[node name="ExplosionPoints4" type="Marker3D" parent="ExplosionPoints/Back" index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
 
-[node name="ExplosionPoints3" type="Position3D" parent="ExplosionPoints/Back" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
+[node name="ExplosionPoints3" type="Marker3D" parent="ExplosionPoints/Back" index="2"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
 
-[node name="ExplosionPoints8" type="Position3D" parent="ExplosionPoints/Back" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0 )
+[node name="ExplosionPoints8" type="Marker3D" parent="ExplosionPoints/Back" index="3"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0 )
 
-[node name="ExplosionPoints7" type="Position3D" parent="ExplosionPoints/Back" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+[node name="ExplosionPoints7" type="Marker3D" parent="ExplosionPoints/Back" index="4"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
 
-[node name="ExplosionPoints6" type="Position3D" parent="ExplosionPoints/Back" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0 )
+[node name="ExplosionPoints6" type="Marker3D" parent="ExplosionPoints/Back" index="5"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0 )
 
-[node name="Tail" type="Spatial" parent="ExplosionPoints" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21 )
+[node name="Tail" type="Node3D" parent="ExplosionPoints" index="3"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21 )
 
-[node name="ExplosionPoints3" type="Position3D" parent="ExplosionPoints/Tail" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
+[node name="ExplosionPoints3" type="Marker3D" parent="ExplosionPoints/Tail" index="0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
 
-[node name="ExplosionPoints8" type="Position3D" parent="ExplosionPoints/Tail" index="1"]
+[node name="ExplosionPoints8" type="Marker3D" parent="ExplosionPoints/Tail" index="1"]
 
-[node name="ExplosionPoints9" type="Position3D" parent="ExplosionPoints/Tail" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
+[node name="ExplosionPoints9" type="Marker3D" parent="ExplosionPoints/Tail" index="2"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
 
-[node name="ExplosionPoints5" type="Position3D" parent="ExplosionPoints/Tail" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3 )
+[node name="ExplosionPoints5" type="Marker3D" parent="ExplosionPoints/Tail" index="3"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3 )
 
-[node name="ExplosionPoints12" type="Position3D" parent="ExplosionPoints/Tail" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3 )
+[node name="ExplosionPoints12" type="Marker3D" parent="ExplosionPoints/Tail" index="4"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3 )
 
-[node name="ExplosionPoints13" type="Position3D" parent="ExplosionPoints/Tail" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3 )
+[node name="ExplosionPoints13" type="Marker3D" parent="ExplosionPoints/Tail" index="5"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3 )
 
-[node name="ExplosionPoints14" type="Position3D" parent="ExplosionPoints/Tail" index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3 )
+[node name="ExplosionPoints14" type="Marker3D" parent="ExplosionPoints/Tail" index="6"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3 )
 
-[node name="ExplosionPoints4" type="Position3D" parent="ExplosionPoints/Tail" index="7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5 )
+[node name="ExplosionPoints4" type="Marker3D" parent="ExplosionPoints/Tail" index="7"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5 )
 
-[node name="ExplosionPoints10" type="Position3D" parent="ExplosionPoints/Tail" index="8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+[node name="ExplosionPoints10" type="Marker3D" parent="ExplosionPoints/Tail" index="8"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 
-[node name="ExplosionPoints11" type="Position3D" parent="ExplosionPoints/Tail" index="9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
+[node name="ExplosionPoints11" type="Marker3D" parent="ExplosionPoints/Tail" index="9"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
 
 [node name="Wraparound" parent="." index="14" instance=ExtResource( 2 )]
 
@@ -157,4 +157,4 @@ script = ExtResource( 3 )
 [node name="Gun007" parent="." index="24"]
 script = ExtResource( 3 )
 
-[connection signal="area_entered" from="Area" to="." method="on_area_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="on_area_entered"]

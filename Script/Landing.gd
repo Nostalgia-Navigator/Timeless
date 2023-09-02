@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 func _on_area_entered(area):
 	var n = area.get_parent()
 	
@@ -17,4 +17,4 @@ func _on_area_entered(area):
 		n.exhaust.emitting = false
 		n.get_node("AnimationPlayer").play("RESET")
 		$Animation.play("Landing")
-		$Animation.connect("animation_finished", n, "on_landed")
+		$Animation.connect("animation_finished", Callable(n, "on_landed"))

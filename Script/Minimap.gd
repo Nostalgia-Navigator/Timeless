@@ -1,19 +1,19 @@
 extends MarginContainer
 
-onready var grid = $MarginContainer/Grid
-onready var player_marker = $MarginContainer/Grid/Player
-onready var goodie_marker = $MarginContainer/Grid/Goodie
-onready var cyan = $MarginContainer/Grid/Cyan
-onready var green = $MarginContainer/Grid/Green
-onready var yellow = $MarginContainer/Grid/Yellow
-onready var orange = $MarginContainer/Grid/Orange
-onready var red = $MarginContainer/Grid/Red
-onready var carrier_marker = $MarginContainer/Grid/Carrier
-onready var boss_marker = $MarginContainer/Grid/Boss
-onready var planeMarkers = [green, yellow, orange]
-onready var surface_marker = red
+@onready var grid = $MarginContainer/Grid
+@onready var player_marker = $MarginContainer/Grid/Player
+@onready var goodie_marker = $MarginContainer/Grid/Goodie
+@onready var cyan = $MarginContainer/Grid/Cyan
+@onready var green = $MarginContainer/Grid/Green
+@onready var yellow = $MarginContainer/Grid/Yellow
+@onready var orange = $MarginContainer/Grid/Orange
+@onready var red = $MarginContainer/Grid/Red
+@onready var carrier_marker = $MarginContainer/Grid/Carrier
+@onready var boss_marker = $MarginContainer/Grid/Boss
+@onready var planeMarkers = [green, yellow, orange]
+@onready var surface_marker = red
 
-export (NodePath) var player
+@export (NodePath) var player
 var carrier
 var boss
 
@@ -28,16 +28,16 @@ func _ready():
 	
 func register_level():
 	for island in get_tree().get_nodes_in_group("Island"):
-		var s = Sprite.new()
+		var s = Sprite2D.new()
 		s.scale = s.scale / 2
 		s.texture = island.texture
 		markers[island] = s
 		grid.add_child(s)
 		#s.z_index = 0
 	for goodie in get_tree().get_nodes_in_group("Goodie"):
-		if goodie is Area:
+		if goodie is Area3D:
 			continue
-		goodie.connect("on_removed", self, "remove_marker")
+		goodie.connect("on_removed", Callable(self, "remove_marker"))
 		
 		var m = goodie_marker.duplicate()
 		grid.add_child(m)
@@ -45,7 +45,7 @@ func register_level():
 		markers[goodie] = m
 		
 	for surface in get_tree().get_nodes_in_group("Surface"):
-		surface.connect("on_destroyed", self, "remove_marker")
+		surface.connect("on_destroyed", Callable(self, "remove_marker"))
 		
 		var m = surface_marker.duplicate()
 		grid.add_child(m)
@@ -53,10 +53,10 @@ func register_level():
 		markers[surface] = m
 	
 	var enemies = player.get_parent().get_node("Enemies")
-	enemies.connect("on_boss_spawned", self, "register_boss")
+	enemies.connect("on_boss_spawned", Callable(self, "register_boss"))
 	
 	for enemy in get_tree().get_nodes_in_group("Plane"):
-		enemy.connect("on_destroyed", self, "remove_marker")
+		enemy.connect("on_destroyed", Callable(self, "remove_marker"))
 		var i = enemy.markerType
 		#var n = enemy.name
 		var new_marker = planeMarkers[i].duplicate()
@@ -64,9 +64,9 @@ func register_level():
 		new_marker.show()
 		markers[enemy] = new_marker
 	for goodie in get_tree().get_nodes_in_group("Goodie"):
-		if goodie is Area:
+		if goodie is Area3D:
 			continue
-		goodie.connect("on_removed", self, "remove_marker")
+		goodie.connect("on_removed", Callable(self, "remove_marker"))
 		var new_marker = goodie_marker.duplicate()
 		grid.add_child(new_marker)
 		new_marker.show()
@@ -74,8 +74,8 @@ func register_level():
 	
 func register_markers():
 	player = get_node(player)
-	player_marker.position = grid.rect_size / 2
-	grid_scale = grid.rect_size / (Wraparound.EXTENT * 2)
+	player_marker.position = grid.size / 2
+	grid_scale = grid.size / (Wraparound.EXTENT * 2)
 	
 	
 	if true:
@@ -84,13 +84,13 @@ func register_markers():
 		grid.add_child(m)
 		m.show()
 		markers[carrier] = m
-		carrier.connect("tree_exited", self, "remove_carrier")
+		carrier.connect("tree_exited", Callable(self, "remove_carrier"))
 	
 	call_deferred("register_level")
 	
 func register_boss(boss):
-	boss.connect("on_destroyed", self, "remove_marker")
-	boss.connect("on_destroyed", self, "add_landing")
+	boss.connect("on_destroyed", Callable(self, "remove_marker"))
+	boss.connect("on_destroyed", Callable(self, "add_landing"))
 	var new_marker = boss_marker.duplicate()
 	grid.add_child(new_marker)
 	new_marker.show()
@@ -118,20 +118,20 @@ func _process(delta):
 	if !player:
 		return
 		
-	var center = grid.rect_size / 2
+	var center = grid.size / 2
 	#player_marker.rotation = player.rotation.y + PI/2
 	for enemy in markers:
 		var o = enemy.get_global_transform().origin - player.transform.origin
 		var p = Vector2(o.x, o.z) * grid_scale + center
-		while p.x > grid.rect_size.x:
-			p.x -= grid.rect_size.x
+		while p.x > grid.size.x:
+			p.x -= grid.size.x
 		while p.x < 0:
-			p.x += grid.rect_size.x
+			p.x += grid.size.x
 			
-		while p.y > grid.rect_size.y:
-			p.y -= grid.rect_size.y
+		while p.y > grid.size.y:
+			p.y -= grid.size.y
 		while p.y < 0:
-			p.y += grid.rect_size.y
+			p.y += grid.size.y
 			
 		var m = markers[enemy]
 		m.position = p

@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 var vel
 func _ready():
 	var angle = randf() * PI * 2

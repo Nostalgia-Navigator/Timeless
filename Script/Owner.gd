@@ -1,4 +1,4 @@
 extends Node
-export(NodePath) var root
+@export var root: NodePath
 func _ready():
 	root = get_node(root)

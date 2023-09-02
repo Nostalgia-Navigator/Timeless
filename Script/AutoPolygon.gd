@@ -17,9 +17,9 @@ func _create_collision_polygon():
 		if (texture.get_height() % 2 != 0):
 			offsetY = 1
 			
-		var a = Area.new()
+		var a = Area3D.new()
 		for i in range(poly.polygons.size()):
-			var p = CollisionPolygon.new()
+			var p = CollisionPolygon3D.new()
 			p.depth = 1
 			p.rotation_degrees.x = 90
 			p.set_polygon(poly.polygons[i])
@@ -28,7 +28,7 @@ func _create_collision_polygon():
 			p.scale = scale
 			a.call_deferred("add_child", p)
 		call_deferred("add_child", a)
-		a.connect("area_entered", self, "on_area_entered")
+		a.connect("area_entered", Callable(self, "on_area_entered"))
 func on_area_entered(other):
 	var p = other.get_parent()
 	if p.name == "Bomb":

@@ -4,18 +4,18 @@
 [ext_resource path="res://Script/Flight.gd" type="Script" id=2]
 [ext_resource path="res://Misc/GunTimer.tscn" type="PackedScene" id=3]
 
-[node name="Flight" type="Spatial" groups=["Flight"]]
+[node name="Flight" type="Node3D" groups=["Flight"]]
 script = ExtResource( 2 )
 
 [node name="GunTimer" parent="." instance=ExtResource( 3 )]
 cooldown = 5.0
 fireCheckInterval = 1.0
 
-[node name="Left" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+[node name="Left" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 
-[node name="Right" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+[node name="Right" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
 
 [node name="Wraparound" parent="." instance=ExtResource( 1 )]
 

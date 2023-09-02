@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
 enum BehaviorType { meander, patrol, pursue } 
 
-onready var speed = Game.planeSpeed[Game.difficulty] / 2
-export(Material) var material
-export(BehaviorType) var behavior = BehaviorType.patrol
+@onready var speed = Game.planeSpeed[Game.difficulty] / 2
+@export var material: Material
+@export var behavior: BehaviorType = BehaviorType.patrol
 
 
 const timer = preload("res://Effect/ParticleTimer.tscn")
@@ -25,14 +25,14 @@ const sectionHp = 500
 var hp = sectionHp
 
 
-export(PackedScene) var debris
+@export var debris: PackedScene
 const shardTemplate = preload("res://Effect/DebrisTemplate.tscn")
 const DestructionUtils = preload("res://addons/destruction/DestructionUtils.gd")
-onready var shards = DestructionUtils.create_shards(debris.instance(), shardTemplate)
+@onready var shards = DestructionUtils.create_shards(debris.instantiate(), shardTemplate)
 
 
 func _ready():
-	$Area.connect("area_entered", self, "on_area_entered")
+	$Area3D.connect("area_entered", Callable(self, "on_area_entered"))
 	for c in get_children():
 		if c is BossGun:
 			sections.append(c)
@@ -40,7 +40,7 @@ func _ready():
 func on_area_entered(other):
 	var p = other.get_parent()
 	if p.is_in_group("Player"):
-		p.on_damage(rand_range(10, 25))
+		p.on_damage(randf_range(10, 25))
 var d = 0
 func _physics_process(delta):
 	d += delta
@@ -71,16 +71,16 @@ func on_damage(projectile):
 		var vel = -get_global_transform().basis.z * speed
 		var world = get_parent()
 		for i in range(5):
-			var d = piece.instance()
+			var d = piece.instantiate()
 			world.add_child(d)
-			d.get_node("Body").set_surface_material(0, material)
+			d.get_node("Body").set_surface_override_material(0, material)
 			d.set_global_transform(projectile.get_global_transform())
 			var p = d.get_global_transform().origin
 			var angle = randf() * PI * 2
 			d.linear_velocity = vel - projectile.vel.normalized() * 20 + 5 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
-			d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
-		var hitExplosion = explosion_hit.instance()
+			d.angular_velocity = Vector3(randf_range(-m, m), randf_range(-m, m), randf_range(-m, m))
+		var hitExplosion = explosion_hit.instantiate()
 		hitExplosion.emitting = true
 		add_child(hitExplosion)
 		hitExplosion.set_global_transform(projectile.get_global_transform())
@@ -93,25 +93,25 @@ func on_damage(projectile):
 		if len(sections) == 0:
 			var world = get_parent()
 			for i in get_explosion_points($ExplosionPoints):
-				var bossExplosion = explosion_boss.instance()
+				var bossExplosion = explosion_boss.instantiate()
 				bossExplosion.emitting = true
 				#e.process_material.set("initial_velocity", 10)
 				world.add_child(bossExplosion)
 				bossExplosion.set_global_transform(i.get_global_transform())
 				
-				var longExplosion = explosion_long.instance()
+				var longExplosion = explosion_long.instantiate()
 				longExplosion.emitting = true
 				#e.process_material.set("initial_velocity", 10)
 				world.add_child(longExplosion)
 				longExplosion.set_global_transform(i.get_global_transform())
 			var vel = -get_global_transform().basis.z * speed
 			for s in shards.get_children():
-				var angle = rand_range(0, PI*2)
-				var speed = rand_range(10, 20)
-				var y = rand_range(-1, 1)
+				var angle = randf_range(0, PI*2)
+				var speed = randf_range(10, 20)
+				var y = randf_range(-1, 1)
 				s.linear_velocity = vel + speed * Vector3(cos(angle), y, sin(angle))	
 				var m = 30
-				s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
+				s.angular_velocity = Vector3(randf_range(-m, m), 0, randf_range(-m, m))
 			world.add_child(shards)
 			shards.set_global_transform(get_global_transform())
 
@@ -128,19 +128,19 @@ func on_damage(projectile):
 		var section = sections.back()
 		sections.pop_back()
 		
-		var hitExplosion = explosion_hit.instance()
+		var hitExplosion = explosion_hit.instantiate()
 		hitExplosion.emitting = true
 		#e.process_material.set("initial_velocity", 10)
 		add_child(hitExplosion)
 		hitExplosion.set_global_transform(section.get_global_transform())
 		
-		var sectionExplosion = explosion_section.instance()
+		var sectionExplosion = explosion_section.instantiate()
 		sectionExplosion.emitting = true
 		#e.process_material.set("initial_velocity", 10)
 		add_child(sectionExplosion)
 		sectionExplosion.set_global_transform(section.get_global_transform())
 		
-		var sectionSmoke = smoke.instance()
+		var sectionSmoke = smoke.instantiate()
 		sectionSmoke.emitting = true
 		add_child(sectionSmoke)
 		sectionSmoke.set_global_transform(section.get_global_transform())

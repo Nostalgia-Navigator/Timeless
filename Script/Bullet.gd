@@ -1,7 +1,7 @@
-extends Spatial
-export(Vector3) var vel
-export(int) var damage = rand_range(4, 16)
-export(String, "Plane", "Player") var hit = "Plane"
+extends Node3D
+@export var vel: Vector3
+@export var damage: int = randf_range(4, 16)
+@export var hit = "Plane" # (String, "Plane", "Player")
 var source
 
 signal on_hit

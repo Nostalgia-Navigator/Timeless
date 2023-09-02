@@ -9,15 +9,15 @@ var sea_cannon = false
 
 const Goodie = preload("res://Script/Goodie.gd").GoodieType
 func _ready():
-	$LandBunker.connect("pressed", self, "toggle_land_bunker")
-	$SeaBunker.connect("pressed", self, "toggle_sea_bunker")
-	$LandRadar.connect("pressed", self, "toggle_land_radar")
-	$SeaRadar.connect("pressed", self, "toggle_sea_radar")
-	$LandCannon.connect("pressed", self, "toggle_land_cannon")
-	$SeaCannon.connect("pressed", self, "toggle_sea_cannon")
+	$LandBunker.connect("pressed", Callable(self, "toggle_land_bunker"))
+	$SeaBunker.connect("pressed", Callable(self, "toggle_sea_bunker"))
+	$LandRadar.connect("pressed", Callable(self, "toggle_land_radar"))
+	$SeaRadar.connect("pressed", Callable(self, "toggle_sea_radar"))
+	$LandCannon.connect("pressed", Callable(self, "toggle_land_cannon"))
+	$SeaCannon.connect("pressed", Callable(self, "toggle_sea_cannon"))
 	$Exit.scene = load("res://Menu/Title.tscn")
-	$Exit.connect("pressed", self, "reset_level")
-	$Start.connect("pressed", self, "set_level")
+	$Exit.connect("pressed", Callable(self, "reset_level"))
+	$Start.connect("pressed", Callable(self, "set_level"))
 	
 	set_alpha($LandBunker, land_bunker)
 	set_alpha($SeaBunker, sea_bunker)

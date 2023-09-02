@@ -157,7 +157,7 @@ func play_sound(stream : AudioStream, soundType):
 		if !allowGunshot:
 			return
 		allowGunshot = false
-		get_tree().create_timer(0.2).connect("timeout", self, "set", ["allowGunshot", true])
+		get_tree().create_timer(0.2).connect("timeout", Callable(self, "set").bind("allowGunshot", true))
 		
 	var s := AudioStreamPlayer.new()
 	s.stream = stream
@@ -170,7 +170,7 @@ func play_sound(stream : AudioStream, soundType):
 	}[soundType]
 	Bgm.add_child(s)
 	s.play()
-	s.connect("finished", s, "queue_free")
+	s.connect("finished", Callable(s, "queue_free"))
 
 enum Sounds {
 	Gunshot, Hit, Explosion, Music, Menu

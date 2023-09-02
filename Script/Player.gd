@@ -1,14 +1,14 @@
-extends Spatial
+extends Node3D
 
 const ADJUST = 40
 
 var speed = 0
-onready var standardSpeed = Game.playerSpeed[Game.difficulty]
-onready var thrustSpeed = standardSpeed * 2.5
+@onready var standardSpeed = Game.playerSpeed[Game.difficulty]
+@onready var thrustSpeed = standardSpeed * 2.5
 
 var sideSpeed = 0
 
-onready var exhaust = $Exhaust
+@onready var exhaust = $Exhaust
 const bullets_map = {
 	1: preload("res://Bullet/PlayerBullet1.tscn"),
 	2: preload("res://Bullet/PlayerBullet2.tscn"),
@@ -32,8 +32,8 @@ var fuel = fullFuel
 var bulletCount = 0
 var firing = false
 
-export(bool) var playing = false
-export(bool) var vulnerable = false
+@export var playing: bool = false
+@export var vulnerable: bool = false
 func intro_done(a):
 	if(a == "Takeoff"):
 		playing = true
@@ -58,7 +58,7 @@ func on_damage(projectile):
 	if projectile is Node:
 		dmg = projectile.damage
 	if hp <= dmg:
-		var e = explosion.instance()
+		var e = explosion.instantiate()
 		e.transform.origin = get_global_transform().origin
 		e.emitting = true
 		e.process_material.set("initial_velocity", -speed)
@@ -68,22 +68,22 @@ func on_damage(projectile):
 		var vel = -get_global_transform().basis.z * speed
 		var shards = $Destruction.destroy()
 		for s in shards.get_children():
-			var angle = rand_range(0, PI*2)
-			var speed = rand_range(10, 20)
-			var y = rand_range(-1, 1)
+			var angle = randf_range(0, PI*2)
+			var speed = randf_range(10, 20)
+			var y = randf_range(-1, 1)
 			s.linear_velocity = vel + Vector3(speed * cos(angle), y, speed * sin(angle))	
 			var m = 90
-			s.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+			s.angular_velocity = Vector3(randf_range(-m, m), randf_range(-m, m), randf_range(-m, m))
 		
 		exhaust.emitting = false
 		remove_child(exhaust)
-		var n = Spatial.new()
+		var n = Node3D.new()
 		n.set_global_transform(get_global_transform())
 		n.call_deferred("add_child", exhaust)
 		get_parent().call_deferred("add_child", n)
 		
 		
-		var p = parachute.instance()
+		var p = parachute.instantiate()
 		p.set_global_transform(get_global_transform())
 		get_parent().call_deferred("add_child", p)
 		
@@ -110,8 +110,8 @@ func on_damage(projectile):
 		var t = Timer.new()
 		t.wait_time = 4
 		t.one_shot = true
-		t.connect("timeout", self, "respawn")
-		t.connect("timeout", t, "queue_free")
+		t.connect("timeout", Callable(self, "respawn"))
+		t.connect("timeout", Callable(t, "queue_free"))
 		parent.add_child(t)
 		t.start()
 		hide()
@@ -121,7 +121,7 @@ func on_damage(projectile):
 		hp -= dmg
 		Game.play_sound(planeHit[randi()%len(planeHit)], Game.Sounds.Hit)
 		
-		var h = hit.instance()
+		var h = hit.instantiate()
 		get_parent().call_deferred("add_child", h)
 		h.emitting = true
 		h.set_global_transform(get_global_transform())
@@ -167,7 +167,7 @@ func _physics_process(delta):
 	if(!playing):
 		
 		if Input.is_key_pressed(KEY_ENTER) and landed:
-			get_tree().change_scene("res://Menu/Debriefing.tscn")
+			get_tree().change_scene_to_file("res://Menu/Debriefing.tscn")
 		
 		return
 	
@@ -235,11 +235,11 @@ func _physics_process(delta):
 	var x = Input.is_key_pressed(KEY_C)
 	if x and !firing and bulletCount < 5:
 		
-		var b = bullets_map[weaponLevel].instance()
+		var b = bullets_map[weaponLevel].instantiate()
 		get_parent().call_deferred("add_child", b)
 		b.source = self
 		var minDamage = Game.bulletMinDamageTable[Game.difficulty]
-		b.damage = rand_range(minDamage, 100)
+		b.damage = randf_range(minDamage, 100)
 		b.transform.origin = $Gun.get_global_transform().origin
 		b.rotation.y = self.rotation.y
 		b.vel = -get_global_transform().basis.z * (speed + 2 * ADJUST)
@@ -249,8 +249,8 @@ func _physics_process(delta):
 		Game.stats.bullets += 1
 		
 		bulletCount += 1
-		b.connect("on_hit", self, "on_bullet_hit")
-		b.connect("tree_exited", self, "on_bullet_expired")
+		b.connect("on_hit", Callable(self, "on_bullet_hit"))
+		b.connect("tree_exited", Callable(self, "on_bullet_expired"))
 	firing = x
 	if(Input.is_key_pressed(KEY_X)) and bombsLeft > 0:
 		
@@ -258,9 +258,9 @@ func _physics_process(delta):
 		
 		Game.play_sound(bombDropSound, Game.Sounds.Gunshot)
 		
-		var b = bombdrop.instance()
+		var b = bombdrop.instantiate()
 		bombsLeft -= 1
-		b.connect("tree_exited", self, "on_bomb_removed")
+		b.connect("tree_exited", Callable(self, "on_bomb_removed"))
 		b.transform.origin = $Crosshair.get_global_transform().origin
 		b.rotation_degrees.y = rotation_degrees.y
 		get_parent().call_deferred("add_child", b)
@@ -299,13 +299,13 @@ func _on_area_entered(area):
 			GoodieType.fuel:
 				fuel = min(100, fuel + 10)
 		for i in range(0, 16):
-			var s = star.instance()
+			var s = star.instantiate()
 			var m = p.colors[i%len(p.colors)]
 			for c in s.get_children():
-				if c is MeshInstance:
-					c.set_surface_material(0, m)
+				if c is MeshInstance3D:
+					c.set_surface_override_material(0, m)
 			s.transform.origin = p.get_global_transform().origin
-			var speed = rand_range(16, 24)
+			var speed = randf_range(16, 24)
 			var angle = randf() * PI * 2
 			s.angular_velocity = Vector3(0, randf() * PI*2 + PI*2, 0)
 			s.linear_velocity = Vector3(speed*cos(angle),0,speed*sin(angle))
@@ -314,7 +314,7 @@ func _on_area_entered(area):
 	else:
 		var p = area.get_parent()
 		if p.is_in_group("Plane"):
-			on_damage(rand_range(10, 25))
+			on_damage(randf_range(10, 25))
 			
 var landed = false
 func on_landed(anim):

@@ -1,7 +1,7 @@
 extends Node
 
-export(float) var cooldown
-export(float) var fireCheckInterval 
+@export var cooldown: float
+@export var fireCheckInterval: float 
 
 func set_time(cooldown, fireCheckInterval):
 	$Cooldown.wait_time = cooldown

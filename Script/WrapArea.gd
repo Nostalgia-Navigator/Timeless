@@ -1,7 +1,7 @@
-extends Area
+extends Area3D
 var contained = {}
 func _ready():
-	get_parent().get_node("Wraparound").connect("on_wrapped", self, "on_wrapped")
+	get_parent().get_node("Wraparound").connect("on_wrapped", Callable(self, "on_wrapped"))
 func on_wrapped(v):
 	return
 	var name = ""
@@ -28,12 +28,12 @@ func _on_area_exited(area):
 	if a == null:
 		a = area.get_parent()
 	contained.erase(a)
-	a.disconnect("tree_exited", self, "remove")
+	a.disconnect("tree_exited", Callable(self, "remove"))
 func _on_body_entered(body):
 	contained[body] = true
-	body.connect("tree_exited", self, "remove")
+	body.connect("tree_exited", Callable(self, "remove"))
 func _on_body_exited(body):
 	contained.erase(body)
-	body.disconnect("tree_exited", self, "remove")
+	body.disconnect("tree_exited", Callable(self, "remove"))
 func remove(a):
 	contained.erase(a)

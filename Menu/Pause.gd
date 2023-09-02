@@ -10,16 +10,16 @@ func _process(delta):
 			get_tree().paused = true
 			$AnimationPlayer.play("Enter")
 			show()
-			yield($AnimationPlayer, "animation_finished")
+			await $AnimationPlayer.animation_finished
 	else:
 		prev = pressed
 func unpause():
 	$AnimationPlayer.play("Exit")
-	yield($AnimationPlayer, "animation_finished")
+	await $AnimationPlayer.animation_finished
 	hide()
 	get_tree().paused = false
 func quit():
 	$AnimationPlayer.play("Exit")
-	yield($AnimationPlayer, "animation_finished")
+	await $AnimationPlayer.animation_finished
 	get_tree().paused = false
-	get_tree().change_scene("res://Menu/Title.tscn")
+	get_tree().change_scene_to_file("res://Menu/Title.tscn")

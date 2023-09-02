@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
-export(int) var size = 288*2
-export(int) var count = 100
-export(int) var separation = 60
-export(PackedScene) var scene
-export(bool) var useParent = false
+@export var size: int = 288*2
+@export var count: int = 100
+@export var separation: int = 60
+@export var scene: PackedScene
+@export var useParent: bool = false
 
 func _ready():
 	var n = self
@@ -31,7 +31,7 @@ func _ready():
 		if v == null:
 			continue
 		prev.append(v)
-		var instance = scene.instance()
+		var instance = scene.instantiate()
 		instance.transform.origin = v
 		n.call_deferred("add_child", instance)
 func wrap(v, origin):

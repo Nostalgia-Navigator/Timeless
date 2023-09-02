@@ -9,18 +9,18 @@
 [ext_resource path="res://Surface/Surface.gd" type="Script" id=7]
 [ext_resource path="res://Bullet/LandRadarShot.tscn" type="PackedScene" id=8]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 3, 1, 3 )
+[sub_resource type="BoxShape3D" id=1]
+size = Vector3( 3, 1, 3 )
 
-[sub_resource type="CylinderShape" id=2]
+[sub_resource type="CylinderShape3D" id=2]
 radius = 2.5
 height = 3.0
 
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape3D" id=3]
 radius = 2.0
 height = 2.5
 
-[sub_resource type="CylinderShape" id=4]
+[sub_resource type="CylinderShape3D" id=4]
 height = 3.0
 
 [sub_resource type="Animation" id=6]
@@ -32,8 +32,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
@@ -49,8 +49,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
 }
@@ -59,29 +59,29 @@ tracks/0/keys = {
 script = ExtResource( 7 )
 shot = ExtResource( 8 )
 
-[node name="OuterHit" type="Area" parent="Cube" index="0"]
+[node name="OuterHit" type="Area3D" parent="Cube" index="0"]
 collision_mask = 0
 
-[node name="Base" type="CollisionShape" parent="Cube/OuterHit" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+[node name="Base" type="CollisionShape3D" parent="Cube/OuterHit" index="0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
-[node name="Building" type="CollisionShape" parent="Cube/OuterHit" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+[node name="Building" type="CollisionShape3D" parent="Cube/OuterHit" index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
 shape = SubResource( 2 )
 
 [node name="Cylinder021" parent="." index="1"]
-transform = Transform( 1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 0, 2.45, 0 )
+transform = Transform3D( 1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 0, 2.45, 0 )
 
-[node name="InnerHit" type="Area" parent="Cylinder021" index="0"]
+[node name="InnerHit" type="Area3D" parent="Cylinder021" index="0"]
 collision_mask = 0
 
-[node name="Dish" type="CollisionShape" parent="Cylinder021/InnerHit" index="0"]
-transform = Transform( 0.926776, 0.282843, 0.126827, -0.441942, 0.707107, 0.765465, 0.126827, -0.489898, 0.78033, 0.400001, 4, -0.69282 )
+[node name="Dish" type="CollisionShape3D" parent="Cylinder021/InnerHit" index="0"]
+transform = Transform3D( 0.926776, 0.282843, 0.126827, -0.441942, 0.707107, 0.765465, 0.126827, -0.489898, 0.78033, 0.400001, 4, -0.69282 )
 shape = SubResource( 3 )
 
-[node name="Column" type="CollisionShape" parent="Cylinder021/InnerHit" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
+[node name="Column" type="CollisionShape3D" parent="Cylinder021/InnerHit" index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
 shape = SubResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -90,7 +90,7 @@ anims/RESET = SubResource( 6 )
 anims/Spin = SubResource( 5 )
 
 [node name="Smoke" parent="." index="3" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 lifetime = 5.0
 
 [node name="Destruction" type="Node" parent="." index="4"]

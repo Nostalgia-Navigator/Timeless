@@ -1,13 +1,13 @@
-extends Spatial
+extends Node3D
 
 const ADJUST = 40
-export(String) var planeName
-export(NodePath) var body
-export(int, 0, 2, 1) var markerType
-export(int) var hp = 100
-onready var speed = Game.planeSpeed[Game.difficulty]
-export(Material) var material
-export(int) var score = 0
+@export var planeName: String
+@export var body: NodePath
+@export var markerType # (int, 0, 2, 1)
+@export var hp: int = 100
+@onready var speed = Game.planeSpeed[Game.difficulty]
+@export var material: Material
+@export var score: int = 0
 var d = 0
 
 var turnLeft = 180
@@ -23,14 +23,14 @@ signal on_damaged
 const gunshot = preload("res://Sounds/Fire/Gunshot - snd .1019.dat.wav")
 
 var solo = true
-onready var player = get_tree().get_root().get_node("Main/Player")
+@onready var player = get_tree().get_root().get_node("Main/Player")
 const fireCooldown = 5
 var cooldownLeft = fireCooldown
 
-export(PackedScene) var debris
+@export var debris: PackedScene
 const shardTemplate = preload("res://Effect/DebrisTemplate.tscn")
 const DestructionUtils = preload("res://addons/destruction/DestructionUtils.gd")
-onready var shards = DestructionUtils.create_shards(debris.instance(), shardTemplate)
+@onready var shards = DestructionUtils.create_shards(debris.instantiate(), shardTemplate)
 
 
 var smoke
@@ -40,15 +40,15 @@ var right
 func get_body():
 	return get_node(body)
 func _ready():
-	left = Spatial.new()
+	left = Node3D.new()
 	left.transform.origin = Vector3(-1, 0, 0)
 	add_child(left)
 	
-	right = Spatial.new()
+	right = Node3D.new()
 	right.transform.origin = Vector3(1, 0, 0)
 	add_child(right)
 
-	smoke = preload("res://Effect/PlaneSmoke.tscn").instance()
+	smoke = preload("res://Effect/PlaneSmoke.tscn").instantiate()
 	add_child(smoke)
 func set_solo(s):
 	solo = s
@@ -79,14 +79,14 @@ func _physics_process(delta):
 		var firing = false
 		var offset = p - get_global_transform().origin
 		if offset.length() < 80:
-			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, [$Area], 2147483647, false, true)
-			var clear = result.empty() or (result["collider"].get_parent() == player)
+			var result = get_world_3d().direct_space_state.intersect_ray(transform.origin, player.transform.origin, [$Area3D], 2147483647, false, true)
+			var clear = result.is_empty() or (result["collider"].get_parent() == player)
 			
 			if clear:
 				Game.play_sound(gunshot, Game.Sounds.Gunshot)
 				
-				var b = bullet.instance()
-				b.damage = rand_range(5, 25)
+				var b = bullet.instantiate()
+				b.damage = randf_range(5, 25)
 				world.call_deferred("add_child", b)
 				
 				var vel = -get_global_transform().basis.z * speed
@@ -130,13 +130,13 @@ func on_damage(projectile):
 		if p:
 			p.remove_child(smoke)
 		
-		var t = timer.instance()
+		var t = timer.instantiate()
 		t.time = 5
 		t.transform.origin = smoke.get_global_transform().origin
 		t.call_deferred("add_child", smoke)
 		world.call_deferred("add_child", t)
 		
-		var e = explosion.instance()
+		var e = explosion.instantiate()
 		e.emitting = true
 		e.process_material.set("initial_velocity", -speed)
 		world.call_deferred("add_child", e)
@@ -145,12 +145,12 @@ func on_damage(projectile):
 		var vel = -get_global_transform().basis.z * speed
 		for s in shards.get_children():
 			#var offset = (s.get_global_transform().origin - transform.origin)
-			var angle = (rand_range(0, PI*2))
-			var speed = rand_range(10, 20)
-			var y = rand_range(-1, 1)
+			var angle = (randf_range(0, PI*2))
+			var speed = randf_range(10, 20)
+			var y = randf_range(-1, 1)
 			s.linear_velocity = vel + speed * Vector3(cos(angle), y, sin(angle))	
 			var m = 30
-			s.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
+			s.angular_velocity = Vector3(randf_range(-m, m), 0, randf_range(-m, m))
 		world.call_deferred("add_child", shards)
 		shards.set_global_transform(get_global_transform())
 		
@@ -164,16 +164,16 @@ func on_damage(projectile):
 	else:
 		for i in range(3):
 			var vel = -get_global_transform().basis.z * speed * 15 / ADJUST
-			var d = chunk.instance()
+			var d = chunk.instantiate()
 			world.call_deferred("add_child", d)
-			d.get_node("Body").set_surface_material(0, material)
+			d.get_node("Body").set_surface_override_material(0, material)
 			d.set_global_transform(projectile.get_global_transform())
 			
 			var p = d.get_global_transform().origin
 			var angle = randf() * PI * 2
 			d.linear_velocity = vel - projectile.vel.normalized() * 20 + 5 * Vector3(cos(angle), 0, sin(angle))
 			var m = 90
-			d.angular_velocity = Vector3(rand_range(-m, m), 0, rand_range(-m, m))
+			d.angular_velocity = Vector3(randf_range(-m, m), 0, randf_range(-m, m))
 		if hp <= 50:
 			smoke.emitting = true
 			smoke.process_material.set("initial_velocity", -speed + min(4, speed/2))
@@ -199,7 +199,7 @@ func get_parent_rotation():
 	var result = 0
 	var n = get_parent()
 	while n:
-		if n is Spatial:
+		if n is Node3D:
 			result += n.rotation.y
 		n = n.get_parent()
 	return result

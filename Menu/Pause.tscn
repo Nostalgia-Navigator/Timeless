@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Menu/Pause.gd" type="Script" id=1]
-[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=3]
-[ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=4]
-[ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=5]
-[ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=9]
+[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="FontFile" id=2]
+[ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture2D" id=3]
+[ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture2D" id=4]
+[ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture2D" id=5]
+[ext_resource path="res://Font/TopGun.tres" type="FontFile" id=9]
 
-[sub_resource type="BitmapFont" id=16]
+[sub_resource type="FontFile" id=16]
 
 [sub_resource type="Theme" id=15]
 default_font = SubResource( 16 )
@@ -21,8 +21,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -36,8 +36,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
@@ -51,20 +51,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Gradient" id=19]
-offsets = PoolRealArray( 0, 0.230068, 0.489749, 0.931663, 1 )
-colors = PoolColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.230068, 0.489749, 0.931663, 1 )
+colors = PackedColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
 
-[sub_resource type="GradientTexture" id=20]
+[sub_resource type="GradientTexture2D" id=20]
 gradient = SubResource( 19 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="FontFile" id=17]
 size = 48
 font_data = ExtResource( 2 )
 
@@ -87,20 +87,20 @@ anims/Exit = SubResource( 23 )
 anims/RESET = SubResource( 22 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 1920.0
-margin_right = 3000.0
-margin_bottom = 1920.0
-rect_rotation = 90.0
+offset_left = 1920.0
+offset_right = 3000.0
+offset_bottom = 1920.0
+rotation = 90.0
 texture = SubResource( 20 )
 expand = true
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -120.0
-margin_top = 120.0
-margin_right = 117.0
-margin_bottom = 177.0
+offset_left = -120.0
+offset_top = 120.0
+offset_right = 117.0
+offset_bottom = 177.0
 grow_horizontal = 2
 theme = SubResource( 2 )
 text = "Paused"
@@ -109,23 +109,23 @@ align = 1
 [node name="Quit" type="TextureButton" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 80.0
-margin_top = -240.0
-margin_right = 208.0
-margin_bottom = -208.0
-rect_scale = Vector2( 1.5, 1.5 )
+offset_left = 80.0
+offset_top = -240.0
+offset_right = 208.0
+offset_bottom = -208.0
+scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Quit"]
-margin_left = 37.4597
-margin_top = 6.88989
-margin_right = 251.46
-margin_bottom = 91.8899
-rect_scale = Vector2( 0.25, 0.25 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 9 )
+offset_left = 37.4597
+offset_top = 6.88989
+offset_right = 251.46
+offset_bottom = 91.8899
+scale = Vector2( 0.25, 0.25 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = ExtResource( 9 )
 text = "Quit"
 align = 1
 valign = 1
@@ -135,23 +135,23 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -320.0
-margin_top = -240.0
-margin_right = -192.0
-margin_bottom = -208.0
-rect_scale = Vector2( 1.5, 1.5 )
+offset_left = -320.0
+offset_top = -240.0
+offset_right = -192.0
+offset_bottom = -208.0
+scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Continue"]
-margin_left = 26.7931
-margin_top = 6.88989
-margin_right = 330.793
-margin_bottom = 121.89
-rect_scale = Vector2( 0.25, 0.25 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 9 )
+offset_left = 26.7931
+offset_top = 6.88989
+offset_right = 330.793
+offset_bottom = 121.89
+scale = Vector2( 0.25, 0.25 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = ExtResource( 9 )
 text = "Continue"
 align = 1
 valign = 1

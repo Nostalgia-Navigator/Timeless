@@ -5,11 +5,11 @@
 [ext_resource path="res://Surface/LandBunkerShot.tres" type="ArrayMesh" id=3]
 [ext_resource path="res://Script/Owner.gd" type="Script" id=4]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="StandardMaterial3D" id=1]
 resource_local_to_scene = true
 albedo_color = Color( 1, 0.537255, 0, 1 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticleProcessMaterial" id=4]
 trail_divisor = 999
 flag_rotate_y = true
 direction = Vector3( 0, 0, 0 )
@@ -17,8 +17,8 @@ spread = 0.0
 gravity = Vector3( 0, 0, 0 )
 scale = 0.25
 
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 3, 1, 3 )
+[sub_resource type="BoxShape3D" id=5]
+size = Vector3( 3, 1, 3 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -29,8 +29,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -41,8 +41,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 0, 0.647059, 1, 0.501961 ) ]
 }
@@ -53,8 +53,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -65,8 +65,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 0.537255, 0, 1 ) ]
 }
@@ -77,8 +77,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0.25, 0.25, 0.25 ) ]
 }
@@ -89,20 +89,20 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Cube:translation")
+tracks/6/path = NodePath("Cube:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
@@ -117,8 +117,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 2, 1 ),
+"times": PackedFloat32Array( 0, 4 ),
+"transitions": PackedFloat32Array( 2, 1 ),
 "update": 0,
 "values": [ 0.0, 120.0 ]
 }
@@ -129,8 +129,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1, 2, 3, 4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.537255, 0, 0.2 ), Color( 0, 0.647059, 1, 0.2 ), Color( 1, 0.537255, 0, 0.2 ), Color( 0, 0.647059, 1, 0.2 ), Color( 1, 0.537255, 0, 0.2 ) ]
 }
@@ -141,8 +141,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = false
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1, 2, 3, 4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
 }
@@ -153,22 +153,22 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 4 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "queue_free"
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Holder:translation")
+tracks/4/path = NodePath("Holder:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = false
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1, 4 ),
-"transitions": PoolRealArray( 0.5, 1, 1 ),
+"times": PackedFloat32Array( 0, 1, 4 ),
+"transitions": PackedFloat32Array( 0.5, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 40, 0 ), Vector3( 0, 40, 0 ) ]
 }
@@ -179,8 +179,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( -2, -2, -2, -2, -2 ),
+"times": PackedFloat32Array( 0, 1, 2, 3, 4 ),
+"transitions": PackedFloat32Array( -2, -2, -2, -2, -2 ),
 "update": 0,
 "values": [ Color( 1, 0.537255, 0, 1 ), Color( 0, 0.647059, 1, 1 ), Color( 1, 0.537255, 0, 1 ), Color( 0, 0.647059, 1, 1 ), Color( 1, 0.537255, 0, 1 ) ]
 }
@@ -191,8 +191,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 ),
-"transitions": PoolRealArray( 0.5, -2, 0.5, -2, 0.5, -2, 0.5, -2, 0.5 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 ),
+"transitions": PackedFloat32Array( 0.5, -2, 0.5, -2, 0.5, -2, 0.5, -2, 0.5 ),
 "update": 0,
 "values": [ Vector3( 0.25, 0.25, 0.25 ), Vector3( 0.15, 0.25, 0.25 ), Vector3( 0.25, 0.25, 0.25 ), Vector3( 0.25, 0.25, 0.15 ), Vector3( 0.25, 0.25, 0.25 ), Vector3( 0.15, 0.25, 0.25 ), Vector3( 0.25, 0.25, 0.25 ), Vector3( 0.25, 0.25, 0.15 ), Vector3( 0.25, 0.25, 0.25 ) ]
 }
@@ -203,20 +203,20 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1, 2, 3, 4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Cube:translation")
+tracks/8/path = NodePath("Cube:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 1.5, 4 ),
-"transitions": PoolRealArray( 0.5, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.5, 4 ),
+"transitions": PackedFloat32Array( 0.5, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 40, 0 ), Vector3( 0, 40, 0 ) ]
 }
@@ -225,25 +225,25 @@ tracks/8/keys = {
 script = ExtResource( 2 )
 
 [node name="Cube" parent="." index="0"]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+transform = Transform3D( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 material/0 = SubResource( 1 )
 
 [node name="Particles" type="Particles" parent="Cube" index="0"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform3D( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 amount = 30
 lifetime = 0.1
 local_coords = false
 process_material = SubResource( 4 )
 draw_pass_1 = ExtResource( 3 )
 
-[node name="Area" type="Area" parent="Cube" index="1"]
+[node name="Area3D" type="Area3D" parent="Cube" index="1"]
 collision_mask = 0
 monitorable = false
 script = ExtResource( 4 )
 root = NodePath("../..")
 
-[node name="CollisionShape" type="CollisionShape" parent="Cube/Area" index="0"]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Area3D" index="0"]
+transform = Transform3D( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
 shape = SubResource( 5 )
 
 [node name="AnimationPlayer" parent="." index="1"]
@@ -251,4 +251,4 @@ autoplay = "Spin"
 anims/RESET = SubResource( 2 )
 anims/Spin = SubResource( 3 )
 
-[connection signal="area_entered" from="Cube/Area" to="." method="_on_area_entered"]
+[connection signal="area_entered" from="Cube/Area3D" to="." method="_on_area_entered"]

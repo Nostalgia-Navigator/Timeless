@@ -6,64 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Reference",
-"class": "ArrayUtils",
-"language": "GDScript",
-"path": "res://addons/SIsilicon.3d.text/array_utils.gd"
-}, {
-"base": "HBoxContainer",
-"class": "ContributorClass",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
-}, {
-"base": "PanelContainer",
-"class": "GistItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
-}, {
-"base": "Spatial",
-"class": "Goodie",
-"language": "GDScript",
-"path": "res://Script/Goodie.gd"
-}, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
-}, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
-}, {
-"base": "Timer",
-"class": "Wraparound",
-"language": "GDScript",
-"path": "res://Script/Wraparound.gd"
-} ]
-_global_script_class_icons={
-"ArrayUtils": "",
-"ContributorClass": "",
-"GistItem": "",
-"GitAPI": "",
-"Goodie": "",
-"InvitationItem": "",
-"RepositoryItem": "",
-"Wraparound": ""
-}
+config_version=5
 
 [application]
 
 config/name="Project Timeless - Wingnuts: Temporal Navigator"
 run/main_scene="res://Menu/Briefing.tscn"
+config/features=PackedStringArray("4.1")
 boot_splash/image="res://Images/Project Timeless Rect.png"
 config/icon="res://Images/Project Timeless Square (No Title).drawio.png"
 
@@ -80,18 +29,21 @@ Game="*res://Game.tscn"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+
+[dotnet]
+
+project/assembly_name="Project Timeless - Wingnuts- Temporal Navigator"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/destruction/plugin.cfg", "res://addons/vpainter/plugin.cfg" )
+enabled=PackedStringArray("res://addons/destruction/plugin.cfg", "res://addons/vpainter/plugin.cfg")
 
 [gdnative]
 
-singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+singletons=["res://addons/godot-git-plugin/git_api.gdnlib"]
 
 [physics]
 
@@ -99,4 +51,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/defaults/default_environment="res://default_env.tres"

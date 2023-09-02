@@ -1,5 +1,5 @@
 extends Node
-export(AudioStream) var stream
+@export var stream: AudioStream
 func _ready():
 	Bgm.stream = stream
 	Bgm.volume_db = -10

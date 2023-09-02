@@ -4,7 +4,7 @@
 [ext_resource path="res://Plane/Spike.gd" type="Script" id=2]
 [ext_resource path="res://Script/Owner.gd" type="Script" id=3]
 
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape3D" id=3]
 radius = 2.5
 height = 5.0
 
@@ -12,14 +12,14 @@ height = 5.0
 resource_name = "Movement"
 length = 4.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body:translation")
+tracks/0/path = NodePath("Body:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
-"transitions": PoolRealArray( 0.5, 2, 2 ),
+"times": PackedFloat32Array( 0, 2, 4 ),
+"transitions": PackedFloat32Array( 0.5, 2, 2 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 50 ), Vector3( 0, -48, 50 ) ]
 }
@@ -30,8 +30,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0.8, 0.623839, 0.336228, 1 ), Color( 0.8, 0.623839, 0.336228, 1 ), Color( 0.8, 0.623529, 0.337255, 0.4 ) ]
 }
@@ -39,14 +39,14 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body:translation")
+tracks/0/path = NodePath("Body:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
@@ -57,25 +57,25 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 0.8, 0.623839, 0.336228, 1 ) ]
 }
 
-[node name="SpikeBullet" type="Spatial" groups=["Bullet"]]
+[node name="SpikeBullet" type="Node3D" groups=["Bullet"]]
 script = ExtResource( 2 )
 
 [node name="Body" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+transform = Transform3D( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="Body"]
+[node name="Area3D" type="Area3D" parent="Body"]
 collision_mask = 0
 monitorable = false
 script = ExtResource( 3 )
 root = NodePath("../..")
 
-[node name="CollisionShape" type="CollisionShape" parent="Body/Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Area3D"]
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -87,7 +87,7 @@ anims/RESET = SubResource( 2 )
 wait_time = 8.0
 autostart = true
 
-[connection signal="area_entered" from="Body/Area" to="." method="_on_area_entered"]
+[connection signal="area_entered" from="Body/Area3D" to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
 
 [editable path="Body"]

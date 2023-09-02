@@ -13,14 +13,14 @@ body = NodePath("Cube010")
 material = ExtResource( 7 )
 debris = ExtResource( 2 )
 
-[node name="Area" type="Area" parent="." index="2"]
+[node name="Area3D" type="Area3D" parent="." index="2"]
 collision_mask = 0
 monitoring = false
 script = ExtResource( 5 )
 root = NodePath("..")
 
-[node name="CollisionPolygon" type="CollisionPolygon" parent="Area" index="0"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-polygon = PoolVector2Array( 0.214545, -1.54918, 0.212136, -0.775409, 2.99595, -0.777328, 2.91923, 0.269903, 0.240966, 0.27754, 0.238713, 2.1414, 0.744469, 2.13157, 1.17531, 2.77678, -1.23545, 2.78767, -0.713035, 2.11492, -0.20569, 2.12102, -0.243379, 0.28057, -2.9322, 0.265041, -2.94041, -0.779856, -0.215719, -0.789393, -0.222198, -1.55444 )
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D" index="0"]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+polygon = PackedVector2Array( 0.214545, -1.54918, 0.212136, -0.775409, 2.99595, -0.777328, 2.91923, 0.269903, 0.240966, 0.27754, 0.238713, 2.1414, 0.744469, 2.13157, 1.17531, 2.77678, -1.23545, 2.78767, -0.713035, 2.11492, -0.20569, 2.12102, -0.243379, 0.28057, -2.9322, 0.265041, -2.94041, -0.779856, -0.215719, -0.789393, -0.222198, -1.55444 )
 
-[connection signal="area_entered" from="Area" to="." method="_on_area_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]

@@ -1,6 +1,6 @@
-extends Spatial
-export(float) var speed
-export(int) var damage = rand_range(5, 25)
+extends Node3D
+@export var speed: float
+@export var damage: int = randf_range(5, 25)
 func _physics_process(delta):
 	translate(Vector3(0, 0, speed * delta))
 func _on_area_entered(area):

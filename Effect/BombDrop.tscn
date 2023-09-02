@@ -6,26 +6,26 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Gravity"
 tracks/0/type = "value"
-tracks/0/path = NodePath("y:translation")
+tracks/0/path = NodePath("y:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 2, 2 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 2, 2 ),
 "update": 0,
 "values": [ Vector3( 0, 38, 0 ), Vector3( 0, -1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("y/z:translation")
+tracks/1/path = NodePath("y/z:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.95 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.95 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 39 ), Vector3( 0, 0, 0 ) ]
 }
@@ -36,8 +36,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "queue_free"
@@ -50,8 +50,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.95 ),
-"transitions": PoolRealArray( 2, 2 ),
+"times": PackedFloat32Array( 0, 0.95 ),
+"transitions": PackedFloat32Array( 2, 2 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( -90, 0, 0 ) ]
 }
@@ -62,8 +62,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "remove"
@@ -73,26 +73,26 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("y:translation")
+tracks/0/path = NodePath("y:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 38, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("y/z:translation")
+tracks/1/path = NodePath("y/z:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 39 ) ]
 }
@@ -103,13 +103,13 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[node name="BombDrop" type="Spatial"]
+[node name="BombDrop" type="Node3D"]
 
 [node name="BombMarker" parent="." instance=ExtResource( 1 )]
 
@@ -118,10 +118,10 @@ autoplay = "Gravity"
 anims/Gravity = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
-[node name="y" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0 )
+[node name="y" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0 )
 
-[node name="z" type="Spatial" parent="y"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39 )
+[node name="z" type="Node3D" parent="y"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39 )
 
 [node name="Bomb" parent="y/z" instance=ExtResource( 2 )]

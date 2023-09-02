@@ -1,4 +1,4 @@
-extends BitmapFont
+extends FontFile
 
 func _ready():
 	var texture = load("res://Font/OGLS.17100.dat.png")

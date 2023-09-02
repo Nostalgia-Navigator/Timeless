@@ -44,7 +44,7 @@ func entry(y, desc, value, points):
 	label(90 + 450 + 250, y, str(points))
 func label(x, y, text):
 	var l = $Label.duplicate()
-	l.rect_position = Vector2(x, y)
+	l.position = Vector2(x, y)
 	l.text = text
 	l.show()
 	add_child(l)

@@ -1,14 +1,14 @@
-extends Spatial
-export(bool) var active = true
-onready var planeTypes = get_parent().planeTypes
+extends Node3D
+@export var active: bool = true
+@onready var planeTypes = get_parent().planeTypes
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !active:
 		return
-	var flight = preload("res://Plane/Flight.tscn").instance()
+	var flight = preload("res://Plane/Flight.tscn").instantiate()
 	var form = Formations.get_random_formation()
 	for f in form:
-		var plane = planeTypes[randi()%len(planeTypes)].instance()
+		var plane = planeTypes[randi()%len(planeTypes)].instantiate()
 		flight.add_child(plane)
 		plane.transform.origin = f.transform.origin
 	

@@ -1,11 +1,11 @@
-extends Spatial
+extends Node3D
 const bullet = preload("res://Bullet/SmallBullet.tscn")
 const gunshot = preload("res://Sounds/Fire/Gunshot - snd .1019.dat.wav")
 
 enum BehaviorType { meander, patrol, pursue } 
-export(BehaviorType) var behavior = BehaviorType.patrol
-onready var speed = Game.planeSpeed[Game.difficulty]
-onready var turnRate = 360 / 60
+@export var behavior: BehaviorType = BehaviorType.patrol
+@onready var speed = Game.planeSpeed[Game.difficulty]
+@onready var turnRate = 360 / 60
 var planes = []
 var d = 0
 func _ready():
@@ -19,8 +19,8 @@ func register_planes():
 			i += 1
 			planes.append(c)
 			c.set_solo(false)
-			c.connect("on_damaged", self, "on_plane_damaged")
-			c.connect("on_destroyed", self, "remove_plane")
+			c.connect("on_damaged", Callable(self, "on_plane_damaged"))
+			c.connect("on_destroyed", Callable(self, "remove_plane"))
 	#print(i)
 func on_plane_damaged(e, projectile):
 	if randi()%10 > 0:
@@ -69,13 +69,13 @@ func fire(timer):
 		if distance < 80:
 			var child_areas = []
 			for n in planes:
-				child_areas.append(n.get_node("Area"))
-			var result = get_world().direct_space_state.intersect_ray(transform.origin, player.transform.origin, child_areas, 2147483647, false, true)
-			var clear = result.empty() or (result["collider"].get_parent() == player)
+				child_areas.append(n.get_node("Area3D"))
+			var result = get_world_3d().direct_space_state.intersect_ray(transform.origin, player.transform.origin, child_areas, 2147483647, false, true)
+			var clear = result.is_empty() or (result["collider"].get_parent() == player)
 			if clear:
 				Game.play_sound(gunshot, Game.Sounds.Gunshot)
 				
-				var b = bullet.instance()
+				var b = bullet.instantiate()
 				world.call_deferred("add_child", b)
 				b.set_global_transform(attacker.get_global_transform())
 				b.vel = 1 * 40 * offset.normalized() + vel

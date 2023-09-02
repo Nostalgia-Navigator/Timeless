@@ -1,9 +1,9 @@
-extends MeshInstance
+extends MeshInstance3D
 
 
 enum BulletType { Spike, Wave, Zigzag, Rainbow }
 #export(BulletType) var bullet = BulletType.Spike
-onready var main = get_parent()
+@onready var main = get_parent()
 var cooldown_timer
 var fire_timer
 
@@ -11,18 +11,18 @@ func _ready():
 	cooldown_timer = Timer.new()
 	add_child(cooldown_timer)
 	cooldown_timer.wait_time = 5
-	cooldown_timer.connect("timeout", self, "fire")
+	cooldown_timer.connect("timeout", Callable(self, "fire"))
 	
 	fire_timer = Timer.new()
 	add_child(fire_timer)
 	fire_timer.wait_time = 1
-	fire_timer.connect("timeout", self, "fire")
+	fire_timer.connect("timeout", Callable(self, "fire"))
 	
 	var init_timer = Timer.new()
 	add_child(init_timer)
 	init_timer.wait_time = randf()*8
-	init_timer.connect("timeout", fire_timer, "start")
-	init_timer.connect("timeout", init_timer, "queue_free")
+	init_timer.connect("timeout", Callable(fire_timer, "start"))
+	init_timer.connect("timeout", Callable(init_timer, "queue_free"))
 	init_timer.start()
 	
 	
@@ -45,7 +45,7 @@ func fire():
 	fire_timer.stop()
 	cooldown_timer.start()
 	var bullet = randi()%len(bullets)
-	var s = bullets[bullet].instance()
+	var s = bullets[bullet].instantiate()
 	if bullet == BulletType.Spike:
 		pass
 	elif bullet == BulletType.Wave or bullet == BulletType.Zigzag:
@@ -55,7 +55,7 @@ func fire():
 		var angle = (Vector2(to.x, to.z) - Vector2(from.x, from.z)).angle()
 		s.vel = Vector3(speed * cos(angle), 0, speed * sin(angle))
 	
-	s.damage = rand_range(5, 25)
+	s.damage = randf_range(5, 25)
 	
 	Game.play_sound(gunshot)
 	
@@ -75,7 +75,7 @@ func get_parent_rotation():
 	var result = 0
 	var n = get_parent()
 	while n:
-		if n is Spatial:
+		if n is Node3D:
 			result += n.rotation.y
 		n = n.get_parent()
 	return result

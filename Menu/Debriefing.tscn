@@ -1,19 +1,19 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Menu/Briefing.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture" id=3]
-[ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture" id=4]
-[ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture" id=5]
+[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="FontFile" id=2]
+[ext_resource path="res://Button/OGLS.28002.dat.png" type="Texture2D" id=3]
+[ext_resource path="res://Button/OGLS.28000.dat.png" type="Texture2D" id=4]
+[ext_resource path="res://Button/OGLS.28001.dat.png" type="Texture2D" id=5]
 [ext_resource path="res://Misc/MoveIn.gd" type="Script" id=6]
 [ext_resource path="res://Misc/SetScene.gd" type="Script" id=7]
 [ext_resource path="res://Misc/SetMusic.gd" type="Script" id=8]
-[ext_resource path="res://Font/TopGun.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Font/TopGun.tres" type="FontFile" id=9]
 [ext_resource path="res://Music/stage_01.mp3" type="AudioStream" id=10]
 [ext_resource path="res://Menu/Debriefing.gd" type="Script" id=11]
 [ext_resource path="res://Menu/GameOver.tscn" type="PackedScene" id=12]
 
-[sub_resource type="BitmapFont" id=16]
+[sub_resource type="FontFile" id=16]
 
 [sub_resource type="Theme" id=15]
 default_font = SubResource( 16 )
@@ -27,8 +27,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -42,8 +42,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
@@ -57,27 +57,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Gradient" id=19]
-offsets = PoolRealArray( 0, 0.230068, 0.489749, 0.931663, 1 )
-colors = PoolColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.230068, 0.489749, 0.931663, 1 )
+colors = PackedColorArray( 0.243137, 0.313726, 0.482353, 1, 0.1728, 0.281813, 0.64, 1, 0.171, 0.2242, 0.57, 1, 0.505882, 0.12549, 0.12549, 1, 1, 0.996078, 0, 1 )
 
-[sub_resource type="GradientTexture" id=20]
+[sub_resource type="GradientTexture2D" id=20]
 gradient = SubResource( 19 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="FontFile" id=17]
 size = 48
 font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 17 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 24
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
@@ -99,44 +99,44 @@ anims/Exit = SubResource( 23 )
 anims/RESET = SubResource( 22 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 1800.0
-margin_right = 2880.0
-margin_bottom = 1800.0
-rect_rotation = 90.0
+offset_left = 1800.0
+offset_right = 2880.0
+offset_bottom = 1800.0
+rotation = 90.0
 texture = SubResource( 20 )
 expand = true
 
 [node name="Content" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource( 11 )
 
 [node name="Title" type="Label" parent="Content"]
-margin_left = 90.0
-margin_top = 60.0
-margin_right = 602.0
-margin_bottom = 117.0
+offset_left = 90.0
+offset_top = 60.0
+offset_right = 602.0
+offset_bottom = 117.0
 theme = SubResource( 2 )
 text = "Bonus Points Awarded"
 
 [node name="Label" type="Label" parent="Content"]
 visible = false
-margin_left = 90.0
-margin_top = 135.0
-margin_right = 842.0
-margin_bottom = 192.0
+offset_left = 90.0
+offset_top = 135.0
+offset_right = 842.0
+offset_bottom = 192.0
 theme = SubResource( 4 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
+theme_override_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Starting Level I. Location: The Baltic Sea, Northern Europe. Year: 1909"
 
 [node name="Continue" type="TextureButton" parent="Content"]
-margin_left = 82.24
-margin_top = 678.773
-margin_right = 210.24
-margin_bottom = 710.773
-rect_scale = Vector2( 1.5, 1.5 )
+offset_left = 82.24
+offset_top = 678.773
+offset_right = 210.24
+offset_bottom = 710.773
+scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
@@ -148,24 +148,24 @@ anim = NodePath("../../AnimationPlayer")
 [node name="Label" type="Label" parent="Content/Continue"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -35.7212
-margin_top = 9.33203
-margin_right = 325.279
-margin_bottom = 124.332
+offset_left = -35.7212
+offset_top = 9.33203
+offset_right = 325.279
+offset_bottom = 124.332
 grow_horizontal = 0
-rect_scale = Vector2( 0.2, 0.2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 9 )
+scale = Vector2( 0.2, 0.2 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = ExtResource( 9 )
 text = "Continue"
 align = 1
 valign = 1
 
 [node name="Quit" type="TextureButton" parent="Content"]
-margin_left = 82.24
-margin_top = 750.773
-margin_right = 210.24
-margin_bottom = 782.773
-rect_scale = Vector2( 1.5, 1.5 )
+offset_left = 82.24
+offset_top = 750.773
+offset_right = 210.24
+offset_bottom = 782.773
+scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
@@ -177,14 +177,14 @@ anim = NodePath("../../AnimationPlayer")
 [node name="Label" type="Label" parent="Content/Quit"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -35.7212
-margin_top = 9.33203
-margin_right = 325.279
-margin_bottom = 124.332
+offset_left = -35.7212
+offset_top = 9.33203
+offset_right = 325.279
+offset_bottom = 124.332
 grow_horizontal = 0
-rect_scale = Vector2( 0.2, 0.2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 9 )
+scale = Vector2( 0.2, 0.2 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = ExtResource( 9 )
 text = "Quit"
 align = 1
 valign = 1

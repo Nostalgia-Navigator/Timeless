@@ -9,14 +9,14 @@
 [ext_resource path="res://Surface/SurfaceCannon.gd" type="Script" id=7]
 [ext_resource path="res://Bullet/SurfaceBullet.tscn" type="PackedScene" id=8]
 
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 4.25, 1.5, 4.25 )
+[sub_resource type="BoxShape3D" id=5]
+size = Vector3( 4.25, 1.5, 4.25 )
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 2, 2.5, 2 )
+[sub_resource type="BoxShape3D" id=4]
+size = Vector3( 2, 2.5, 2 )
 
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.75, 3, 0.75 )
+[sub_resource type="BoxShape3D" id=2]
+size = Vector3( 0.75, 3, 0.75 )
 
 [node name="LandCannon" groups=["Cannon", "Land", "Surface"] instance=ExtResource( 6 )]
 script = ExtResource( 7 )
@@ -25,37 +25,37 @@ turretBias = 0.785
 shot = ExtResource( 8 )
 
 [node name="Cube002" parent="." index="0"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform3D( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 
-[node name="OuterHit" type="Area" parent="Cube002" index="0"]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0 )
+[node name="OuterHit" type="Area3D" parent="Cube002" index="0"]
+transform = Transform3D( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0 )
 collision_mask = 0
 
-[node name="Base" type="CollisionShape" parent="Cube002/OuterHit" index="0"]
-transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 1.5, 0 )
+[node name="Base" type="CollisionShape3D" parent="Cube002/OuterHit" index="0"]
+transform = Transform3D( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 1.5, 0 )
 shape = SubResource( 5 )
 
 [node name="Cube011" parent="." index="1"]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2.5, 0 )
+transform = Transform3D( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2.5, 0 )
 
-[node name="InnerHit" type="Area" parent="Cube011" index="0"]
-transform = Transform( 8.9407e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, 8.9407e-08, 0, -0.5, 0 )
+[node name="InnerHit" type="Area3D" parent="Cube011" index="0"]
+transform = Transform3D( 8.9407e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, 8.9407e-08, 0, -0.5, 0 )
 collision_mask = 0
 
-[node name="Turret" type="CollisionShape" parent="Cube011/InnerHit" index="0"]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2.5, 0 )
+[node name="Turret" type="CollisionShape3D" parent="Cube011/InnerHit" index="0"]
+transform = Transform3D( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2.5, 0 )
 shape = SubResource( 4 )
 
-[node name="Left" type="CollisionShape" parent="Cube011/InnerHit" index="1"]
-transform = Transform( 0.707107, 0.5, -0.5, -4.21468e-08, 0.707106, 0.707106, 0.707107, -0.5, 0.5, 0.605256, 5.49999, -2.01947 )
+[node name="Left" type="CollisionShape3D" parent="Cube011/InnerHit" index="1"]
+transform = Transform3D( 0.707107, 0.5, -0.5, -4.21468e-08, 0.707106, 0.707106, 0.707107, -0.5, 0.5, 0.605256, 5.49999, -2.01947 )
 shape = SubResource( 2 )
 
-[node name="Right" type="CollisionShape" parent="Cube011/InnerHit" index="2"]
-transform = Transform( 0.707107, 0.5, -0.5, -4.21468e-08, 0.707106, 0.707106, 0.707107, -0.5, 0.5, 2.01947, 5.49999, -0.605256 )
+[node name="Right" type="CollisionShape3D" parent="Cube011/InnerHit" index="2"]
+transform = Transform3D( 0.707107, 0.5, -0.5, -4.21468e-08, 0.707106, 0.707106, 0.707107, -0.5, 0.5, 2.01947, 5.49999, -0.605256 )
 shape = SubResource( 2 )
 
 [node name="Smoke" parent="." index="3" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 lifetime = 5.0
 
 [node name="Destruction" type="Node" parent="." index="4"]

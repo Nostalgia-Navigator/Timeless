@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 signal on_removed
 func remove():
 	if !is_inside_tree():

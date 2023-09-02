@@ -7,7 +7,7 @@ func _ready():
 	parent = get_parent()
 	var t = Timer.new()
 	add_child(t)
-	t.connect("timeout", self, "on_shake")
+	t.connect("timeout", Callable(self, "on_shake"))
 	t.wait_time = 0.05
 	t.start()
 func on_shake():

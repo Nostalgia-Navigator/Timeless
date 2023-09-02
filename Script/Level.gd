@@ -1,11 +1,11 @@
 extends Node
 
-export(bool) var debug = true
-export(PackedScene) var boss
-var outro = preload("res://Misc/Landing.tscn").instance()
+@export var debug: bool = true
+@export var boss: PackedScene
+var outro = preload("res://Misc/Landing.tscn").instantiate()
 var count = 0
 var player
-export(Array, PackedScene) var planeTypes
+@export var planeTypes # (Array, PackedScene)
 
 signal on_boss_spawned
 func _ready():
@@ -16,7 +16,7 @@ func _ready():
 		planeTypes.append_array(l.A)
 		planeTypes.append_array(l.B)
 		planeTypes.append_array(l.C)
-	boss = boss.instance()
+	boss = boss.instantiate()
 	player = get_tree().get_root().get_node("Main/Player")
 	call_deferred("pre_register_planes")
 func pre_register_planes():
@@ -27,14 +27,14 @@ func register_planes():
 	for c in leaves:
 		var n = c.name
 		#print(c.name)
-		c.connect("on_destroyed", self, "check_boss")
+		c.connect("on_destroyed", Callable(self, "check_boss"))
 func check_boss(e, projectile):
 	count -= 1
 	if count <= 0:
 		var angle = randf() * PI * 2
 		var distance = 300
 		boss.transform.origin = player.get_global_transform().origin + Vector3(distance*cos(angle), 0, distance*sin(angle))
-		boss.connect("on_destroyed", self, "on_boss_destroyed")
+		boss.connect("on_destroyed", Callable(self, "on_boss_destroyed"))
 		get_parent().add_child(boss)
 		emit_signal("on_boss_spawned", boss)
 func on_boss_destroyed(boss, projectile):

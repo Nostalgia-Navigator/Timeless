@@ -1,8 +1,8 @@
-extends Spatial
+extends Node3D
 
-export(bool) var debug = false
+@export var debug: bool = false
 const Goodie = preload("res://Script/Goodie.gd").GoodieType
-export(Array, Goodie) var goodies
+@export var goodies # (Array, Goodie)
 
 #STAR, TIME, CREWMATE, SHIELDS, WEAPON, BOMB, FUEL
 var map = {
@@ -17,7 +17,7 @@ var map = {
 	
 }
 
-export(int) var extent
+@export var extent: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +27,7 @@ func _ready():
 		return
 	var p = extent * extent
 	for type in goodies:
-		var goodie = map[type].instance()
+		var goodie = map[type].instantiate()
 		add_child(goodie)
 
 		var r = randi()%p

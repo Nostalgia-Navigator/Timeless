@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-export(NodePath) var player
+@export var player: NodePath
 var offset
 
 func _ready():

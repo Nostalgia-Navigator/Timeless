@@ -8,14 +8,14 @@
 resource_name = "Landing"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerHolder:translation")
+tracks/0/path = NodePath("PlayerHolder:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 0.5, 1 ),
+"times": PackedFloat32Array( 0, 1, 2 ),
+"transitions": PackedFloat32Array( 1, 0.5, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 15, -50 ), Vector3( 0, 1, -15 ), Vector3( 0, 1, 0 ) ]
 }
@@ -23,37 +23,37 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerHolder:translation")
+tracks/0/path = NodePath("PlayerHolder:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 15, -50 ) ]
 }
 
-[node name="Landing" type="Spatial"]
+[node name="Landing" type="Node3D"]
 script = ExtResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/Landing = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
-[node name="PlayerHolder" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -50 )
+[node name="PlayerHolder" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -50 )
 
-[node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
 
-[node name="CollisionPolygon" type="CollisionPolygon" parent="Area"]
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D"]
 depth = 2.0
-polygon = PoolVector2Array( 12, 32, -12, 32, -12, 0, 12, 0 )
+polygon = PackedVector2Array( 12, 32, -12, 32, -12, 0, 12, 0 )
 
 [node name="Carrier" parent="." instance=ExtResource( 3 )]
 
 [node name="Wraparound" parent="." instance=ExtResource( 2 )]
 
-[connection signal="area_entered" from="Area" to="." method="_on_area_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]

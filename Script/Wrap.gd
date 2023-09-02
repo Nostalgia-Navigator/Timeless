@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 const wraparound = 288
 var player
 var d=0

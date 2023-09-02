@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
 class_name Goodie
 
 enum GoodieType {star, time, crewmate, shields, weapon, bomb, fuel, mystery }
-export(GoodieType) var goodie
-export(Array, Material) var colors
+@export var goodie: GoodieType
+@export var colors # (Array, Material)
 
 const explosion = preload("res://Explosion/Hit.tscn")
 signal on_removed
@@ -22,22 +22,22 @@ const material = preload("res://Blender/Parachute/ParachuteRed.material")
 const slap = preload("res://Sounds/GoodiesDamaged/Slap - snd .1025.dat.wav")
 func damage(projectile):
 	
-	var e = explosion.instance()
+	var e = explosion.instantiate()
 	get_parent().add_child(e)
 	e.emitting = true
 	e.set_global_transform(projectile.get_global_transform())
 	
 	var world = projectile.get_parent()
 	for i in range(5):
-		var d = debris.instance()
+		var d = debris.instantiate()
 		world.add_child(d)
-		d.get_node("Body").set_surface_material(0, material)
+		d.get_node("Body").set_surface_override_material(0, material)
 		d.set_global_transform(projectile.get_global_transform())
 		var p = d.get_global_transform().origin
 		var angle = randf() * PI * 2
 		d.linear_velocity = vel + projectile.vel.normalized() * 2 + 2 * Vector3(cos(angle), 0, sin(angle))
 		var m = 90
-		d.angular_velocity = Vector3(rand_range(-m, m), rand_range(-m, m), rand_range(-m, m))
+		d.angular_velocity = Vector3(randf_range(-m, m), randf_range(-m, m), randf_range(-m, m))
 		
 	if damaged:
 		Game.conduct.goodiesDestroyed += 1

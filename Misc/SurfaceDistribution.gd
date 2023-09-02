@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
-export(int) var size = 288*2
-export(int) var count = 100
-export(int) var separation = 60
-export(bool) var debug = false
-export(Array, PackedScene) var scenes
+@export var size: int = 288*2
+@export var count: int = 100
+@export var separation: int = 60
+@export var debug: bool = false
+@export var scenes # (Array, PackedScene)
 func _ready():
 	if !debug:
 		scenes = Game.get_current_level_desc().surfaceTypes
@@ -32,7 +32,7 @@ func _ready():
 		if v == null:
 			continue
 		prev.append(v)
-		var instance = scenes[randi()%len(scenes)].instance()
+		var instance = scenes[randi()%len(scenes)].instantiate()
 		instance.transform.origin = v
 		call_deferred("add_child", instance)
 func wrap(v, origin):
